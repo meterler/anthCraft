@@ -1,4 +1,4 @@
-// Generated on 2013-11-06 using generator-angular 0.5.1
+// Generated on 2013-11-06 using generator-angular-fullstack 0.0.5
 'use strict';
 
 // # Globbing
@@ -15,7 +15,28 @@ module.exports = function (grunt) {
     yeoman: {
       // configurable paths
       app: require('./bower.json').appPath || 'app',
-      dist: 'dist'
+      dist: 'public'
+    },
+    express: {
+        options: {
+            port: process.env.PORT || 9000
+        },
+        dev: {
+            options: {
+                script: 'server.js'
+            }
+        },
+        prod: {
+            options: {
+                script: 'server.js',
+                node_env: 'production'
+            }
+        }
+    },
+    open: {
+      server: {
+        url: 'http://localhost:<%= express.options.port %>'
+      }
     },
     watch: {
       coffee: {
@@ -26,20 +47,24 @@ module.exports = function (grunt) {
         files: ['test/spec/{,*/}*.coffee'],
         tasks: ['coffee:test']
       },
+      express: {
+          files: [
+              '<%= yeoman.app %>/{,*//*}*.html',
+              '{.tmp,<%= yeoman.app %>}/styles/{,*//*}*.css',
+              '{.tmp,<%= yeoman.app %>}/scripts/{,*//*}*.js',
+              '<%= yeoman.app %>/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}',
+              'server.js',
+              'lib/{,*//*}*.{js,json}'
+          ],
+          tasks: ['express:dev'],
+          options: {
+              livereload: true,
+              nospawn: true //Without this option specified express won't be reloaded
+          }
+      },
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
         tasks: ['copy:styles', 'autoprefixer']
-      },
-      livereload: {
-        options: {
-          livereload: '<%= connect.options.livereload %>'
-        },
-        files: [
-          '<%= yeoman.app %>/{,*/}*.html',
-          '.tmp/styles/{,*/}*.css',
-          '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
-          '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-        ]
       }
     },
     autoprefixer: {
@@ -53,38 +78,6 @@ module.exports = function (grunt) {
         }]
       }
     },
-    connect: {
-      options: {
-        port: 9000,
-        // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost',
-        livereload: 35729
-      },
-      livereload: {
-        options: {
-          open: true,
-          base: [
-            '.tmp',
-            '<%= yeoman.app %>'
-          ]
-        }
-      },
-      test: {
-        options: {
-          port: 9001,
-          base: [
-            '.tmp',
-            'test',
-            '<%= yeoman.app %>'
-          ]
-        }
-      },
-      dist: {
-        options: {
-          base: '<%= yeoman.dist %>'
-        }
-      }
-    },
     clean: {
       dist: {
         files: [{
@@ -96,11 +89,22 @@ module.exports = function (grunt) {
           ]
         }]
       },
+      heroku: {
+        files: [{
+          dot: true,
+          src: [
+            'heroku/*',
+            '!heroku/.git*',
+            '!heroku/Procfile'                 
+          ]
+        }]
+      }, 
       server: '.tmp'
     },
     jshint: {
       options: {
-        jshintrc: '.jshintrc'
+        jshintrc: '.jshintrc',
+        reporter: require('jshint-stylish')
       },
       all: [
         'Gruntfile.js',
@@ -239,6 +243,24 @@ module.exports = function (grunt) {
           ]
         }]
       },
+      heroku: {
+        files: [{
+          expand: true,
+          dot: true,
+          dest: 'heroku',
+          src: [
+            '<%= yeoman.dist %>/**'
+          ]
+        }, {
+          expand: true,
+          dest: 'heroku',
+          src: [
+            'package.json',
+            'server.js',
+            'lib/**/*'
+          ]
+        }]
+      },  
       styles: {
         expand: true,
         cwd: '<%= yeoman.app %>/styles',
@@ -295,16 +317,21 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.registerTask('express-keepalive', 'Keep grunt running', function() {
+    this.async();
+  });
+
   grunt.registerTask('server', function (target) {
     if (target === 'dist') {
-      return grunt.task.run(['build', 'connect:dist:keepalive']);
+      return grunt.task.run(['build', 'express:prod', 'open', 'express-keepalive']);
     }
 
     grunt.task.run([
       'clean:server',
       'concurrent:server',
       'autoprefixer',
-      'connect:livereload',
+      'express:dev',
+      'open',
       'watch'
     ]);
   });
@@ -313,7 +340,6 @@ module.exports = function (grunt) {
     'clean:server',
     'concurrent:test',
     'autoprefixer',
-    'connect:test',
     'karma'
   ]);
 
@@ -330,6 +356,12 @@ module.exports = function (grunt) {
     'uglify',
     'rev',
     'usemin'
+  ]);
+
+  grunt.registerTask('heroku', [
+    'build',
+    'clean:heroku',
+    'copy:heroku'    
   ]);
 
   grunt.registerTask('default', [

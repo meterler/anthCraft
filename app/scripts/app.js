@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('anthCraftApp', [
+angular.module('anthCraft2App', [
   'ngCookies',
   'ngResource',
   'ngSanitize'

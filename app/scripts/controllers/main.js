@@ -1,10 +1,8 @@
 'use strict';
 
-angular.module('anthCraftApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+angular.module('anthCraft2App')
+  .controller('MainCtrl', function ($scope, $http) {
+    $http.get('/api/awesomeThings').success(function(awesomeThings) {
+      $scope.awesomeThings = awesomeThings;
+    });
   });
