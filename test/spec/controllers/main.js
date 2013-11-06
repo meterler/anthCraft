@@ -3,7 +3,7 @@
 describe('Controller: MainCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('anthCraft2App'));
+  beforeEach(module('anthCraftApp'));
 
   var MainCtrl,
     scope,
@@ -13,7 +13,7 @@ describe('Controller: MainCtrl', function () {
   beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
     $httpBackend = _$httpBackend_;
     $httpBackend.expectGET('/api/awesomeThings')
-      .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);    
+      .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
     scope = $rootScope.$new();
     MainCtrl = $controller('MainCtrl', {
       $scope: scope
