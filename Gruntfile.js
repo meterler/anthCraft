@@ -51,10 +51,10 @@ module.exports = function (grunt) {
           files: [
               '<%= yeoman.app %>/{,*//*}*.html',
               '{.tmp,<%= yeoman.app %>}/styles/{,*//*}*.css',
-              '{.tmp,<%= yeoman.app %>}/scripts/{,*//*}*.js',
+              '{.tmp,<%= yeoman.app %>}/scripts/{,*//*}*.{js,coffee}',
               '<%= yeoman.app %>/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}',
               'server.js',
-              'lib/{,*//*}*.{js,json}'
+              'lib/{,*//*}*'
           ],
           tasks: ['express:dev'],
           options: {
