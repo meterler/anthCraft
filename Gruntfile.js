@@ -260,7 +260,7 @@ module.exports = function (grunt) {
             'lib/**/*'
           ]
         }]
-      },  
+      },
       styles: {
         expand: true,
         cwd: '<%= yeoman.app %>/styles',
@@ -361,7 +361,7 @@ module.exports = function (grunt) {
   grunt.registerTask('heroku', [
     'build',
     'clean:heroku',
-    'copy:heroku'    
+    'copy:heroku'
   ]);
 
   grunt.registerTask('default', [
