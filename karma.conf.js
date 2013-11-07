@@ -17,9 +17,11 @@ module.exports = function(config) {
       'app/bower_components/angular-cookies/angular-cookies.js',
       'app/bower_components/angular-sanitize/angular-sanitize.js',
       'app/scripts/*.js',
+      '.tmp/scripts/*.js',
       'app/scripts/**/*.js',
+      '.tmp/scripts/**/*.js',
       'test/mock/**/*.js',
-      'test/spec/**/*.js'
+      'test/e2e/spec/**/*.js'
     ],
 
     // list of files / patterns to exclude
@@ -45,7 +47,7 @@ module.exports = function(config) {
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: ['Chrome'],
+    browsers: [], // start browser manually
 
 
     // Continuous Integration mode
