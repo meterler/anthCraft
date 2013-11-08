@@ -1,4 +1,3 @@
-
 angular.module('anthCraftApp', [
   'ngCookies'
   'ngResource'
