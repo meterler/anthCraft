@@ -99,10 +99,10 @@ module.exports = function (grunt) {
           src: [
             'heroku/*',
             '!heroku/.git*',
-            '!heroku/Procfile'                 
+            '!heroku/Procfile'
           ]
         }]
-      }, 
+      },
       server: '.tmp'
     },
     jshint: {
