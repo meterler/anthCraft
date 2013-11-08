@@ -65,6 +65,10 @@ module.exports = function (grunt) {
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
         tasks: ['copy:styles', 'autoprefixer']
+      },
+      less: {
+        files: ['<%= yeoman.app %>/styles/{,*/}*.less'],
+        tasks: ['less:test']
       }
     },
     autoprefixer: {
@@ -132,6 +136,32 @@ module.exports = function (grunt) {
           src: '{,*/}*.coffee',
           dest: '.tmp/spec',
           ext: '.js'
+        }]
+      }
+    },
+    less: {
+      options: {
+      },
+      dist: {
+        compress: true,
+        sourceMap: false,
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.app %>/styles',
+          src: '{,*/}*.less',
+          dest: '.tmp/styles',
+          ext: '.css'
+        }]
+      },
+      test: {
+        compress: false,
+        sourceMap: true,
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.app %>/styles',
+          src: '{,*/}*.less',
+          dest: '.tmp/styles',
+          ext: '.css'
         }]
       }
     },
@@ -271,6 +301,7 @@ module.exports = function (grunt) {
     concurrent: {
       server: [
         'coffee:dist',
+        'less:dist',
         'copy:styles'
       ],
       test: [
@@ -279,6 +310,7 @@ module.exports = function (grunt) {
       ],
       dist: [
         'coffee',
+        'less:dist',
         'copy:styles',
         'imagemin',
         'svgmin',
@@ -317,6 +349,7 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.registerTask('express-keepalive', 'Keep grunt running', function() {
     this.async();
   });
