@@ -1,4 +1,5 @@
 angular.module('anthCraftApp', [
+  'ui.bootstrap'
   'ngCookies'
   'ngResource'
   'ngSanitize'

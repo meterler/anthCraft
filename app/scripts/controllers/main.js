@@ -1,6 +1,6 @@
 'use strict';
 
-var mod = angular.module('anthCraftApp', ['ui.bootstrap']);
+var mod = angular.module('anthCraftApp');
 
 mod.controller('MainCtrl', function ($http, $scope) {
 	$http.get('/api/awesomeThings').success(function(awesomeThings) {
