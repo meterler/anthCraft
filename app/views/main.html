@@ -14,10 +14,11 @@
 		<div class="app-list">
 		</div>
 	</div>
-	<div class="wallpaper"></div>
+	<div class="wallpaper">
+	</div>
 </div>
 
-<div class="dashboard">
+<div class="dashboard" ng-controller="tabset">
 	<tabset>
 		<tab heading="Static title">Static content</tab>
 		<tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disabled="tab.disabled">
