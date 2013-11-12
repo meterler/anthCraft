@@ -23,23 +23,20 @@
 	<![endif]-->
 
 	<!--[if lt IE 9]>
-	<script src="bower_components/es5-shim/es5-shim.js"></script>
-	<script src="bower_components/json3/lib/json3.min.js"></script>
+	<script src="components/es5-shim/es5-shim.js"></script>
+	<script src="components/json3/lib/json3.min.js"></script>
 	<![endif]-->
 	<nav class="{{active}}" ng-click="$event.preventDefault()">
 
 		<!-- When a link in the menu is clicked, we set the active variable -->
 
-		<a href="#" class="home" ng-click="active='home'">Home</a>
-		<a href="#" class="projects" ng-click="active='projects'">Projects</a>
-		<a href="#" class="services" ng-click="active='services'">Services</a>
-		<a href="#" class="contact" ng-click="active='contact'">Contact</a>
+		<a href="#" class="home" ng-click="active='home'">首页</a>
+		<a href="#" class="projects" ng-click="active='projects'">下载</a>
+		<a href="#" class="services" ng-click="active='services'">服务</a>
+		<a href="#" class="contact" ng-click="active='contact'">反馈</a>
 	</nav>
 	<div class="container">
-
-		<!-- Add your site or application content here -->
 		<div ng-view></div>
-
 	</div>
 
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -53,19 +50,20 @@
 		ga('send', 'pageview');
 	</script>
 
-	<script src="bower_components/angular/angular.js"></script>
+	<script src="components/angular/angular.js"></script>
 
 	<!-- build:js scripts/modules.js -->
-	<script src="bower_components/angular-resource/angular-resource.js"></script>
-	<script src="bower_components/angular-cookies/angular-cookies.js"></script>
-	<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+	<script src="components/angular-resource/angular-resource.js"></script>
+	<script src="components/angular-cookies/angular-cookies.js"></script>
+	<script src="components/angular-sanitize/angular-sanitize.js"></script>
 
-	<script src="bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.min.js"></script>
+	<script src="components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.min.js"></script>
 	<!-- endbuild -->
 
 	<!-- build:js({.tmp,app}) scripts/scripts.js -->
 	<script src="scripts/app.js"></script>
 	<script src="scripts/controllers/main.js"></script>
+	<script src="scripts/controllers/wallpaper.js"></script>
 	<!-- endbuild -->
 </body>
 </html>

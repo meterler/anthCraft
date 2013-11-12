@@ -2,12 +2,6 @@
 
 var mod = angular.module('anthCraftApp');
 
-mod.controller('MainCtrl', function ($http, $scope) {
-	$http.get('/api/awesomeThings').success(function(awesomeThings) {
-		$scope.awesomeThings = awesomeThings;
-	});
-});
-
 mod.controller('tabset', function($http, $scope) {
 
 	$scope.tabs = [
@@ -23,3 +17,4 @@ mod.controller('tabset', function($http, $scope) {
 
 	$scope.navType = 'pills';
 });
+

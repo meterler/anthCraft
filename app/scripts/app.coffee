@@ -1,4 +1,4 @@
-angular.module('anthCraftApp', [
+mod = angular.module('anthCraftApp', [
   'ui.bootstrap'
   'ngCookies'
   'ngResource'
@@ -14,4 +14,7 @@ angular.module('anthCraftApp', [
 			redirectTo: '/'
 		}
 
-
+# mod = angular.module('anthCraftApp')
+mod.controller 'MainCtrl', ($http, $scope)->
+	$http.get('/api/awesomeThings').success (things)->
+		$scope.awesomeThings = things
