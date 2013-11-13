@@ -1,9 +1,10 @@
 {
-  "name": "anthcraft2",
+  "name": "anthcraft",
   "version": "0.0.0",
   "dependencies": {
     "express": "~3.4.3",
-    "coffee-script": "~1.6.3"
+    "coffee-script": "~1.6.3",
+    "mongoose": "~3.8.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -32,12 +33,14 @@
     "jshint-stylish": "~0.1.3",
     "grunt-karma": "~0.6.2",
     "karma-chrome-launcher": "~0.1.0",
-    "grunt-contrib-less": "~0.8.1"
+    "grunt-contrib-less": "~0.8.1",
+    "grunt-install-dependencies": "~0.1.0"
   },
   "engines": {
     "node": ">=0.8.0"
   },
   "scripts": {
+    "start": "node server.js",
     "test": "grunt test"
   }
 }
