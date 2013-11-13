@@ -1,4 +1,6 @@
 
+ThemeModel = require '../models/Theme.coffee'
+
 module.exports = (app)->
 	app.get "/api/awesomeThings", (req, res)->
 		res.json {
@@ -7,4 +9,8 @@ module.exports = (app)->
 			'Karma',
 			'Express'
 		}
+
+	ThemeModel.register app, '/themes'
+
+	return
 

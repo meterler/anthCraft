@@ -261,6 +261,7 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             'components/**/*',
+            'resources/**/*',
             'images/{,*/}*.{gif,webp}',
             'styles/fonts/*'
           ]
@@ -349,7 +350,7 @@ module.exports = function (grunt) {
     },
 
     "install-dependencies": {
-      cwd: "<%=yeoman.dist %>/heroku",
+      cwd: "heroku",
       isDevelopment: false
     }
   });
