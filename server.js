@@ -16,7 +16,7 @@ var app = express();
 utils.loadConfigs();
 
 // all environments
-app.set('port', __config.port || process.env.PORT || 3000);
+app.set('port', process.env.PORT || __config.port || 3000);
 
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
@@ -29,7 +29,7 @@ if ('development' === app.get('env')) {
   app.use(express.static(path.join(__dirname, 'app')));
   app.use(express.errorHandler());
 }
-// production only
+// production or others env
 else {
   app.use(express.favicon(path.join(__dirname, 'public/favicon.ico')));
   app.use(express.static(path.join(__dirname, 'public')));
