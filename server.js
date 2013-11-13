@@ -2,17 +2,21 @@
 // add coffee-script feature
 require('coffee-script');
 
+var __config = global.__config = {};
+
 var express = require('express'),
     http = require('http'),
     path = require('path');
-    // api = require('./lib/api');
 
 var utils = require('./lib/utils');
 
 var app = express();
 
+// load configurations to global.__config
+utils.loadConfigs();
+
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', __config.port || process.env.PORT || 3000);
 
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
@@ -37,3 +41,4 @@ utils.loadRoutes(path.join(__dirname, './lib/api'), app);
 http.createServer(app).listen(app.get('port'), function () {
   console.log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
 });
+
