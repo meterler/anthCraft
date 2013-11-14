@@ -4,4 +4,4 @@ public
 .sass-cache
 app/components
 heroku
-resources/upload/*
+app/resources/upload/*
