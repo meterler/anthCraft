@@ -10,7 +10,8 @@ module.exports = (app)->
 			'Express'
 		}
 
-	ThemeModel.register app, '/themes'
+	# Provide RESTful API of ThemeModel
+	ThemeModel.register app, '/api/themes'
 
 	return
 
