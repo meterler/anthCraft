@@ -1,4 +1,4 @@
-
+path = require 'path'
 module.exports = {
 	port: 9000
 
@@ -10,5 +10,8 @@ module.exports = {
 	# 	user: ""
 	# 	pass: ""
 	# }
+
+	# Resources Path
+	resources: path.join(__dirname, "../app/resources")
 }
 
