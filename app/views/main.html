@@ -9,19 +9,28 @@
 
 <div class="dashboard" ng-controller="tabset">
 	<tabset>
-		<tab heading="背景">
+		<tab heading="Wallpaper">
 			<div class="wallpaper-list" ng-controller="wallpaperPage">
+				<span class="btn btn-default btn-file">Browser
+					<input type="file" accept="image/*" image="image" />
+				</span>
+				<img ng-show="image" ng-src="{{image.url}}" type="{{image.file.type}}"/>
+				<button type="submit" class="btn" ng-click="single(image.file)">Upload</button>
+
+
+
 				<pagination
-				total-items="bigTotalItems"
-				page="bigCurrentPage"
-				max-size="maxSize"
-				class="pagination-small"
-				boundary-links="true"
-				rotate="false"
-				num-pages="numPages"></pagination>
+					style="margin: 0 auto;"
+					total-items="bigTotalItems"
+					page="bigCurrentPage"
+					max-size="maxSize"
+					class="pagination-small"
+					boundary-links="true"
+					rotate="false"
+					num-pages="numPages"></pagination>
 			</div>
 		</tab>
-		<tab heading="图标">图标</tab>
-		<tab heading="保存">saving...</tab>
+		<tab heading="AppIcons">图标</tab>
+		<tab heading="Save">saving...</tab>
 	</tabset>
 </div>

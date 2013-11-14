@@ -3,6 +3,7 @@ mod = angular.module('anthCraftApp', [
   'ngCookies'
   'ngResource'
   'ngSanitize'
+  'imageupload'
 ]).config ($routeProvider)->
 
 	$routeProvider
