@@ -3,7 +3,7 @@
 		<div class="app-list">
 		</div>
 	</div>
-	<div class="wallpaper">
+	<div class="wallpaper" style="background-image: url({{theme.wallpaper}});">
 	</div>
 </div>
 
@@ -16,8 +16,6 @@
 				</span>
 				<img ng-show="image" ng-src="{{image.url}}" type="{{image.file.type}}"/>
 				<button type="submit" class="btn" ng-click="single(image.file)">Upload</button>
-
-
 
 				<pagination
 					style="margin: 0 auto;"

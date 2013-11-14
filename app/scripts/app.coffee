@@ -17,5 +17,17 @@ mod = angular.module('anthCraftApp', [
 
 # mod = angular.module('anthCraftApp')
 mod.controller 'MainCtrl', ($http, $scope)->
-	$http.get('/api/awesomeThings').success (things)->
-		$scope.awesomeThings = things
+	$scope.$on 'theme.update', (event, newModel)->
+		$scope.theme = newModel
+
+mod.service 'ThemeService', ['$rootScope', ($rootScope)->
+	service = {
+		wallpaper: ""
+
+		update: (model)->
+			$rootScope.$broadcast('theme.update')
+	}
+
+	return service
+
+]
