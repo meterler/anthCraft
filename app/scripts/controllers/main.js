@@ -2,7 +2,7 @@
 
 var mod = angular.module('anthCraftApp');
 
-mod.controller('tabset', function($http, $scope) {
+mod.controller('tabset', function($http, $scope, themeService) {
 
 	$scope.tabs = [
 		{ title:'Dynamic Title 1', content:'Dynamic content 1' },
@@ -26,6 +26,8 @@ mod.controller('tabset', function($http, $scope) {
         }).success(function(result) {
             $scope.uploadedImgSrc = result.src;
             $scope.sizeInBytes = result.size;
+
+            themeService.update( { wallpaper: result.src });
         });
     };
 });

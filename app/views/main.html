@@ -1,9 +1,9 @@
 <div class="phone">
-	<div class="scence main-screen">
+	<div class="scence main-screen" ng-style="mstyle.wallpaper">
 		<div class="app-list">
 		</div>
 	</div>
-	<div class="wallpaper" style="background-image: url({{theme.wallpaper}});">
+	<div class="wallpaper">
 	</div>
 </div>
 
@@ -18,7 +18,6 @@
 				<button type="submit" class="btn" ng-click="single(image.file)">Upload</button>
 
 				<pagination
-					style="margin: 0 auto;"
 					total-items="bigTotalItems"
 					page="bigCurrentPage"
 					max-size="maxSize"

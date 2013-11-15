@@ -19,15 +19,20 @@ mod = angular.module('anthCraftApp', [
 mod.controller 'MainCtrl', ($http, $scope)->
 	$scope.$on 'theme.update', (event, newModel)->
 		$scope.theme = newModel
+		$scope.mstyle = {
+			wallpaper: {
+				"background-image": "url(#{newModel.wallpaper})"
+			}
+		}
 
-mod.service 'ThemeService', ['$rootScope', ($rootScope)->
+mod.service 'themeService', ['$rootScope', ($rootScope)->
 	service = {
 		wallpaper: ""
 
 		update: (model)->
-			$rootScope.$broadcast('theme.update')
+			$rootScope.$broadcast('theme.update', model)
 	}
 
 	return service
-
 ]
+
