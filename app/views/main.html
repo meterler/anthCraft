@@ -1,33 +1,5 @@
-<div class="phone">
-	<div class="scence main-screen" ng-style="mstyle.wallpaper">
-		<div class="app-list">
-		</div>
-	</div>
-	<div class="wallpaper">
-	</div>
-</div>
 
-<div class="dashboard" ng-controller="tabset">
-	<tabset>
-		<tab heading="Wallpaper">
-			<div class="wallpaper-list" ng-controller="wallpaperPage">
-				<span class="btn btn-default btn-file">Browser
-					<input type="file" accept="image/*" image="image" />
-				</span>
-				<img ng-show="image" ng-src="{{image.url}}" type="{{image.file.type}}"/>
-				<button type="submit" class="btn" ng-click="single(image.file)">Upload</button>
+<div ng-include="'/views/previewer.html'"></div>
+<div ng-include="'/views/lathe.html'"></div>
 
-				<pagination
-					total-items="bigTotalItems"
-					page="bigCurrentPage"
-					max-size="maxSize"
-					class="pagination-small"
-					boundary-links="true"
-					rotate="false"
-					num-pages="numPages"></pagination>
-			</div>
-		</tab>
-		<tab heading="AppIcons">图标</tab>
-		<tab heading="Save">saving...</tab>
-	</tabset>
-</div>
+

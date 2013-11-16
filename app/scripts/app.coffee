@@ -1,3 +1,4 @@
+
 mod = angular.module('anthCraftApp', [
   'ui.bootstrap'
   'ngCookies'
@@ -25,12 +26,20 @@ mod.controller 'MainCtrl', ($http, $scope)->
 			}
 		}
 
+# TODO: Theme Service
 mod.service 'themeService', ['$rootScope', ($rootScope)->
 	service = {
 		wallpaper: ""
 
-		update: (model)->
-			$rootScope.$broadcast('theme.update', model)
+		# TODO: Get from server side
+		getTheme: ()->
+			service.theme = {}
+
+		# TODO: Save theme to Server
+		saveToServer: ()->
+
+		# TODO: Update view
+		updateView: (model)-> $rootScope.$broadcast('theme.update', model)
 	}
 
 	return service
