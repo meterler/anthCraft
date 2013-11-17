@@ -10,3 +10,4 @@ mod.controller 'wallpaperPage', ($scope)->
 
 	$scope.bigTotalItems = 175;
 	$scope.bigCurrentPage = 1;
+

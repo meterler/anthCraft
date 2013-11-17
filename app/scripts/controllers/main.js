@@ -27,7 +27,7 @@ mod.controller('tabset', function($http, $scope, themeService) {
             $scope.uploadedImgSrc = result.src;
             $scope.sizeInBytes = result.size;
 
-            themeService.update( { wallpaper: result.src });
+            themeService.updateView( { wallpaper: result.src });
         });
     };
 });
