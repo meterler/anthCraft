@@ -29,7 +29,7 @@ mod.controller 'MainCtrl', ($http, $scope)->
 # TODO: Theme Service
 mod.service 'themeService', ['$rootScope', ($rootScope)->
 	service = {
-		wallpaper: ""
+		theme: {}
 
 		# TODO: Get from server side
 		getTheme: ()->
@@ -39,7 +39,9 @@ mod.service 'themeService', ['$rootScope', ($rootScope)->
 		saveToServer: ()->
 
 		# TODO: Update view
-		updateView: (model)-> $rootScope.$broadcast('theme.update', model)
+		updateView: (updateData)->
+			angular.extend(service.theme, updateData)
+			$rootScope.$broadcast('theme.update', service.theme, updateData)
 	}
 
 	return service
