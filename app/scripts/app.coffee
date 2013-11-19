@@ -1,11 +1,14 @@
 
 mod = angular.module('anthCraftApp', [
   'ui.bootstrap'
+  'ngRoute'
   'ngCookies'
   'ngResource'
-  'ngSanitize'
   'imageupload'
-]).config ($routeProvider)->
+]).config [ '$routeProvider', '$compileProvider',($routeProvider, $compileProvider)->
+
+	# Compile white list for image preview since angular-v1.2.1
+	$compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|blob):|data:image\//)
 
 	$routeProvider
 		.when('/', {
@@ -15,6 +18,8 @@ mod = angular.module('anthCraftApp', [
 		.otherwise {
 			redirectTo: '/'
 		}
+	return
+]
 
 # mod = angular.module('anthCraftApp')
 mod.controller 'MainCtrl', ($http, $scope)->
@@ -41,6 +46,7 @@ mod.service 'themeService', ['$rootScope', '$resource', ($rootScope, $resource)-
 			actions = {
 				create: { method: 'POST' }
 				save: { method: 'PUT' }
+				packageUp: { method: 'POST', url: '/api/themes/:themeId/package' }
 			}
 			Theme = $resource('/api/themes/:themeId', { themeId: '@_id' }, actions)
 
@@ -54,6 +60,8 @@ mod.service 'themeService', ['$rootScope', '$resource', ($rootScope, $resource)-
 
 		updateTheme: (themeModel)->
 
+		packageTheme: ()->
+			service.theme.$packageUp()
 
 		# TODO: Update view
 		updateView: (updateData)->

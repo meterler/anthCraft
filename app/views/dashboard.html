@@ -2,9 +2,11 @@
 <div class="dashboard" ng-controller="dashboardCtrl">
 
 	<div class="ac-toolbar" ng-switch="themeStatus()">
-		<button class="btn btn-primary" ng-click="initNewTheme(this)" ng-switch-when="uncreated">New Theme</button>
-		<button class="btn btn-primary disable" ng-click="initNewTheme(this)" ng-switch-when="creating">Creating...</button>
-		<button class="btn btn-primary" ng-click="initNewTheme(this)" ng-switch-when="created">Reset</button>
+		<button class="btn btn-primary" ng-click="initNewTheme(this)" ng-switch-when="uncreated">Create new theme</button>
+		<button class="btn disable" ng-switch-when="creating">Creating...</button>
+		<button class="btn btn-error" ng-click="initNewTheme(this)" ng-switch-when="created">Reset to default</button>
+
+		<button class="btn btn-warning" ng-click="packageTheme(this)" ng-switch-when="created">Package Theme</button>
 	</div>
 
 	<tabset>

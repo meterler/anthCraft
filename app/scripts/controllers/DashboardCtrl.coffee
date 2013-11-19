@@ -12,6 +12,9 @@ mod.controller 'dashboardCtrl', ['$http', '$scope', '$resource', 'themeService',
 		$scope.initNewTheme = (btn)->
 			themeService.init()
 
+		$scope.packageTheme = ->
+			# TODO: Require the theme info
+			themeService.packageTheme()
 
 		$scope.themeStatus = -> themeService.status
 
