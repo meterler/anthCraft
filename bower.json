@@ -1,11 +1,11 @@
 {
-  "name": "anthCraft2",
-  "version": "0.0.0",
+  "name": "anthCraft",
+  "version": "0.0.1",
   "dependencies": {
-    "angular": "~1.0.7",
+    "angular": "~1.2.1",
     "json3": "~3.2.4",
     "es5-shim": "~2.0.8",
-    "angular-resource": "~1.0.7",
+    "angular-resource": "~1.2.1",
     "angular-cookies": "~1.0.7",
     "angular-sanitize": "~1.0.7",
     "angular-ui-bootstrap-bower": "~0.6.0",
