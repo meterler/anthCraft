@@ -9,8 +9,11 @@ mod.controller 'dashboardCtrl', ['$http', '$scope', '$resource', 'themeService',
 	($http, $scope, $resource, themeService)->
 
 		# TODO: Init theme previewer, request themeId from server
-		$scope.initNewTheme = ()->
+		$scope.initNewTheme = (btn)->
 			themeService.init()
+
+
+		$scope.themeStatus = -> themeService.status
 
 		$scope.upload = (image)->
 			formData = new FormData()

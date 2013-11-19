@@ -29,10 +29,14 @@ mod.controller 'MainCtrl', ($http, $scope)->
 # TODO: Theme Service
 mod.service 'themeService', ['$rootScope', '$resource', ($rootScope, $resource)->
 	service = {
-		theme: {}
 
+		# value: [ uncreated, creating, created, synced ]
+		status: 'uncreated'
+		theme: {}
 		# TODO: Get from server side
-		init: ()->
+		init: (callback)->
+			service.status = 'creating'
+
 			#TODO: Lock until theme created
 			actions = {
 				create: { method: 'POST' }
@@ -40,10 +44,10 @@ mod.service 'themeService', ['$rootScope', '$resource', ($rootScope, $resource)-
 			}
 			Theme = $resource('/api/themes/:themeId', { themeId: '@_id' }, actions)
 
-			service.theme = Theme.create {}
-			console.log service.theme
+			service.theme = Theme.create {},
+				-> service.status = 'created',
+				-> service.status = 'uncreated'
 			# TODO: FAILD?
-
 
 		# TODO: Save theme to Server
 		saveToServer: ()->

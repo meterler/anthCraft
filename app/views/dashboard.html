@@ -1,7 +1,11 @@
 
 <div class="dashboard" ng-controller="dashboardCtrl">
 
-	<button class="btn btn-primary" ng-click="initNewTheme()">New Theme</button>
+	<div class="ac-toolbar" ng-switch="themeStatus()">
+		<button class="btn btn-primary" ng-click="initNewTheme(this)" ng-switch-when="uncreated">New Theme</button>
+		<button class="btn btn-primary disable" ng-click="initNewTheme(this)" ng-switch-when="creating">Creating...</button>
+		<button class="btn btn-primary" ng-click="initNewTheme(this)" ng-switch-when="created">Reset</button>
+	</div>
 
 	<tabset>
 		<tab heading="Wallpaper">
@@ -25,4 +29,7 @@
 		<tab heading="AppIcons">Icons list and icon uploader</tab>
 		<tab heading="Save">saving and package...</tab>
 	</tabset>
+
+	<div class="ac-statusbar">
+	</div>
 </div>
