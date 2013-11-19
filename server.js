@@ -14,6 +14,7 @@ var app = express();
 
 // load configurations to global.__config
 utils.loadConfigs();
+utils.connectDB();
 
 // all environments
 app.set('port', process.env.PORT || __config.port || 3000);
