@@ -27,20 +27,36 @@ mod.controller 'MainCtrl', ($http, $scope)->
 		}
 
 # TODO: Theme Service
-mod.service 'themeService', ['$rootScope', ($rootScope)->
+mod.service 'themeService', ['$rootScope', '$resource', ($rootScope, $resource)->
 	service = {
 		theme: {}
 
 		# TODO: Get from server side
-		getTheme: ()->
-			service.theme = {}
+		init: ()->
+			#TODO: Lock until theme created
+			actions = {
+				create: { method: 'POST' }
+				save: { method: 'PUT' }
+			}
+			Theme = $resource('/api/themes/:themeId', { themeId: '@_id' }, actions)
+
+			service.theme = Theme.create {}
+			console.log service.theme
+			# TODO: FAILD?
+
 
 		# TODO: Save theme to Server
 		saveToServer: ()->
 
+		updateTheme: (themeModel)->
+
+
 		# TODO: Update view
 		updateView: (updateData)->
+
 			angular.extend(service.theme, updateData)
+
+			service.theme.$save()
 			$rootScope.$broadcast('theme.update', service.theme, updateData)
 	}
 

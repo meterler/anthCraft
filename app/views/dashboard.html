@@ -1,13 +1,16 @@
 
-<div class="dashboard" ng-controller="tabset">
+<div class="dashboard" ng-controller="dashboardCtrl">
+
+	<button class="btn btn-primary" ng-click="initNewTheme()">New Theme</button>
+
 	<tabset>
 		<tab heading="Wallpaper">
-			<div class="wallpaper-list" ng-controller="wallpaperPage">
+			<div class="wallpaper-list" ng-controller="wallpaperCtrl">
 				<span class="btn btn-default btn-file">Browser
 					<input type="file" accept="image/*" image="image" />
 				</span>
 				<img ng-show="image" ng-src="{{image.url}}" type="{{image.file.type}}"/>
-				<button type="submit" class="btn" ng-click="single(image.file)">Upload</button>
+				<button type="submit" class="btn" ng-click="upload(image.file)">Upload</button>
 
 				<pagination
 					total-items="bigTotalItems"
