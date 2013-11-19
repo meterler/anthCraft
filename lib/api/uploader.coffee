@@ -3,6 +3,9 @@ path = require 'path'
 
 module.exports = (app)->
 	app.post "/api/upload", (req, res)->
+
+		console.log req.files
+
 		fs.readFile req.files.image.path, (err, data)->
 			uploadPath = "/resources/upload"
 
