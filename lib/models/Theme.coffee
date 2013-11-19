@@ -6,6 +6,11 @@ mongoose = restful.mongoose
 
 # Theme schema definition
 schemaStruct = {
+	name: { type: 'string', trim: true, match: [/^.{3,40}$/, 'Theme name length must between 3 and 40.'] }
+	author: { type: 'string', trim: true, match: [/^.{3, 20}$/, 'Author name length must between 3 and 20.'] }
+	packageName: 'string'
+	description: { type: 'string', trim: true }
+
 	wallpaper: 'string'
 	updateTime: 'date'
 }
