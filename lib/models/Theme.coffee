@@ -13,6 +13,7 @@ schemaStruct = {
 
 	wallpaper: 'string'
 	updateTime: 'date'
+	createTime: { type: 'date', default: Date.now }
 }
 
 ThemeSchema = mongoose.Schema schemaStruct
@@ -34,6 +35,7 @@ ThemeModel
 	.before('post', setUpdateTime)
 	.before('put', setUpdateTime)
 
+# Package theme, move to another collection
 ThemeModel
 	.route('package.post', {
 		detail: true,
