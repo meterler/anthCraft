@@ -1,14 +1,56 @@
+
 restful = require 'node-restful'
 mongoose = restful.mongoose
 # mongoose = require 'mongoose'
 
-ThemeSchema = mongoose.Schema {
+
+# Theme schema definition
+schemaStruct = {
 	wallpaper: 'string'
+	updateTime: 'date'
 }
 
-module.exports = restful
-					.model('theme', ThemeSchema)
-					.methods(['get', 'post', 'put', 'delete'])
+ThemeSchema = mongoose.Schema schemaStruct
+publishedThemeSchema = mongoose.Schema schemaStruct
+publishedThemeSchema.set 'collection', 'publishedThemes'
+publishedThemeModel = mongoose.model('publishedTheme', publishedThemeSchema)
 
-#module.export = mongoose.model('theme', ThemeSchema)
-# module.exports = ThemeSchema
+# Develop theme collection is RESTful
+ThemeModel = restful
+				.model('theme', ThemeSchema)
+				.methods(['get', 'post', 'put', 'delete'])
+
+# Add updateTime field, update time at every updates
+setUpdateTime = (req, res, next)->
+	req.body.updateTime = Date.now()
+	next()
+
+ThemeModel
+	.before('post', setUpdateTime)
+	.before('put', setUpdateTime)
+
+ThemeModel
+	.route('package.post', {
+		detail: true,
+		handler: (req, res, next)->
+			themId = req.params.id
+
+			# Move theme to another collection
+			ThemeModel.findById themId, (err, theme)->
+
+				if err
+					res.json { success: false, err: err }
+					return
+
+				# Remove theme from develop theme collection
+				theme.remove()
+
+				# Copy theme to published theme collection
+				theme._id = undefined
+				pubTheme = new publishedThemeModel(theme)
+				pubTheme.save()
+
+				res.json { success: true }
+	})
+
+module.exports = ThemeModel
