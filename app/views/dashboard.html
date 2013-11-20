@@ -6,6 +6,7 @@
 		<button class="btn disable" ng-switch-when="creating">Creating...</button>
 		<button class="btn btn-error" ng-click="initNewTheme(this)" ng-switch-when="created">Reset to default</button>
 
+		<button class="btn btn-warning disabled" ng-switch-when="uncreated">Package Theme</button>
 		<button class="btn btn-warning" ng-click="packageTheme(this)" ng-switch-when="created">Package Theme</button>
 	</div>
 
