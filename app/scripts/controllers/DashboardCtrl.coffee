@@ -32,7 +32,9 @@ mod.controller 'dashboardCtrl', ['$http', '$scope', '$resource', 'themeService',
 			}).success (result)->
 				#TODO: After upload ...
 				themeService.updateView {
-					wallpaper: result.src
+					wallpaper: {
+						wallpaper: result.src
+					}
 				}
 ]
 

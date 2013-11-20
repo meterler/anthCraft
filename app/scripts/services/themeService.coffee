@@ -13,7 +13,9 @@ mod.service 'themeService', ['$rootScope', '$resource', ($rootScope, $resource)-
 		# Theme Package info
 		# TODO: init default?
 		packInfo: {
-			pack: false
+			wallpaper: {
+				"wallpaper": "/resources/bg/green.png"
+			}
 		}
 
 		# Get theme model from server side
@@ -44,12 +46,17 @@ mod.service 'themeService', ['$rootScope', '$resource', ($rootScope, $resource)-
 		# TODO: Update view
 		updateView: (updateData)->
 
-			angular.extend(service.packInfo, updateData)
+			for resType of updateData
+				service.packInfo[resType] = `service.packInfo[resType] ? service.packInfo[resType] : {}`
+				angular.extend(service.packInfo[resType], updateData[resType])
 
 			# TBD: Not save every time?
 			# service.theme.$save()
 			$rootScope.$broadcast('theme.update', service.packInfo, updateData)
 	}
+
+	# Show default theme in previewer
+	$rootScope.$broadcast('theme.update', service.packInfo, {})
 
 	return service
 ]

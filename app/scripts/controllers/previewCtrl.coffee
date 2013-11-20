@@ -17,7 +17,7 @@ mod.controller 'previewCtrl', [ '$scope', ($scope)->
 		$scope.theme = newModel
 		$scope.mstyle = {
 			wallpaper: {
-				"background-image": "url(#{newModel.wallpaper})"
+				"background-image": "url(#{newModel.wallpaper.wallpaper})"
 			}
 		}
 
