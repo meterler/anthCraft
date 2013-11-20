@@ -1,35 +1,33 @@
 
 ThemeModel = require '../models/Theme.coffee'
 
-#!!
+#!!TODO: REPLACE WITH Package
 anthPack = {
 	packageTheme: (themeRecord, callback)->
 		callback(null, "/the_theme_pack_file.zip")
 }
 
 module.exports = (app)->
-
 	# Package theme, move to another collection
 	ThemeModel
 		.route('package.post', {
 			detail: true,
 			handler: (req, res, next)->
 				themId = req.params.id
-
 				packInfo = req.body
 
 				# Save last updates
 				themeModel = new ThemeModel(packInfo)
 				themeModel.save()
 
-				# TODO: Package theme
+				# Package theme
 				ThemeModel.findById themId, (err, themeRecord)->
 
 					if err
 						res.json { success: false, err: err }
 						return
 
-					# TODO: Call anthPack module
+					# Call anthPack module
 					anthPack.packageTheme themeRecord, (err, packagePath)->
 
 						if err

@@ -4,7 +4,7 @@ Dashboard Controller
 
 mod = angular.module('anthCraftApp')
 
-# TODO: Upload files
+# Upload files
 mod.controller 'dashboardCtrl', ['$http', '$scope', '$resource', 'themeService',
 	($http, $scope, $resource, themeService)->
 
