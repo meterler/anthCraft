@@ -68,6 +68,7 @@ mod.service 'themeService', ['$rootScope', '$resource', ($rootScope, $resource)-
 
 			angular.extend(service.theme, updateData)
 
+			# TBD: Not save every time?
 			service.theme.$save()
 			$rootScope.$broadcast('theme.update', service.theme, updateData)
 	}

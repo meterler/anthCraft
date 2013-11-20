@@ -22,8 +22,6 @@ mod.controller 'dashboardCtrl', ['$http', '$scope', '$resource', 'themeService',
 			formData = new FormData()
 			formData.append('image', image, image.name)
 
-			console.log formData, image
-
 			$http.post('/api/upload', formData, {
 				headers: {
 					'Content-Type': undefined
