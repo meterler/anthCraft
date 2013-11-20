@@ -37,8 +37,16 @@ mod.service 'themeService', ['$rootScope', '$resource', ($rootScope, $resource)-
 
 		# value: [ uncreated, creating, created, synced ]
 		status: 'uncreated'
+
+		# Theme Model
 		theme: {}
-		# TODO: Get from server side
+		# Theme Package info
+		# TODO: init default?
+		packInfo: {
+			pack: false
+		}
+
+		# Get theme model from server side
 		init: (callback)->
 			service.status = 'creating'
 
@@ -55,22 +63,22 @@ mod.service 'themeService', ['$rootScope', '$resource', ($rootScope, $resource)-
 				-> service.status = 'uncreated'
 			# TODO: FAILD?
 
-		# TODO: Save theme to Server
-		saveToServer: ()->
-
-		updateTheme: (themeModel)->
-
 		packageTheme: ()->
-			service.theme.$packageUp()
+			# save theme
+			service.theme.$save (err)->
+				# package up
+				service.theme.$packageUp({
+					packInfo: service.packInfo
+				})
 
 		# TODO: Update view
 		updateView: (updateData)->
 
-			angular.extend(service.theme, updateData)
+			angular.extend(service.packInfo, updateData)
 
 			# TBD: Not save every time?
-			service.theme.$save()
-			$rootScope.$broadcast('theme.update', service.theme, updateData)
+			# service.theme.$save()
+			$rootScope.$broadcast('theme.update', service.packInfo, updateData)
 	}
 
 	return service
