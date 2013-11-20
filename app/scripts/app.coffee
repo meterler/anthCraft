@@ -24,14 +24,5 @@ mod = angular.module('anthCraftApp', [
 # mod = angular.module('anthCraftApp')
 mod.controller 'MainCtrl', ($http, $scope)->
 
-	# Previewer update
-	$scope.$on 'theme.update', (event, newModel)->
-		$scope.theme = newModel
-		$scope.mstyle = {
-			wallpaper: {
-				"background-image": "url(#{newModel.wallpaper})"
-			}
-		}
 
-
-
+mod.controller 'AlertCtrl', ()->

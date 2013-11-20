@@ -20,7 +20,7 @@ mod.service 'themeService', ['$rootScope', '$resource', ($rootScope, $resource)-
 		init: (callback)->
 			service.status = 'creating'
 
-			#TODO: Lock until theme created
+			# TODO: Lock until theme created
 			actions = {
 				create: { method: 'POST' }
 				save: { method: 'PUT' }

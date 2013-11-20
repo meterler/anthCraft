@@ -8,5 +8,17 @@ mod = angular.module('anthCraftApp')
 
 # TODO: Loading status
 
-# TODO: Update wallpaper, icons
+# TODO: Refresh wallpaper, icons
 
+mod.controller 'previewCtrl', [ '$scope', ($scope)->
+
+	# Previewer update
+	$scope.$on 'theme.update', (event, newModel)->
+		$scope.theme = newModel
+		$scope.mstyle = {
+			wallpaper: {
+				"background-image": "url(#{newModel.wallpaper})"
+			}
+		}
+
+]
