@@ -9,7 +9,7 @@ var express = require('express'),
     path = require('path');
 
 var utils = require('./lib/utils');
-
+// var anthPack = require('anthpack');
 var app = express();
 
 // load configurations to global.__config
@@ -38,6 +38,9 @@ else {
 
 // load routes
 utils.loadRoutes(path.join(__dirname, './lib/api'), app);
+
+// Init anthPack
+// anthPack.config(__config.anthPack);
 
 http.createServer(app).listen(app.get('port'), function () {
   console.log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));

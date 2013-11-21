@@ -7,6 +7,8 @@ anthPack = {
 		callback(null, "/the_theme_pack_file.zip")
 }
 
+# anthPack = require 'anthpack'
+
 module.exports = (app)->
 	# Package theme, move to another collection
 	ThemeModel

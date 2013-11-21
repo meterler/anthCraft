@@ -13,16 +13,25 @@ mod = angular.module('anthCraftApp', [
 	$routeProvider
 		.when('/', {
 			templateUrl: 'views/main.html'
-			controller: 'MainCtrl'
+			# controller: 'MainCtrl'
 		})
 		.otherwise {
 			redirectTo: '/'
 		}
+
 	return
 ]
 
 # mod = angular.module('anthCraftApp')
-mod.controller 'MainCtrl', ($http, $scope)->
+# mod.controller 'MainCtrl', ($http, $scope)->
 
+mod.controller 'AlertCtrl', [ '$scope', ($scope)->
+	$scope.alerts = []
 
-mod.controller 'AlertCtrl', ()->
+	$scope.addAlert = ()-> $scope.alerts.push({msg: "Another alert!"})
+
+	$scope.closeAlert = (index)-> $scope.alerts.splice(index, 1)
+
+	$scope.$on 'app.alert', (type, msg)->
+		$scope.alerts.push { type: type, msg: msg }
+]

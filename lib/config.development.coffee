@@ -1,4 +1,7 @@
 path = require 'path'
+basePath = path.join(__dirname, "../app")
+p = (r)-> path.join(basePath, r)
+
 module.exports = {
 	port: 9000
 
@@ -13,6 +16,11 @@ module.exports = {
 	# }
 
 	# Resources Path
-	resources: path.join(__dirname, "../app/resources")
+	resources: p("resources")
+
+	anthPack: {
+		package_path: p("/themes")
+		develop_path: p("/upload")
+	}
 }
 
