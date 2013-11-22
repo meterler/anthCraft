@@ -18,24 +18,27 @@ mod.controller 'dashboardCtrl', ['$http', '$scope', '$resource', 'themeService',
 
 		$scope.themeStatus = -> themeService.status
 
-		$scope.upload = (image, resType)->
-			formData = new FormData()
-			formData.append('image', image, image.name)
-			formData.append('themeId', themeService.theme._id)
-			formData.append('type', resType)
+		$scope.upload = -> alert('hi')
 
-			$http.post('/api/upload', formData, {
-				headers: {
-					'Content-Type': undefined
-				}
-				transformRequest: angular.identity
-			}).success (result)->
-				#TODO: After upload ...
-				themeService.updateView {
-					wallpaper: {
-						wallpaper: result.src
-					}
-				}
+		# $scope.upload = (image, resType)->
+		# 	formData = new FormData()
+		# 	formData.append('image', image, image.name)
+		# 	formData.append('themeId', themeService.theme._id)
+		# 	formData.append('type', resType)
+
+		# 	$http.post('/api/upload', formData, {
+		# 		headers: {
+		# 			'Content-Type': undefined
+		# 		}
+		# 		transformRequest: angular.identity
+		# 	}).success (result)->
+
+		# 		#TODO: After upload ...
+		# 		themeService.updateView {
+		# 			wallpaper: {
+		# 				wallpaper: result.src
+		# 			}
+		# 		}
 ]
 
 # TODO: List resources

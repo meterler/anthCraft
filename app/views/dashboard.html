@@ -6,20 +6,29 @@
 	<tabset>
 		<tab heading="Wallpaper">
 			<div class="wallpaper-list" ng-controller="wallpaperCtrl">
-				<span class="btn btn-default btn-file">Browser
-					<input type="file" accept="image/*" image="image" />
-				</span>
-				<button type="submit" class="btn" ng-click="upload(image.file)">Upload</button>
 
-				<img ng-show="image" ng-src="{{image.url}}" type="{{image.file.type}}"/>
-				<pagination
+				<div img-uploader
+						ng-transclude
+						type='wallpaper'
+						name='wallpaper'
+						previewScale=''
+						ng-click='upload()'>
+					<span class="btn btn-default btn-file">Browser
+						<input type="file" accept="image/*" image="image" />
+					</span>
+					<button type="submit" class="btn" ng-click="upload(image.file)">Upload</button>
+					<img ng-show="image" ng-src="{{image.url}}" type="{{image.file.type}}"/>
+
+				</div>
+
+<!-- 				<pagination
 					total-items="bigTotalItems"
 					page="bigCurrentPage"
 					max-size="maxSize"
 					class="pagination-small"
 					boundary-links="true"
 					rotate="false"
-					num-pages="numPages"></pagination>
+					num-pages="numPages"></pagination> -->
 			</div>
 		</tab>
 		<tab heading="AppIcons">Icons list and icon uploader</tab>
