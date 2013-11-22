@@ -9,9 +9,9 @@
 				<span class="btn btn-default btn-file">Browser
 					<input type="file" accept="image/*" image="image" />
 				</span>
-				<img ng-show="image" ng-src="{{image.url}}" type="{{image.file.type}}"/>
 				<button type="submit" class="btn" ng-click="upload(image.file)">Upload</button>
 
+				<img ng-show="image" ng-src="{{image.url}}" type="{{image.file.type}}"/>
 				<pagination
 					total-items="bigTotalItems"
 					page="bigCurrentPage"
