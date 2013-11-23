@@ -5,8 +5,8 @@ Dashboard Controller
 mod = angular.module('anthCraftApp')
 
 # Upload files
-mod.controller 'dashboardCtrl', ['$http', '$scope', '$resource', 'themeService',
-	($http, $scope, $resource, themeService)->
+mod.controller 'dashboardCtrl', ['$http', '$scope', '$resource', '$rootScope', 'themeService',
+	($http, $scope, $resource, $rootScope, themeService)->
 
 		# TODO: Init theme previewer, request themeId from server
 		$scope.initNewTheme = (btn)->
@@ -18,18 +18,20 @@ mod.controller 'dashboardCtrl', ['$http', '$scope', '$resource', 'themeService',
 
 		$scope.themeStatus = -> themeService.status
 
-		$scope.upload = (image, resType)->
+		$scope.upload = (image, resType, resName)->
 			formData = new FormData()
 			formData.append('image', image, image.name)
 			formData.append('themeId', themeService.theme._id)
-			formData.append('type', resType)
+			formData.append('resType', resType)
+			formData.append('resName', resName)
+			formData.append('previewScale', JSON.stringify(themeService.getPreviewScale(resType, resName)))
 
 			$http.post('/api/upload', formData, {
 				headers: {
 					'Content-Type': undefined
 				}
 				transformRequest: angular.identity
-			}).success (result)->
+			}).success((result)->
 
 				#TODO: After upload ...
 				themeService.updateView {
@@ -37,6 +39,9 @@ mod.controller 'dashboardCtrl', ['$http', '$scope', '$resource', 'themeService',
 						wallpaper: result.src
 					}
 				}
+			).fail(->
+				$rootScope.$broadcase 'app.alert', 'error', 'Server Error!'
+			)
 ]
 
 # TODO: List resources
