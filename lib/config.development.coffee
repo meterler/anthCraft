@@ -21,6 +21,7 @@ module.exports = {
 	resources: p("resources")
 
 	anthPack: {
+        base_path: p('')
 		package_path: p("/resources/themes")
 		develop_path: p("/resources/upload")
 	}
