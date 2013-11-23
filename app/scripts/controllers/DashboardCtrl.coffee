@@ -33,13 +33,13 @@ mod.controller 'dashboardCtrl', ['$http', '$scope', '$resource', '$rootScope', '
 				transformRequest: angular.identity
 			}).success((result)->
 
-				#TODO: After upload ...
-				themeService.updateView {
-					wallpaper: {
-						wallpaper: result.src
-					}
-				}
-			).fail(->
+				packInfo = {}
+				packInfo[resType] = {}
+				packInfo[resType][resName] = result.src
+
+				# Update local packInfo in service
+				themeService.updateView packInfo
+			).error(->
 				$rootScope.$broadcase 'app.alert', 'error', 'Server Error!'
 			)
 ]

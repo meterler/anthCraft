@@ -20,6 +20,7 @@ mod.service 'themeService', ['$rootScope', '$resource', 'themeConfig', ($rootSco
 
 		# Theme Model
 		theme: {}
+		Theme: null
 		# Theme Package info
 		# TODO: init default?
 		packInfo: {
@@ -39,6 +40,7 @@ mod.service 'themeService', ['$rootScope', '$resource', 'themeConfig', ($rootSco
 				packageUp: { method: 'POST', url: '/api/themes/:themeId/package' }
 			}
 			Theme = $resource('/api/themes/:themeId', { themeId: '@_id' }, actions)
+			service.Theme = Theme
 
 			service.theme = Theme.create {},
 				-> service.status = 'created',
@@ -47,11 +49,9 @@ mod.service 'themeService', ['$rootScope', '$resource', 'themeConfig', ($rootSco
 
 		packageTheme: ()->
 			# save theme
-			service.theme.$save (err)->
+			service.theme.$save (doc)->
 				# package up
-				service.theme.$packageUp({
-					packInfo: service.packInfo
-				})
+				service.Theme.packageUp({ themeId: doc._id }, service.packInfo )
 
 		# Return image preview scale from factory themeConfig
 		getPreviewScale: (resType, resName)-> themeConfig[resType][resName]

@@ -5,12 +5,12 @@ mongoose = restful.mongoose
 
 # Theme schema definition
 schemaStruct = {
-	name: { type: 'string', trim: true, match: [/^.{3,40}$/, 'Theme name length must between 3 and 40.'] }
-	author: { type: 'string', trim: true, match: [/^.{3, 20}$/, 'Author name length must between 3 and 20.'] }
+	name: { type: 'string', trim: true, match: [/^.{3,40}$/, 'Theme name length must between 3 and 40.'], default: 'Awesome theme' }
+	author: { type: 'string', trim: true, match: [/^.{3,20}$/, 'Author name length must between 3 and 20.'], default: 'Carl' }
 	packageName: 'string'
 	packagePath: 'string'
 
-	description: { type: 'string', trim: true }
+	description: { type: 'string', trim: true, default: 'hello theme!' }
 	updateTime: { type: 'date', default: Date.now }
 	createTime: { type: 'date', default: Date.now }
 }
