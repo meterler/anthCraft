@@ -41,7 +41,7 @@ mod.controller 'AlertCtrl', [ '$scope', ($scope)->
 		$scope.alerts.push { type: type, msg: msg }
 ]
 
-mod.directive 'imgUploader', ['$timeout', ($timeout)->
+mod.directive 'imgUploader', ->
 	return {
 		restric: 'A'
 		transclude: true
@@ -50,32 +50,4 @@ mod.directive 'imgUploader', ['$timeout', ($timeout)->
 			resName: "=name"
 			scale: "=previewScale"
 		}
-		controller: [ '$scope', '$http', 'themeService', ($scope, $http, themeService)->
-			$scope.upload = (image, resType)->
-				formData = new FormData()
-				formData.append('image', image, image.name)
-				formData.append('themeId', themeService.theme._id)
-				formData.append('type', $scope.resType)
-
-				$http.post('/api/upload', formData, {
-					headers: {
-						'Content-Type': undefined
-					}
-					transformRequest: angular.identity
-				}).success (result)->
-
-					#TODO: After upload ...
-					themeService.updateView {
-						wallpaper: {
-							wallpaper: result.src
-						}
-					}
-
-				return
-		]
-		link: {
-			post: ($scope)->
-				$scope.upload = -> alert('bbb')
-		}
 	}
-]

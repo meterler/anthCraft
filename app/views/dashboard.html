@@ -7,19 +7,12 @@
 		<tab heading="Wallpaper">
 			<div class="wallpaper-list" ng-controller="wallpaperCtrl">
 
-				<div img-uploader
-						ng-transclude
-						type='wallpaper'
-						name='wallpaper'
-						previewScale=''
-						ng-click='upload()'>
 					<span class="btn btn-default btn-file">Browser
 						<input type="file" accept="image/*" image="image" />
 					</span>
-					<button type="submit" class="btn" ng-click="upload(image.file)">Upload</button>
+					<button type="submit" class="btn" ng-click="upload(image.file, 'wallpaper')">Upload</button>
 					<img ng-show="image" ng-src="{{image.url}}" type="{{image.file.type}}"/>
 
-				</div>
 
 <!-- 				<pagination
 					total-items="bigTotalItems"
