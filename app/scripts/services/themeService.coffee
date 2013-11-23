@@ -1,8 +1,18 @@
 
 mod = angular.module('anthCraftApp')
 
+mod.factory 'themeConfig', ->
+	return {
+		wallpaper: {
+			wallpaper: {
+				width: 360
+				height: 640
+				force: true
+			}
+		}
+	}
 # TODO: Theme Service
-mod.service 'themeService', ['$rootScope', '$resource', ($rootScope, $resource)->
+mod.service 'themeService', ['$rootScope', '$resource', 'themeConfig', ($rootScope, $resource, themeConfig)->
 	service = {
 
 		# value: [ uncreated, creating, created, synced ]
@@ -42,6 +52,10 @@ mod.service 'themeService', ['$rootScope', '$resource', ($rootScope, $resource)-
 				service.theme.$packageUp({
 					packInfo: service.packInfo
 				})
+
+		# Return image preview scale from factory themeConfig
+		getPreviewScale: (resType, resName)-> themeConfig[resType][resName]
+
 
 		# TODO: Update view
 		updateView: (updateData)->
