@@ -1,20 +1,30 @@
 {
   "name": "anthCraft",
   "version": "0.0.1",
+  "homepage": "https://github.com/changyou/anthCraft",
+  "authors": [
+    "Li Yi <i@ijser.cn>"
+  ],
+  "description": "anthCraft app",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/components",
+    "test",
+    "tests"
+  ],
   "dependencies": {
-    "angular": "~1.2.1",
-    "json3": "~3.2.4",
-    "es5-shim": "~2.0.8",
-    "angular-resource": "~1.2.1",
-    "angular-cookies": "~1.0.7",
-    "angular-sanitize": "~1.0.7",
+    "angular": "~1.2.2",
+    "angular-cookies": "~1.2.2",
+    "angular-route": "~1.2.2",
     "angular-ui-bootstrap-bower": "~0.6.0",
-    "seajs": "*",
+    "angular-sanitize": "~1.2.2",
     "angular-imageupload-directive": "*",
-    "angular-route": "~1.2.2"
-  },
-  "devDependencies": {
-    "angular-mocks": "~1.0.7",
-    "angular-scenario": "~1.0.7"
+    "angular-resource": "~1.2.2",
+    "json3": "~3.2.5",
+    "es5-shim": "~2.1.0"
   }
 }
