@@ -7,12 +7,18 @@
 		<tab heading="Wallpaper">
 			<div class="wallpaper-list" ng-controller="wallpaperCtrl">
 
-					<span class="btn btn-default btn-file">Browser
-						<input type="file" accept="image/*" image="image" />
-					</span>
-					<button type="submit" class="btn" ng-click="upload(image.file, 'wallpaper')">Upload</button>
-					<img ng-show="image" ng-src="{{image.url}}" type="{{image.file.type}}"/>
-
+					<div class="img-uploader">
+						<div class="img-uploader-handler">
+							<span class="btn btn-default btn-file">Browser
+								<input type="file" accept="image/*" image="image" />
+							</span>
+							<button type="submit" class="btn" ng-click="upload(image.file, 'wallpaper', 'wallpaper')">Okay</button>
+							<button type="submit" class="btn" ng-click="reset('wallpaper')" ng-show="image">Reset</button>
+						</div>
+						<div class="img-previewer">
+							<img ng-src="{{image.url}}" type="{{image.file.type}}" />
+						</div>
+					</div>
 
 <!-- 				<pagination
 					total-items="bigTotalItems"
