@@ -3,13 +3,14 @@
 require('coffee-script');
 
 var __config = global.__config = {};
+global.__log = console.log;
 
 var express = require('express'),
     http = require('http'),
     path = require('path');
 
 var utils = require('./lib/utils');
-// var anthPack = require('anthpack');
+var anthPack = require('anthpack');
 var app = express();
 
 // load configurations to global.__config
@@ -40,9 +41,9 @@ else {
 utils.loadRoutes(path.join(__dirname, './lib/api'), app);
 
 // Init anthPack
-// anthPack.config(__config.anthPack);
+anthPack.config(__config.anthPack);
 
 http.createServer(app).listen(app.get('port'), function () {
-  console.log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
+  global.__log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
 });
 
