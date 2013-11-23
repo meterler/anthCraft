@@ -5,6 +5,8 @@ p = (r)-> path.join(basePath, r)
 module.exports = {
 	port: 9000
 
+	appPath: basePath
+
 	mongo: "mongodb://root:anthcraft@ds053958.mongolab.com:53958/anthcraft"
     #mongo: "mongodb://10.11.148.56:2884/anthcraft"
 	# mongo: {
@@ -19,8 +21,8 @@ module.exports = {
 	resources: p("resources")
 
 	anthPack: {
-		package_path: p("/themes")
-		develop_path: p("/upload")
+		package_path: p("/resources/themes")
+		develop_path: p("/resources/upload")
 	}
 }
 
