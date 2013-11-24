@@ -3,14 +3,27 @@ mod = angular.module('anthCraftApp')
 
 mod.factory 'themeConfig', ->
 	return {
-		wallpaper: {
+
+		# Preview scale for processing uploaded image
+		previewScales: {
 			wallpaper: {
-				width: 360
-				height: 640
-				force: true
+				wallpaper: {
+					width: 360
+					height: 640
+					force: true
+				}
 			}
 		}
+
+		# Default packInfo for reset style
+		defaultPackInfo: {
+			wallpaper: {
+				"wallpaper": "/resources/bg/green.png"
+			}
+		}
+
 	}
+
 # TODO: Theme Service
 mod.service 'themeService', ['$rootScope', '$resource', 'themeConfig', ($rootScope, $resource, themeConfig)->
 	service = {
@@ -23,11 +36,7 @@ mod.service 'themeService', ['$rootScope', '$resource', 'themeConfig', ($rootSco
 		Theme: null
 		# Theme Package info
 		# TODO: init default?
-		packInfo: {
-			wallpaper: {
-				"wallpaper": "/resources/bg/green.png"
-			}
-		}
+		packInfo: angular.copy(themeConfig.defaultPackInfo)
 
 		# Get theme model from server side
 		init: (callback)->
@@ -54,7 +63,7 @@ mod.service 'themeService', ['$rootScope', '$resource', 'themeConfig', ($rootSco
 				service.Theme.packageUp({ themeId: doc._id }, service.packInfo )
 
 		# Return image preview scale from factory themeConfig
-		getPreviewScale: (resType, resName)-> themeConfig[resType][resName]
+		getPreviewScale: (resType, resName)-> themeConfig.previewScales[resType][resName]
 
 
 		# TODO: Update view
