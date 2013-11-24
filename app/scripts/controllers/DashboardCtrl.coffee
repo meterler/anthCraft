@@ -17,11 +17,11 @@ mod.controller 'dashboardCtrl', ['$http', '$scope', '$resource', '$rootScope', '
 		$scope.packageTheme = ->
 			# TODO: Require the theme info
 			themeService.packageTheme (err, data)->
-				#TODO:
-				console.log arguments
 				$rootScope.$broadcast 'app.alert', 'info', 'Theme packed successful!'
 
-
+		$scope.resetValue = (resType, resName)->
+			themeService.resetValue(resType, resName)
+			themeService.updateView()
 
 		$scope.upload = (image, resType, resName)->
 			formData = new FormData()

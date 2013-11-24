@@ -34,12 +34,6 @@ mod.service 'themeService', ['$rootScope', '$resource', 'themeConfig', ($rootSco
 				-> service.status = 'uncreated'
 			# TODO: FAILD?
 
-		packageTheme: (callback)->
-			# save theme
-			service.theme.$save (doc)->
-				# package up
-				service.Theme.packageUp { themeId: doc._id }, service.packInfo, callback
-
 		# Return image preview scale from factory themeConfig
 		getPreviewScale: (resType, resName)-> themeConfig.previewScales[resType][resName]
 
@@ -53,6 +47,20 @@ mod.service 'themeService', ['$rootScope', '$resource', 'themeConfig', ($rootSco
 			# TBD: Not save every time?
 			# service.theme.$save()
 			$rootScope.$broadcast('theme.update', service.packInfo, updateData)
+
+		themeUpdate: ()->
+			$rootScope.$broadcast 'theme.update', service.packInfo
+
+		# Reset value to default
+		resetValue: (resType, resName)->
+			service.packInfo[resType][resName] = themeConfig.defaultPackInfo[resType][resName]
+
+		packageTheme: (callback)->
+			# save theme
+			service.theme.$save (doc)->
+				# package up
+				service.Theme.packageUp { themeId: doc._id }, service.packInfo, callback
+
 	}
 
 	# Show default theme in previewer

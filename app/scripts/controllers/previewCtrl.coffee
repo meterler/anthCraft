@@ -14,19 +14,15 @@ mod.controller 'previewCtrl', [ '$scope', ($scope)->
 
 	# TODO: refrector with packInfo Object
 
+	# Utils
+	$scope.setBg = (bgimg)-> { 'background-image': "url(#{bgimg})" }
+
 	# Previewer update
 	$scope.$on 'theme.update', (event, newModel)->
 		$scope.theme = newModel
-		$scope.mstyle = {
-			wallpaper: {
-				"background-image": "url(#{newModel.wallpaper.wallpaper})"
-			}
-		}
 
-	$scope.setBg = (bgimg)-> { 'background-image': "url(#{bgimg})" }
-
-	$scope.$on 'theme.wallpaper.reset', (event, newModel)->
-		#TODO: reset wallpaper to default image
+	$scope.$on 'theme.reset', (event, newModel)->
+		#TODO: reset all
 
 ]
 
