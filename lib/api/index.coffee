@@ -37,7 +37,7 @@ module.exports = (app)->
 							}
 							return
 
-						themeRecord.packagePath = packagePath
+						themeRecord.packagePath = packagePath.replace(__config.appPath, '')
 
 						themeRecord.save()
 
