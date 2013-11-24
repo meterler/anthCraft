@@ -32,6 +32,10 @@ mod.service 'themeService', ['$rootScope', '$resource', 'themeConfig', ($rootSco
 			service.theme = Theme.create {},
 				-> service.status = 'created',
 				-> service.status = 'uncreated'
+
+			# init default packInfo
+			service.packInfo = angular.copy(themeConfig.defaultPackInfo)
+			service.updateView()
 			# TODO: FAILD?
 
 		# Return image preview scale from factory themeConfig
@@ -63,8 +67,7 @@ mod.service 'themeService', ['$rootScope', '$resource', 'themeConfig', ($rootSco
 
 	}
 
-	# Show default theme in previewer
-	$rootScope.$broadcast('theme.update', service.packInfo, {})
+	service.updateView()
 
 	return service
 ]
