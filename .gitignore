@@ -5,3 +5,4 @@ public
 app/components
 heroku
 app/resources/upload/*
+app/resources/themes
