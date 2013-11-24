@@ -37,7 +37,7 @@ mod.controller 'AlertCtrl', [ '$scope', ($scope)->
 
 	$scope.closeAlert = (index)-> $scope.alerts.splice(index, 1)
 
-	$scope.$on 'app.alert', (type, msg)->
+	$scope.$on 'app.alert', (event, type, msg)->
 		$scope.alerts.push { type: type, msg: msg }
 ]
 

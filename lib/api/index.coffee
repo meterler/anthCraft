@@ -27,7 +27,6 @@ module.exports = (app)->
 
 					packInfo.meta = themeRecord
 
-					__log "packInfo to pack: ", packInfo
 					# Call anthPack module
 					anthPack.packTheme packInfo, (err, packagePath)->
 

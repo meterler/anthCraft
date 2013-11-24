@@ -30,8 +30,6 @@ module.exports = (app)->
 		themeId = req.param('themeId')
 		previewScale = JSON.parse(req.param('previewScale'))
 
-		__log "Get scale: ", previewScale
-
 		anthPack.format {
 			themeId: themeId
 			type: imgType
@@ -39,7 +37,6 @@ module.exports = (app)->
 			scale: previewScale
 		}, (err, previewImgPath)->
 
-			__log "anthPack format: ", err, previewImgPath
 			url = previewImgPath.replace __config.appPath, ''
 
 			if err

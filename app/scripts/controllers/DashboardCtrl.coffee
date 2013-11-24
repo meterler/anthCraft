@@ -8,15 +8,20 @@ mod = angular.module('anthCraftApp')
 mod.controller 'dashboardCtrl', ['$http', '$scope', '$resource', '$rootScope', 'themeService',
 	($http, $scope, $resource, $rootScope, themeService)->
 
+		$scope.themeStatus = -> themeService.status
+
 		# TODO: Init theme previewer, request themeId from server
 		$scope.initNewTheme = (btn)->
 			themeService.init()
 
 		$scope.packageTheme = ->
 			# TODO: Require the theme info
-			themeService.packageTheme()
+			themeService.packageTheme (err, data)->
+				#TODO:
+				console.log arguments
+				$rootScope.$broadcast 'app.alert', 'info', 'Theme packed successful!'
 
-		$scope.themeStatus = -> themeService.status
+
 
 		$scope.upload = (image, resType, resName)->
 			formData = new FormData()
@@ -39,8 +44,10 @@ mod.controller 'dashboardCtrl', ['$http', '$scope', '$resource', '$rootScope', '
 
 				# Update local packInfo in service
 				themeService.updateView packInfo
+
+				# $rootScope.$broadcast 'app.alert', 'info', 'Theme packed successful!'
 			).error(->
-				$rootScope.$broadcase 'app.alert', 'error', 'Server Error!'
+				$rootScope.$broadcast 'app.alert', 'error', 'Server Error!'
 			)
 ]
 
