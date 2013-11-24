@@ -1,6 +1,6 @@
 {
   "name": "anthcraft",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "dependencies": {
     "express": "~3.4.3",
     "coffee-script": "~1.6.3",
@@ -43,5 +43,28 @@
   "scripts": {
     "start": "node server.js",
     "test": "grunt test"
+  },
+  "readmeFilename": "README.md",
+  "gitHead": "ac52b1b8507e290b0f96b1a0f08973f50fce41aa",
+  "description": "The Awesome!",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/changyou/anthCraft.git"
+  },
+  "keywords": [
+    "theme",
+    "creater",
+    "webapp",
+    "clauncher",
+    "android"
+  ],
+  "author": "ijse",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/changyou/anthCraft/issues"
   }
 }
