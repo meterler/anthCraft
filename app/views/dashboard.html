@@ -4,6 +4,35 @@
 	<div ng-include="'/views/toolbar.html'"></div>
 
 	<tabset>
+		<tab heading="Theme Info">
+			<form class="form-horizontal">
+				<div class="control-group">
+					<label class="control-label" for="inputEmail">Theme Name:</label>
+					<div class="controls">
+						<input type="text" placeholder="Theme name" required ng-model="theme.name">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="inputEmail">Author:</label>
+					<div class="controls">
+						<input type="text" placeholder="Your Name" required ng-model="theme.author">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="inputEmail">Description:</label>
+					<div class="controls">
+						<textarea cols="30" rows="10" ng-model="theme.description"></textarea>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<div class="controls">
+						<button type="submit" class="btn" ng-click="saveTheme()">Save</button>
+					</div>
+				</div>
+
+			</form>
+		</tab>
 		<tab heading="Wallpaper">
 			<div class="wallpaper-list" ng-controller="wallpaperCtrl">
 
@@ -37,5 +66,8 @@
 	</tabset>
 
 	<div class="ac-statusbar">
+		<section ng-show="theme.packagePath">
+			<a href="{{theme.packagePath}}" target="_blank">Download Theme!</a>
+		</section>
 	</div>
 </div>

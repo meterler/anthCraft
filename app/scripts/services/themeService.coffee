@@ -4,32 +4,33 @@ mod = angular.module('anthCraftApp')
 
 # TODO: Theme Service
 mod.service 'themeService', ['$rootScope', '$resource', 'themeConfig', ($rootScope, $resource, themeConfig)->
+
+	Theme = null
+
 	service = {
 
 		# value: [ uncreated, creating, created, synced ]
 		status: 'uncreated'
 
 		# Theme Model
-		theme: {}
-		Theme: null
+		themeModel: {}
 		# Theme Package info
 		# TODO: init default?
 		packInfo: angular.copy(themeConfig.defaultPackInfo)
 
-		# Get theme model from server side
+		# Get themeModel model from server side
 		init: (callback)->
 			service.status = 'creating'
 
-			# TODO: Lock until theme created
+			# TODO: Lock until themeModel created
 			actions = {
 				create: { method: 'POST' }
 				save: { method: 'PUT' }
 				packageUp: { method: 'POST', url: '/api/themes/:themeId/package' }
 			}
 			Theme = $resource('/api/themes/:themeId', { themeId: '@_id' }, actions)
-			service.Theme = Theme
 
-			service.theme = Theme.create {},
+			service.themeModel = Theme.create {},
 				-> service.status = 'created',
 				-> service.status = 'uncreated'
 
@@ -60,10 +61,13 @@ mod.service 'themeService', ['$rootScope', '$resource', 'themeConfig', ($rootSco
 			service.packInfo[resType][resName] = themeConfig.defaultPackInfo[resType][resName]
 
 		packageTheme: (callback)->
-			# save theme
-			service.theme.$save (doc)->
+			# save themeModel
+			service.themeModel.$save (doc)->
 				# package up
-				service.Theme.packageUp { themeId: doc._id }, service.packInfo, callback
+				Theme.packageUp { themeId: doc._id }, service.packInfo, (data)->
+					service.themeModel.updateTime = data.theme.updateTime
+					service.themeModel.packagePath = data.theme.packagePath
+					callback.apply(null, arguments)
 
 	}
 

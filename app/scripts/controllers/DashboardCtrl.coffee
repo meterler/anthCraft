@@ -9,24 +9,36 @@ mod.controller 'dashboardCtrl', ['$http', '$scope', '$resource', '$rootScope', '
 	($http, $scope, $resource, $rootScope, themeService)->
 
 		$scope.themeStatus = -> themeService.status
+		$scope.theme = themeService.themeModel
+		$scope.service = themeService
 
-		# TODO: Init theme previewer, request themeId from server
+		# Init theme previewer, request themeId from server
 		$scope.initNewTheme = (btn)->
+			$scope.theme = null
 			themeService.init()
+			$scope.theme = themeService.themeModel
 
 		$scope.packageTheme = ->
-			# TODO: Require the theme info
-			themeService.packageTheme (err, data)->
-				$rootScope.$broadcast 'app.alert', 'info', 'Theme packed successful!'
+			themeService.packageTheme (data)->
+				$scope.theme = data.theme
+				$rootScope.$broadcast 'app.alert', 'info', "Theme packed successful!"
 
 		$scope.resetValue = (resType, resName)->
 			themeService.resetValue(resType, resName)
 			themeService.updateView()
 
+		$scope.saveTheme = ->
+			$scope.theme.$save ()->
+				$rootScope.$broadcast 'app.alert', 'info', "Theme info saved!"
+			, ()->
+				$rootScope.$broadcast 'app.alert', 'error', "Save fail!"
+
+			return
+
 		$scope.upload = (image, resType, resName)->
 			formData = new FormData()
 			formData.append('image', image, image.name)
-			formData.append('themeId', themeService.theme._id)
+			formData.append('themeId', themeService.themeModel._id)
 			formData.append('resType', resType)
 			formData.append('resName', resName)
 			formData.append('previewScale', JSON.stringify(themeService.getPreviewScale(resType, resName)))

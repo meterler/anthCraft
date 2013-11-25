@@ -20,7 +20,7 @@ mod.factory 'themeConfig', ->
 		# Default packInfo for reset style
 		defaultPackInfo: {
 			wallpaper: {
-				"wallpaper": "/resources/bg/green.png"
+				"wallpaper": "/../bg/green.png"
 			}
 		}
 

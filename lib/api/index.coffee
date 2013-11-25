@@ -1,4 +1,4 @@
-
+path = require 'path'
 ThemeModel = require '../models/Theme.coffee'
 
 #!!TODO: REPLACE WITH Package
@@ -25,8 +25,10 @@ module.exports = (app)->
 						res.json { success: false, err: err }
 						return
 
-					packInfo.meta = themeRecord
+					packInfo.meta = themeRecord.toObject()
+					delete packInfo.meta.__v
 
+					__log "=====\npackInfo\n=====\n", packInfo
 					# Call anthPack module
 					anthPack.packTheme packInfo, (err, packagePath)->
 
@@ -37,7 +39,7 @@ module.exports = (app)->
 							}
 							return
 
-						themeRecord.packagePath = packagePath.replace(__config.appPath, '')
+						themeRecord.packagePath = packagePath.replace(__config.appPath, '').split(path.sep).join('/')
 
 						themeRecord.save()
 
