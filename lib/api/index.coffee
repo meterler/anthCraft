@@ -25,8 +25,10 @@ module.exports = (app)->
 						res.json { success: false, err: err }
 						return
 
-					packInfo.meta = themeRecord
+					packInfo.meta = themeRecord.toObject()
+					delete packInfo.meta.__v
 
+					__log "=====\npackInfo\n=====\n", packInfo
 					# Call anthPack module
 					anthPack.packTheme packInfo, (err, packagePath)->
 

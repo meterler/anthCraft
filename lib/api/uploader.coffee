@@ -39,7 +39,10 @@ module.exports = (app)->
 
 			__log "PreviewImgPath: ", previewImgPath
 			__log "config.appPath: ", __config.appPath
-			url = previewImgPath.replace __config.appPath, ''
+
+			url = previewImgPath
+			# url = path.join(__config.packagePath, previewImgPath)
+			# url = previewImgPath.replace __config.appPath, ''
 
 			# Because of win, convert path seperator to url path style
 			url = url.split(path.sep).join("/")

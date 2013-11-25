@@ -13,16 +13,16 @@ mod.service 'themeService', ['$rootScope', '$resource', 'themeConfig', ($rootSco
 		status: 'uncreated'
 
 		# Theme Model
-		theme: {}
+		themeModel: {}
 		# Theme Package info
 		# TODO: init default?
 		packInfo: angular.copy(themeConfig.defaultPackInfo)
 
-		# Get theme model from server side
+		# Get themeModel model from server side
 		init: (callback)->
 			service.status = 'creating'
 
-			# TODO: Lock until theme created
+			# TODO: Lock until themeModel created
 			actions = {
 				create: { method: 'POST' }
 				save: { method: 'PUT' }
@@ -30,7 +30,7 @@ mod.service 'themeService', ['$rootScope', '$resource', 'themeConfig', ($rootSco
 			}
 			Theme = $resource('/api/themes/:themeId', { themeId: '@_id' }, actions)
 
-			service.theme = Theme.create {},
+			service.themeModel = Theme.create {},
 				-> service.status = 'created',
 				-> service.status = 'uncreated'
 			# TODO: FAILD?
@@ -57,12 +57,12 @@ mod.service 'themeService', ['$rootScope', '$resource', 'themeConfig', ($rootSco
 			service.packInfo[resType][resName] = themeConfig.defaultPackInfo[resType][resName]
 
 		packageTheme: (callback)->
-			# save theme
-			service.theme.$save (doc)->
+			# save themeModel
+			service.themeModel.$save (doc)->
 				# package up
 				Theme.packageUp { themeId: doc._id }, service.packInfo, (data)->
-					service.theme.updateTime = data.theme.updateTime
-					service.theme.packagePath = data.theme.packagePath
+					service.themeModel.updateTime = data.theme.updateTime
+					service.themeModel.packagePath = data.theme.packagePath
 					callback.apply(null, arguments)
 
 	}

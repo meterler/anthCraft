@@ -4,6 +4,23 @@
 	<div ng-include="'/views/toolbar.html'"></div>
 
 	<tabset>
+		<tab heading="packInfo">
+			<form class="form-horizontal">
+				<div class="control-group">
+					<label class="control-label" for="inputEmail">Author:</label>
+					<div class="controls">
+						<input type="text" placeholder="Your Name"  ng-model="theme.author">
+					</div>
+				</div>
+
+				<div class="control-group">
+					<div class="controls">
+						<button type="submit" class="btn" ng-click="theme.$save()">Save</button>
+					</div>
+				</div>
+
+			</form>
+		</tab>
 		<tab heading="Wallpaper">
 			<div class="wallpaper-list" ng-controller="wallpaperCtrl">
 
