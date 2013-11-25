@@ -27,6 +27,14 @@ mod.controller 'dashboardCtrl', ['$http', '$scope', '$resource', '$rootScope', '
 			themeService.resetValue(resType, resName)
 			themeService.updateView()
 
+		$scope.saveTheme = ->
+			$scope.theme.$save ()->
+				$rootScope.$broadcast 'app.alert', 'info', "Theme info saved!"
+			, ()->
+				$rootScope.$broadcast 'app.alert', 'error', "Save fail!"
+
+			return
+
 		$scope.upload = (image, resType, resName)->
 			formData = new FormData()
 			formData.append('image', image, image.name)

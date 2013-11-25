@@ -4,12 +4,24 @@
 	<div ng-include="'/views/toolbar.html'"></div>
 
 	<tabset>
-		<tab heading="packInfo">
+		<tab heading="Theme Info">
 			<form class="form-horizontal">
+				<div class="control-group">
+					<label class="control-label" for="inputEmail">Theme Name:</label>
+					<div class="controls">
+						<input type="text" placeholder="Theme name" required ng-model="theme.name">
+					</div>
+				</div>
 				<div class="control-group">
 					<label class="control-label" for="inputEmail">Author:</label>
 					<div class="controls">
-						<input type="text" placeholder="Your Name"  ng-model="theme.author">
+						<input type="text" placeholder="Your Name" required ng-model="theme.author">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="inputEmail">Description:</label>
+					<div class="controls">
+						<textarea cols="30" rows="10" ng-model="theme.description"></textarea>
 					</div>
 				</div>
 
