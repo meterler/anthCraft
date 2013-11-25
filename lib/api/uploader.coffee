@@ -37,7 +37,12 @@ module.exports = (app)->
 			scale: previewScale
 		}, (err, previewImgPath)->
 
+			__log "PreviewImgPath: ", previewImgPath
+			__log "config.appPath: ", __config.appPath
 			url = previewImgPath.replace __config.appPath, ''
+
+			# Because of win, convert path seperator to url path style
+			url = url.split(path.sep).join("/")
 
 			if err
 				res.send 500

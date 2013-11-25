@@ -1,4 +1,4 @@
-
+path = require 'path'
 ThemeModel = require '../models/Theme.coffee'
 
 #!!TODO: REPLACE WITH Package
@@ -37,7 +37,7 @@ module.exports = (app)->
 							}
 							return
 
-						themeRecord.packagePath = packagePath.replace(__config.appPath, '')
+						themeRecord.packagePath = packagePath.replace(__config.appPath, '').split(path.sep).join('/')
 
 						themeRecord.save()
 

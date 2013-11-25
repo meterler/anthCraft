@@ -4,6 +4,9 @@ mod = angular.module('anthCraftApp')
 
 # TODO: Theme Service
 mod.service 'themeService', ['$rootScope', '$resource', 'themeConfig', ($rootScope, $resource, themeConfig)->
+
+	Theme = null
+
 	service = {
 
 		# value: [ uncreated, creating, created, synced ]
@@ -11,7 +14,6 @@ mod.service 'themeService', ['$rootScope', '$resource', 'themeConfig', ($rootSco
 
 		# Theme Model
 		theme: {}
-		Theme: null
 		# Theme Package info
 		# TODO: init default?
 		packInfo: angular.copy(themeConfig.defaultPackInfo)
@@ -27,7 +29,6 @@ mod.service 'themeService', ['$rootScope', '$resource', 'themeConfig', ($rootSco
 				packageUp: { method: 'POST', url: '/api/themes/:themeId/package' }
 			}
 			Theme = $resource('/api/themes/:themeId', { themeId: '@_id' }, actions)
-			service.Theme = Theme
 
 			service.theme = Theme.create {},
 				-> service.status = 'created',
@@ -59,7 +60,10 @@ mod.service 'themeService', ['$rootScope', '$resource', 'themeConfig', ($rootSco
 			# save theme
 			service.theme.$save (doc)->
 				# package up
-				service.Theme.packageUp { themeId: doc._id }, service.packInfo, callback
+				Theme.packageUp { themeId: doc._id }, service.packInfo, (data)->
+					service.theme.updateTime = data.theme.updateTime
+					service.theme.packagePath = data.theme.packagePath
+					callback.apply(null, arguments)
 
 	}
 

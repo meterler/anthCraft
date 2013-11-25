@@ -9,15 +9,17 @@ mod.controller 'dashboardCtrl', ['$http', '$scope', '$resource', '$rootScope', '
 	($http, $scope, $resource, $rootScope, themeService)->
 
 		$scope.themeStatus = -> themeService.status
+		$scope.theme = themeService.theme
 
-		# TODO: Init theme previewer, request themeId from server
+		# Init theme previewer, request themeId from server
 		$scope.initNewTheme = (btn)->
+			$scope.theme = null
 			themeService.init()
 
 		$scope.packageTheme = ->
-			# TODO: Require the theme info
-			themeService.packageTheme (err, data)->
-				$rootScope.$broadcast 'app.alert', 'info', 'Theme packed successful!'
+			themeService.packageTheme (data)->
+				$scope.theme = data.theme
+				$rootScope.$broadcast 'app.alert', 'info', "Theme packed successful!"
 
 		$scope.resetValue = (resType, resName)->
 			themeService.resetValue(resType, resName)
