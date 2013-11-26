@@ -306,11 +306,11 @@ module.exports = function (grunt) {
         'copy:styles'
       ],
       test: [
-        'coffee',
+        'coffee:test',
         'copy:styles'
       ],
       dist: [
-        'coffee',
+        'coffee:dist',
         'less:dist',
         'copy:styles',
         // Remove imagemin module due some install problem on RedHat server
