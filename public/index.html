@@ -1,0 +1,44 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+	<link rel="stylesheet" href="styles/7883aa47.main.css">
+</head>
+<body ng-app="anthCraftApp">
+	<!--[if lt IE 7]>
+	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+
+	<!--[if lt IE 9]>
+	<script src="components/es5-shim/es5-shim.js"></script>
+	<script src="components/json3/lib/json3.min.js"></script>
+	<![endif]-->
+	<nav class="{{active}}" ng-click="$event.preventDefault()">
+
+		<!-- When a link in the menu is clicked, we set the active variable -->
+
+		<a href="#" class="home" ng-click="active='home'">Index</a>
+		<a href="#" class="projects" ng-click="active='projects'">Download</a>
+		<a href="#" class="services" ng-click="active='services'">Service</a>
+		<a href="#" class="contact" ng-click="active='contact'">Contact</a>
+	</nav>
+	<div class="container">
+		<div ng-view=""></div>
+	</div>
+
+	<script src="components/angular/angular.js"></script>
+
+	<script src="scripts/53f7472a.modules.js"></script>
+
+	<script src="scripts/674f4c18.scripts.js"></script>
+</body>
+</html>
