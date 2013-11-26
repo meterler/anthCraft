@@ -313,7 +313,8 @@ module.exports = function (grunt) {
         'coffee',
         'less:dist',
         'copy:styles',
-        'imagemin',
+        // Remove imagemin module due some install problem on RedHat server
+        // 'imagemin',
         'svgmin',
         'htmlmin'
       ]
