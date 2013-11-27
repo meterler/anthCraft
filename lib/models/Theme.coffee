@@ -7,6 +7,11 @@ autoinc = require 'mongoose-id-autoinc'
 
 # Theme schema definition
 schemaStruct = {
+
+	id: {
+		type: 'number'
+	}
+
 	# 标题
 	title: {
 		type: 'string',
@@ -84,21 +89,23 @@ schemaStruct = {
 
 ThemeSchema = mongoose.Schema schemaStruct
 
-# Config _id auto increase
-ThemeSchema.plugin autoinc.plugin, {
-	model: 'theme',
-	field: '_id',
-	start: 100,
-	step: 1
-}
 
 # Develop theme collection is RESTful
 ThemeModel = restful
 				.model('theme', ThemeSchema)
 				.methods(['get', 'post', 'put', 'delete'])
 
+# Config _id auto increase
+ThemeSchema.plugin autoinc.plugin, {
+	model: 'theme',
+	field: 'id',
+	start: 100,
+	step: 1
+}
+
 # Add updateTime field, update time at every updates
 setUpdateTime = (req, res, next)->
+	# __log "...>", req.body._id, typeof req.body._id
 	req.body.updateTime = Date.now()
 	next()
 
