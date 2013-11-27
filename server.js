@@ -9,44 +9,76 @@ var express = require('express'),
     http = require('http'),
     path = require('path');
 
+var async = require('async');
 var utils = require('./lib/utils');
-
 var anthPack = require('anthpack');
 
 var app = express();
 
-// load configurations to global.__config
-__config = utils.loadConfigs();
-utils.connectDB();
+var initTasks = [
 
-// Init anthPack
-anthPack.config(__config.anthPack);
+	// Load Config
+	function(callback) {
+		// load configurations to global.__config
+		__config = utils.loadConfigs();
 
+		// Connect mongodb
+		utils.connectDB(callback);
+	},
 
-// all environments
-app.set('port', process.env.PORT || __config.port || 3000);
+	function(callback) {
+		// Init anthPack
+		anthPack.config(__config.anthPack);
+		callback();
+	},
 
-app.use(express.logger('dev'));
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(app.router);
+	function(callback) {
 
-// development only
-if ('development' === app.get('env')) {
-  app.use(express.static(path.join(__dirname, '.tmp')));
-  app.use(express.static(path.join(__dirname, 'app')));
-  app.use(express.errorHandler());
-}
-// production or others env
-else {
-  app.use(express.favicon(path.join(__dirname, 'public/favicon.ico')));
-  app.use(express.static(path.join(__dirname, 'public')));
-}
+		// all environments
+		app.set('port', process.env.PORT || __config.port || 3000);
 
-// load routes
-utils.loadRoutes(path.join(__dirname, './lib/api'), app);
+		app.use(express.logger('dev'));
+		app.use(express.bodyParser());
+		app.use(express.methodOverride());
+		app.use(app.router);
 
-http.createServer(app).listen(app.get('port'), function () {
-  global.__log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
+		// development only
+		if ('development' === app.get('env')) {
+		  app.use(express.static(path.join(__dirname, '.tmp')));
+		  app.use(express.static(path.join(__dirname, 'app')));
+		  app.use(express.errorHandler());
+		}
+		// production or others env
+		else {
+		  app.use(express.favicon(path.join(__dirname, 'public/favicon.ico')));
+		  app.use(express.static(path.join(__dirname, 'public')));
+		}
+
+		callback();
+
+	},
+
+	function(callback) {
+		// load routes
+		utils.loadRoutes(path.join(__dirname, './lib/api'), app);
+
+		callback();
+	}
+
+];
+
+// Finally, start server!
+async.series(initTasks, function(err) {
+	if(err) {
+		console.log("---");
+		//throw err;
+	}
+
+	http.createServer(app).listen(app.get('port'), function () {
+		// TODO: Print system info
+		global.__log('Server listening on port %d in %s mode', app.get('port'), app.get('env'));
+	});
+
 });
+
 
