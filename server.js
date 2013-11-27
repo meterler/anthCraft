@@ -70,8 +70,7 @@ var initTasks = [
 // Finally, start server!
 async.series(initTasks, function(err) {
 	if(err) {
-		console.log("---");
-		//throw err;
+		throw err;
 	}
 
 	http.createServer(app).listen(app.get('port'), function () {
