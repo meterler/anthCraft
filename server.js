@@ -43,7 +43,7 @@ var initTasks = [
 		app.use(app.router);
 
 		// development only
-		if ('development' === app.get('env')) {
+		if (__config.debug === true) {
 		  app.use(express.static(path.join(__dirname, '.tmp')));
 		  app.use(express.static(path.join(__dirname, 'app')));
 		  app.use(express.errorHandler());

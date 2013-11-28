@@ -9,14 +9,8 @@ module.exports = {
 	appPath: basePath
 	port: 9000
 
+	debug: true
 	mongo: "mongodb://10.11.148.56:2884/anthcraft"
-	# mongo: {
-	# 	db: ""
-	# 	host: ""
-	# 	port: ""
-	# 	user: ""
-	# 	pass: ""
-	# }
 
 	# Resources Path
 	resources: p("resources")
