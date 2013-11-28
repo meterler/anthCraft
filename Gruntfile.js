@@ -93,13 +93,13 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      heroku: {
+      deploy: {
         files: [{
           dot: true,
           src: [
-            'heroku/*',
-            '!heroku/.git*',
-            '!heroku/Procfile'
+            'deploy/*',
+            '!deploy/.git*',
+            '!deploy/Procfile'
           ]
         }]
       },
@@ -274,17 +274,17 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      heroku: {
+      deploy: {
         files: [{
           expand: true,
           dot: true,
-          dest: 'heroku',
+          dest: 'deploy',
           src: [
             '<%= yeoman.dist %>/**'
           ]
         }, {
           expand: true,
-          dest: 'heroku',
+          dest: 'deploy',
           src: [
             'package.json',
             'server.js',
@@ -351,7 +351,7 @@ module.exports = function (grunt) {
     },
 
     "install-dependencies": {
-      cwd: "heroku",
+      cwd: "deploy",
       isDevelopment: false
     }
   });
@@ -398,11 +398,11 @@ module.exports = function (grunt) {
     'usemin'
   ]);
 
-  grunt.registerTask('heroku', [
+  grunt.registerTask('deploy', [
     'build',
-    'clean:heroku',
-    'copy:heroku',
-    'install-dependencies'
+    'clean:deploy',
+    'copy:deploy'
+    // 'install-dependencies'
   ]);
 
   grunt.registerTask('default', [
@@ -417,7 +417,7 @@ module.exports = function (grunt) {
 
     cb = this.async();
     options = this.options({
-      cwd: 'heroku',
+      cwd: 'deploy',
       stdout: true,
       stderr: true,
       failOnError: true,
