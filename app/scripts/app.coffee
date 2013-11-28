@@ -1,6 +1,5 @@
 
 mod = angular.module('anthCraftApp', [
-	'ui.bootstrap'
 	'ngRoute'
 	'ngCookies'
 	'ngResource'

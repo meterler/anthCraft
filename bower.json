@@ -25,6 +25,7 @@
     "angular-imageupload-directive": "*",
     "angular-resource": "~1.2.2",
     "json3": "~3.2.5",
-    "es5-shim": "~2.1.0"
+    "es5-shim": "~2.1.0",
+    "normalize-css": "~2.1.3"
   }
 }
