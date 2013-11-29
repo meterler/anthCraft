@@ -7,6 +7,10 @@ html,body {
 	height: 100%;
 	position: relative;
 }
+
+.clearfix{*zoom:1;}.clearfix:before,.clearfix:after{display:table;content:"";line-height:0;}
+.clearfix:after{clear:both;}
+
 .hd {
 	height: 96px;
 	background: -webkit-gradient(linear, left top, left bottom, from(#267485), to(#368a89));
@@ -29,8 +33,10 @@ html,body {
 	width: @cWidth;
 	position: relative;
 	margin: 0 auto;
-	// min-height: 600px;
+	background-color: #F8F8F8;
 }
+
+
 
 .ft {
 	position: absolute;

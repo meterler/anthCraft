@@ -10,12 +10,19 @@ mod = angular.module('anthCraftApp')
 
 # TODO: Refresh wallpaper, icons
 
-mod.controller 'previewCtrl', [ '$scope', ($scope)->
+mod.controller 'previewCtrl', [ '$scope', 'themeConfig', 'themeService', ($scope, themeConfig, themeService)->
 
 	# TODO: refrector with packInfo Object
 
+	$scope.theme = themeService.packInfo;
+
 	# Utils
-	$scope.setBg = (bgimg)-> { 'background-image': "url(#{bgimg})" }
+	$scope._B = (v)->
+		st = { 'background-image': "url('#{themeConfig.themeFolder}#{v}')" }
+		console.log("let ", st)
+		return st
+
+	$scope._V = (v)-> "#{themeConfig.themeFolder}#{v}"
 
 	# Previewer update
 	$scope.$on 'theme.update', (event, newModel)->

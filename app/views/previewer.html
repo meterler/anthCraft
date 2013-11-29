@@ -1,4 +1,4 @@
-<!-- Theme Previewer Here -->
+<!-- Theme Previewer Here
 <div class="phone" ng-controller="previewCtrl">
 	<div class="scence main-screen" ng-style="setBg('/resources/upload'+theme.wallpaper.wallpaper)">
 		<div class="app-list"></div>
@@ -6,3 +6,26 @@
 	<div class="wallpaper"></div>
 </div>
 
+ -->
+
+<div class="mod-previewer" ng-controller="previewCtrl">
+	<div class="sence-home">
+		<!-- <div ng-style="setBg(theme['wallpaper']['wallpaper'])"></div> -->
+
+		<img class="mp-wallpaper" ng-src="{{_V(theme['wallpaper']['wallpaper'])}}" />
+		<div class="mp-decoration"></div>
+		<div class="mp-dock">
+			<img class="mp-dock-icon" ng-src="{{_V(theme['app_icon']['com_android_contacts_com_android_contacts_activities_dialtactsactivity'])}}">
+			<img class="mp-dock-icon" ng-src="{{_V(theme['app_icon']['com_android_contacts_com_android_contacts_activities_peopleactivity'])}}">
+			<img class="mp-dock-icon" ng-src="{{_V(theme['dock_icon']['ic_allapps'])}}">
+			<img class="mp-dock-icon" ng-src="{{_V(theme['app_icon']['com_android_mms_com_android_mms_ui_conversationcomposer'])}}">
+			<img class="mp-dock-icon" ng-src="{{_V(theme['app_icon']['com_sec_android_app_sbrowser_com_sec_android_app_sbrowser_sbrowsermainactivity'])}}">
+		</div>
+	</div>
+
+	<div class="sence-apps">
+		<div class="mp-apps-app">
+			<div class="mp-apps-icon"></div>
+		</div>
+	</div>
+</div>
