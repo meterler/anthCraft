@@ -51,12 +51,15 @@ mod.controller 'dashboardCtrl', [
 			return
 
 		$scope.upload = (image, resType, resName)->
+			themeId = themeService.themeModel._id
+			previewScale = themeService.getPreviewScale(resType, resName)
+
 			formData = new FormData()
 			formData.append('image', image, image.name)
-			formData.append('themeId', themeService.themeModel._id)
+			formData.append('themeId', themeId)
 			formData.append('resType', resType)
 			formData.append('resName', resName)
-			formData.append('previewScale', JSON.stringify(themeService.getPreviewScale(resType, resName)))
+			formData.append('previewScale', JSON.stringify(previewScale))
 
 			$http.post('/api/upload', formData, {
 				headers: {

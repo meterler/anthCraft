@@ -11,7 +11,7 @@ mod = angular.module('anthCraftApp', [
 
 	$routeProvider
 		.when('/', {
-			redirectTo: '/dockbar'
+			templateUrl: 'views/index.html'
 		})
 		.when('/dockbar', {
 			templateUrl: 'views/dockbar.html'
@@ -43,6 +43,18 @@ mod.controller 'AlertCtrl', [ '$scope', ($scope)->
 
 	$scope.$on 'app.alert', (event, type, msg)->
 		$scope.alerts.push { type: type, msg: msg }
+]
+
+mod.controller 'indexCtrl', [
+	'$rootScope', '$scope', '$location', 'themeService',
+	(
+		$rootScope, $scope, $location, themeService
+	)->
+		$scope.createTheme = ()->
+			themeService.init (err)->
+				return $rootScope.$broadcast 'app.alert', 'error', 'Server Error!' if err
+				$location.url('/wallpaper')
+
 ]
 
 mod.directive 'imgUploader', ->

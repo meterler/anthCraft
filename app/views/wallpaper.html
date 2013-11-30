@@ -6,4 +6,26 @@
 
 <div ng-include="'/views/partials/menuList.html'"></div>
 <div ng-include="'/views/partials/previewer.html'"></div>
-hello world
+
+<div class="mod-lathe" ng-controller="latheCtrl">
+	<header>
+		桌面 - Wallpaper
+	</header>
+
+	<div class="img-uploader">
+
+		<div class="img-uploader-handler" ng-init="image.url=_V(themeData['wallpaper']['wallpaper'])">
+			<label class="file-upload">
+				<span><strong>Browser</strong></span>
+				<input type="file" accept="image/*" image="image">
+			</label>
+			<button class="btn" ng-click="upload(image.file, 'wallpaper', 'wallpaper')">Okay</button>
+			<button class="btn" ng-click="resetValue('wallpaper', 'wallpaper')" ng-show="image">Reset</button>
+		</div>
+		<div class="img-previewer">
+			<img ng-src="{{image.url}}" type="{{image.file.type}}" />
+		</div>
+	</div>
+
+
+</div>

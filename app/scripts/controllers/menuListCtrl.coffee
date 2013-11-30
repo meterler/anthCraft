@@ -18,7 +18,6 @@ mod.controller "menuListCtrl", ['$scope', '$location', ($scope, $location)->
 	$scope.hasActive = (itemList)->
 		itemList.some (item)-> item.url is $location.path()
 
-
 	$scope.menuList = [
 		{
 			title: "c-Launcher"
@@ -34,8 +33,8 @@ mod.controller "menuListCtrl", ['$scope', '$location', ($scope, $location)->
 			active: false
 			submenus: [
 				{
-					url: "/dockbar"
 					title: "Dockbar"
+					url: "/dockbar"
 				}
 			]
 

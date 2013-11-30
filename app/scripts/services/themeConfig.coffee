@@ -19,6 +19,21 @@ mod.factory 'themeConfig', ->
 			}
 		}
 
+		getPreviewScale: (resType, resName)->
+			switch resType
+				when 'wallpaper'
+					{
+						width: 239
+						height: 428
+						force: true
+					}
+				when 'app_icon', 'dock_icon'
+					{
+						width: 37
+						height: 37
+						force: true
+					}
+
 		# Default packInfo for reset style
 		defaultPackInfo: {
 			wallpaper: {

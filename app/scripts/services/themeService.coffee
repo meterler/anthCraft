@@ -30,9 +30,10 @@ mod.service 'themeService', ['$rootScope', '$resource', 'themeConfig', ($rootSco
 			}
 			Theme = $resource('/api/themes/:themeId', { themeId: '@_id' }, actions)
 
-			service.themeModel = Theme.create {},
-				-> service.status = 'created',
-				-> service.status = 'uncreated'
+			service.themeModel = Theme.create {}, ()->
+				callback()
+			, callback
+
 
 			# init default packInfo
 			service.packInfo = angular.copy(themeConfig.defaultPackInfo)
@@ -40,7 +41,7 @@ mod.service 'themeService', ['$rootScope', '$resource', 'themeConfig', ($rootSco
 			# TODO: FAILD?
 
 		# Return image preview scale from factory themeConfig
-		getPreviewScale: (resType, resName)-> themeConfig.previewScales[resType][resName]
+		getPreviewScale: (resType, resName)-> themeConfig.getPreviewScale(resType, resName)
 
 		# Update view
 		updateView: (updateData)->
