@@ -11,8 +11,13 @@ mod = angular.module('anthCraftApp', [
 
 	$routeProvider
 		.when('/', {
-			templateUrl: 'views/main.html'
-			# controller: 'MainCtrl'
+			redirectTo: '/dockbar'
+		})
+		.when('/dockbar', {
+			templateUrl: 'views/dockbar.html'
+		})
+		.when('/wallpaper', {
+			templateUrl: 'views/wallpaper.html'
 		})
 		.otherwise {
 			redirectTo: '/'

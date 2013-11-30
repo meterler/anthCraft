@@ -1,0 +1,10 @@
+
+
+<div ng-controller="AlertCtrl">
+  <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+</div>
+
+<div ng-include="'/views/partials/menuList.html'"></div>
+<div ng-include="'/views/partials/previewer.html'"></div>
+<div ng-include="'/views/partials/lathe.html'"></div>
+
