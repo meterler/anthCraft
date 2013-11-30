@@ -2,7 +2,7 @@
   "name": "anthcraft",
   "version": "0.0.1",
   "dependencies": {
-    "express": "~3.4.3",
+    "express": "~3.4.5",
     "coffee-script": "~1.6.3",
     "node-restful": "~0.1.14",
     "anthpack": "~1.0.10",
