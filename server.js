@@ -26,8 +26,13 @@ var initTasks = [
 		utils.connectDB(callback);
 	},
 
+	// Connect to Redis
 	function(callback) {
-		// Init anthPack
+		utils.connectRedis(callback);
+	},
+
+	// Init anthPack
+	function(callback) {
 		anthPack.config(__config.anthPack);
 		callback();
 	},
@@ -43,7 +48,7 @@ var initTasks = [
 		app.use(app.router);
 
 		// development only
-		if (__config.debug === true) {
+		if (__config.debug) {
 		  app.use(express.static(path.join(__dirname, '.tmp')));
 		  app.use(express.static(path.join(__dirname, 'app')));
 		  app.use(express.errorHandler());

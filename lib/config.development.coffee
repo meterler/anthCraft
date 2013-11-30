@@ -10,7 +10,13 @@ module.exports = {
 	port: 9000
 
 	debug: true
-	mongo: "mongodb://10.11.148.56:2884/anthcraft"
+	mongo: "mongodb://root:anthcraft@ds053958.mongolab.com:53958/anthcraft"
+
+	redis: {
+		port: 10422
+		host: "pub-redis-10422.us-east-1-3.2.ec2.garantiadata.com"
+		auth_pass: "anthCraft"
+	}
 
 	# Resources Path
 	resources: p("resources")
