@@ -1,7 +1,7 @@
 
 restful = require 'node-restful'
 mongoose = restful.mongoose
-autoinc = require 'mongoose-id-autoinc'
+autoinc = require 'mongoose-id-autoinc2'
 
 # mongoose = require 'mongoose'
 
