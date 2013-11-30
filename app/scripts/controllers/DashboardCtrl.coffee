@@ -5,8 +5,15 @@ Dashboard Controller
 mod = angular.module('anthCraftApp')
 
 # Upload files
-mod.controller 'dashboardCtrl', ['$http', '$scope', '$resource', '$rootScope', 'themeService',
-	($http, $scope, $resource, $rootScope, themeService)->
+mod.controller 'dashboardCtrl', [
+	# third-part service
+	'$http', '$scope', '$resource', '$rootScope', '$cookieStore'
+	# bussiness service
+	'themeService',
+	(
+		$http, $scope, $resource, $rootScope, $cookieStore
+		themeService
+	)->
 
 		$scope.themeStatus = -> themeService.status
 		$scope.theme = themeService.themeModel
@@ -17,6 +24,14 @@ mod.controller 'dashboardCtrl', ['$http', '$scope', '$resource', '$rootScope', '
 			$scope.theme = null
 			themeService.init()
 			$scope.theme = themeService.themeModel
+
+			# TODO: Read user info from cookie
+			loginUser_id = $cookieStore.get('user.id')
+			loginUser_name = $cookieStore.get('user.name')
+			if loginUser_id
+				$scope.theme.meta.author = loginUser_name
+				$scope.theme.meta.authorId = loginUser_id
+				$scope.theme.$save()
 
 		$scope.packageTheme = ->
 			themeService.packageTheme (data)->

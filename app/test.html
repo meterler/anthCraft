@@ -12,9 +12,9 @@
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
 	<!-- build:css(.tmp) styles/main.css -->
-	<link rel="stylesheet" href="components/normalize-css/normalize.css">
-	<link rel="stylesheet" href="styles/main.css">
-	<link rel="stylesheet" href="styles/app.css">
+	<link href="styles/bootstrap/bootstrap-combined.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="styles/teststyle/main.css">
+
 	<!-- endbuild -->
 </head>
 <body ng-app="anthCraftApp">
@@ -26,44 +26,17 @@
 	<script src="components/es5-shim/es5-shim.js"></script>
 	<script src="components/json3/lib/json3.min.js"></script>
 	<![endif]-->
+	<nav class="{{active}}" ng-click="$event.preventDefault()">
 
-	<div class="hd">
-		<div class="bd">
-			<a href="#">
-				<img src="styles/img/logo.png" alt="cLauncher Logo">
-			</a>
-			<section class="sec-login">
-				<a href="#">Regist</a>
-				|
-				<a href="#">Login</a>
-			</section>
+		<!-- When a link in the menu is clicked, we set the active variable -->
 
-		</div>
-	</div>
-
+		<a href="#" class="home" ng-click="active='home'">Index</a>
+		<a href="#" class="projects" ng-click="active='projects'">Download</a>
+		<a href="#" class="services" ng-click="active='services'">Service</a>
+		<a href="#" class="contact" ng-click="active='contact'">Contact</a>
+	</nav>
 	<div class="container">
 		<div ng-view></div>
-	</div>
-
-	<div class="ft">
-		<ul class="link-list">
-			<div class="bd">
-				<li>
-					<a href="#">Link</a> |
-				</li>
-				<li>
-					<a href="#">Link</a> |
-				</li>
-			</div>
-		</ul>
-		<div class="site-info">
-			<div class="bd">
-				<img src="styles/img/cylogo.png" alt="CYou Inc." />
-				<p>北京畅游时代数码技术有限公司 版权所有</p>
-				<p>Copyright ©2011 ChangYou.com Limited. All rights reserved.</p>
-				<p>京ICP证：070525号《网络文化经营许可证》编号：京网文[2011]0260-093号京公网安备110107000007</p>
-			</div>
-		</div>
 	</div>
 
 	<script src="components/angular/angular.js"></script>
@@ -74,11 +47,12 @@
 	<script src="components/angular-cookies/angular-cookies.js"></script>
 	<script src="components/angular-sanitize/angular-sanitize.js"></script>
 	<script src="components/angular-imageupload-directive/public/javascripts/imageupload.js"></script>
+	<script src="components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.min.js"></script>
 	<!-- endbuild -->
 
 	<!-- build:js({.tmp,app}) scripts/scripts.js -->
 	<script src="scripts/app.js"></script>
-	<script src="scripts/controllers/latheCtrl.js"></script>
+	<script src="scripts/controllers/dashboardCtrl.js"></script>
 	<script src="scripts/controllers/previewCtrl.js"></script>
 	<script src="scripts/services/themeService.js"></script>
 	<script src="scripts/services/themeConfig.js"></script>

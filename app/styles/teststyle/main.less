@@ -1,0 +1,68 @@
+
+
+body {
+	background-color: #ddd;
+	padding: 0; margin: 0;
+	height: 100%;
+}
+
+/*-------------------------
+	The container
+--------------------------*/
+.container {
+	width: 1280px;
+	min-height: 700px;
+	position: relative;
+	margin: 0 auto;
+	padding: 5px;
+	background-color: white;
+	box-shadow: 0 0 10px #fff;
+	border-radius: 3px;
+}
+
+@import "./nav.less";
+
+@import "./phone-interface.less";
+@import "./image-uploader.less";
+
+.nav, .pagination, .carousel a { cursor: pointer; }
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 999px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    background: red;
+    cursor: inherit;
+    display: block;
+}
+
+.dashboard {
+	float: right;
+	width: 600px;
+
+	margin: 40px;
+
+	border: 1px solid #ddd;
+
+	.tab-pane {
+		padding: 20px;
+	}
+}
+
+.ac-toolbar {
+	padding: 10px;
+}
+
+
+.ac-statusbar {
+	padding: 10px;
+}

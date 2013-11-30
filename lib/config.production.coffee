@@ -9,7 +9,7 @@ module.exports = {
 	appPath: basePath
 	port: 9000
 
-	debug: true
+	debug: false
 	mongo: "mongodb://10.11.148.56:2884/anthcraft"
 
 	# Resources Path

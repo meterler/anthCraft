@@ -1,8 +1,8 @@
 node_modules
-public
 .tmp
 .sass-cache
 app/components
 heroku
+public
 app/resources/upload/*
 app/resources/themes
