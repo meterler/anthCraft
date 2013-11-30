@@ -10,18 +10,22 @@ mod.controller "menuListCtrl", ['$scope', '$location', ($scope, $location)->
 
 	$scope.curPath = $location.path()
 
+	# Open menuList
+	$scope.switchMenu = (menu)->
+		$scope.menuList.forEach (menu)-> menu.active = false
+		menu.active = true
+	# Check current active
+	$scope.hasActive = (itemList)->
+		itemList.some (item)-> item.url is $location.path()
+
+
 	$scope.menuList = [
 		{
 			title: "c-Launcher"
-			active: true
 			submenus: [
 				{
 					title: "Wallpaper"
 					url: "/wallpaper"
-				},
-				{
-					title: "Dockbar"
-					url: "/dockbar"
 				}
 			]
 		},
@@ -30,9 +34,7 @@ mod.controller "menuListCtrl", ['$scope', '$location', ($scope, $location)->
 			active: false
 			submenus: [
 				{
-					title: "Wallpaper"
-				},
-				{
+					url: "/dockbar"
 					title: "Dockbar"
 				}
 			]
