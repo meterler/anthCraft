@@ -1,7 +1,5 @@
 
 <div class="mod-menuList" ng-controller="menuListCtrl">
-
-
 	<section class="menu-item" ng-repeat="menu in menuList">
 		<header>
 			<a href="javascript:;" ng-click="menu.active=!menu.active">
@@ -11,7 +9,8 @@
 		</header>
 		<ul ng-show="menu.active">
 			<li ng-repeat="item in menu.submenus">
-				<a ng-href="#{{item.url}}" ng-class="{ active: item.active }" ng-click="item.active=true"> {{item.title}} </a>
+
+				<a ng-href="#{{item.url}}" ng-class="{ active: (curPath==item.url) }" ng-click="item.active=true"> {{item.title}} </a>
 			</li>
 		</ul>
 	</section>

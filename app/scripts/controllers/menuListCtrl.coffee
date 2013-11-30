@@ -1,12 +1,14 @@
 
 mod = angular.module('anthCraftApp')
 
-mod.controller "menuListCtrl", ['$scope', ($scope)->
+mod.controller "menuListCtrl", ['$scope', '$location', ($scope, $location)->
 
 	$scope.switch = (menu)->
 		this.menu.active = not this.menu.active
 
 		return false
+
+	$scope.curPath = $location.path()
 
 	$scope.menuList = [
 		{
@@ -16,12 +18,10 @@ mod.controller "menuListCtrl", ['$scope', ($scope)->
 				{
 					title: "Wallpaper"
 					url: "/wallpaper"
-					active: false
 				},
 				{
 					title: "Dockbar"
 					url: "/dockbar"
-					active: false
 				}
 			]
 		},
@@ -30,15 +30,15 @@ mod.controller "menuListCtrl", ['$scope', ($scope)->
 			active: false
 			submenus: [
 				{
-					active: false
 					title: "Wallpaper"
 				},
 				{
-					active: false
 					title: "Dockbar"
 				}
 			]
 
 		}
 	]
+
+	return
 ]
