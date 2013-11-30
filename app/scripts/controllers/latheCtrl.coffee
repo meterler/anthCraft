@@ -14,7 +14,18 @@ mod.controller 'latheCtrl', [
 			}
 		]
 
+		$scope.themeId = themeService.themeModel._id
 		$scope.themeData = themeService.packInfo
+
+		$scope.updatePreview = (packInfo)->
+			console.log("Update preview: ", arguments);
+			themeService.updateView packInfo
+
+			return
+			# TODO: refresh preview module
+
+		$scope.getScale = themeService.getPreviewScale
+
 		$scope._V = (v)-> themeConfig.themeFolder + v
 
 		$scope.resetValue = (resType, resName)->

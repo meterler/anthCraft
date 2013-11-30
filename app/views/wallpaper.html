@@ -12,20 +12,20 @@
 		桌面 - Wallpaper
 	</header>
 
-	<div class="img-uploader">
+	<upload-img
+		theme-id="{{themeId}}"
+		res-type="wallpaper"
+		res-name="wallpaper"
+		default-data="{{themeData}}"
+		scale="getScale('wallpaper','wallpaper')"
+		callback="updatePreview"></upload-img>
 
-		<div class="img-uploader-handler" ng-init="image.url=_V(themeData['wallpaper']['wallpaper'])">
-			<label class="file-upload">
-				<span><strong>Browser</strong></span>
-				<input type="file" accept="image/*" image="image">
-			</label>
-			<button class="btn" ng-click="upload(image.file, 'wallpaper', 'wallpaper')">Okay</button>
-			<button class="btn" ng-click="resetValue('wallpaper', 'wallpaper')" ng-show="image">Reset</button>
-		</div>
-		<div class="img-previewer">
-			<img ng-src="{{image.url}}" type="{{image.file.type}}" />
-		</div>
-	</div>
-
+	<upload-img
+		theme-id="{{themeId}}"
+		res-type="app_icon"
+		res-name="com_android_contacts_com_android_contacts_activities_dialtactsactivity"
+		default-data="{{themeData}}"
+		scale="getScale('app_icon','com_android_contacts_com_android_contacts_activities_dialtactsactivity')"
+		callback="updatePreview"></upload-img>
 
 </div>

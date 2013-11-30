@@ -1,0 +1,15 @@
+<div class="img-uploader">
+
+	<div class="img-uploader-handler">
+		<label class="file-upload" on-chose='upload(image)'>
+			<span><strong>Browser</strong></span>
+			<input type="file" accept="image/*" image="image">
+		</label>
+		<button class="btn btn-upload" ng-click="upload(image.file)">Okay</button>
+		<button class="btn btn-reset" ng-show="image">Reset</button>
+	</div>
+	<div class="img-previewer">
+		<img ng-src="{{image.url}}" type="{{image.file.type}}" />
+	</div>
+
+</div>

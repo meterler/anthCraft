@@ -63,7 +63,7 @@ mod.controller 'dashboardCtrl', [
 
 			$http.post('/api/upload', formData, {
 				headers: {
-					'Content-Type': undefined
+					'content-type': undefined
 				}
 				transformRequest: angular.identity
 			}).success((result)->

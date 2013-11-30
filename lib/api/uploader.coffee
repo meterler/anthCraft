@@ -17,12 +17,14 @@ handleFileUpload = (req, res)->
 				return res.send(500, "Error!" + err)
 
 			res.json {
-				src: "#{uploadPath}/#{newFileName}"
+				src: "/#{newFileName}"
 			}
 
 
 module.exports = (app)->
 	app.post "/api/upload", (req, res)->
+
+		# return handleFileUpload(req, res)
 
 		imgPath = req.files.image.path
 		imgType = req.param('resType')
@@ -37,8 +39,8 @@ module.exports = (app)->
 			scale: previewScale
 		}, (err, previewImgPath)->
 
-			__log "PreviewImgPath: ", previewImgPath
-			__log "config.appPath: ", __config.appPath
+			# __log "PreviewImgPath: ", previewImgPath
+			# __log "config.appPath: ", __config.appPath
 
 			url = previewImgPath
 			# url = path.join(__config.packagePath, previewImgPath)
@@ -48,7 +50,7 @@ module.exports = (app)->
 			url = url.split(path.sep).join("/")
 
 			if err
-				res.send 500
+				res.send 500, err
 				# res.json {
 				# 	success: false
 				# 	# TODO: Return the FAIL 404 imgage
