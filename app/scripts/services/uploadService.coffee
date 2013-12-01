@@ -1,41 +1,6 @@
 
 mod = angular.module 'anthCraftApp'
 
-mod.service 'uploadService', [
-	'$rootScope', '$scope', 'themeService',
-	(
-		$rootScope, $scope, themeService
-	)->
-		return {
-			upload: (image, resType, resName)->
-				formData = new FormData()
-				formData.append('image', image, image.name)
-				formData.append('themeId', themeService.themeModel._id)
-				formData.append('resType', resType)
-				formData.append('resName', resName)
-				formData.append('previewScale', JSON.stringify(themeService.getPreviewScale(resType, resName)))
-
-				$http.post('/api/upload', formData, {
-					headers: {
-						'Content-Type': undefined
-					}
-					transformRequest: angular.identity
-				}).success((result)->
-
-					packInfo = {}
-					packInfo[resType] = {}
-					packInfo[resType][resName] = result.src
-
-					# Update local packInfo in service
-					themeService.updateView packInfo
-
-					# $rootScope.$broadcast 'app.alert', 'info', 'Theme packed successful!'
-				).error(->
-					$rootScope.$broadcast 'app.alert', 'error', 'Server Error!'
-				)
-		}
-]
-
 mod.directive 'uploadImg', [ '$http', ($http)-> {
 	restrict: 'E'
 	scope: {
@@ -83,25 +48,5 @@ mod.directive 'uploadImg', [ '$http', ($http)-> {
 
 		attr.scale = scope.scale()
 		attr.callback = scope.callback()
-
-		# elem.find("button").on 'click', =>
-		# 	angular.$apply this.attr('ng-click')
-
-		# elem.find("button").on 'click', =>
-		# 	formData = new FormData()
-		# 	formData.append('image', image, image.name)
-		# 	formData.append('themeId', attr.themeId)
-		# 	formData.append('resType', attr.resType)
-		# 	formData.append('resName', attr.resName)
-		# 	formData.append('previewScale', JSON.stringify(image.scale))
-
-		# 	result = $http.post('/api/upload', formData, {
-		# 		headers: {
-		# 			'Content-Type': undefined
-		# 		}
-		# 		transformRequest: angular.identity
-		# 	})
-
-		# 	attr.callback(result)
 
 }]
