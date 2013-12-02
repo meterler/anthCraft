@@ -6,7 +6,7 @@
 			<input type="file" accept="image/*" image="image">
 		</label>
 		<button class="btn btn-upload" ng-click="upload(image.file)">Okay</button>
-		<button class="btn btn-reset" ng-show="image">Reset</button>
+		<!-- <button class="btn btn-reset" ng-show="image">Reset</button> -->
 	</div>
 	<div class="img-previewer">
 		<img ng-src="{{image.url}}" type="{{image.file.type}}" />

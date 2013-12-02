@@ -48,8 +48,7 @@ mod.directive 'uploadImg', [ '$http', ($http)-> {
 			).error ()->
 	]
 	link: (scope, elem, attr)->
-		debugger
-		attr.defaultData = scope.defaultData()[attr.resType, attr.resName]
+		attr.defaultData = scope.defaultData()[attr.resType][attr.resName]
 		attr.scale = scope.scale()(attr.resType, attr.resName)
 		attr.callback = scope.callback()
 
