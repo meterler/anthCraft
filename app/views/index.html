@@ -2,7 +2,9 @@
 <div ng-controller="indexCtrl">
 
 	<div style="margin: 100px; text-align: center;">
-		<button ng-click="createTheme()" class="btn btn-primary"> Create Theme </button>
+		<button ng-click="createTheme()" class="btn btn-primary"> Create New Theme </button>
+
+		<button ng-show="hasUnpub" ng-click="continueTheme()" class="btn btn-warn"> Continue Theme </button>
 	</div>
 
 </div>

@@ -47,6 +47,22 @@ mod.service 'themeService', [
 				service.updateView()
 				# TODO: FAILD?
 
+			hasUnpub: ()-> !!localStorage.get('unpublished_theme_model')
+			continueWork: ()->
+				return false if not service.hasUnpub()
+
+				# Check localStorage,
+				# 	recover data if exists
+
+				unpublished_theme_model = localStorage.get('unpublished_theme_model')
+				unpublished_theme_packInfo = localStorage.get('unpublished_theme_packInfo')
+
+				service.themeModel = unpublished_theme_model if unpublished_theme_model
+				service.packInfo = unpublished_theme_packInfo if unpublished_theme_packInfo
+
+				return true
+
+
 			# Return image preview scale from factory themeConfig
 			getPreviewScale: (resType, resName)-> themeConfig.getPreviewScale(resType, resName)
 
@@ -86,16 +102,7 @@ mod.service 'themeService', [
 
 		}
 
-		# Check localStorage,
-		# 	recover data if exists
-
-		unpublished_theme_model = localStorage.get('unpublished_theme_model')
-		unpublished_theme_packInfo = localStorage.get('unpublished_theme_packInfo')
-
-		service.themeModel = unpublished_theme_model if unpublished_theme_model
-		service.packInfo = unpublished_theme_packInfo if unpublished_theme_packInfo
-
-		service.updateView()
+		service.continueWork()
 
 		return service
 ]

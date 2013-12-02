@@ -48,15 +48,20 @@ mod.controller 'AlertCtrl', [ '$scope', ($scope)->
 ]
 
 mod.controller 'indexCtrl', [
-	'$rootScope', '$scope', '$location', 'themeService',
+	'$rootScope', '$scope', '$location', 'localStorageService'
+	'themeService',
 	(
-		$rootScope, $scope, $location, themeService
+		$rootScope, $scope, $location, localStorage, themeService
 	)->
 		$scope.createTheme = ()->
 			themeService.init (err)->
 				return $rootScope.$broadcast 'app.alert', 'error', 'Server Error!' if err
 				$location.url('/wallpaper')
 
+		$scope.hasUnpub = themeService.hasUnpub()
+		$scope.continueTheme = ()->
+			themeService.continueWork()
+			$location.url('/wallpaper')
 ]
 
 mod.directive 'imgUploader', ->

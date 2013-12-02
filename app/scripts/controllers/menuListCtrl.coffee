@@ -26,6 +26,11 @@ mod.controller "menuListCtrl", ['$scope', '$location', ($scope, $location)->
 					title: "Wallpaper"
 					url: "/wallpaper"
 				}
+				{
+					title: "Dockbar"
+					url: "/dockbar"
+				}
+
 			]
 		},
 		{
@@ -33,8 +38,8 @@ mod.controller "menuListCtrl", ['$scope', '$location', ($scope, $location)->
 			active: false
 			submenus: [
 				{
-					title: "Dockbar"
-					url: "/dockbar"
+					title: "System Icons"
+					url: "/systemIcons"
 				}
 			]
 
