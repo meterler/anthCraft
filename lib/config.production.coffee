@@ -3,14 +3,17 @@ path = require 'path'
 basePath = path.join(__dirname, "../app")
 p = (r)-> path.join(basePath, r)
 
-#mongo: "mongodb://root:anthcraft@ds053958.mongolab.com:53958/anthcraft"
-
 module.exports = {
 	appPath: basePath
 	port: 9000
 
-	debug: false
-	mongo: "mongodb://10.11.148.56:2884/anthcraft"
+	debug: true
+	mongo: "mongodb://10.60.145.18:27017/anthcraft"
+	redis: {
+		port: 6379
+		host: "10.60.145.18"
+		auth_pass: null
+	}
 
 	# Resources Path
 	resources: p("resources")
