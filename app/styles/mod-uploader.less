@@ -1,0 +1,53 @@
+
+.mod-uploader {
+
+	position: relative;
+	width: 135px;
+	display: inline-block;
+
+	.img-previewer {
+		border: 1px solid #E9E9E9;
+		padding: 5px;
+		overflow: hidden;
+		display: inline-block;
+
+		img {
+			width: 100px;
+			height: 100px;
+		}
+	}
+
+	.img-info {
+		b,span {
+			display: block;
+			font-size: 12px;
+		}
+	}
+
+	.img-upload-handler {
+		.btn {
+			width: 100px;
+		}
+	}
+
+	.file-upload {
+		overflow: hidden;
+		display: inline-block;
+		position: relative;
+		vertical-align: middle;
+	}
+
+	.file-upload input {
+		cursor: pointer;
+		// Hide upload button
+		position: absolute;
+		top: 0;
+		left: 0;
+		margin: 0;
+
+		// Loses tab index in webkit if width is set to 0
+		opacity: 0;
+		filter: alpha(opacity=0);
+	}
+
+}

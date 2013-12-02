@@ -1,15 +1,22 @@
-<div class="img-uploader">
+<div class="mod-uploader">
 
-	<div class="img-uploader-handler">
-		<label class="file-upload">
-			<span><strong>Browser</strong></span>
-			<input type="file" accept="image/*" image="image">
-		</label>
-		<button class="btn btn-upload" ng-click="upload(image.file)">Okay</button>
-		<!-- <button class="btn btn-reset" ng-show="image">Reset</button> -->
-	</div>
 	<div class="img-previewer">
 		<img ng-src="{{image.url}}" type="{{image.file.type}}" />
+	</div>
+
+	<div class="img-info">
+		<b>wallpaper</b>
+		<span>Size: 1440*1280</span>
+		<span>Type: jpg</span>
+	</div>
+
+	<div class="img-upload-handler">
+		<button class="file-upload btn btn-primary">
+			<span><strong>Browser</strong></span>
+			<input type="file" accept="image/*" image="image">
+		</button>
+		<button class="btn" ng-click="upload(image.file)">Apply</button>
+		<!-- <button class="btn btn-reset" ng-show="image">Reset</button> -->
 	</div>
 
 </div>
