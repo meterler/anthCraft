@@ -6,14 +6,9 @@ mod.controller 'latheCtrl', [
 	(
 		$rootScope, $scope, $http, themeConfig, themeService
 	)->
-		$scope.itemList = [
-			{
-				name: "Dock bg"
-				size: "20*40px"
-				type: "PNG"
-			}
-		]
 
+
+		$scope.srcPrefix = themeConfig.themeFolder
 		$scope.themeId = themeService.themeModel._id
 		$scope.themeData = themeService.packInfo
 

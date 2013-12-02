@@ -9,14 +9,12 @@ mod.directive 'uploadImg', [ '$http', ($http)-> {
 		resName: "="
 		defaultData: "&"
 		scale: "&"
+		srcPrefix: "@"
 		callback: "&"
 	}
 	templateUrl: "/views/partials/uploader.html"
 	controller: ['$scope', '$attrs', '$http', ($scope, $attrs, $http)->
 		$scope.resName = $attrs.resName
-		$scope.image = {
-			url: $scope.defaultData
-		}
 		$scope.upload = (image)->
 			themeId = $attrs.themeId
 			resType = $attrs.resType
@@ -52,4 +50,7 @@ mod.directive 'uploadImg', [ '$http', ($http)-> {
 		attr.scale = scope.scale()(attr.resType, attr.resName)
 		attr.callback = scope.callback()
 
+		scope.image = {
+			url: attr.srcPrefix + attr.defaultData
+		}
 }]
