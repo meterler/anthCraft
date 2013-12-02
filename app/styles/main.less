@@ -70,16 +70,29 @@ html,body {
 	height: 96px;
 	background: -webkit-gradient(linear, left top, left bottom, from(#267485), to(#368a89));
 	.bd {
+		position: relative;
 		width: @cWidth;
 		margin: 0 auto;
 	}
 
 	.sec-login {
-		float: right;
+		position: absolute;
+		right: 10px;
+		top: 10px;
 		color: white;
 		a {
 			color: white;
 			text-decoration: none;
+		}
+	}
+	.sec-controlButton {
+		position: absolute;
+		right: 10px;
+		top: 50px;
+		a {
+			color: #FEFAA7;
+			display: inline-block;
+			margin: 0 5px;
 		}
 	}
 }

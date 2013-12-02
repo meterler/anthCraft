@@ -12,6 +12,7 @@
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
 	<!-- build:css(.tmp) styles/main.css -->
+	<link rel="stylesheet" href="components/font-awesome/css/font-awesome.css">
 	<link rel="stylesheet" href="components/normalize-css/normalize.css">
 	<link rel="stylesheet" href="styles/main.css">
 	<link rel="stylesheet" href="styles/app.css">
@@ -36,6 +37,11 @@
 				<a href="#">Regist</a>
 				|
 				<a href="#">Login</a>
+			</section>
+
+			<section class="sec-controlButton" ng-controller="controlButton">
+					<a ng-href="#/wallpaper" ng-click="createNewTheme()"><i class="fa fa-plus-circle fa-3x"></i></a>
+					<a href="javascript:;"><i class="fa fa-upload fa-3x"></i></a>
 			</section>
 
 		</div>
