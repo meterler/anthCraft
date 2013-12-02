@@ -21,6 +21,9 @@ mod = angular.module('anthCraftApp', [
 		.when('/wallpaper', {
 			templateUrl: 'views/wallpaper.html'
 		})
+		.when('/systemIcons', {
+			templateUrl: 'views/systemicons.html'
+		})
 		.otherwise {
 			redirectTo: '/'
 		}

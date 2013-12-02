@@ -6,10 +6,17 @@ mod.directive 'uploadImg', [ '$http', ($http)-> {
 	scope: {
 		themeId: "@"
 		resType: "="
-		resName: "="
+		resName: "@"
+		resCaptial: "@"
+
 		defaultData: "&"
 		scale: "&"
 		srcPrefix: "@"
+
+		recHeight: "@"
+		recWidth: "@"
+		recType: "@"
+
 		callback: "&"
 	}
 	templateUrl: "/views/partials/uploader.html"

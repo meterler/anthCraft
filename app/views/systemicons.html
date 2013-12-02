@@ -9,22 +9,20 @@
 
 <div class="mod-lathe" ng-controller="latheCtrl">
 	<header>
-		系统图标 - System Icons
+		桌面 - Wallpaper
 	</header>
 
 	<upload-img
 		theme-id="{{themeId}}"
-		res-type="wallpaper"
-		res-name="wallpaper"
+		res-type="app_icon"
+		res-name="{{m.id}}"
+		res-captial="{{m.captial}}"
 		default-data="themeData"
 		src-prefix="{{srcPrefix}}"
-
 		scale="getScale"
-		res-captial="Wallpaper"
-		rec-height="1280"
-		rec-width="1440"
-		rec-type="jpg"
-
-		callback="updatePreview"></upload-img>
+		rec-width="192"
+		rec-height="192"
+		rec-type="png"
+		callback="updatePreview" ng-repeat="m in appIconList"></upload-img>
 
 </div>

@@ -13,46 +13,34 @@ mod.controller 'latheCtrl', [
 		$scope.themeData = themeService.packInfo
 
 		$scope.updatePreview = (packInfo)->
-			console.log("Update preview: ", arguments);
 			themeService.updateView packInfo
-
 			return
 			# TODO: refresh preview module
 
 		$scope.getScale = themeService.getPreviewScale
 
-		$scope._V = (v)-> themeConfig.themeFolder + v
 
-		$scope.resetValue = (resType, resName)->
-			themeService.resetValue(resType, resName)
-			themeService.updateView()
+		$scope.appIconList = [
+			{ id: "com_android_browser_com_android_browser_browseractivity", captial: "hello" }
+			{ id: "com_android_calculator2_com_android_calculator2_calculator", captial: "hello" }
+			{ id: "com_android_calendar_com_android_calendar_allinoneactivity", captial: "hello" }
+			{ id: "com_android_camera_com_android_camera_camera", captial: "hello" }
+			{ id: "com_android_contacts_com_android_contacts_activities_dialtactsactivity", captial: "hello" }
+			{ id: "com_android_contacts_com_android_contacts_activities_peopleactivity", captial: "hello" }
+			{ id: "com_android_deskclock_com_android_deskclock_deskclock", captial: "hello" }
+			{ id: "com_android_email_com_android_email_activity_welcome", captial: "hello" }
+			{ id: "com_android_gallery3d_com_android_gallery3d_app_gallery", captial: "hello" }
+			{ id: "com_android_mms_com_android_mms_ui_conversationcomposer", captial: "hello" }
+			{ id: "com_android_mms_com_android_mms_ui_conversationlist", captial: "hello" }
+			{ id: "com_android_music_com_android_music_musicbrowseractivity", captial: "hello" }
+			{ id: "com_android_music_com_android_music_videobrowseractivity", captial: "hello" }
+			{ id: "com_android_providers_downloads_ui_com_android_providers_downloads_ui_downloadlist", captial: "hello" }
+			{ id: "com_android_quicksearchbox_com_android_quicksearchbox_searchactivity", captial: "hello" }
+			{ id: "com_android_settings_com_android_settings_settings", captial: "hello" }
+			{ id: "com_google_android_apps_maps_com_google_android_maps_mapsactivity", captial: "hello" }
+			{ id: "com_mediatek_videoplayer_com_mediatek_videoplayer_movielistactivity", captial: "hello" }
+			{ id: "com_sec_android_app_sbrowser_com_sec_android_app_sbrowser_sbrowsermainactivity", captial: "hello" }
 
-
-		$scope.upload = (image, resType, resName)->
-			formData = new FormData()
-			formData.append('image', image, image.name)
-			formData.append('themeId', themeService.themeModel._id)
-			formData.append('resType', resType)
-			formData.append('resName', resName)
-			formData.append('previewScale', JSON.stringify(themeService.getPreviewScale(resType, resName)))
-
-			$http.post('/api/upload', formData, {
-				headers: {
-					'Content-Type': undefined
-				}
-				transformRequest: angular.identity
-			}).success((result)->
-
-				packInfo = {}
-				packInfo[resType] = {}
-				packInfo[resType][resName] = result.src
-
-				# Update local packInfo in service
-				themeService.updateView packInfo
-
-				# $rootScope.$broadcast 'app.alert', 'info', 'Theme packed successful!'
-			).error(->
-				$rootScope.$broadcast 'app.alert', 'error', 'Server Error!'
-			)
+		]
 
 ]
