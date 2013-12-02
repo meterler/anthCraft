@@ -1,0 +1,8 @@
+{
+  "script": "./server.js",
+  "name": "anthCraft-server",
+  "instances": "max",
+  "fileError": "./logs/anthCraft.err.log",
+  "fileOutput": "./logs/anthCraft.out.log",
+  "pidFile": "./logs/pids/anthCraft.worker_"
+}

@@ -289,6 +289,7 @@ module.exports = function (grunt) {
           src: [
             'package.json',
             'server.js',
+            'pm2-start.json',
             'lib/**/*'
           ]
         }]
