@@ -2,77 +2,100 @@
 mod = angular.module('anthCraftApp')
 
 
-# TODO: Theme Service
-mod.service 'themeService', ['$rootScope', '$resource', 'themeConfig', ($rootScope, $resource, themeConfig)->
+# Theme Service
+mod.service 'themeService', [
+	'$rootScope', '$resource', 'localStorageService', 'themeConfig',
+	(
+		$rootScope, $resource, localStorage, themeConfig
+	)->
 
-	Theme = null
+		Theme = null
 
-	service = {
+		service = {
 
-		# value: [ uncreated, creating, created, synced ]
-		status: 'uncreated'
+			# Theme Model
+			themeModel: {}
+			# Theme Package info
+			# Init default?
+			packInfo: angular.copy(themeConfig.defaultPackInfo)
 
-		# Theme Model
-		themeModel: {}
-		# Theme Package info
-		# TODO: init default?
-		packInfo: angular.copy(themeConfig.defaultPackInfo)
+			# Get themeModel model from server side
+			init: (callback)->
+				# TODO: Warn user if need continue last theme
+				# Clear localStorage
+				localStorage.remove('unpublished_theme_model')
+				localStorage.remove('unpublished_theme_packInfo')
 
-		# Get themeModel model from server side
-		init: (callback)->
-			service.status = 'creating'
+				actions = {
+					create: { method: 'POST' }
+					save: { method: 'PUT' }
+					packageUp: { method: 'POST', url: '/api/themes/:themeId/package' }
+				}
+				Theme = $resource('/api/themes/:themeId', { themeId: '@_id' }, actions)
 
-			# TODO: Lock until themeModel created
-			actions = {
-				create: { method: 'POST' }
-				save: { method: 'PUT' }
-				packageUp: { method: 'POST', url: '/api/themes/:themeId/package' }
-			}
-			Theme = $resource('/api/themes/:themeId', { themeId: '@_id' }, actions)
+				service.themeModel = Theme.create {}, (doc)->
 
-			service.themeModel = Theme.create {}, ()->
-				callback()
-			, callback
+					# Save to local storage
+					localStorage.set('unpublished_theme_model', doc)
+					localStorage.set('unpublished_theme_packInfo', service.packInfo)
+					callback()
+				, callback
 
 
-			# init default packInfo
-			service.packInfo = angular.copy(themeConfig.defaultPackInfo)
-			service.updateView()
-			# TODO: FAILD?
+				# init default packInfo
+				service.packInfo = angular.copy(themeConfig.defaultPackInfo)
+				service.updateView()
+				# TODO: FAILD?
 
-		# Return image preview scale from factory themeConfig
-		getPreviewScale: (resType, resName)-> themeConfig.getPreviewScale(resType, resName)
+			# Return image preview scale from factory themeConfig
+			getPreviewScale: (resType, resName)-> themeConfig.getPreviewScale(resType, resName)
 
-		# Update view
-		updateView: (updateData)->
+			# Update view
+			updateView: (updateData)->
 
-			for resType of updateData
-				service.packInfo[resType] = `service.packInfo[resType] ? service.packInfo[resType] : {}`
-				angular.extend(service.packInfo[resType], updateData[resType])
+				for resType of updateData
+					service.packInfo[resType] = `service.packInfo[resType] ? service.packInfo[resType] : {}`
+					angular.extend(service.packInfo[resType], updateData[resType])
 
-			# TBD: Not save every time?
-			# service.theme.$save()
-			$rootScope.$broadcast('theme.update', service.packInfo, updateData)
+				# Update localStorage
+				localStorage.set('unpublished_theme_packInfo', service.packInfo)
 
-		themeUpdate: ()->
-			$rootScope.$broadcast 'theme.update', service.packInfo
+				# TBD: Not save every time?
+				# service.theme.$save()
+				$rootScope.$broadcast('theme.update', service.packInfo, updateData)
 
-		# Reset value to default
-		resetValue: (resType, resName)->
-			service.packInfo[resType][resName] = themeConfig.defaultPackInfo[resType][resName]
+			themeUpdate: ()->
+				$rootScope.$broadcast 'theme.update', service.packInfo
 
-		packageTheme: (callback)->
-			# save themeModel
-			service.themeModel.$save (doc)->
-				# package up
-				Theme.packageUp { themeId: doc._id }, service.packInfo, (data)->
-					service.themeModel.updateTime = data.theme.updateTime
-					service.themeModel.packagePath = data.theme.packagePath
-					callback.apply(null, arguments)
+			# Reset value to default
+			resetValue: (resType, resName)->
+				service.packInfo[resType][resName] = themeConfig.defaultPackInfo[resType][resName]
 
-	}
+			packageTheme: (callback)->
+				# save themeModel
+				service.themeModel.$save (doc)->
+					# package up
+					Theme.packageUp { themeId: doc._id }, service.packInfo, (data)->
+						service.themeModel.updateTime = data.theme.updateTime
+						service.themeModel.packagePath = data.theme.packagePath
+						callback.apply(null, arguments)
 
-	service.updateView()
+						# Clear localStorage
+						localStorage.remove('unpublished_theme_model')
+						localStorage.remove('unpublished_theme_packInfo')
 
-	return service
+		}
+
+		# Check localStorage,
+		# 	recover data if exists
+
+		unpublished_theme_model = localStorage.get('unpublished_theme_model')
+		unpublished_theme_packInfo = localStorage.get('unpublished_theme_packInfo')
+
+		service.themeModel = unpublished_theme_model if unpublished_theme_model
+		service.packInfo = unpublished_theme_packInfo if unpublished_theme_packInfo
+
+		service.updateView()
+
+		return service
 ]
