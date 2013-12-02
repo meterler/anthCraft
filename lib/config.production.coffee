@@ -5,7 +5,7 @@ p = (r)-> path.join(basePath, r)
 
 module.exports = {
 	appPath: basePath
-	port: 9000
+	port: 9527
 
 	debug: true
 	mongo: "mongodb://10.60.145.18:27017/anthcraft"
