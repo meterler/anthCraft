@@ -13,6 +13,54 @@ html,body {
 .clearfix{*zoom:1;}.clearfix:before,.clearfix:after{display:table;content:"";line-height:0;}
 .clearfix:after{clear:both;}
 
+.btn {
+	display: inline-block;
+	margin: 3px 6px;
+	padding: 6px 20px;
+	line-height: 1em;
+
+	// default style
+	border: 1px solid #C0C0C0;
+	border-radius: 6px;
+	background-color: #fff;
+	color: #179BA0;
+	text-decoration: none;
+
+	&:hover, &.hover {
+		background-color: #EBFEFF;
+	}
+
+	&:active, &.active {
+		background-color: #EBEBEB;
+	}
+}
+
+.btn.btn-primary {
+	border: 1px solid #179BA0;
+	background-color: #179BA0;
+	color: white;
+	&:hover, &.hover {
+		background-color: #1CBAC0;
+	}
+	&:active, &.active {
+		background-color: #148A8E;
+	}
+}
+
+.btn.btn-warning {
+	border: 1px solid #B85124;
+	background-color: #B85124;
+	color: white;
+	&:hover, &.hover {
+		background-color: #D75F2A;
+	}
+	&:active, &.active {
+		background-color: #97431E;
+	}
+}
+
+
+
 .hd {
 	height: 96px;
 	background: -webkit-gradient(linear, left top, left bottom, from(#267485), to(#368a89));
