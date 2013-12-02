@@ -38,7 +38,7 @@ mod.service 'themeService', [
 					# Save to local storage
 					localStorage.set('unpublished_theme_model', doc)
 					localStorage.set('unpublished_theme_packInfo', service.packInfo)
-					callback()
+					callback?()
 				, callback
 
 
