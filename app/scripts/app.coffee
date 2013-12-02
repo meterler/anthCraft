@@ -67,13 +67,11 @@ mod.controller 'indexCtrl', [
 			$location.url('/wallpaper')
 ]
 
-mod.directive 'imgUploader', ->
-	return {
-		restric: 'A'
-		transclude: true
-		scope: {
-			resType: "=type"
-			resName: "=name"
-			scale: "=previewScale"
-		}
-	}
+mod.controller 'controlButton', [
+	'$scope', 'themeService'
+	(
+		$scope, themeService
+	)->
+		$scope.createNewTheme = ()->
+			themeService.init()
+]
