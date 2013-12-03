@@ -9,7 +9,7 @@
  -->
 
 <div class="mod-previewer" ng-controller="previewCtrl">
-	<div class="sence-home">
+	<div class="sence sence-home">
 		<!-- <div ng-style="setBg(theme['wallpaper']['wallpaper'])"></div> -->
 
 		<img class="mp-wallpaper" ng-src="{{_V(theme['wallpaper']['wallpaper'])}}" />
@@ -23,7 +23,9 @@
 		</div>
 	</div>
 
-	<div class="sence-apps">
+	<div class="sence sence-apps">
+		<img class="mp-wallpaper" ng-src="{{_V(theme['wallpaper']['wallpaper'])}}" />
+		<div class="mp-statusbar"></div>
 		<div class="mp-apps-app">
 			<div class="mp-apps-icon"></div>
 		</div>

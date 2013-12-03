@@ -14,7 +14,7 @@ mod.controller 'previewCtrl', [ '$scope', 'themeConfig', 'themeService', ($scope
 
 	# TODO: refrector with packInfo Object
 
-	$scope.theme = themeService.packInfo;
+	$scope.theme = themeService.packInfo
 
 	# Utils
 	$scope._B = (v)->
