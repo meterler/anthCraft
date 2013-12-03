@@ -31,5 +31,6 @@ mod.controller 'previewCtrl', [
 		$scope.$on 'theme.switchSence', (event, sence)->
 			$scope.curSence = sence
 
+		$scope.appIconList = themeConfig.appIcons
 ]
 

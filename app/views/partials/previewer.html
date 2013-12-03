@@ -27,11 +27,14 @@
 	<div class="sence sence-apps" ng-switch-when="apps">
 		<img class="mp-wallpaper" ng-src="{{_V(theme['wallpaper']['wallpaper'])}}" />
 		<div class="mp-statusbar"></div>
+		<div class="mp-apps-bg"></div>
 		<div class="mp-apps-app">
-			<div class="mp-apps-icon">
-				<img ng-src="{{_V(theme['app_icon']['com_android_contacts_com_android_contacts_activities_dialtactsactivity'])}}">
-				<p>Phone</p>
+
+			<div class="mp-apps-icon" ng-repeat="app in appIconList">
+				<img ng-src="{{_V(theme['app_icon'][app.id])}}">
+				<p>{{app.captial}}</p>
 			</div>
+
 		</div>
 	</div>
 </div>
