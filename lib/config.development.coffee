@@ -22,6 +22,14 @@ module.exports = {
 		base_path: p('') # /app/resources
 		package_path: "/resources/themes"
 		develop_path: "/resources/upload"
+		thumb_path: "/resources/preview"
+
+		widget_src: './theme/certain/widget.png'
+		pageswitch_src: './theme/certain/pageswitch.png'
+
+		wp_width: 960
+		wp_height: 800
+		icon_size: 48
 	}
 }
 
