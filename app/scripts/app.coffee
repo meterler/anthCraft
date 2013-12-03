@@ -75,3 +75,5 @@ mod.controller 'controlButton', [
 		$scope.createNewTheme = ()->
 			themeService.init()
 ]
+
+
