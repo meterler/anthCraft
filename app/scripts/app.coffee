@@ -24,6 +24,9 @@ mod = angular.module('anthCraftApp', [
 		.when('/systemIcons', {
 			templateUrl: 'views/systemicons.html'
 		})
+		.when('/packForm', {
+			templateUrl: 'views/packform.html'
+		})
 		.otherwise {
 			redirectTo: '/'
 		}
