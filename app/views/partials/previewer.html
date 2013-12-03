@@ -8,8 +8,9 @@
 
  -->
 
-<div class="mod-previewer" ng-controller="previewCtrl">
-	<div class="sence sence-home">
+<div class="mod-previewer" ng-controller="previewCtrl" ng-switch="curSence">
+
+	<div class="sence sence-home" ng-switch-when="home">
 		<!-- <div ng-style="setBg(theme['wallpaper']['wallpaper'])"></div> -->
 
 		<img class="mp-wallpaper" ng-src="{{_V(theme['wallpaper']['wallpaper'])}}" />
@@ -23,11 +24,15 @@
 		</div>
 	</div>
 
-	<div class="sence sence-apps">
+	<div class="sence sence-apps" ng-switch-when="apps">
 		<img class="mp-wallpaper" ng-src="{{_V(theme['wallpaper']['wallpaper'])}}" />
 		<div class="mp-statusbar"></div>
 		<div class="mp-apps-app">
-			<div class="mp-apps-icon"></div>
+			<div class="mp-apps-icon">
+				<img ng-src="{{_V(theme['app_icon']['com_android_contacts_com_android_contacts_activities_dialtactsactivity'])}}">
+				<p>Phone</p>
+			</div>
 		</div>
 	</div>
 </div>
+

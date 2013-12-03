@@ -1,7 +1,7 @@
 
 mod = angular.module('anthCraftApp')
 
-mod.controller "menuListCtrl", ['$scope', '$location', ($scope, $location)->
+mod.controller "menuListCtrl", ['$rootScope', '$scope', '$location', ($rootScope, $scope, $location)->
 
 	$scope.switch = (menu)->
 		this.menu.active = not this.menu.active
@@ -9,6 +9,10 @@ mod.controller "menuListCtrl", ['$scope', '$location', ($scope, $location)->
 		return false
 
 	$scope.curPath = $location.path()
+
+	$scope.spk = (item)->
+		if item.url is $scope.curPath
+			$rootScope.$broadcast 'theme.switchSence', item.sence
 
 	# Open menuList
 	$scope.switchMenu = (menu)->
@@ -25,10 +29,12 @@ mod.controller "menuListCtrl", ['$scope', '$location', ($scope, $location)->
 				{
 					title: "Wallpaper"
 					url: "/wallpaper"
+					sence: "home"
 				}
 				{
 					title: "Dockbar"
 					url: "/dockbar"
+					sence: "home"
 				}
 
 			]
@@ -40,6 +46,7 @@ mod.controller "menuListCtrl", ['$scope', '$location', ($scope, $location)->
 				{
 					title: "System Icons"
 					url: "/systemIcons"
+					sence: "apps"
 				}
 			]
 
