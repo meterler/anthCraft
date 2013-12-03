@@ -1,7 +1,7 @@
 
 mod = angular.module 'anthCraftApp'
 
-mod.directive 'uploadImg', [ '$http', ($http)-> {
+mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 	restrict: 'E'
 	scope: {
 		themeId: "@"
@@ -23,6 +23,9 @@ mod.directive 'uploadImg', [ '$http', ($http)-> {
 	controller: ['$scope', '$attrs', '$http', ($scope, $attrs, $http)->
 		$scope.resName = $attrs.resName
 		$scope.upload = (image)->
+
+			ngProgress.start()
+
 			themeId = $attrs.themeId
 			resType = $attrs.resType
 			resName = $attrs.resName
@@ -47,8 +50,10 @@ mod.directive 'uploadImg', [ '$http', ($http)-> {
 				packInfo[resType] = {}
 				packInfo[resType][resName] = result.src
 
+				ngProgress.complete()
 
 				callback(packInfo)
+
 
 			).error ()->
 	]

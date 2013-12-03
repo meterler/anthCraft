@@ -1,12 +1,13 @@
 
 angular.module('LocalStorageModule').value('prefix', 'anthCraft');
 mod = angular.module('anthCraftApp', [
+	'ngProgress'
 	'ngRoute'
 	'ngCookies'
 	'ngResource'
 	'imageupload'
 	'LocalStorageModule'
-]).config [ '$routeProvider', '$compileProvider',($routeProvider, $compileProvider)->
+]).config [ '$routeProvider', '$compileProvider', ($routeProvider, $compileProvider)->
 
 	# Compile white list for image preview since angular-v1.2.1
 	$compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|blob):|data:image\//)
