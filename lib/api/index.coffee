@@ -50,6 +50,27 @@ module.exports = (app)->
 
 		})
 
+		ThemeModel.route 'preview.post', {
+			detail: true,
+			handler: (req, res, next)->
+				themeId = req.params.id
+				packInfo = req.body
+
+				packInfo.themeId = themeId
+
+				__log ">>>Preview packInfo: ", packInfo
+
+				anthPack.preview packInfo, (err, result)->
+					if err
+						__log err
+						res.json {
+							success: false
+							err: err
+						}
+						return
+					res.send result
+		}
+
 		# Provide RESTful API of ThemeModel
 		ThemeModel.register app, '/api/themes'
 	return

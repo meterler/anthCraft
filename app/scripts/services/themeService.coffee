@@ -56,9 +56,10 @@ mod.service 'themeService', [
 				unpublished_theme_model = localStorage.get('unpublished_theme_model')
 				unpublished_theme_packInfo = localStorage.get('unpublished_theme_packInfo')
 				if unpublished_theme_model
-					unpublished_theme_model = Theme.get({ themeId: unpublished_theme_model._id })
-					service.themeModel = unpublished_theme_model
 					service.packInfo = unpublished_theme_packInfo
+					unpublished_theme_model = Theme.get { themeId: unpublished_theme_model._id }, (themeModel)->
+						service.themeModel = themeModel
+
 
 				return true
 
@@ -89,10 +90,10 @@ mod.service 'themeService', [
 
 
 			previewTheme: (callback)->
-
-				Theme.preview service.packInfo, (data)->
-
+				debugger;
+				Theme.preview { themeId: service.themeModel._id }, service.packInfo, (data)->
 					console.log(data);
+					callback(data);
 
 			# Package theme and get theme Url
 			packageTheme: (callback)->

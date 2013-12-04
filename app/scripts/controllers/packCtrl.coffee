@@ -9,7 +9,9 @@ mod.controller 'packCtrl', [
 
 		$scope.theme = themeService.themeModel
 
+		themeService.previewTheme (thumbList)->
+			$scope.thumblist = thumbList
 
 		$scope.savePack = ()->
-			$scope.theme.$save()
+			themeService.packageTheme
 ]
