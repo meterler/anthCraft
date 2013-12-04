@@ -115,3 +115,30 @@ html,body {
 ::-webkit-scrollbar-thumb:hover {
 	background-color: #aaa;
 }
+
+
+
+.animate-enter,.animate-leave {
+	-webkit-transition:1000ms cubic-bezier(.165,.84,.44,1) all;
+	-moz-transition:1000ms cubic-bezier(.165,.84,.44,1) all;
+	-ms-transition:1000ms cubic-bezier(.165,.84,.44,1) all;
+	-o-transition:1000ms cubic-bezier(.165,.84,.44,1) all;
+	transition:1000ms cubic-bezier(.165,.84,.44,1) all;
+}
+
+.animate-enter {
+	left:100%;
+}
+
+.animate-enter.animate-enter-active {
+	left:0;
+}
+
+.animate-leave {
+	left:0;
+}
+
+.animate-leave.animate-leave-active {
+	margin-left:-100%;
+}
+

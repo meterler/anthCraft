@@ -90,7 +90,6 @@ mod.service 'themeService', [
 
 
 			previewTheme: (callback)->
-				debugger;
 				Theme.preview { themeId: service.themeModel._id }, service.packInfo, (data)->
 					console.log(data);
 					callback(data);

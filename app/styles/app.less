@@ -10,10 +10,15 @@
 }
 .entryborad {
 	float: right;
-	margin: 100px;
+	margin-top: 150px;
+	margin-right: 100px;
 
 	.btn {
-		font-size: 16px;
+		width: 274px;
+		height: 50px;
+		margin-bottom: 50px;
+		font-size: 28px;
+		display: block;
 	}
 }
 
@@ -52,15 +57,31 @@
 	}
 }
 
+.preview-thumbnail {
+	display: inline-block;
+	.thumbnail-handler {
+		display: inline-block;
+		vertical-align: middle;
+		text-decoration: none;
+	}
+}
+
 .thumbnail-list {
 	position: relative;
 	padding: 5px;
 	display: inline-block;
+	vertical-align: middle;
 
+	width: 240px;
+	height: 430px;
+	overflow: hidden;
 	border: 1px solid #E9E9E9;
-	img {
-		width: 239px;
-		height: 428px;
+	.thumbnail-pic {
+		position: absolute;
+		img {
+			width: 239px;
+			height: 428px;
+		}
 	}
 }
 

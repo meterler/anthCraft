@@ -5,8 +5,14 @@
 		<h1>Upload Package</h1>
 	</header>
 
-	<div class="thumbnail-list">
-		<img src="/resources/thumbs/default_theme/thumbnails_1.jpg" />
+	<div class="preview-thumbnail">
+		<a href="javascript:;" ng-click="prev()" class="thumbnail-handler left"> &lt; </a>
+		<div class="thumbnail-list clearfix" ng-animate="'animate'">
+			<div class="thumbnail-pic" ng-repeat="thumb in thumblist" ng-show="check($index)">
+				<img ng-src="/resources/preview/{{thumb}}"/>
+			</div>
+		</div>
+		<a href="javascript:;" ng-click="next()" class="thumbnail-handler right"> &gt; </a>
 	</div>
 
 

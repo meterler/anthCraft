@@ -68,7 +68,10 @@ module.exports = (app)->
 							err: err
 						}
 						return
-					res.send result
+					ThemeModel.findById themeId, (err, doc)->
+						doc.preview = [].concat(result)
+						doc.save()
+						res.send doc
 		}
 
 		# Provide RESTful API of ThemeModel
