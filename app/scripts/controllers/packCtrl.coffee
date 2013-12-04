@@ -6,20 +6,18 @@ mod.controller 'packCtrl', [
 	(
 		$scope, $timeout, themeService
 	)->
-		$scope.curThumb = 1
+		$scope.curThumb = 0
 
 		$scope.theme = themeService.themeModel
 
 		themeService.previewTheme (newTheme)->
 			$scope.thumblist = newTheme.preview
 
-		$scope.savePack = ()->
-			themeService.packageTheme
-
 		$scope.prev = -> $scope.curThumb = Math.abs(($scope.curThumb - 1) % $scope.thumblist.length)
 		$scope.next = -> $scope.curThumb = Math.abs(($scope.curThumb + 1) % $scope.thumblist.length)
+		$scope.check = (n)-> $scope.curThumb is n
 
-		$scope.check = (n)->
-			console.log(n, $scope.curThumb);
-			$scope.curThumb is n
+		$scope.savePack = ()->
+			themeService.packageTheme (theme)->
+				console.log "PackTheme: ", arguments
 ]

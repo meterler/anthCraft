@@ -33,10 +33,8 @@ module.exports = (app)->
 					anthPack.packTheme packInfo, (err, packagePath)->
 
 						if err
-							res.json {
-								success: false
-								err: err
-							}
+							__log err
+							res.send 500, "Package Error!"
 							return
 
 						themeRecord.packagePath = packagePath.replace(__config.appPath, '').split(path.sep).join('/')
@@ -63,10 +61,7 @@ module.exports = (app)->
 				anthPack.preview packInfo, (err, result)->
 					if err
 						__log err
-						res.json {
-							success: false
-							err: err
-						}
+						res.send 500
 						return
 					ThemeModel.findById themeId, (err, doc)->
 						doc.preview = [].concat(result)

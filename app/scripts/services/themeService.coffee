@@ -100,6 +100,7 @@ mod.service 'themeService', [
 				service.themeModel.$save (doc)->
 					# package up
 					Theme.packageUp { themeId: doc._id }, service.packInfo, (data)->
+
 						service.themeModel.updateTime = data.theme.updateTime
 						service.themeModel.packagePath = data.theme.packagePath
 						callback.apply(null, arguments)
