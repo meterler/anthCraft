@@ -17,10 +17,10 @@ mod.factory 'themeConfig', ->
 						height: 428
 						force: true
 					}
-				when 'app_icon', 'dock_icon'
+				when 'app_icon', 'dock_icon', 'customize_mat'
 					{
-						width: 37
-						height: 37
+						width: 43
+						height: 43
 						force: true
 					}
 
@@ -32,7 +32,7 @@ mod.factory 'themeConfig', ->
 						height: 1280
 						type: 'jpg'
 					}
-				when 'dock_icon'
+				when 'dock_icon', 'customize_mat'
 					{
 						width: 480
 						height: 90
@@ -60,7 +60,6 @@ mod.factory 'themeConfig', ->
 				"com_android_deskclock_com_android_deskclock_deskclock": "/default_theme/app_icon/com_android_deskclock_com_android_deskclock_deskclock.png"
 				"com_android_email_com_android_email_activity_welcome": "/default_theme/app_icon/com_android_email_com_android_email_activity_welcome.png"
 				"com_android_gallery3d_com_android_gallery3d_app_gallery": "/default_theme/app_icon/com_android_gallery3d_com_android_gallery3d_app_gallery.png"
-				"com_android_mms_com_android_mms_ui_conversationcomposer": "/default_theme/app_icon/com_android_mms_com_android_mms_ui_conversationcomposer.png"
 				"com_android_mms_com_android_mms_ui_conversationlist": "/default_theme/app_icon/com_android_mms_com_android_mms_ui_conversationlist.png"
 				"com_android_music_com_android_music_musicbrowseractivity": "/default_theme/app_icon/com_android_music_com_android_music_musicbrowseractivity.png"
 				"com_android_music_com_android_music_videobrowseractivity": "/default_theme/app_icon/com_android_music_com_android_music_videobrowseractivity.png"
@@ -70,7 +69,10 @@ mod.factory 'themeConfig', ->
 				"com_google_android_apps_maps_com_google_android_maps_mapsactivity": "/default_theme/app_icon/com_google_android_apps_maps_com_google_android_maps_mapsactivity.png"
 				"com_mediatek_videoplayer_com_mediatek_videoplayer_movielistactivity": "/default_theme/app_icon/com_mediatek_videoplayer_com_mediatek_videoplayer_movielistactivity.png"
 				"com_sec_android_app_sbrowser_com_sec_android_app_sbrowser_sbrowsermainactivity": "/default_theme/app_icon/com_sec_android_app_sbrowser_com_sec_android_app_sbrowser_sbrowsermainactivity.png"
+			}
 
+			customize_mat: {
+				"default_customize_mat": "/default_theme/customize_mat/default_customize_mat.png"
 			}
 
 			dock_icon: {
@@ -89,7 +91,6 @@ mod.factory 'themeConfig', ->
 			{ id: "com_android_deskclock_com_android_deskclock_deskclock", captial: "hello" }
 			{ id: "com_android_email_com_android_email_activity_welcome", captial: "hello" }
 			{ id: "com_android_gallery3d_com_android_gallery3d_app_gallery", captial: "hello" }
-			{ id: "com_android_mms_com_android_mms_ui_conversationcomposer", captial: "hello" }
 			{ id: "com_android_mms_com_android_mms_ui_conversationlist", captial: "hello" }
 			{ id: "com_android_music_com_android_music_musicbrowseractivity", captial: "hello" }
 			{ id: "com_android_music_com_android_music_videobrowseractivity", captial: "hello" }

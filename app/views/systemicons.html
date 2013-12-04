@@ -25,4 +25,17 @@
 		rec-type="png"
 		callback="updatePreview" ng-repeat="m in appIconList"></upload-img>
 
+	<upload-img
+		theme-id="{{themeId}}"
+		res-type="customize_mat"
+		res-name="default_customize_mat"
+		res-captial="icon bg"
+		default-data="themeData"
+		src-prefix="{{srcPrefix}}"
+		scale="getScale"
+		rec-width="192"
+		rec-height="192"
+		rec-type="png"
+		callback="updatePreview"></upload-img>
+
 </div>
