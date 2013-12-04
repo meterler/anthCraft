@@ -9,7 +9,13 @@ mod.service 'themeService', [
 		$rootScope, $resource, localStorage, themeConfig
 	)->
 
-		Theme = null
+		actions = {
+			create: { method: 'POST' }
+			save: { method: 'PUT' }
+			packageUp: { method: 'POST', url: '/api/themes/:themeId/package' }
+			preview: { method: 'POST', url: '/api/themes/:themeId/preview' }
+		}
+		Theme = $resource('/api/themes/:themeId', { themeId: '@_id' }, actions)
 
 		service = {
 
@@ -25,13 +31,6 @@ mod.service 'themeService', [
 				# Clear localStorage
 				localStorage.remove('unpublished_theme_model')
 				localStorage.remove('unpublished_theme_packInfo')
-
-				actions = {
-					create: { method: 'POST' }
-					save: { method: 'PUT' }
-					packageUp: { method: 'POST', url: '/api/themes/:themeId/package' }
-				}
-				Theme = $resource('/api/themes/:themeId', { themeId: '@_id' }, actions)
 
 				service.themeModel = Theme.create {}, (doc)->
 
@@ -56,9 +55,10 @@ mod.service 'themeService', [
 
 				unpublished_theme_model = localStorage.get('unpublished_theme_model')
 				unpublished_theme_packInfo = localStorage.get('unpublished_theme_packInfo')
-
-				service.themeModel = unpublished_theme_model if unpublished_theme_model
-				service.packInfo = unpublished_theme_packInfo if unpublished_theme_packInfo
+				if unpublished_theme_model
+					unpublished_theme_model = Theme.get({ themeId: unpublished_theme_model._id })
+					service.themeModel = unpublished_theme_model
+					service.packInfo = unpublished_theme_packInfo
 
 				return true
 
@@ -87,6 +87,14 @@ mod.service 'themeService', [
 			resetValue: (resType, resName)->
 				service.packInfo[resType][resName] = themeConfig.defaultPackInfo[resType][resName]
 
+
+			previewTheme: (callback)->
+
+				Theme.preview service.packInfo, (data)->
+
+					console.log(data);
+
+			# Package theme and get theme Url
 			packageTheme: (callback)->
 				# save themeModel
 				service.themeModel.$save (doc)->

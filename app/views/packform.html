@@ -1,10 +1,44 @@
 
+<div ng-controller="packCtrl">
 
-<header class="pg-title">
-	<h1>Upload Package</h1>
-</header>
+	<header class="pg-title">
+		<h1>Upload Package</h1>
+	</header>
 
-<div class="thumbnail-list">
-	hello! packform
+	<div class="thumbnail-list">
+		<img src="/resources/thumbs/default_theme/thumbnails_1.jpg" />
+	</div>
+
+
+	<div class="pack-form">
+		<form>
+			<div class="form-group">
+				<label for="themeName">Theme Name</label>
+				<div class="form-field">
+					<input type="text" ng-model="theme.title" class="form-control" name="themeName" placeholder="Awesome Theme">
+					<span class="help-text">Required</span>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="author">Author</label>
+				<div class="form-field">
+					<input type="text" ng-model="theme.author" class="form-control" name="author" placeholder="Your name">
+					<span class="help-text">Required</span>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="description">Description</label>
+				<div class="form-field">
+					<textarea name="description" ng-model="theme.description" cols="30" rows="10"></textarea>
+				</div>
+			</div>
+
+			<div class="form-actions">
+				<button class="btn btn-primary" ng-click="savePack()">Save</button>
+			</div>
+
+		</form>
+	</div>
 </div>
-
