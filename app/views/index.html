@@ -1,10 +1,12 @@
 
 <div ng-controller="indexCtrl">
 
-	<div style="margin: 100px; text-align: center;">
-		<button ng-click="createTheme()" class="btn btn-primary"> Create New Theme </button>
+	<img src="/resources/phone/skingle.png" class="skingle">
 
-		<button ng-show="hasUnpub" ng-click="continueTheme()" class="btn btn-warn"> Continue Theme </button>
+	<div class="entryborad">
+		<button ng-click="createTheme()" class="btn btn-darkgreen"> Create New Theme </button>
+
+		<button ng-show="hasUnpub" ng-click="continueTheme()" class="btn btn-lightgreen"> Continue Theme </button>
 	</div>
 
 </div>
