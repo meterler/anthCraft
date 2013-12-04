@@ -39,6 +39,16 @@ module.exports = (app)->
 			scale: previewScale
 		}, (err, previewImgPath)->
 
+			if err
+				__log "Upload Error: ", err
+				res.send 500, err
+				# res.json {
+				# 	success: false
+				# 	# TODO: Return the FAIL 404 imgage
+				# 	src: ''
+				# }
+				return
+
 			# __log "PreviewImgPath: ", previewImgPath
 			# __log "config.appPath: ", __config.appPath
 
@@ -49,18 +59,11 @@ module.exports = (app)->
 			# Because of win, convert path seperator to url path style
 			url = url.split(path.sep).join("/")
 
-			if err
-				res.send 500, err
-				# res.json {
-				# 	success: false
-				# 	# TODO: Return the FAIL 404 imgage
-				# 	src: ''
-				# }
-			else
-				res.json {
-					success: true
-					src: url
-				}
+
+			res.json {
+				success: true
+				src: url
+			}
 
 		return
 
