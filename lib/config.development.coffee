@@ -24,8 +24,8 @@ module.exports = {
 		develop_path: "/resources/upload"
 		thumb_path: "/resources/preview"
 
-		widget_src: './theme/certain/widget.png'
-		pageswitch_src: './theme/certain/pageswitch.png'
+		widget_src: p('/resources/phone/default/widget.png')
+		pageswitch_src: p('/resources/phone/default/pageswitch.png')
 
 		wp_width: 960
 		wp_height: 800
