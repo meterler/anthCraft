@@ -46,11 +46,6 @@ mod.factory 'themeConfig', ->
 			}
 
 			app_icon: {
-				# "com_android_contacts_com_android_contacts_activities_dialtactsactivity":"/default_theme/app_icon/com_android_contacts_com_android_contacts_activities_dialtactsactivity.png"
-				# "com_android_contacts_com_android_contacts_activities_peopleactivity":"/default_theme/app_icon/com_android_contacts_com_android_contacts_activities_peopleactivity.png"
-				# "com_android_mms_com_android_mms_ui_conversationcomposer":"/default_theme/app_icon/com_android_mms_com_android_mms_ui_conversationcomposer.png"
-				# "com_sec_android_app_sbrowser_com_sec_android_app_sbrowser_sbrowsermainactivity":"/default_theme/app_icon/com_sec_android_app_sbrowser_com_sec_android_app_sbrowser_sbrowsermainactivity.png"
-
 				"com_android_browser_com_android_browser_browseractivity": "/default_theme/app_icon/com_android_browser_com_android_browser_browseractivity.png"
 				"com_android_calculator2_com_android_calculator2_calculator": "/default_theme/app_icon/com_android_calculator2_com_android_calculator2_calculator.png"
 				"com_android_calendar_com_android_calendar_allinoneactivity": "/default_theme/app_icon/com_android_calendar_com_android_calendar_allinoneactivity.png"
@@ -81,23 +76,23 @@ mod.factory 'themeConfig', ->
 		}
 
 		appIcons: [
-			{ id: "com_android_browser_com_android_browser_browseractivity", captial: "hello" }
-			{ id: "com_android_calculator2_com_android_calculator2_calculator", captial: "hello" }
-			{ id: "com_android_calendar_com_android_calendar_allinoneactivity", captial: "hello" }
-			{ id: "com_android_camera_com_android_camera_camera", captial: "hello" }
-			{ id: "com_android_contacts_com_android_contacts_activities_dialtactsactivity", captial: "hello" }
-			{ id: "com_android_contacts_com_android_contacts_activities_peopleactivity", captial: "hello" }
-			{ id: "com_android_deskclock_com_android_deskclock_deskclock", captial: "hello" }
-			{ id: "com_android_email_com_android_email_activity_welcome", captial: "hello" }
-			{ id: "com_android_gallery3d_com_android_gallery3d_app_gallery", captial: "hello" }
-			{ id: "com_android_mms_com_android_mms_ui_conversationlist", captial: "hello" }
-			{ id: "com_android_music_com_android_music_musicbrowseractivity", captial: "hello" }
-			{ id: "com_android_music_com_android_music_videobrowseractivity", captial: "hello" }
-			{ id: "com_android_providers_downloads_ui_com_android_providers_downloads_ui_downloadlist", captial: "hello" }
-			{ id: "com_android_quicksearchbox_com_android_quicksearchbox_searchactivity", captial: "hello" }
-			{ id: "com_android_settings_com_android_settings_settings", captial: "hello" }
-			{ id: "com_google_android_apps_maps_com_google_android_maps_mapsactivity", captial: "hello" }
-			{ id: "com_mediatek_videoplayer_com_mediatek_videoplayer_movielistactivity", captial: "hello" }
+			{ id: "com_android_browser_com_android_browser_browseractivity", captial: "Browser" }
+			{ id: "com_android_calculator2_com_android_calculator2_calculator", captial: "Calculator" }
+			{ id: "com_android_calendar_com_android_calendar_allinoneactivity", captial: "Calendar" }
+			{ id: "com_android_camera_com_android_camera_camera", captial: "Camera" }
+			{ id: "com_android_contacts_com_android_contacts_activities_dialtactsactivity", captial: "Dial" }
+			{ id: "com_android_contacts_com_android_contacts_activities_peopleactivity", captial: "Contacts" }
+			{ id: "com_android_deskclock_com_android_deskclock_deskclock", captial: "Clock" }
+			{ id: "com_android_email_com_android_email_activity_welcome", captial: "Email" }
+			{ id: "com_android_gallery3d_com_android_gallery3d_app_gallery", captial: "Gallery" }
+			{ id: "com_android_mms_com_android_mms_ui_conversationlist", captial: "SMS" }
+			{ id: "com_android_music_com_android_music_musicbrowseractivity", captial: "Music" }
+			{ id: "com_android_music_com_android_music_videobrowseractivity", captial: "Video" }
+			{ id: "com_android_providers_downloads_ui_com_android_providers_downloads_ui_downloadlist", captial: "Download" }
+			{ id: "com_android_quicksearchbox_com_android_quicksearchbox_searchactivity", captial: "Search" }
+			{ id: "com_android_settings_com_android_settings_settings", captial: "Settings" }
+			{ id: "com_google_android_apps_maps_com_google_android_maps_mapsactivity", captial: "Maps" }
+			{ id: "com_mediatek_videoplayer_com_mediatek_videoplayer_movielistactivity", captial: "Video" }
 
 		]
 
