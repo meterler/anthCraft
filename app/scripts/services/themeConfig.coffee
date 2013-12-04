@@ -68,7 +68,6 @@ mod.factory 'themeConfig', ->
 				"com_android_settings_com_android_settings_settings": "/default_theme/app_icon/com_android_settings_com_android_settings_settings.png"
 				"com_google_android_apps_maps_com_google_android_maps_mapsactivity": "/default_theme/app_icon/com_google_android_apps_maps_com_google_android_maps_mapsactivity.png"
 				"com_mediatek_videoplayer_com_mediatek_videoplayer_movielistactivity": "/default_theme/app_icon/com_mediatek_videoplayer_com_mediatek_videoplayer_movielistactivity.png"
-				"com_sec_android_app_sbrowser_com_sec_android_app_sbrowser_sbrowsermainactivity": "/default_theme/app_icon/com_sec_android_app_sbrowser_com_sec_android_app_sbrowser_sbrowsermainactivity.png"
 			}
 
 			customize_mat: {
@@ -99,7 +98,6 @@ mod.factory 'themeConfig', ->
 			{ id: "com_android_settings_com_android_settings_settings", captial: "hello" }
 			{ id: "com_google_android_apps_maps_com_google_android_maps_mapsactivity", captial: "hello" }
 			{ id: "com_mediatek_videoplayer_com_mediatek_videoplayer_movielistactivity", captial: "hello" }
-			{ id: "com_sec_android_app_sbrowser_com_sec_android_app_sbrowser_sbrowsermainactivity", captial: "hello" }
 
 		]
 
