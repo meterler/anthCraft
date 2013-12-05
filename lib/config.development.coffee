@@ -27,8 +27,6 @@ module.exports = {
 		widget_src: p('/resources/phone/default/widget.png')
 		pageswitch_src: p('/resources/phone/default/pageswitch.png')
 
-		wp_width: 239
-		wp_height: 428
 		icon_size: 56
 	}
 }

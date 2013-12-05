@@ -19,8 +19,8 @@ mod.factory 'themeConfig', ->
 					}
 				when 'app_icon', 'dock_icon', 'customize_mat'
 					{
-						width: 43
-						height: 43
+						width: 56
+						height: 56
 						force: true
 					}
 
