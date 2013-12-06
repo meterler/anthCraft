@@ -78,6 +78,17 @@ schemaStruct = {
 		default: ''
 	}
 
+	# packages: {
+	# 	"{density}": {
+	# 		file: "{url}"
+	# 		size: "{size}"
+	# 	}
+	# 	"{density}": {
+	# 		file: "{url}"
+	# 		size: "{size}"
+	# 	}
+	# }
+
 	# 主题包大小
 	size: {
 		type: 'number',

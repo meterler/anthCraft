@@ -7,8 +7,7 @@
     "node-restful": "~0.1.14",
     "redis": "~0.9.1",
     "async": "~0.2.9",
-    "mongoose-id-autoinc2": "~1.0.1",
-    "anthpack": "~1.1.6"
+    "mongoose-id-autoinc2": "~1.0.1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
