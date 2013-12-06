@@ -91,7 +91,6 @@ mod.service 'themeService', [
 
 			previewTheme: (callback)->
 				Theme.preview { themeId: service.themeModel._id }, service.packInfo, (data)->
-					console.log(data);
 					callback(data);
 
 			# Package theme and get theme Url
@@ -102,7 +101,7 @@ mod.service 'themeService', [
 					Theme.packageUp { themeId: doc._id }, service.packInfo, (data)->
 
 						service.themeModel.updateTime = data.theme.updateTime
-						service.themeModel.packagePath = data.theme.packagePath
+						service.themeModel.packageFile = data.theme.packageFile
 						callback.apply(null, arguments)
 
 						# Clear localStorage

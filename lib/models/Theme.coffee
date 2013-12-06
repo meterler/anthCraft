@@ -10,7 +10,7 @@ redisClient = require('redis').client
 # Theme schema definition
 schemaStruct = {
 
-	id: {
+	themeId: {
 		type: 'number'
 	}
 
@@ -60,39 +60,33 @@ schemaStruct = {
 		default: 0
 	}
 
-	packageName: 'string'
-	packagePath: 'string'
-
 	# 预览图 [url]
 	preview: [ 'string' ]
 
-	# 密度(160,240,320,480)
-	density: {
-		type: 'number',
-		default: 480
-	}
-
 	# 主题包下载地址
-	url: {
-		type: 'string',
-		default: ''
+	# [{
+	# 	density: 160 #密度(160,240,320,480)
+	# 	file: "xxx"
+	# 	size: 245
+	# }]
+	packageFile: [mongoose.Schema.Types.Mixed]
+
+	# 积分
+	point: {
+		type: "number"
+		default: 0
 	}
 
-	# packages: {
-	# 	"{density}": {
-	# 		file: "{url}"
-	# 		size: "{size}"
-	# 	}
-	# 	"{density}": {
-	# 		file: "{url}"
-	# 		size: "{size}"
-	# 	}
-	# }
+	# 评价
+	grade: {
+		type: "number"
+		default: 0
+	}
 
-	# 主题包大小
-	size: {
-		type: 'number',
-		default: '0'
+	# 状态：0正常，1删除
+	status: {
+		type: "number"
+		default: 0
 	}
 
 	updateTime: { type: 'date', default: Date.now }
@@ -111,7 +105,7 @@ ThemeModel = restful
 # Config _id auto increase
 ThemeSchema.plugin autoinc.plugin, {
 	model: 'theme',
-	field: 'id',
+	field: 'themeId',
 	start: 100,
 	step: 1
 }
