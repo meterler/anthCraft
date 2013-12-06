@@ -19,20 +19,13 @@ mod.factory 'menuFactory', ->
 						url: "/dockbar"
 						sence: "home"
 					}
-
-				]
-			},
-			{
-				title: "Icons"
-				active: false
-				submenus: [
 					{
 						title: "System Icons"
 						url: "/systemIcons"
 						sence: "apps"
 					}
-				]
 
+				]
 			}
 		]
 
