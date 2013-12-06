@@ -13,9 +13,16 @@ mod.factory 'themeConfig', ->
 			switch resType
 				when 'wallpaper'
 					{
-						width: 239
+						width: 513
 						height: 428
 						force: true
+
+						crop: {
+							width: 239
+							height: 428
+							x: 137
+							y: 0
+						}
 					}
 				when 'app_icon', 'dock_icon', 'customize_mat'
 					{
