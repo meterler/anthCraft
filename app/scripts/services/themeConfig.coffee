@@ -49,7 +49,7 @@ mod.factory 'themeConfig', ->
 		# Default packInfo for reset style
 		defaultPackInfo: {
 			wallpaper: {
-				"wallpaper": "/default_theme/wallpaper/wallpaper960x800(72).jpg"
+				"wallpaper": "/default_theme/wallpaper/wallpaper960x800.jpg"
 			}
 
 			app_icon: {
