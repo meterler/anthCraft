@@ -43,11 +43,30 @@ html,body {
 	.sec-controlButton {
 		position: absolute;
 		right: 10px;
-		top: 50px;
+		top: 37px;
 		a {
+			width: 37px;
 			color: #FEFAA7;
 			display: inline-block;
-			margin: 0 5px;
+			margin: 0 10px;
+			background: url("/styles/img/sprits.png") no-repeat;
+			text-align: center;
+			padding-top: 37px;
+			text-decoration: none;
+		}
+
+		.icon-new {
+			background-position: 0 0;
+			&:hover {
+				background-position: -145px 0;
+
+			}
+		}
+		.icon-pack {
+			background-position: -68px 0;
+			&:hover {
+				background-position: -213px 0;
+			}
 		}
 	}
 }
