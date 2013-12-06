@@ -105,8 +105,8 @@ mod.service 'themeService', [
 						callback.apply(null, arguments)
 
 						# Clear localStorage
-						localStorage.remove('unpublished_theme_model')
-						localStorage.remove('unpublished_theme_packInfo')
+						# localStorage.remove('unpublished_theme_model')
+						# localStorage.remove('unpublished_theme_packInfo')
 
 		}
 
