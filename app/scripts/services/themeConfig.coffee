@@ -87,12 +87,12 @@ mod.factory 'themeConfig', ->
 			{ id: "com_android_calculator2_com_android_calculator2_calculator", captial: "Calculator" }
 			{ id: "com_android_calendar_com_android_calendar_allinoneactivity", captial: "Calendar" }
 			{ id: "com_android_camera_com_android_camera_camera", captial: "Camera" }
-			{ id: "com_android_contacts_com_android_contacts_activities_dialtactsactivity", captial: "Dial" }
+			{ id: "com_android_contacts_com_android_contacts_activities_dialtactsactivity", captial: "Phone" }
 			{ id: "com_android_contacts_com_android_contacts_activities_peopleactivity", captial: "Contacts" }
 			{ id: "com_android_deskclock_com_android_deskclock_deskclock", captial: "Clock" }
 			{ id: "com_android_email_com_android_email_activity_welcome", captial: "Email" }
 			{ id: "com_android_gallery3d_com_android_gallery3d_app_gallery", captial: "Gallery" }
-			{ id: "com_android_mms_com_android_mms_ui_conversationlist", captial: "SMS" }
+			{ id: "com_android_mms_com_android_mms_ui_conversationlist", captial: "Messages" }
 			{ id: "com_android_music_com_android_music_musicbrowseractivity", captial: "Music" }
 			{ id: "com_android_music_com_android_music_videobrowseractivity", captial: "Video" }
 			{ id: "com_android_providers_downloads_ui_com_android_providers_downloads_ui_downloadlist", captial: "Download" }
