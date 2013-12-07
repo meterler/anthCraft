@@ -5,7 +5,7 @@ mod.controller "overlayCtrl", [ '$rootScope', '$scope', ($rootScope, $scope)->
 
 	$scope.showing = false
 	$scope.text = "Create new theme will erase all data now you work on.
-			<br/>Are you sure to do this?"
+			\nAre you sure to do this?"
 
 	$scope.yes = "Yes, start new one."
 	$scope.no = "Forget it!"
