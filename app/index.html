@@ -58,7 +58,7 @@
 		<div ng-view></div>
 	</div>
 
-	<div class="overlay" ng-controller="overlayCtrl" ng-show="showing">
+	<div class="overlay" ng-controller="overlayCtrl" ng-init="showing=false" ng-show="showing">
 		<div class="dialog dlg-confirm">
 			<p>{{options.text}}</p>
 			<div class="button-group">
