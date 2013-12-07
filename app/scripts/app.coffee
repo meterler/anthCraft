@@ -69,7 +69,7 @@ mod.controller 'indexCtrl', [
 		$scope.hasUnpub = themeService.hasUnpub()
 		$scope.createTheme = ()->
 			# Create without confirm if there is no project on working
-			createNewThemeAction() if not $scope.hasUnpub
+			return createNewThemeAction() if not $scope.hasUnpub
 
 			# Send confirm overlay
 			$rootScope.$broadcast "overlay.show", {
