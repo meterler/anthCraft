@@ -87,7 +87,7 @@ mod.factory 'themeConfig', ->
 			{ id: "com_android_calculator2_com_android_calculator2_calculator", captial: "Calculator" }
 			{ id: "com_android_calendar_com_android_calendar_allinoneactivity", captial: "Calendar" }
 			{ id: "com_android_camera_com_android_camera_camera", captial: "Camera" }
-			{ id: "com_android_contacts_com_android_contacts_activities_dialtactsactivity", captial: "Dial" }
+			{ id: "com_android_contacts_com_android_contacts_activities_dialtactsactivity", captial: "Phone" }
 			{ id: "com_android_contacts_com_android_contacts_activities_peopleactivity", captial: "Contacts" }
 			{ id: "com_android_deskclock_com_android_deskclock_deskclock", captial: "Clock" }
 			{ id: "com_android_email_com_android_email_activity_welcome", captial: "Email" }
