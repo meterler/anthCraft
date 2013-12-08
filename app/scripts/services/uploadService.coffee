@@ -30,7 +30,9 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 			}
 		$scope.upload = (image)->
 
+			return if loading
 			ngProgress.start()
+			$scope.loading = true
 
 			themeId = $attrs.themeId
 			resType = $attrs.resType
@@ -59,7 +61,7 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 				ngProgress.complete()
 
 				callback(packInfo)
-
+				$scope.loading=false
 
 			).error ()->
 	]
