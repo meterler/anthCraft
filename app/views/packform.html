@@ -6,13 +6,17 @@
 	</header>
 
 	<div class="preview-thumbnail">
-		<a href="javascript:;" ng-click="prev()" class="thumbnail-handler left"> &lt; </a>
+		<a href="javascript:;" ng-click="prev()" class="thumbnail-handler left">
+			<i class="fa fa-chevron-left"></i>
+		</a>
 		<div class="thumbnail-list clearfix" ng-animate="'animate'">
 			<div class="thumbnail-pic" ng-repeat="thumb in thumblist" ng-show="check($index)">
 				<img ng-src="/resources/preview/{{thumb}}"/>
 			</div>
 		</div>
-		<a href="javascript:;" ng-click="next()" class="thumbnail-handler right"> &gt; </a>
+		<a href="javascript:;" ng-click="next()" class="thumbnail-handler right">
+			<i class="fa fa-chevron-right"></i>
+		</a>
 	</div>
 
 
