@@ -29,6 +29,10 @@ schemaStruct = {
 		default: ''
 	}
 
+	userId: {
+		type: 'string',
+		default: null
+	}
 	# 用户称呼（作者）
 	author: {
 		type: 'string',
