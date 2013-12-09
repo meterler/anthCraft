@@ -7,7 +7,7 @@ mod.factory 'menuFactory', ->
 
 		list: [
 			{
-				title: "c-Launcher"
+				title: "CLauncher"
 				submenus: [
 					{
 						title: "Wallpaper"
