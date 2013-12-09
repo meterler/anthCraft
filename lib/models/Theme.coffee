@@ -18,7 +18,7 @@ schemaStruct = {
 	title: {
 		type: 'string',
 		trim: true,
-		match: [/^.{3,40}$/, 'Theme name length must between 3 and 40.'],
+		# match: [/^.{3,40}$/, 'Theme name length must between 3 and 40.'],
 		default: 'Awesome theme'
 	}
 
@@ -36,7 +36,7 @@ schemaStruct = {
 	# 用户称呼（作者）
 	author: {
 		type: 'string',
-		default: '666'
+		default: ''
 	}
 	category: {
 		type: 'string',

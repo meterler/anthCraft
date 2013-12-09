@@ -2,14 +2,17 @@
 mod = angular.module('anthCraftApp')
 
 mod.controller 'packCtrl', [
-	'$scope', '$timeout', 'themeService'
+	'$scope', '$timeout', '$cookies', 'themeService'
 	(
-		$scope, $timeout, themeService
+		$scope, $timeout, $cookies, themeService
 	)->
 		$scope.curThumb = 0
 
+		themeService.themeModel.userId = $cookies.userid
+		themeService.themeModel.author = $cookies.username
+
 		$scope.theme = themeService.themeModel
-		
+
 		themeService.previewTheme (newTheme)->
 			$scope.thumblist = newTheme.preview
 			$scope.previewing = false
