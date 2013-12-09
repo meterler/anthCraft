@@ -30,7 +30,7 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 			}
 		$scope.upload = (image)->
 
-			return if $scope.loading
+			return if $scope.loading or not image
 			ngProgress.start()
 			$scope.loading = true
 
