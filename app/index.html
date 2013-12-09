@@ -6,7 +6,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title></title>
+	<title>Theme Creator for cLauncher</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -40,12 +40,12 @@
 				<a href="#">Login</a>
 			</section>
 
-			<section class="sec-controlButton" ng-controller="controlButton">
-				<a ng-href="#/wallpaper" ng-click="createNewTheme()" class="icon-new">
+			<section class="sec-controlButton" ng-controller="indexCtrl">
+				<a href="javascript:;" ng-click="createTheme()" class="icon-new">
 					<!-- <i class="fa fa-plus-circle fa-3x"></i> -->
 					New
 				</a>
-				<a ng-href="#/packForm" class="icon-pack">
+				<a ng-href="#/packForm" class="icon-pack" ng-show="hasUnpub">
 					<!-- <i class="fa fa-upload fa-3x"></i> -->
 					Pack
 				</a>
@@ -58,6 +58,15 @@
 		<div ng-view></div>
 	</div>
 
+	<div class="overlay" ng-controller="overlayCtrl" ng-init="showing=false" ng-show="showing">
+		<div class="dialog dlg-confirm">
+			<p>{{options.text}}</p>
+			<div class="button-group">
+				<a class="btn btn-primary" ng-click="close('yes')">{{options.yes}}</a>
+				<a class="btn btn-warning" ng-click="close('no')">{{options.no}}</a>
+			</div>
+		</div>
+	</div>
 <!-- 	<div class="ft">
 		<ul class="link-list">
 			<div class="bd">
@@ -97,6 +106,7 @@
 	<script src="scripts/controllers/latheCtrl.js"></script>
 	<script src="scripts/controllers/packCtrl.js"></script>
 	<script src="scripts/controllers/previewCtrl.js"></script>
+	<script src="scripts/controllers/overlayCtrl.js"></script>
 	<script src="scripts/services/menuConfig.js"></script>
 	<script src="scripts/controllers/menuListCtrl.js"></script>
 	<script src="scripts/services/themeConfig.js"></script>

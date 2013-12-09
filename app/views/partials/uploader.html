@@ -2,6 +2,10 @@
 
 	<div class="img-previewer">
 		<img ng-src="{{image.url}}" type="{{image.file.type}}" />
+
+		<div class="loading" ng-show="loading" ng-init="loading=false">
+			<i class="fa fa-spinner fa-spin fa-3x"></i>
+		</div>
 	</div>
 
 	<div class="img-info">
@@ -11,11 +15,11 @@
 	</div>
 
 	<div class="img-upload-handler">
-		<button class="file-upload btn btn-primary">
+		<label for="upImage" class="file-upload btn btn-primary">
 			<span><strong>Browser</strong></span>
-			<input type="file" accept="image/*" image="image">
-		</button>
-		<button class="btn btn-lightgreen" ng-click="upload(image.file)">Apply</button>
+			<input name="upImage" type="file" accept="image/*" image="image">
+		</label>
+		<button class="btn btn-lightgreen" ng-click="upload(image.file)" ng-disabled="loading">Apply</button>
 		<!-- <button class="btn btn-reset" ng-show="image">Reset</button> -->
 	</div>
 

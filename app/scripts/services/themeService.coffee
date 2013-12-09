@@ -44,6 +44,9 @@ mod.service 'themeService', [
 				# init default packInfo
 				service.packInfo = angular.copy(themeConfig.defaultPackInfo)
 				service.updateView()
+
+				# Restore uploader image preview data
+				$rootScope.$broadcast "uploader.refresh"
 				# TODO: FAILD?
 
 			hasUnpub: ()-> !!localStorage.get('unpublished_theme_model')

@@ -60,24 +60,28 @@ mod.controller 'indexCtrl', [
 	(
 		$rootScope, $scope, $location, localStorage, themeService
 	)->
-		$scope.createTheme = ()->
+
+		createNewThemeAction = ->
 			themeService.init (err)->
 				return $rootScope.$broadcast 'app.alert', 'error', 'Server Error!' if err
 				$location.url('/wallpaper')
 
 		$scope.hasUnpub = themeService.hasUnpub()
+		$scope.createTheme = ()->
+			# Create without confirm if there is no project on working
+			return createNewThemeAction() if not $scope.hasUnpub
+
+			# Send confirm overlay
+			$rootScope.$broadcast "overlay.show", {
+				text: "Create new theme will erase all data now you work on.
+							\nAre you sure to do this?"
+				yes: "Yes, start new one."
+				no: "Forget it!"
+			}, (choice)->
+				if choice is 'yes' then createNewThemeAction()
+
 		$scope.continueTheme = ()->
 			themeService.continueWork()
 			$location.url('/wallpaper')
 ]
-
-mod.controller 'controlButton', [
-	'$scope', 'themeService'
-	(
-		$scope, themeService
-	)->
-		$scope.createNewTheme = ()->
-			themeService.init()
-]
-
 

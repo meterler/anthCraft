@@ -20,11 +20,19 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 		callback: "&"
 	}
 	templateUrl: "/views/partials/uploader.html"
-	controller: ['$scope', '$attrs', '$http', ($scope, $attrs, $http)->
+	controller: ['$rootScope', '$scope', '$attrs', '$http', 'themeConfig', ($rootScope, $scope, $attrs, $http, themeConfig)->
 		$scope.resName = $attrs.resName
+
+		$rootScope.$on "uploader.refresh", (event)->
+			defaultImageSrc = themeConfig.defaultPackInfo[$attrs.resType][$attrs.resName]
+			$scope.image = {
+				url: $attrs.srcPrefix + defaultImageSrc
+			}
 		$scope.upload = (image)->
 
+			return if $scope.loading
 			ngProgress.start()
+			$scope.loading = true
 
 			themeId = $attrs.themeId
 			resType = $attrs.resType
@@ -53,7 +61,7 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 				ngProgress.complete()
 
 				callback(packInfo)
-
+				$scope.loading=false
 
 			).error ()->
 	]
