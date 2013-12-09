@@ -17,13 +17,21 @@ mod.controller 'packCtrl', [
 			$scope.thumblist = newTheme.preview
 			$scope.previewing = false
 
-		$scope.prev = -> $scope.curThumb = Math.abs(($scope.curThumb - 1) % $scope.thumblist.length)
-		$scope.next = -> $scope.curThumb = Math.abs(($scope.curThumb + 1) % $scope.thumblist.length)
-		$scope.check = (n)-> $scope.curThumb is n
+		$scope.prev = ->
+			$scope.curThumb = $scope.curThumb - 1
+			$scope.curThumb = 2 if 0 > $scope.curThumb
+
+		$scope.next = ->
+			$scope.curThumb = $scope.curThumb + 1
+			$scope.curThumb = 0 if $scope.thumblist.length <= $scope.curThumb
+
+		$scope.check = (n)->
+			console.log $scope.curThumb, n
+			$scope.curThumb is n
 
 		$scope.savePack = ()->
 			$scope.packing = true
 			themeService.packageTheme (theme)->
-				console.log "PackTheme: ", arguments
+				# console.log "PackTheme: ", arguments
 				$scope.packing = false
 ]
