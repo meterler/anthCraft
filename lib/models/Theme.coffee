@@ -93,6 +93,11 @@ schemaStruct = {
 		default: 0
 	}
 
+	weight: {
+		type: "number"
+		default: 100
+	}
+
 	updateTime: { type: 'date', default: Date.now }
 	createTime: { type: 'date', default: Date.now }
 }
