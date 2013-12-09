@@ -66,10 +66,10 @@ mod.controller 'indexCtrl', [
 				return $rootScope.$broadcast 'app.alert', 'error', 'Server Error!' if err
 				$location.url('/wallpaper')
 
-		$scope.hasUnpub = themeService.hasUnpub()
+		$scope.hasUnpub = -> themeService.hasUnpub()
 		$scope.createTheme = ()->
 			# Create without confirm if there is no project on working
-			return createNewThemeAction() if not $scope.hasUnpub
+			return createNewThemeAction() if not $scope.hasUnpub()
 
 			# Send confirm overlay
 			$rootScope.$broadcast "overlay.show", {
