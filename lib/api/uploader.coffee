@@ -23,10 +23,7 @@ handleFileUpload = (req, res)->
 
 module.exports = (app)->
 	app.post "/api/upload", (req, res)->
-
-		res.cookie 'userid', '123443'
-		res.cookie 'username', '88b5'
-
+		# when testing
 		# return handleFileUpload(req, res)
 
 		imgPath = req.files.image.path
