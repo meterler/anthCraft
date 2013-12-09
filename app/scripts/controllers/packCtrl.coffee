@@ -2,14 +2,19 @@
 mod = angular.module('anthCraftApp')
 
 mod.controller 'packCtrl', [
-	'$scope', '$timeout', '$cookies', 'themeService'
+	'$rootScope', '$scope', '$timeout', '$cookies', '$location', 'themeService'
 	(
-		$scope, $timeout, $cookies, themeService
+		$rootScope, $scope, $timeout, $cookies, $location, themeService
 	)->
 		$scope.curThumb = 0
 
 		themeService.themeModel.userId = $cookies.userid
 		themeService.themeModel.author = $cookies.username
+
+		createNewThemeAction = ->
+			themeService.init (err)->
+				return $rootScope.$broadcast 'app.alert', 'error', 'Server Error!' if err
+				$location.url('/wallpaper')
 
 		$scope.theme = themeService.themeModel
 
@@ -26,12 +31,21 @@ mod.controller 'packCtrl', [
 			$scope.curThumb = 0 if $scope.thumblist.length <= $scope.curThumb
 
 		$scope.check = (n)->
-			console.log $scope.curThumb, n
 			$scope.curThumb is n
 
 		$scope.savePack = ()->
 			$scope.packing = true
 			themeService.packageTheme (theme)->
+				$rootScope.$broadcast "overlay.show", {
+					text: "How about creating another theme?"
+					yes: "OK, start new one!"
+					no: "No, get back!"
+				}, (choice)->
+					if choice is 'yes'
+						createNewThemeAction()
+					else
+						$location.url("/")
+
 				# console.log "PackTheme: ", arguments
 				$scope.packing = false
 ]
