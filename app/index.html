@@ -58,15 +58,7 @@
 		<div ng-view></div>
 	</div>
 
-	<div class="overlay" ng-controller="overlayCtrl" ng-init="showing=false" ng-show="showing">
-		<div class="dialog dlg-confirm">
-			<p>{{options.text}}</p>
-			<div class="button-group">
-				<a class="btn btn-primary" ng-click="close('yes')">{{options.yes}}</a>
-				<a class="btn btn-warning" ng-click="close('no')">{{options.no}}</a>
-			</div>
-		</div>
-	</div>
+
 <!-- 	<div class="ft">
 		<ul class="link-list">
 			<div class="bd">
@@ -113,5 +105,16 @@
 	<script src="scripts/services/themeService.js"></script>
 	<script src="scripts/services/uploadService.js"></script>
 	<!-- endbuild -->
+
+	<div class="overlay" ng-controller="overlayCtrl" ng-init="showing=false" ng-show="showing">
+		<div class="dialog dlg-confirm">
+			<p>{{options.text}}</p>
+			<div class="button-group">
+				<a class="btn btn-primary" ng-click="close('yes')">{{options.yes}}</a>
+				<a class="btn btn-warning" ng-click="close('no')">{{options.no}}</a>
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>
