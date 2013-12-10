@@ -73,8 +73,7 @@ mod.controller 'indexCtrl', [
 
 			# Send confirm overlay
 			$rootScope.$broadcast "overlay.show", {
-				text: "Create new theme will erase all data now you work on.
-							\nAre you sure to do this?"
+				text: "After new operation, the theme  you are editing will disappear, continue?"
 				yes: "Yes, start new one."
 				no: "Forget it!"
 			}, (choice)->

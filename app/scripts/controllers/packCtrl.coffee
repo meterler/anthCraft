@@ -37,8 +37,8 @@ mod.controller 'packCtrl', [
 			$scope.packing = true
 			themeService.packageTheme (theme)->
 				$rootScope.$broadcast "overlay.show", {
-					text: "How about creating another theme?"
-					yes: "OK, start new one!"
+					text: "Thank you for making，Please wait audit."
+					yes: "Do it again."
 					no: "No, get back!"
 				}, (choice)->
 					if choice is 'yes'
