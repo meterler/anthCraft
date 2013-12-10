@@ -76,13 +76,15 @@ mod.service 'themeService', [
 
 			# Update view
 			updateView: (updateData)->
-				service.dirty = true
 				for resType of updateData
 					service.packInfo[resType] = `service.packInfo[resType] ? service.packInfo[resType] : {}`
 					angular.extend(service.packInfo[resType], updateData[resType])
 
-				# Update localStorage
-				localStorage.set('unpublished_theme_packInfo', service.packInfo)
+				# Update localStorage if dirty
+				if service.dirty
+					localStorage.set('unpublished_theme_packInfo', service.packInfo)
+
+				service.dirty = true
 
 				# TBD: Not save every time?
 				# service.theme.$save()
@@ -113,8 +115,10 @@ mod.service 'themeService', [
 						callback.apply(null, arguments)
 
 						# Clear localStorage
-						# localStorage.remove('unpublished_theme_model')
-						# localStorage.remove('unpublished_theme_packInfo')
+						localStorage.remove('unpublished_theme_model')
+						localStorage.remove('unpublished_theme_packInfo')
+
+						service.dirty = false
 
 		}
 
