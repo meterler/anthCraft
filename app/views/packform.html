@@ -23,12 +23,12 @@
 	</div>
 
 
-	<div class="pack-form">
+	<div class="pack-form" name="packForm" ng-submit="savePack()">
 		<form>
 			<div class="form-group">
 				<label for="themeName">Theme Name</label>
 				<div class="form-field">
-					<input type="text" ng-model="theme.title" class="form-control" name="themeName" placeholder="Awesome Theme">
+					<input type="text" ng-model="theme.title" class="form-control" name="themeName" placeholder="Awesome Theme" required>
 					<span class="help-text">Required</span>
 				</div>
 			</div>
@@ -36,7 +36,7 @@
 			<div class="form-group">
 				<label for="author">Designer</label>
 				<div class="form-field">
-					<input type="text" ng-model="theme.author" class="form-control" name="author" placeholder="Your name">
+					<input type="text" ng-model="theme.author" class="form-control" name="author" placeholder="Your name" required>
 					<span class="help-text">Required</span>
 				</div>
 			</div>
@@ -44,12 +44,12 @@
 			<div class="form-group">
 				<label for="description">Introduction</label>
 				<div class="form-field">
-					<textarea name="description" ng-model="theme.description" cols="30" rows="10"></textarea>
+					<textarea name="description" ng-model="theme.description" cols="30" rows="10" required></textarea>
 				</div>
 			</div>
 
 			<div class="form-actions">
-				<button class="btn btn-primary" ng-click="savePack()">Save&amp;Package</button>
+				<button class="btn btn-primary" type="submit">Save&amp;Package</button>
 				<i class="fa fa-spinner fa-spin" ng-show="packing" ng-init="packing=false"></i>
 				<a href="/resources/themes{{theme.packageFile.0.file}}" target="_blank" ng-show="theme.packageFile.0">
 					Download Theme
