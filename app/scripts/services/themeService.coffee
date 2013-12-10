@@ -19,6 +19,9 @@ mod.service 'themeService', [
 
 		service = {
 
+			# theme modified or not
+			dirty: false
+
 			# Theme Model
 			themeModel: {}
 			# Theme Package info
@@ -44,6 +47,7 @@ mod.service 'themeService', [
 				# init default packInfo
 				service.packInfo = angular.copy(themeConfig.defaultPackInfo)
 				service.updateView()
+				service.dirty = false
 
 				# Restore uploader image preview data
 				$rootScope.$broadcast "uploader.refresh"
@@ -72,7 +76,7 @@ mod.service 'themeService', [
 
 			# Update view
 			updateView: (updateData)->
-
+				service.dirty = true
 				for resType of updateData
 					service.packInfo[resType] = `service.packInfo[resType] ? service.packInfo[resType] : {}`
 					angular.extend(service.packInfo[resType], updateData[resType])
@@ -98,6 +102,7 @@ mod.service 'themeService', [
 
 			# Package theme and get theme Url
 			packageTheme: (callback)->
+				return callback(false) if not service.dirty
 				# save themeModel
 				service.themeModel.$save (doc)->
 					# package up

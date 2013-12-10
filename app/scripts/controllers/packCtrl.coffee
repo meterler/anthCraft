@@ -36,15 +36,28 @@ mod.controller 'packCtrl', [
 		$scope.savePack = ()->
 			$scope.packing = true
 			themeService.packageTheme (theme)->
+				if not theme
+					# Data is not dirty, cant save
+					$rootScope.$broadcast "overlay.show", {
+						text: "Can't be saved without operation."
+						yes: "OK"
+						no: false
+					}, (choice)->
+						# hmm..
+						$scope.packing = false
+					return
+
 				$rootScope.$broadcast "overlay.show", {
 					text: "Thank you for making，Please wait audit."
 					yes: "Do it again."
 					no: "No, get back!"
 				}, (choice)->
+					$scope.packing = false
 					if choice is 'yes'
 						createNewThemeAction()
 					else
 						$location.url("/")
+
 
 				# console.log "PackTheme: ", arguments
 				$scope.packing = false

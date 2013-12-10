@@ -110,8 +110,8 @@
 		<div class="dialog dlg-confirm">
 			<p>{{options.text}}</p>
 			<div class="button-group">
-				<a class="btn btn-primary" ng-click="close('yes')">{{options.yes}}</a>
-				<a class="btn btn-warning" ng-click="close('no')">{{options.no}}</a>
+				<a class="btn btn-primary" ng-click="close('yes')" ng-if="options.yes">{{options.yes}}</a>
+				<a class="btn btn-warning" ng-click="close('no')" ng-if="options.no">{{options.no}}</a>
 			</div>
 		</div>
 	</div>
