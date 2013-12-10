@@ -69,7 +69,7 @@ mod.factory 'themeConfig', ->
 				"com_android_quicksearchbox_com_android_quicksearchbox_searchactivity": "/default_theme/app_icon/com_android_quicksearchbox_com_android_quicksearchbox_searchactivity.png"
 				"com_android_settings_com_android_settings_settings": "/default_theme/app_icon/com_android_settings_com_android_settings_settings.png"
 				"com_google_android_apps_maps_com_google_android_maps_mapsactivity": "/default_theme/app_icon/com_google_android_apps_maps_com_google_android_maps_mapsactivity.png"
-				"com_mediatek_videoplayer_com_mediatek_videoplayer_movielistactivity": "/default_theme/app_icon/com_mediatek_videoplayer_com_mediatek_videoplayer_movielistactivity.png"
+				# "com_mediatek_videoplayer_com_mediatek_videoplayer_movielistactivity": "/default_theme/app_icon/com_mediatek_videoplayer_com_mediatek_videoplayer_movielistactivity.png"
 			}
 
 			customize_mat: {
@@ -99,7 +99,7 @@ mod.factory 'themeConfig', ->
 			{ id: "com_android_quicksearchbox_com_android_quicksearchbox_searchactivity", captial: "Search" }
 			{ id: "com_android_settings_com_android_settings_settings", captial: "Settings" }
 			{ id: "com_google_android_apps_maps_com_google_android_maps_mapsactivity", captial: "Maps" }
-			{ id: "com_mediatek_videoplayer_com_mediatek_videoplayer_movielistactivity", captial: "Video" }
+			# { id: "com_mediatek_videoplayer_com_mediatek_videoplayer_movielistactivity", captial: "Video" }
 
 		]
 
