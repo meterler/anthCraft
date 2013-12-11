@@ -55,11 +55,13 @@ mod.controller 'AlertCtrl', [ '$scope', ($scope)->
 ]
 
 mod.controller 'indexCtrl', [
-	'$rootScope', '$scope', '$location', 'localStorageService'
+	'$rootScope', '$scope', '$location', '$cookies', 'localStorageService'
 	'themeService',
 	(
-		$rootScope, $scope, $location, localStorage, themeService
+		$rootScope, $scope, $location, $cookies, localStorage, themeService
 	)->
+		# $scope.notLogined = true
+		$scope.username = $cookies.username
 
 		createNewThemeAction = ->
 			themeService.init (err)->

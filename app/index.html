@@ -30,17 +30,21 @@
 	<![endif]-->
 
 	<div class="hd">
-		<div class="bd">
+		<div class="bd" ng-controller="indexCtrl">
 			<a href="#">
 				<img src="styles/img/logo.png" alt="cLauncher Logo">
 			</a>
-			<section class="sec-login">
+			<section class="sec-login" ng-if="!username">
 				<a href="http://themes.c-launcher.com/jump/login.htm">Regist</a>
 				|
 				<a href="http://themes.c-launcher.com/jump/register.htm">Login</a>
 			</section>
+			<section class="sec-login" ng-if="username">
+				Welcome, {{username}} ! &nbsp;
+				<a href="http://themes.c-launcher.com">Back</a>
+			</section>
 
-			<section class="sec-controlButton" ng-controller="indexCtrl">
+			<section class="sec-controlButton">
 				<a href="javascript:;" ng-click="createTheme()" class="icon-new">
 					<!-- <i class="fa fa-plus-circle fa-3x"></i> -->
 					New

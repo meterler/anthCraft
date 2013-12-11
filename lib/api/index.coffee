@@ -81,5 +81,11 @@ module.exports = (app)->
 
 		# Provide RESTful API of ThemeModel
 		ThemeModel.register app, '/api/themes'
+
+		# Cookie test
+		# app.get "/", (req ,res, next)->
+		# 	res.cookie('username', 'ijse')
+		# 	res.cookie('userid', '123')
+		# 	next()
 	return
 
