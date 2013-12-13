@@ -100,6 +100,7 @@ mod.service 'themeService', [
 
 			previewTheme: (callback)->
 				Theme.preview { themeId: service.themeModel._id }, service.packInfo, (data)->
+					service.themeModel.preview = data.preview
 					callback(data);
 
 			# Package theme and get theme Url

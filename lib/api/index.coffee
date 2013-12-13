@@ -38,7 +38,7 @@ module.exports = (app)->
 							return
 
 						# 4 size package
-						packagePath = packagePath.replace(__config.appPath, '').split(path.sep).join('/')
+						# packagePath = packagePath.replace(__config.appPath, '').split(path.sep).join('/')
 
 						#themeRecord.packageFile.push {
 						#	density: 160
@@ -47,7 +47,7 @@ module.exports = (app)->
 						#}
 
 						themeRecord.packageFile = arguments[1]
-						themeRecord.thumbnail = themeRecord.packageFile[1]
+						themeRecord.thumbnail = themeRecord.preview[1]
 
 						themeRecord.save()
 
