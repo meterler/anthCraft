@@ -60,8 +60,9 @@ mod.controller 'indexCtrl', [
 	(
 		$rootScope, $scope, $location, $cookies, localStorage, themeService
 	)->
-		# $scope.notLogined = true
-		$scope.username = $cookies.username
+		$scope.isLogined = -> !!$cookies.userid
+		$scope.getUser = ->
+			{ name: $cookies.username, id: $cookies.userid }
 
 		createNewThemeAction = ->
 			themeService.init (err)->
