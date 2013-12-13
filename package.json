@@ -8,7 +8,7 @@
     "redis": "~0.9.1",
     "async": "~0.2.9",
     "mongoose-id-autoinc2": "~1.0.1",
-    "anthpack": "~1.1.9"
+    "anthpack": "=1.2.1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
