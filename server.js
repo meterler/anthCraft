@@ -15,30 +15,26 @@ var anthPack = require('anthpack');
 
 var app = express();
 
-var initTasks = [
-
-	// Load Config
-	function(callback) {
-		// load configurations to global.__config
+var initTasks = {
+	get_config: function(cb) {
 		__config = utils.loadConfigs();
-
-		// Connect mongodb
-		utils.connectDB(callback);
+		cb(null, __config)
 	},
 
-	// Connect to Redis
-	function(callback) {
-		utils.connectRedis(callback);
-	},
+	connect_mongodb: [ 'get_config', function(cb) {
+		utils.connectDB(cb);
+	}],
 
-	// Init anthPack
-	function(callback) {
+	connect_redis: [ 'get_config', function(cb) {
+		utils.connectRedis(cb);
+	}],
+
+	init_anthpack: [ 'get_config', function(cb) {
 		anthPack.config(__config.anthPack);
-		callback();
-	},
+		cb();
+	}],
 
-	function(callback) {
-
+	config_server: [ 'get_config', function(cb) {
 		// all environments
 		app.set('port', process.env.PORT || __config.port || 3000);
 
@@ -61,30 +57,24 @@ var initTasks = [
 		  app.use(express.static(path.join(__dirname, 'public')));
 		}
 
-		callback();
+		cb();
 
-	},
+	}],
 
-	function(callback) {
+	load_routes: [ 'get_config', 'connect_mongodb', 'config_server', function(cb) {
 		// load routes
 		utils.loadRoutes(path.join(__dirname, './lib/api'), app);
 
-		callback();
-	}
+		cb();
+	}]
+}
 
-];
-
-// Finally, start server!
-async.series(initTasks, function(err) {
+async.auto(initTasks, function(err) {
 	if(err) {
 		throw err;
 	}
-
 	http.createServer(app).listen(app.get('port'), function () {
 		// TODO: Print system info
 		global.__log('Server listening on port %d in %s mode', app.get('port'), app.get('env'));
 	});
-
 });
-
-
