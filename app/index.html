@@ -36,12 +36,12 @@
 				<area shape="rect" coords="0,0,90,81" href="http://themes.c-launcher.com">
 				<area shape="rect" coords="90,0,441,81" href="/">
 			</map>
-			<section class="sec-login" ng-if="!isLogined()">
+			<section class="sec-login" ng-if="!isLogined()" ng-style="{ display: 'block' }">
 				<a href="http://themes.c-launcher.com/jump/register.htm">Register</a>
 				|
 				<a href="http://themes.c-launcher.com/jump/login.htm">Login</a>
 			</section>
-			<section class="sec-login" ng-if="isLogined()">
+			<section class="sec-login" ng-if="isLogined()" ng-style="{ display: 'block' }">
 				Welcome, {{getUser().name}} ! &nbsp;
 				<a href="http://themes.c-launcher.com">Back</a>
 			</section>
