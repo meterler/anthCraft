@@ -31,9 +31,11 @@
 
 	<div class="hd">
 		<div class="bd" ng-controller="indexCtrl">
-			<a href="#">
-				<img src="styles/img/logo.png" alt="cLauncher Logo">
-			</a>
+			<img src="styles/img/logo.png" alt="cLauncher Logo" usemap="logoLinkMap">
+			<map name="logoLinkMap">
+				<area shape="rect" coords="0,0,90,81" href="http://themes.c-launcher.com">
+				<area shape="rect" coords="90,0,441,81" href="/">
+			</map>
 			<section class="sec-login" ng-if="!isLogined()">
 				<a href="http://themes.c-launcher.com/jump/register.htm">Register</a>
 				|
