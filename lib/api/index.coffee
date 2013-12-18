@@ -30,7 +30,7 @@ module.exports = (app)->
 
 					__log "=====\npackInfo\n=====\n", packInfo
 					# Call anthPack module
-					anthPack.packTheme packInfo, (err, packagePath)->
+					anthPack.packTheme packInfo, (err, packagePath, thumbnail)->
 
 						if err
 							__log err
@@ -47,7 +47,8 @@ module.exports = (app)->
 						#}
 
 						themeRecord.packageFile = arguments[1]
-						themeRecord.thumbnail = themeRecord.preview[1]
+						# themeRecord.thumbnail = themeRecord.preview[1]
+						themeRecord.thumbnail = thumbnail
 
 						themeRecord.save()
 
