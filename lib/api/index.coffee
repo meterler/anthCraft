@@ -50,6 +50,9 @@ module.exports = (app)->
 						# themeRecord.thumbnail = themeRecord.preview[1]
 						themeRecord.thumbnail = thumbnail
 
+						# Set status to 0-need audiets
+						themeRecord.status = 0
+
 						themeRecord.save()
 
 						res.json {

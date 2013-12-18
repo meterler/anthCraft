@@ -87,10 +87,17 @@ schemaStruct = {
 		default: 0
 	}
 
-	# 状态：0正常，1删除
+	# 状态：
+	# 	0	待审核，
+	# 	1	审核通过
+	# 	2	审核不通过
+	# 	3	正在下架
+	# 	4	已经下架
+	# 	99	未完成
+
 	status: {
 		type: "number"
-		default: 0
+		default: 99
 	}
 
 	weight: {
