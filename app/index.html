@@ -38,12 +38,12 @@
 			</map>
 			<section class="sec-login" ng-if="!isLogined()" ng-style="{ display: 'block' }">
 				<a href="http://themes.c-launcher.com/jump/register.htm">Register</a>
-				|
+				<span>|</span>
 				<a href="http://themes.c-launcher.com/jump/login.htm">Login</a>
 			</section>
 			<section class="sec-login" ng-if="isLogined()" ng-style="{ display: 'block' }">
-				Welcome, {{getUser().name}} ! &nbsp;
-				<a href="http://themes.c-launcher.com">Back</a>
+				Welcome: {{getUser().name}} ! &nbsp;
+				<a href="http://themes.c-launcher.com"> Back</a>
 			</section>
 
 			<section class="sec-controlButton">
