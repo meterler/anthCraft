@@ -37,15 +37,6 @@ module.exports = (app)->
 							res.send 500, "Package Error!"
 							return
 
-						# 4 size package
-						# packagePath = packagePath.replace(__config.appPath, '').split(path.sep).join('/')
-
-						#themeRecord.packageFile.push {
-						#	density: 160
-						#	file: packagePath
-						#	size: 1
-						#}
-
 						themeRecord.packageFile = arguments[1]
 						# themeRecord.thumbnail = themeRecord.preview[1]
 						themeRecord.thumbnail = thumbnail

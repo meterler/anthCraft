@@ -152,8 +152,8 @@ ThemeModel
 	.before('post', setUpdateTime)
 	.before('put', setUpdateTime)
 
-ThemeModel
-	.before('post', readUserInfo)
+# ThemeModel
+# 	.before('post', readUserInfo)
 
 
 module.exports = ThemeModel
