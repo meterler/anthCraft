@@ -38,7 +38,7 @@ module.exports = {
 		widget_src: p('/resources/phone/default/widget.png')
 		pageswitch_src: p('/resources/phone/default/pageswitch.png')
 
-		icon_size: 56
+		icon_size: 192
 	}
 }
 
