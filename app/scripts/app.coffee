@@ -65,9 +65,9 @@ mod.controller 'indexCtrl', [
 			{ name: $cookies.username, id: $cookies.userid }
 
 		$scope.logout = ->
-			$cookies.username = undefined
-			$cookies.userid = undefined
-			# $http.get('http://themes.c-launcher.com/user/logout.do')
+			delete $cookies.username
+			delete $cookies.userid
+			$http.jsonp('http://themes.c-launcher.com/user/logout.do')
 
 
 		createNewThemeAction = ->
