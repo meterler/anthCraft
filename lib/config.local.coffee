@@ -32,12 +32,13 @@ module.exports = {
 		base_path: p('') # /app
 		package_path: "/resources/themes"
 		develop_path: "/resources/upload"
-		thumb_path: "/resources/preview"
+		preview_path: "/resources/preview"
+		thumb_path: "/resources/thumbnail"
 
 		widget_src: p('/resources/phone/default/widget.png')
 		pageswitch_src: p('/resources/phone/default/pageswitch.png')
 
-		icon_size: 56
+		icon_size: 192
 	}
 }
 

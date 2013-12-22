@@ -30,18 +30,32 @@
 	<![endif]-->
 
 	<div class="hd">
-		<div class="bd" ng-controller="indexCtrl">
-			<a href="#">
-				<img src="styles/img/logo.png" alt="cLauncher Logo">
-			</a>
-			<section class="sec-login" ng-if="!isLogined()">
-				<a href="http://themes.c-launcher.com/jump/register.htm">Regist</a>
-				|
+		<div class="bd" ng-controller="indexCtrl" ng-cloak>
+			<img src="styles/img/logo.png" alt="cLauncher Logo" usemap="logoLinkMap">
+			<map name="logoLinkMap">
+				<area shape="rect" coords="0,0,90,81" href="http://themes.c-launcher.com">
+				<area shape="rect" coords="90,0,441,81" href="/">
+			</map>
+			<section class="sec-login" ng-if="!isLogined()" ng-style="{ display: 'block' }">
+				<a href="http://themes.c-launcher.com/jump/register.htm">Register</a>
+				<span>|</span>
 				<a href="http://themes.c-launcher.com/jump/login.htm">Login</a>
 			</section>
-			<section class="sec-login" ng-if="isLogined()">
-				Welcome, {{getUser().name}} ! &nbsp;
-				<a href="http://themes.c-launcher.com">Back</a>
+			<section class="sec-login" ng-if="isLogined()" ng-style="{ display: 'block' }">
+			<!--
+				Welcome: {{getUser().name}} ! &nbsp;
+				<a href="http://themes.c-launcher.com"> Back</a> -->
+
+				<div id="cyou-head-welcome">
+					Welcome:
+						<a href="javascript:void(0)" id="cyou-head-username" ng-click="user_menu_show=!!!user_menu_show" ng-blur="user_menu_show=false"> {{getUser().name}} </a>
+					<ul id="cyou-head-menu" style="width: 115px;" ng-show="user_menu_show" ng-cloak>
+						<li><a href="http://themes.c-launcher.com/jump/person_settings.htm"> Personal settings </a></li>
+						<li><a href="http://designer.c-launcher.com/"> Design Theme </a></li>
+						<li><a href="javascript:;" ng-click="logout()">Logout</a>
+						</li>
+					</ul>
+				</div>
 			</section>
 
 			<section class="sec-controlButton">

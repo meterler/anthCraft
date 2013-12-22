@@ -37,12 +37,18 @@ html,body {
 		right: 10px;
 		top: 10px;
 		color: white;
+		// visibility: hidden;
+		display: none;
 		a {
 			color: white;
 			text-decoration: none;
 			&:hover {
-				text-decoration: underline;
+				color: #ddd;
 			}
+		}
+		span {
+			color: #057562;
+			border-left: 1px solid #2F898B;
 		}
 	}
 	.sec-controlButton {
@@ -168,3 +174,44 @@ html,body {
 	margin-left:-100%;
 }
 
+
+
+#cyou-head-welcome #cyou-head-username {
+	display: inline-block;
+	height: 20px;
+	line-height: 20px;
+	min-width: 100px;
+	_width: 100px;
+	padding: 0px 20px 0px 5px;
+	text-decoration: none;
+	color: white;
+	background-image: url("http://themes.c-launcher.com/css/img/cyou-head-arrow.png");
+	_background-image: url("http://themes.c-launcher.com/css/img/cyou-head-arrow.gif");
+	background-position: right;
+	background-repeat: no-repeat;
+}
+#cyou-head-welcome #cyou-head-username:hover {
+	background-color: #179ba0;
+}
+
+#cyou-head-welcome #cyou-head-menu {
+	transition: all 0.5s;
+	position: absolute;
+	z-index: 1000;
+	top: 8px;
+	right: 0px;
+	padding: 5px;
+	background-color: #fcfcfe;
+	list-style: none;
+}
+
+#cyou-head-welcome #cyou-head-menu  li a {
+	display: block;
+	padding: 2px 5px 2px 5px;
+	text-decoration: none;
+	color: #9c9b9b;
+}
+
+#cyou-head-welcome #cyou-head-menu  li a:hover {
+	background-color: #cee9eb;
+}

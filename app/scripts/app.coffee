@@ -55,14 +55,20 @@ mod.controller 'AlertCtrl', [ '$scope', ($scope)->
 ]
 
 mod.controller 'indexCtrl', [
-	'$rootScope', '$scope', '$location', '$cookies', 'localStorageService'
+	'$rootScope', '$scope', '$location', '$cookies', '$http', 'localStorageService'
 	'themeService',
 	(
-		$rootScope, $scope, $location, $cookies, localStorage, themeService
+		$rootScope, $scope, $location, $cookies, $http, localStorage, themeService
 	)->
 		$scope.isLogined = -> !!$cookies.userid
 		$scope.getUser = ->
 			{ name: $cookies.username, id: $cookies.userid }
+
+		$scope.logout = ->
+			delete $cookies.username
+			delete $cookies.userid
+			$http.jsonp('http://themes.c-launcher.com/user/logout.do')
+
 
 		createNewThemeAction = ->
 			themeService.init (err)->

@@ -30,24 +30,19 @@ module.exports = (app)->
 
 					__log "=====\npackInfo\n=====\n", packInfo
 					# Call anthPack module
-					anthPack.packTheme packInfo, (err, packagePath)->
+					anthPack.packTheme packInfo, (err, packagePath, thumbnail)->
 
 						if err
 							__log err
 							res.send 500, "Package Error!"
 							return
 
-						# 4 size package
-						# packagePath = packagePath.replace(__config.appPath, '').split(path.sep).join('/')
-
-						#themeRecord.packageFile.push {
-						#	density: 160
-						#	file: packagePath
-						#	size: 1
-						#}
-
 						themeRecord.packageFile = arguments[1]
-						themeRecord.thumbnail = themeRecord.preview[1]
+						# themeRecord.thumbnail = themeRecord.preview[1]
+						themeRecord.thumbnail = thumbnail
+
+						# Set status to 0-need audiets
+						themeRecord.status = 0
 
 						themeRecord.save()
 
@@ -75,8 +70,7 @@ module.exports = (app)->
 						return
 					ThemeModel.findById themeId, (err, doc)->
 						doc.preview = [].concat(result)
-						doc.save()
-						res.send doc
+						doc.save -> res.send doc
 		}
 
 		# Provide RESTful API of ThemeModel
