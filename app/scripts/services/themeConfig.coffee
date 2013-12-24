@@ -26,8 +26,8 @@ mod.factory 'themeConfig', ->
 					}
 				when 'app_icon', 'dock_icon', 'customize_mat'
 					{
-						width: 56
-						height: 56
+						width: 100
+						height: 100
 						force: true
 					}
 
@@ -94,12 +94,12 @@ mod.factory 'themeConfig', ->
 			{ id: "com_android_gallery3d_com_android_gallery3d_app_gallery", captial: "Gallery" }
 			{ id: "com_android_mms_com_android_mms_ui_conversationlist", captial: "Messages" }
 			{ id: "com_android_music_com_android_music_musicbrowseractivity", captial: "Music" }
-			# { id: "com_android_music_com_android_music_videobrowseractivity", captial: "Music" }
+			{ id: "com_android_music_com_android_music_videobrowseractivity", captial: "Music" }
 			{ id: "com_android_providers_downloads_ui_com_android_providers_downloads_ui_downloadlist", captial: "Download" }
 			{ id: "com_android_quicksearchbox_com_android_quicksearchbox_searchactivity", captial: "Search" }
 			{ id: "com_android_settings_com_android_settings_settings", captial: "Settings" }
 			{ id: "com_google_android_apps_maps_com_google_android_maps_mapsactivity", captial: "Maps" }
-			{ id: "com_mediatek_videoplayer_com_mediatek_videoplayer_movielistactivity", captial: "Video" }
+			# { id: "com_mediatek_videoplayer_com_mediatek_videoplayer_movielistactivity", captial: "Video" }
 
 		]
 
