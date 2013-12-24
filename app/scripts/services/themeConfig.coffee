@@ -64,12 +64,12 @@ mod.factory 'themeConfig', ->
 				"com_android_gallery3d_com_android_gallery3d_app_gallery": "/default_theme/app_icon/com_android_gallery3d_com_android_gallery3d_app_gallery.png"
 				"com_android_mms_com_android_mms_ui_conversationlist": "/default_theme/app_icon/com_android_mms_com_android_mms_ui_conversationlist.png"
 				"com_android_music_com_android_music_musicbrowseractivity": "/default_theme/app_icon/com_android_music_com_android_music_musicbrowseractivity.png"
-				# "com_android_music_com_android_music_videobrowseractivity": "/default_theme/app_icon/com_android_music_com_android_music_videobrowseractivity.png"
+				"com_android_music_com_android_music_videobrowseractivity": "/default_theme/app_icon/com_android_music_com_android_music_videobrowseractivity.png"
 				"com_android_providers_downloads_ui_com_android_providers_downloads_ui_downloadlist": "/default_theme/app_icon/com_android_providers_downloads_ui_com_android_providers_downloads_ui_downloadlist.png"
 				"com_android_quicksearchbox_com_android_quicksearchbox_searchactivity": "/default_theme/app_icon/com_android_quicksearchbox_com_android_quicksearchbox_searchactivity.png"
 				"com_android_settings_com_android_settings_settings": "/default_theme/app_icon/com_android_settings_com_android_settings_settings.png"
 				"com_google_android_apps_maps_com_google_android_maps_mapsactivity": "/default_theme/app_icon/com_google_android_apps_maps_com_google_android_maps_mapsactivity.png"
-				"com_mediatek_videoplayer_com_mediatek_videoplayer_movielistactivity": "/default_theme/app_icon/com_mediatek_videoplayer_com_mediatek_videoplayer_movielistactivity.png"
+				# "com_mediatek_videoplayer_com_mediatek_videoplayer_movielistactivity": "/default_theme/app_icon/com_mediatek_videoplayer_com_mediatek_videoplayer_movielistactivity.png"
 			}
 
 			customize_mat: {
