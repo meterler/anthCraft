@@ -29,7 +29,7 @@ mod.controller 'previewCtrl', [
 				'-webkit-mask-image': "url('#{themeConfig.themeFolder}#{$scope.theme['customize_mat']['default_customize_mask']}')"
 				'-webkit-mask-size': "39px"
 				'margin-top': "3px"
-				'margin-left': "-6px"
+				'margin-left': "-2px"
 			}
 
 		# Previewer update
