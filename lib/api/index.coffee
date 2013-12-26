@@ -30,7 +30,7 @@ module.exports = (app)->
 
 					__log "=====\npackInfo\n=====\n", packInfo
 					# Call anthPack module
-					anthPack.packTheme packInfo, (err, packagePath, thumbnail)->
+					anthPack.packTheme packInfo, (err, packagePath)->
 
 						if err
 							__log err
@@ -39,7 +39,7 @@ module.exports = (app)->
 
 						themeRecord.packageFile = arguments[1]
 						# themeRecord.thumbnail = themeRecord.preview[1]
-						themeRecord.thumbnail = thumbnail
+						# themeRecord.thumbnail = thumbnail
 
 						# Set status to 0-need audiets
 						themeRecord.status = 0
@@ -63,13 +63,14 @@ module.exports = (app)->
 
 				__log ">>>Preview packInfo: ", packInfo
 
-				anthPack.preview packInfo, (err, result)->
+				anthPack.preview packInfo, (err, result, thumbnail)->
 					if err
 						__log err
 						res.send 500
 						return
 					ThemeModel.findById themeId, (err, doc)->
 						doc.preview = [].concat(result)
+						doc.thumbnail = thumbnail
 						doc.save -> res.send doc
 		}
 
