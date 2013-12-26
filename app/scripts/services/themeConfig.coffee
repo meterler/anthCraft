@@ -96,7 +96,7 @@ mod.factory 'themeConfig', ->
 			{ id: "com_android_gallery3d_com_android_gallery3d_app_gallery", captial: "Gallery" }
 			{ id: "com_android_mms_com_android_mms_ui_conversationlist", captial: "Messages" }
 			{ id: "com_android_music_com_android_music_musicbrowseractivity", captial: "Music" }
-			{ id: "com_android_music_com_android_music_videobrowseractivity", captial: "Music" }
+			{ id: "com_android_music_com_android_music_videobrowseractivity", captial: "Video" }
 			{ id: "com_android_providers_downloads_ui_com_android_providers_downloads_ui_downloadlist", captial: "Download" }
 			{ id: "com_android_quicksearchbox_com_android_quicksearchbox_searchactivity", captial: "Search" }
 			{ id: "com_android_settings_com_android_settings_settings", captial: "Settings" }
