@@ -25,9 +25,9 @@ var initTasks = {
 		utils.connectDB(cb);
 	}],
 
-	connect_redis: [ 'get_config', function(cb) {
-		utils.connectRedis(cb);
-	}],
+	// connect_redis: [ 'get_config', function(cb) {
+	// 	utils.connectRedis(cb);
+	// }],
 
 	init_anthpack: [ 'get_config', function(cb) {
 		anthPack.config(__config.anthPack);
