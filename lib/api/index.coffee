@@ -12,7 +12,7 @@ anthPack = require 'anthpack'
 module.exports = (app)->
 	# Package theme, move to another collection
 	ThemeModel
-		.route('package.post', {
+		.route('package.put', {
 			detail: true,
 			handler: (req, res, next)->
 				themId = req.params.id
@@ -53,7 +53,7 @@ module.exports = (app)->
 
 		})
 
-		ThemeModel.route 'preview.post', {
+		ThemeModel.route 'preview.put', {
 			detail: true,
 			handler: (req, res, next)->
 				themeId = req.params.id
@@ -71,7 +71,12 @@ module.exports = (app)->
 					ThemeModel.findById themeId, (err, doc)->
 						doc.preview = [].concat(result)
 						doc.thumbnail = thumbnail
-						doc.save -> res.send doc
+						doc.save (err, theme)->
+							if err
+								__log "Save error when preview: ", err
+								res.send 500
+								return
+							res.send theme
 		}
 
 		# Provide RESTful API of ThemeModel

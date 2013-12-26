@@ -12,8 +12,8 @@ mod.service 'themeService', [
 		actions = {
 			create: { method: 'POST' }
 			save: { method: 'PUT' }
-			packageUp: { method: 'POST', url: '/api/themes/:themeId/package' }
-			preview: { method: 'POST', url: '/api/themes/:themeId/preview' }
+			packageUp: { method: 'PUT', url: '/api/themes/:themeId/package' }
+			preview: { method: 'PUT', url: '/api/themes/:themeId/preview' }
 		}
 		Theme = $resource('/api/themes/:themeId', { themeId: '@_id' }, actions)
 
@@ -106,20 +106,18 @@ mod.service 'themeService', [
 			# Package theme and get theme Url
 			packageTheme: (callback)->
 				return callback(false) if not service.dirty
-				# save themeModel
-				service.themeModel.$save (doc)->
-					# package up
-					Theme.packageUp { themeId: doc._id }, service.packInfo, (data)->
+				# package up
+				Theme.packageUp { themeId: service.themeModel._id }, service.packInfo, (data)->
 
-						service.themeModel.updateTime = data.theme.updateTime
-						service.themeModel.packageFile = data.theme.packageFile
-						callback.apply(null, arguments)
+					service.themeModel.updateTime = data.theme.updateTime
+					service.themeModel.packageFile = data.theme.packageFile
+					callback.apply(null, arguments)
 
-						# Clear localStorage
-						localStorage.remove('unpublished_theme_model')
-						localStorage.remove('unpublished_theme_packInfo')
+					# Clear localStorage
+					localStorage.remove('unpublished_theme_model')
+					localStorage.remove('unpublished_theme_packInfo')
 
-						service.dirty = false
+					service.dirty = false
 
 		}
 
