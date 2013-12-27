@@ -47,19 +47,19 @@ module.exports = {
 			{
 				type: 'file'
 				filename: p('logs/anthpack.log')
-				maxLogSize: 20480
+				maxLogSize: 204800
 				backups: 3
 				category: "anthpack"
 			}
 			{
 				type: 'file'
 				filename: p('logs/master.log')
-				maxLogSize: 20480
+				maxLogSize: 204800
 				backups: 3
 				category: "master"
 			}
 		],
-		replaceConsole: false
+		replaceConsole: true
 	}
 }
 
