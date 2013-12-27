@@ -30,8 +30,5 @@
     "font-awesome": "~4.0.3",
     "angular-local-storage": "*",
     "ngprogress": "~1.0.4"
-  },
-  "resolutions": {
-    "angular": "~1.2.6"
   }
 }
