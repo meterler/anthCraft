@@ -28,7 +28,7 @@
 			<div class="form-group">
 				<label for="themeName">Theme Name</label>
 				<div class="form-field">
-					<input type="text" ng-model="theme.title" class="form-control" name="themeName" placeholder="Awesome Theme" required pattern=".{1,30}">
+					<input type="text" ng-model="theme.title" class="form-control" name="themeName" placeholder="Awesome Theme" required maxlength="30">
 					<span class="help-text">Required</span>
 				</div>
 			</div>
@@ -36,7 +36,7 @@
 			<div class="form-group">
 				<label for="author">Designer</label>
 				<div class="form-field">
-					<input type="text" ng-model="theme.author" class="form-control" name="author" placeholder="Your name" required pattern=".{1,30}">
+					<input type="text" ng-model="theme.author" class="form-control" name="author" placeholder="Your name" required maxlength="30">
 					<span class="help-text">Required</span>
 				</div>
 			</div>
