@@ -106,18 +106,21 @@ mod.service 'themeService', [
 			# Package theme and get theme Url
 			packageTheme: (callback)->
 				return callback(false) if not service.dirty
-				# package up
-				Theme.packageUp { themeId: service.themeModel._id }, service.packInfo, (data)->
+				# save themeModel
+				delete service.themeModel.thumbnail
+				service.themeModel.$save (doc)->
+					# package up
+					Theme.packageUp { themeId: doc._id }, service.packInfo, (data)->
 
-					service.themeModel.updateTime = data.theme.updateTime
-					service.themeModel.packageFile = data.theme.packageFile
-					callback.apply(null, arguments)
+						service.themeModel.updateTime = data.theme.updateTime
+						service.themeModel.packageFile = data.theme.packageFile
+						callback.apply(null, arguments)
 
-					# Clear localStorage
-					localStorage.remove('unpublished_theme_model')
-					localStorage.remove('unpublished_theme_packInfo')
+						# Clear localStorage
+						localStorage.remove('unpublished_theme_model')
+						localStorage.remove('unpublished_theme_packInfo')
 
-					service.dirty = false
+						service.dirty = false
 
 		}
 
