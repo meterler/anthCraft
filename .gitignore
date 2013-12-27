@@ -1,6 +1,7 @@
 node_modules
 .tmp
 .sass-cache
+logs/*
 app/components
 heroku
 public
