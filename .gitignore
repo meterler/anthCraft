@@ -11,3 +11,4 @@ app/resources/upload/*
 app/resources/themes
 app/resources/preview
 app/resources/thumbnail
+app/logs

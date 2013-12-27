@@ -24,11 +24,27 @@ module.exports = {
 		develop_path: "/resources/upload"
 		preview_path: "/resources/preview"
 		thumb_path: "/resources/thumbnail"
+	}
 
-		widget_src: p('/resources/phone/default/widget.png')
-		pageswitch_src: p('/resources/phone/default/pageswitch.png')
-
-		icon_size: 56
+	log4js: {
+		appenders: [
+			{ type: "console" }
+			{
+				type: 'file'
+				filename: p('../logs/anthpack.log')
+				maxLogSize: 204800
+				backups: 3
+				category: "anthpack"
+			}
+			{
+				type: 'file'
+				filename: p('../logs/master.log')
+				maxLogSize: 204800
+				backups: 3
+				category: "master"
+			}
+		],
+		replaceConsole: true
 	}
 }
 
