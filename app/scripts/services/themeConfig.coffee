@@ -80,6 +80,7 @@ mod.factory 'themeConfig', ->
 
 			dock_icon: {
 				"ic_allapps": "/default_theme/dock_icon/ic_allapps.png"
+				"ic_allapps_pressed": "/default_theme/dock_icon/ic_allapps_pressed.png"
 			}
 
 		}
