@@ -141,7 +141,7 @@ for (var i=0; i<4; i++) {
 
 'use strict';
 
-angular.module('jackrabbitsgroup.angular-carousel-directive', []).directive('jrgCarousel', ['jrgCarouselResize', '$timeout', function (jrgCarouselResize, $timeout) {
+angular.module('anthcraft.carousel', []).directive('jrgCarousel', ['jrgCarouselResize', '$timeout', function (jrgCarouselResize, $timeout) {
   return {
 		restrict: 'A',
 		transclude: true,
@@ -187,23 +187,23 @@ angular.module('jackrabbitsgroup.angular-carousel-directive', []).directive('jrg
 				htmlNext ="<div class='jrg-carousel-arrow'><div class='jrg-carousel-arrow-icon fa fa-chevron-right'></div></div>";
 			}
 			
-			var html="<div class='jrg-carousel-cont-outer'>"+		//MUST have outer div otherwise anything (i.e. the hammer swipe directive) will NOT be compiled since compilation does not happen on the element itself!!
-				"<div class='jrg-carousel-cont' ";
+			var html="<div class='jrg-carousel-cont-outer'>";		//MUST have outer div otherwise anything (i.e. the hammer swipe directive) will NOT be compiled since compilation does not happen on the element itself!!
+				if(attrs.showArrows) {
+					html+="<div ng-show='show.prev' class='jrg-carousel-prev' ng-click='nav(\"prev\", {})'><div class='jrg-carousel-arrow-outer flexbox center'>"+htmlPrev+"</div></div>";
+				}
+				html+="<div class='jrg-carousel-cont' ";
 				if(attrs.hammerSwipe) {
 					html+="hm-swipeleft='nav(\"next\", {})' hm-swiperight='nav(\"prev\", {})' hm-options='{swipe_velocity: 0.2}' ";
 				}
 				html+=">";
-				if(attrs.showArrows) {
-					html+="<div ng-show='show.prev' class='jrg-carousel-prev' ng-click='nav(\"prev\", {})'><div class='jrg-carousel-arrow-outer flexbox center'>"+htmlPrev+"</div></div>";
-				}
 				if(attrs.swipeOverlay) {
 					html+="<div class='jrg-carousel-content-swipe'></div>";
 				}
 				html+="<div id='"+attrs.ids.content+"' class='jrg-carousel-content' style='width:{{styles.content.width}}px; margin-left:{{styles.content.marginLeft}}px;' ng-transclude></div>";
+				html+="</div>";
 				if(attrs.showArrows) {
 					html+="<div ng-show='show.next' class='jrg-carousel-next' ng-click='nav(\"next\", {})'><div class='jrg-carousel-arrow-outer flexbox center'>"+htmlNext+"</div></div>";
 				}
-				html+="</div>";
 			html+="</div>";
 			
 			return html;
@@ -339,7 +339,7 @@ angular.module('jackrabbitsgroup.angular-carousel-directive', []).directive('jrg
 				animateInfo.width =animateInfo.totWidth / attrs.navNumItems;		//set each child to width of parent (to only show one at a time)
 				
 				for(ii =0; ii<ele.children.length; ii++) {		//use 'children' NOT 'childNodes', which will also pick up text, comment nodes, etc. - http://stackoverflow.com/questions/7072423/why-does-childnodes-return-a-number-larger-than-i-expect
-					angular.element(ele.children[ii]).css({'width':animateInfo.width.toString()+'px'});
+					//angular.element(ele.children[ii]).css({'width':animateInfo.width.toString()+'px'});
 				}
 				
 				maxSlides =angular.element(ele).children().length;

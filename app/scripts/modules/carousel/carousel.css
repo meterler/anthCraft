@@ -46,7 +46,12 @@
   height: 50px;
   width: 50px;
   text-align: center;
+  color: #aaa;
 }
+.jrg-carousel-arrow:hover {
+  color: #555;
+}
+
 .jrg-carousel-arrow-icon {
   font-size: 37px;
   width: 37px;
@@ -55,14 +60,15 @@
 .jrg-carousel-prev,
 .jrg-carousel-next {
   position: absolute;
-  top: 0;
+  top: 62px;
   bottom: 0;
   width: 50px;
   z-index: 100;
+
 }
 .jrg-carousel-prev {
-  left: 0;
+  left: -25px;
 }
 .jrg-carousel-next {
-  right: 0;
+  right: -25px;
 }
