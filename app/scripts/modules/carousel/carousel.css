@@ -47,11 +47,17 @@
   width: 50px;
   text-align: center;
   color: #aaa;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
 .jrg-carousel-arrow:hover {
   color: #555;
 }
-
+.jrg-carousel-arrow:active {
+  margin-top: 5px;
+  color: #555;
+}
 .jrg-carousel-arrow-icon {
   font-size: 37px;
   width: 37px;
