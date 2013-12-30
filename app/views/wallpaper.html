@@ -28,3 +28,15 @@
 		callback="updatePreview"></upload-img>
 
 </div>
+
+<div class="mod-resLibrary" ng-controller="resLibraryCtrl">
+	<header>
+		Defined Resources
+	</header>
+
+	<div class="mod-resList" ng-cloak>
+		<a ng-repeat="img in resList" drag ng-model="img">
+			<img ng-src="/resources/upload{{img}}"/>
+		</a>
+	</div>
+</div>

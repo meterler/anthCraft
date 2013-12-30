@@ -28,6 +28,20 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 			$scope.image = {
 				url: $attrs.srcPrefix + defaultImageSrc
 			}
+
+		$scope.dropImg = (img)->
+			resType = $attrs.resType
+			resName = $attrs.resName
+			callback = $attrs.callback
+
+			packInfo = {}
+			packInfo[resType] = {}
+			packInfo[resType][resName] = img
+			callback(packInfo)
+			$scope.image = {
+				url: $attrs.srcPrefix + img
+			}
+
 		$scope.upload = (image)->
 
 			return if $scope.loading or not image

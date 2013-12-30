@@ -7,6 +7,7 @@ mod = angular.module('anthCraftApp', [
 	'ngResource'
 	'imageupload'
 	'LocalStorageModule'
+	'dragAndDrop'
 ]).config [ '$routeProvider', '$compileProvider', ($routeProvider, $compileProvider)->
 
 	# Compile white list for image preview since angular-v1.2.1
