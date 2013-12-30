@@ -1,8 +1,7 @@
 <div class="mod-uploader">
 
-	<div class="img-previewer" drop="dropImg" enter="" leave="">
-		<img ng-src="{{image.url}}" type="{{image.file.type}}" />
-
+	<div class="img-previewer">
+		<img ng-src="{{image.url}}" type="{{image.file.type}}" drop="dropImg" enter="dropIn" leave="dropOut"/>
 		<div class="loading" ng-show="loading" ng-init="loading=false">
 			<i class="fa fa-spinner fa-spin fa-3x"></i>
 		</div>

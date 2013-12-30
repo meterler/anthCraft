@@ -20,7 +20,7 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 		callback: "&"
 	}
 	templateUrl: "/views/partials/uploader.html"
-	controller: ['$rootScope', '$scope', '$attrs', '$http', 'themeConfig', ($rootScope, $scope, $attrs, $http, themeConfig)->
+	controller: ['$rootScope', '$scope', '$attrs', '$http', '$element', 'themeConfig', ($rootScope, $scope, $attrs, $http, $element, themeConfig)->
 		$scope.resName = $attrs.resName
 
 		$rootScope.$on "uploader.refresh", (event)->
@@ -41,6 +41,18 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 			$scope.image = {
 				url: $attrs.srcPrefix + img
 			}
+			angular.element($element).find("img").parent().css({
+				'box-shadow': "none"
+			})
+
+		$scope.dropIn = ()->
+			angular.element($element).find("img").parent().css({
+				'box-shadow': "0 0 10px yellow"
+			})
+		$scope.dropOut = ()->
+			angular.element($element).find("img").parent().css({
+				'box-shadow': "none"
+			})
 
 		$scope.upload = (image)->
 
