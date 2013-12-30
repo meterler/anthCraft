@@ -35,9 +35,13 @@ mod = angular.module('anthCraftApp', [
 	return
 ]
 
+# Init global configs
+mod.run [ '$rootScope', ($rootScope)->
+	$rootScope.cdnUrl = "http://cdn.c-launcher.com"
+]
+
 # mod = angular.module('anthCraftApp')
 # mod.controller 'MainCtrl', ($http, $scope)->
-
 
 # TODO:
 # 	> Time alert
