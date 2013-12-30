@@ -30,6 +30,11 @@
     "font-awesome": "~4.0.3",
     "angular-local-storage": "*",
     "ngprogress": "~1.0.4",
-    "angular-dragndrop": "~1.0.4"
+    "angular-dragndrop": "~1.0.4",
+    "angular-carousel-directive": "~1.0.5",
+    "angular-flexslider": "~1.0.0"
+  },
+  "resolutions": {
+    "angular": "~1.2.6"
   }
 }

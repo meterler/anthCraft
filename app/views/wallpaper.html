@@ -34,7 +34,8 @@
 		Defined Resources
 	</header>
 
-	<div class="mod-resList" ng-cloak>
+
+	<div class="mod-resList" jrg-carousel opts="carouselOpts" nav-num-items=5 ng-cloak>
 		<a ng-repeat="img in resList" drag ng-model="img">
 			<img ng-src="/resources/upload{{img}}"/>
 		</a>

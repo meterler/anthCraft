@@ -8,6 +8,7 @@ mod = angular.module('anthCraftApp', [
 	'imageupload'
 	'LocalStorageModule'
 	'dragAndDrop'
+	'jackrabbitsgroup.angular-carousel-directive'
 ]).config [ '$routeProvider', '$compileProvider', ($routeProvider, $compileProvider)->
 
 	# Compile white list for image preview since angular-v1.2.1
