@@ -7,6 +7,8 @@ mod = angular.module('anthCraftApp', [
 	'ngResource'
 	'imageupload'
 	'LocalStorageModule'
+	'dragAndDrop'
+	'anthcraft.carousel'
 ]).config [ '$routeProvider', '$compileProvider', ($routeProvider, $compileProvider)->
 
 	# Compile white list for image preview since angular-v1.2.1
@@ -35,9 +37,13 @@ mod = angular.module('anthCraftApp', [
 	return
 ]
 
+# Init global configs
+mod.run [ '$rootScope', ($rootScope)->
+	$rootScope.cdnUrl = "http://cdn.c-launcher.com"
+]
+
 # mod = angular.module('anthCraftApp')
 # mod.controller 'MainCtrl', ($http, $scope)->
-
 
 # TODO:
 # 	> Time alert

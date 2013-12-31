@@ -5,8 +5,10 @@ logs/*
 app/components
 heroku
 public
+deploy
 app/resources/upload/*
 !app/resources/upload/default_theme
 app/resources/themes
 app/resources/preview
 app/resources/thumbnail
+app/logs

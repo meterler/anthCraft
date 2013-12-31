@@ -74,10 +74,13 @@ mod.factory 'themeConfig', ->
 
 			customize_mat: {
 				"default_customize_mat": "/default_theme/customize_mat/default_customize_mat.png"
+				"default_customize_mask": "/default_theme/customize_mat/default_customize_mask.png"
+				"default_customize_icon": "/default_theme/customize_mat/default_customize_icon.png"
 			}
 
 			dock_icon: {
 				"ic_allapps": "/default_theme/dock_icon/ic_allapps.png"
+				"ic_allapps_pressed": "/default_theme/dock_icon/ic_allapps_pressed.png"
 			}
 
 		}

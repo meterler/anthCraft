@@ -10,6 +10,7 @@ var express = require('express'),
     path = require('path');
 
 var async = require('async');
+var log4js = require('log4js');
 var utils = require('./lib/utils');
 var anthPack = require('anthpack');
 
@@ -18,11 +19,21 @@ var app = express();
 var initTasks = {
 	get_config: function(cb) {
 		__config = utils.loadConfigs();
-		cb(null, __config)
+		cb(null, __config);
 	},
 
 	connect_mongodb: [ 'get_config', function(cb) {
 		utils.connectDB(cb);
+	}],
+
+	init_logger: [ 'get_config', function(cb) {
+		log4js.configure(__config.log4js);
+		global.__logger = log4js.getLogger('master');
+		global.__log = function() {
+			// __logger.warn("Deperecated", "better use `__logger.log()` instead of `__log()`!")
+			__logger.log.apply(__logger, ['LOG'].concat(Array.prototype.slice.call(arguments, 0)));
+		}
+		cb(null);
 	}],
 
 	// connect_redis: [ 'get_config', function(cb) {

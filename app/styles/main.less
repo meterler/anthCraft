@@ -148,7 +148,18 @@ html,body {
 	background-color: #aaa;
 }
 
-
+[draggable] {
+	/* not applied by the directive, but useful to indicate a draggable element */
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+	cursor: move;
+	border:1px solid black;
+	/* Required to make elements draggable in old WebKit */
+	-khtml-user-drag: element;
+	-webkit-user-drag: element;
+}
 
 .animate-enter,.animate-leave {
 	-webkit-transition:1000ms cubic-bezier(.165,.84,.44,1) all;

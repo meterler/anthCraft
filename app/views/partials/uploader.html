@@ -1,8 +1,7 @@
 <div class="mod-uploader">
 
 	<div class="img-previewer">
-		<img ng-src="{{image.url}}" type="{{image.file.type}}" />
-
+		<img ng-src="{{image.url}}" type="{{image.file.type}}" drop="dropImg" enter="dropIn" leave="dropOut"/>
 		<div class="loading" ng-show="loading" ng-init="loading=false">
 			<i class="fa fa-spinner fa-spin fa-3x"></i>
 		</div>
@@ -17,7 +16,7 @@
 	<div class="img-upload-handler">
 		<label for="upImage" class="file-upload btn btn-primary">
 			<span><strong>Change</strong></span>
-			<input name="upImage" type="file" accept="image/*" image="image">
+			<input name="upImage" type="file" accept="image/jpeg,image/jpg,image/png" image="image">
 		</label>
 		<button class="btn btn-lightgreen" ng-click="upload(image.file)" ng-disabled="loading">Apply</button>
 		<!-- <button class="btn btn-reset" ng-show="image">Reset</button> -->

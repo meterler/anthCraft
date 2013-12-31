@@ -28,3 +28,15 @@
 		callback="updatePreview"></upload-img>
 
 </div>
+
+<div class="mod-resLibrary" ng-controller="resLibraryCtrl">
+	<header>
+		Resources Library
+	</header>
+
+	<div class="mod-resList" jrg-carousel opts="carouselOpts" nav-num-items=5 center-offset='1'>
+		<a ng-repeat="img in resList" drag ng-model="img" ng-cloak>
+			<img ng-src="/resources/upload{{img}}" title="Drag and drop to right"/>
+		</a>
+	</div>
+</div>
