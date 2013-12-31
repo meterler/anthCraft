@@ -1,6 +1,7 @@
 path = require 'path'
 ThemeModel = require '../models/Theme.coffee'
 RingModel = require '../models/Ring.coffee'
+DWallpaperModel = require '../models/DWallpaper.coffee'
 
 #!!TODO: REPLACE WITH Package
 # anthPack = {
@@ -83,6 +84,7 @@ module.exports = (app)->
 		# Provide RESTful API of ThemeModel
 		ThemeModel.register app, '/api/themes'
 		RingModel.register app, '/api/ring'
+		DWallpaperModel.register app, '/api/dwallpaper'
 
 		# Cookie test
 		# app.get "/", (req ,res, next)->
