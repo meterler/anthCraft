@@ -9,7 +9,6 @@ redisClient = require('redis').client
 
 # Theme schema definition
 schemaStruct = {
-
 	themeId: {
 		type: 'number'
 	}

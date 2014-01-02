@@ -1,4 +1,6 @@
 path = require 'path'
+mongoose = require('node-restful').mongoose
+
 ThemeModel = require '../models/Theme.coffee'
 RingModel = require '../models/Ring.coffee'
 DWallpaperModel = require '../models/DWallpaper.coffee'
@@ -12,16 +14,29 @@ DWallpaperModel = require '../models/DWallpaper.coffee'
 anthPack = require 'anthpack'
 
 module.exports = (app)->
+
+	ThemeModel.route('create.post', {
+		detail: false
+		handler: (req, res, next)->
+			# Generate ObjectId as _id only
+			# _id will be the primary key
+			_id = mongoose.Types.ObjectId.createPk()
+
+			res.json {
+				_id: _id
+			}
+	})
+
 	# Package theme, move to another collection
 	ThemeModel
 		.route('package.put', {
 			detail: true,
 			handler: (req, res, next)->
-				themId = req.params.id
+				themeId = req.params.id
 				packInfo = req.body
 
-				# Package theme
-				ThemeModel.findById themId, (err, themeRecord)->
+				# Get theme object from database
+				ThemeModel.findById themeId, (err, themeRecord)->
 
 					if err
 						res.json { success: false, err: err }
@@ -30,7 +45,7 @@ module.exports = (app)->
 					packInfo.meta = themeRecord.toObject()
 					delete packInfo.meta.__v
 
-					__log "=====\npackInfo\n=====\n", packInfo
+					__log ">>>Package packInfo: \n", packInfo
 					# Call anthPack module
 					anthPack.packTheme packInfo, (err, packagePath)->
 
@@ -56,29 +71,25 @@ module.exports = (app)->
 		})
 
 		ThemeModel.route 'preview.put', {
-			detail: true,
+			detail: false,
 			handler: (req, res, next)->
-				themeId = req.params.id
+				themeId = req.query.id
 				packInfo = req.body
 
 				packInfo.themeId = themeId
 
-				__log ">>>Preview packInfo: ", packInfo
+				__log ">>>Preview packInfo: \n", packInfo
 
 				anthPack.preview packInfo, (err, result, thumbnail)->
 					if err
 						__log err
-						res.send 500
+						res.send 500, 'Preview faild!'
 						return
-					ThemeModel.findById themeId, (err, doc)->
-						doc.preview = [].concat(result)
-						doc.thumbnail = thumbnail
-						doc.save (err, theme)->
-							if err
-								__log "Save error when preview: ", err
-								res.send 500
-								return
-							res.send theme
+					res.json {
+						_id: themeId
+						preview: result
+						thumbnail: thumbnail
+					}
 		}
 
 		# Provide RESTful API of ThemeModel

@@ -10,10 +10,10 @@ mod.service 'themeService', [
 	)->
 
 		actions = {
-			create: { method: 'POST' }
-			save: { method: 'PUT' }
+			create: { method: 'POST', url: '/api/themes/create' }
+			save: { method: 'POST', url: '/api/themes' }
 			packageUp: { method: 'PUT', url: '/api/themes/:themeId/package' }
-			preview: { method: 'PUT', url: '/api/themes/:themeId/preview' }
+			preview: { method: 'PUT', url: '/api/themes/preview?id=:themeId' }
 		}
 		Theme = $resource('/api/themes/:themeId', { themeId: '@_id' }, actions)
 
@@ -101,14 +101,16 @@ mod.service 'themeService', [
 			previewTheme: (callback)->
 				Theme.preview { themeId: service.themeModel._id }, service.packInfo, (data)->
 					service.themeModel.preview = data.preview
+					service.themeModel.thumbnail = data.thumbnail
 					callback(data);
 
 			# Package theme and get theme Url
 			packageTheme: (callback)->
 				return callback(false) if not service.dirty
 				# save themeModel
-				delete service.themeModel.thumbnail
-				service.themeModel.$save (doc)->
+				# delete service.themeModel.thumbnail
+				# service.themeModel.$save {}, (doc)->
+				Theme.save service.themeModel, (doc)->
 					# package up
 					Theme.packageUp { themeId: doc._id }, service.packInfo, (data)->
 
