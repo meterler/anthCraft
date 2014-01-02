@@ -5,3 +5,4 @@ The Awesome!
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/changyou/anthcraft/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
+See wiki for more information.
