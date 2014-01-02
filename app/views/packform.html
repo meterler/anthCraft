@@ -11,7 +11,7 @@
 		</a>
 		<div class="thumbnail-list clearfix" ng-animate="'animate'">
 			<div class="thumbnail-pic" ng-repeat="thumb in thumblist" ng-show="check($index)">
-				<img ng-src="/resources/preview/{{thumb}}"/>
+				<img ng-src="{{PREVIEW_URL}}/{{thumb}}"/>
 			</div>
 			<div class="previewing" ng-show="previewing" ng-init="previewing=true">
 				<i class="fa fa-spinner fa-spin fa-3x"></i>
