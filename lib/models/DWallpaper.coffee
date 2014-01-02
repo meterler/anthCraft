@@ -81,12 +81,12 @@ DWallpaperScheme = mongoose.Schema DWallpaperStruct
 
 # Develop theme collection is RESTful
 DWallpaperModel = restful
-				.model('dynamicwallpapers', DWallpaperScheme)
+				.model('dynamicwallpaper', DWallpaperScheme)
 				.methods(['get', 'post', 'put', 'delete'])
 
 # Config _id auto increase
 DWallpaperScheme.plugin autoinc.plugin, {
-	model: 'dynamicwallpapers',
+	model: 'dynamicwallpaper',
 	field: 'dynamicWallpaperId',
 	start: 100,
 	step: 1
