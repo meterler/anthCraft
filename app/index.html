@@ -101,17 +101,20 @@
  -->
 	<script src="components/angular/angular.min.js"></script>
 
-	<!-- build:js scripts/modules.js -->
-
+	<!-- build:js scripts/components.js -->
 	<script src="components/ngprogress/build/ngProgress.min.js"></script>
 	<script src="components/angular-route/angular-route.min.js"></script>
 	<script src="components/angular-resource/angular-resource.js"></script>
 	<script src="components/angular-local-storage/angular-local-storage.min.js"></script>
 	<script src="components/angular-cookies/angular-cookies.js"></script>
 	<script src="components/angular-sanitize/angular-sanitize.js"></script>
-	<script src="components/angular-imageupload-directive/public/javascripts/imageupload.js"></script>
 	<script src="components/angular-dragndrop/angular-dnd.min.js"></script>
+	<!-- endbuild -->
+
+	<!-- build:js scripts/modules.js -->
 	<script src="scripts/modules/carousel/carousel.js"></script>
+	<!-- <script src="scripts/modules/dnd/file-dnd.js"></script> -->
+	<script src="scripts/modules/imageupload/imageupload.js"></script>
 	<!-- endbuild -->
 
 	<!-- build:js({.tmp,app}) scripts/scripts.js -->
