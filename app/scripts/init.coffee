@@ -19,17 +19,22 @@ mod = angular.module('anthCraftApp', [
 		.when('/', {
 			templateUrl: 'views/index.html'
 		})
+		.when('/builder', {
+			templateUrl: 'views/builder.html'
+		})
+
+		# Old style
 		.when('/dockbar', {
-			templateUrl: 'views/dockbar.html'
+			templateUrl: 'views/pages/dockbar.html'
 		})
 		.when('/wallpaper', {
-			templateUrl: 'views/wallpaper.html'
+			templateUrl: 'views/pages/wallpaper.html'
 		})
 		.when('/systemIcons', {
-			templateUrl: 'views/systemicons.html'
+			templateUrl: 'views/pages/systemicons.html'
 		})
 		.when('/packForm', {
-			templateUrl: 'views/packform.html'
+			templateUrl: 'views/pages/packform.html'
 		})
 		.otherwise {
 			redirectTo: '/'
