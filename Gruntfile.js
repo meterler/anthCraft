@@ -89,7 +89,12 @@ module.exports = function (grunt) {
           src: [
             '.tmp',
             '<%= yeoman.dist %>/*',
-            '!<%= yeoman.dist %>/.git*'
+            '!<%= yeoman.dist %>/{,**/}.git*',
+            '<%= yeoman.app %>/resources/preview/*',
+            '<%= yeoman.app %>/resources/themes/*',
+            '<%= yeoman.app %>/resources/thumbnail/*',
+            '<%= yeoman.app %>/resources/upload/*',
+            '!<%= yeoman.app %>/resources/upload/default_theme'
           ]
         }]
       },
