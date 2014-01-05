@@ -3,7 +3,7 @@ mod = angular.module('anthCraftApp')
 
 
 # Theme Service
-mod.service 'themeService', [
+mod.factory 'themeService', [
 	'$rootScope', '$resource', 'localStorageService', 'themeConfig',
 	(
 		$rootScope, $resource, localStorage, themeConfig
