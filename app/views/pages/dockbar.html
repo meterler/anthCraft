@@ -6,6 +6,44 @@
 
 <div ng-include="'/views/partials/menuList.html'" ng-controller="menuListCtrl"></div>
 <div ng-include="'/views/partials/previewer.html'" ng-controller="previewCtrl"></div>
+
+<div class="mod-lathe" ng-controller="dashCtrl">
+	<header> Dockbar -  {{ selected_res }}</header>
+	<div>
+		<upload-img
+			theme-id="{{themeId}}"
+			res-type="app_icon"
+			res-name="com_android_contacts_com_android_contacts_activities_dialtactsactivity"
+			res-captial="Phone"
+			default-data="themeData"
+			src-prefix="{{srcPrefix}}"
+			scale="getScale"
+			rec-width="192"
+			rec-height="192"
+			rec-type="png"
+			callback="updatePreview"></upload-img>
+		<upload-img
+			theme-id="{{themeId}}"
+			res-type="app_icon"
+			res-name="com_android_contacts_com_android_contacts_activities_dialtactsactivity"
+			res-captial="Phone"
+			default-data="themeData"
+			src-prefix="{{srcPrefix}}"
+			scale="getScale"
+			rec-width="192"
+			rec-height="192"
+			rec-type="png"
+			callback="updatePreview"></upload-img>
+
+	</div>
+
+	<header> All lists </header>
+	<div>
+		
+	</div>
+</div>
+
+<!--
 <div class="mod-lathe" ng-controller="latheCtrl">
 	<header>
 		Dockbar
@@ -90,3 +128,4 @@
 		callback="updatePreview"></upload-img>
 
 </div>
+-->
