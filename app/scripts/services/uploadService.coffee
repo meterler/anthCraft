@@ -7,7 +7,7 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 		themeId: "@"
 		resType: "="
 		resName: "@"
-		resCaptial: "@"
+		resCapital: "@"
 
 		defaultData: "&"
 		scale: "&"

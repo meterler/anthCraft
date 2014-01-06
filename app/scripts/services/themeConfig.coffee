@@ -65,67 +65,67 @@ mod.factory 'themeConfig', ->
 
 			app_icon: {
 				"com_android_browser_com_android_browser_browseractivity": {
-					captial: "Browser"
+					capital: "Browser"
 					src: "/default_theme/app_icon/com_android_browser_com_android_browser_browseractivity.png"
 				}
 				"com_android_calculator2_com_android_calculator2_calculator": {
-					captial: "Calculator"
+					capital: "Calculator"
 					src: "/default_theme/app_icon/com_android_calculator2_com_android_calculator2_calculator.png"
 				}
 				"com_android_calendar_com_android_calendar_allinoneactivity": {
-					captial: "Calendar"
+					capital: "Calendar"
 					src: "/default_theme/app_icon/com_android_calendar_com_android_calendar_allinoneactivity.png"
 				}
 				"com_android_camera_com_android_camera_camera": {
-					captial: "Camera"
+					capital: "Camera"
 					src: "/default_theme/app_icon/com_android_camera_com_android_camera_camera.png"
 				}
 				"com_android_contacts_com_android_contacts_activities_dialtactsactivity": {
-					captial: "Phone"
+					capital: "Phone"
 					src: "/default_theme/app_icon/com_android_contacts_com_android_contacts_activities_dialtactsactivity.png"
 				}
 				"com_android_contacts_com_android_contacts_activities_peopleactivity": {
-					captial: "Contacts"
+					capital: "Contacts"
 					src: "/default_theme/app_icon/com_android_contacts_com_android_contacts_activities_peopleactivity.png"
 				}
 				"com_android_deskclock_com_android_deskclock_deskclock": {
-					captial: "Clock"
+					capital: "Clock"
 					src: "/default_theme/app_icon/com_android_deskclock_com_android_deskclock_deskclock.png"
 				}
 				"com_android_email_com_android_email_activity_welcome": {
-					captial: "Email"
+					capital: "Email"
 					src: "/default_theme/app_icon/com_android_email_com_android_email_activity_welcome.png"
 				}
 				"com_android_gallery3d_com_android_gallery3d_app_gallery": {
-					captial: "Gallery"
+					capital: "Gallery"
 					src: "/default_theme/app_icon/com_android_gallery3d_com_android_gallery3d_app_gallery.png"
 				}
 				"com_android_mms_com_android_mms_ui_conversationlist": {
-					captial: "Messages"
+					capital: "Messages"
 					src: "/default_theme/app_icon/com_android_mms_com_android_mms_ui_conversationlist.png"
 				}
 				"com_android_music_com_android_music_musicbrowseractivity": {
-					captial: "Music"
+					capital: "Music"
 					src: "/default_theme/app_icon/com_android_music_com_android_music_musicbrowseractivity.png"
 				}
 				"com_android_music_com_android_music_videobrowseractivity": {
-					captial: "Video"
+					capital: "Video"
 					src: "/default_theme/app_icon/com_android_music_com_android_music_videobrowseractivity.png"
 				}
 				"com_android_providers_downloads_ui_com_android_providers_downloads_ui_downloadlist": {
-					captial: "Download"
+					capital: "Download"
 					src: "/default_theme/app_icon/com_android_providers_downloads_ui_com_android_providers_downloads_ui_downloadlist.png"
 				}
 				"com_android_quicksearchbox_com_android_quicksearchbox_searchactivity": {
-					captial: "Search"
+					capital: "Search"
 					src: "/default_theme/app_icon/com_android_quicksearchbox_com_android_quicksearchbox_searchactivity.png"
 				}
 				"com_android_settings_com_android_settings_settings": {
-					captial: "Settings"
+					capital: "Settings"
 					src: "/default_theme/app_icon/com_android_settings_com_android_settings_settings.png"
 				}
 				"com_google_android_apps_maps_com_google_android_maps_mapsactivity": {
-					captial: "Maps"
+					capital: "Maps"
 					src: "/default_theme/app_icon/com_google_android_apps_maps_com_google_android_maps_mapsactivity.png"
 				}
 			}
