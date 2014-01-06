@@ -13,6 +13,7 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 		scale: "&"
 		srcPrefix: "@"
 
+		recStandard: "&"
 		recHeight: "@"
 		recWidth: "@"
 		recType: "@"
@@ -101,6 +102,7 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 
 			attr.defaultData = scope.defaultData()[resType][resName].src
 			attr.scale = scope.scale()(resType, resName)
+			scope.standard = scope.recStandard()(resType, resName)
 
 			scope.image = {
 				url: attr.srcPrefix + attr.defaultData

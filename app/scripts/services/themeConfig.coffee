@@ -31,22 +31,26 @@ mod.factory 'themeConfig', ->
 						force: true
 					}
 
-		getRecommandScale: (resType, resName)->
+		getStandard: (resType, resName)->
 			switch resType
 				when 'wallpaper'
-					{
+					if resName is 'wallpaper-hd' then {
 						width: 1440
 						height: 1280
 						type: 'jpg'
-					}
-				when 'wallpaper-hd'
-					{
+					} else {
 						width: 960
 						height: 800
 						type: 'jpg'
 					}
-				when 'dock_icon', 'customize_mat'
+				when 'app_icon', 'dock_icon', 'customize_mat'
 					{
+						width: 192
+						height: 192
+						type: 'png'
+					}
+				when 'dock_icon'
+					if resName is 'ic_dockbar_bg' then {
 						width: 480
 						height: 90
 						type: 'png'

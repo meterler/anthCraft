@@ -13,7 +13,8 @@ mod.controller 'dashCtrl', [
 			themeService.updateView packInfo
 			return
 
-		$scope.getScale = themeService.getPreviewScale
+		$scope.getPreviewScale = themeConfig.getPreviewScale
+		$scope.getStandard = themeConfig.getStandard
 		$scope.selected = {}
 
 		# When selected change
