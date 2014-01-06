@@ -1,50 +1,45 @@
 
-
-<div ng-controller="AlertCtrl">
-  <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
-</div>
-
 <div ng-include="'/views/partials/menuList.html'" ng-controller="menuListCtrl"></div>
 <div ng-include="'/views/partials/previewer.html'" ng-controller="previewCtrl"></div>
 
-<div class="mod-lathe" ng-controller="dashCtrl">
+<div class="mod-lathe" ng-controller="dashCtrl"
+	ng-init="select('wallpaper', 'wallpaper')">
 	<header> Wallpaper </header>
 	<section>
 		<upload-img
 			theme-id="{{themeId}}"
-			res-type="wallpaper"
-			res-name="wallpaper"
+			res-type="{{selected.resType}}"
+			res-name="{{selected.resName}}"
 			default-data="themeData"
 			src-prefix="{{srcPrefix}}"
 
 			scale="getScale"
-			res-captial="Wallpaper"
+			res-capital="{{selectedModel.capital}}"
 			rec-height="1280"
 			rec-width="1440"
 			rec-type="jpg"
 
-			callback="updatePreview"></upload-img>
-
+			callback="updatePreview" ng-if="selectedModel"></upload-img>
 		<upload-img
 			theme-id="{{themeId}}"
-			res-type="wallpaper"
-			res-name="wallpaper-hd"
+			res-type="{{selectedModel.link[0]}}"
+			res-name="{{selectedModel.link[1]}}"
 			default-data="themeData"
 			src-prefix="{{srcPrefix}}"
 
 			scale="getScale"
-			res-captial="Wallpaper"
+			res-capital="{{selectedLinkedModel.capital}}"
 			rec-height="960"
 			rec-width="800"
 			rec-type="jpg"
 
-			callback="updatePreview"></upload-img>
+			callback="updatePreview" ng-if="selectedLinkedModel"></upload-img>
 	</section>
 
 	<header> Other </header>
 	<section class="all-list">
-		<figure ng-repeat="item in groupList['wallpaper']" ng-init="it=wrapData(item)">
-			<img src="{{srcPrefix}}/{{it.src}}" ng-click="select(item)" ng-cloak>
+		<figure ng-repeat="item in groupList['dockbar']" ng-init="it=wrapData(item)" ng-class="{ active:(item.resType == selected.resType && item.resName == selected.resName )}">
+			<img src="{{srcPrefix}}/{{it.src}}" ng-click="select(item.resType, item.resName)" ng-cloak>
 			<figcaption>{{ it.capital }}</figcaption>
 		</figure>
 

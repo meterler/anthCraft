@@ -5,7 +5,7 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 	restrict: 'E'
 	scope: {
 		themeId: "@"
-		resType: "="
+		resType: "@"
 		resName: "@"
 		resCapital: "@"
 
@@ -21,9 +21,8 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 	}
 	templateUrl: "/views/partials/uploader.html"
 	controller: ['$rootScope', '$scope', '$attrs', '$http', '$element', 'themeConfig', ($rootScope, $scope, $attrs, $http, $element, themeConfig)->
-		$scope.resName = $attrs.resName
 
-		$rootScope.$on "uploader.refresh", (event)->
+		$rootScope.$on "uploader.refresh", ()->
 			defaultImageSrc = themeConfig.defaultPackInfo[$attrs.resType][$attrs.resName].src
 			$scope.image = {
 				url: $attrs.srcPrefix + defaultImageSrc
@@ -93,11 +92,21 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 			).error ()->
 	]
 	link: (scope, elem, attr)->
-		attr.defaultData = scope.defaultData()[attr.resType][attr.resName].src
-		attr.scale = scope.scale()(attr.resType, attr.resName)
+
 		attr.callback = scope.callback()
 
-		scope.image = {
-			url: attr.srcPrefix + attr.defaultData
-		}
+		refreshData = (resValue)->
+			return if not resValue
+			resType = resValue.split(',')[0]
+			resName = resValue.split(',')[1]
+
+			attr.defaultData = scope.defaultData()[resType][resName].src
+			attr.scale = scope.scale()(resType, resName)
+
+			scope.image = {
+				url: attr.srcPrefix + attr.defaultData
+			}
+			return
+
+		scope.$watch 'resType + "," + resName', refreshData
 }]
