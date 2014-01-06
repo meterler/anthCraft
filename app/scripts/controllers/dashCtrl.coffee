@@ -16,8 +16,6 @@ mod.controller 'dashCtrl', [
 		$scope.getScale = themeService.getPreviewScale
 
 		$scope.select = (type, name)->
-			
-			return
 
-		$scope.appIconList = themeConfig.appIcons
+			return
 ]

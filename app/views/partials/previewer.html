@@ -35,8 +35,8 @@
 		<div class="mp-apps-bg"></div>
 		<div class="mp-apps-app">
 
-			<div class="mp-apps-icon" ng-repeat="app in appIconList">
-				<img ng-src="{{_V(theme['app_icon'][app.id])}}">
+			<div class="mp-apps-icon" ng-repeat="app in theme.app_icon">
+				<img ng-src="{{_V(app)}}">
 				<p>{{app.captial}}</p>
 			</div>
 			<div class="mp-apps-icon">
