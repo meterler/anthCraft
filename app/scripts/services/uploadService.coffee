@@ -96,7 +96,6 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 		attr.callback = scope.callback()
 
 		refreshData = (resValue)->
-			return if not resValue
 			resType = resValue.split(',')[0]
 			resName = resValue.split(',')[1]
 
