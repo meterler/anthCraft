@@ -33,7 +33,11 @@ mod.controller 'previewCtrl', [
 			}
 
 		$scope.select = (type, name)->
-			console.log arguments
+			$rootScope.$broadcast "res.select", {
+				resType: type
+				resName: name
+			}
+			return
 
 		# Previewer update
 		$scope.$on 'theme.update', (event, newModel)->
