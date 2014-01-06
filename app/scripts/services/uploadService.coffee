@@ -24,7 +24,7 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 		$scope.resName = $attrs.resName
 
 		$rootScope.$on "uploader.refresh", (event)->
-			defaultImageSrc = themeConfig.defaultPackInfo[$attrs.resType][$attrs.resName]
+			defaultImageSrc = themeConfig.defaultPackInfo[$attrs.resType][$attrs.resName].src
 			$scope.image = {
 				url: $attrs.srcPrefix + defaultImageSrc
 			}
@@ -34,13 +34,15 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 			resName = $attrs.resName
 			callback = $attrs.callback
 
-			packInfo = {}
-			packInfo[resType] = {}
-			packInfo[resType][resName] = img
-			callback(packInfo)
 			$scope.image = {
 				url: $attrs.srcPrefix + img
 			}
+
+			callback({
+				resType: resType,
+				resName: resName,
+				src: img
+			})
 			angular.element($element).find("img").parent().css({
 				'box-shadow': "none"
 			})
@@ -80,19 +82,18 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 					'content-type': undefined
 				}
 			}).success((result)->
-				packInfo = {}
-				packInfo[resType] = {}
-				packInfo[resType][resName] = result.src
-
+				callback({
+					resType: resType,
+					resName: resName,
+					src: result.src
+				})
 				ngProgress.complete()
-
-				callback(packInfo)
 				$scope.loading=false
 
 			).error ()->
 	]
 	link: (scope, elem, attr)->
-		attr.defaultData = scope.defaultData()[attr.resType][attr.resName]
+		attr.defaultData = scope.defaultData()[attr.resType][attr.resName].src
 		attr.scale = scope.scale()(attr.resType, attr.resName)
 		attr.callback = scope.callback()
 

@@ -12,9 +12,12 @@ mod.controller 'dashCtrl', [
 		$scope.updatePreview = (packInfo)->
 			themeService.updateView packInfo
 			return
-			# TODO: refresh preview module
+
 		$scope.getScale = themeService.getPreviewScale
 
+		$scope.select = (type, name)->
+			
+			return
 
 		$scope.appIconList = themeConfig.appIcons
 ]

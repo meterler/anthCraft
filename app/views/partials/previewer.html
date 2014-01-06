@@ -16,8 +16,8 @@
 		<img class="mp-wallpaper" ng-src="{{_V(theme['wallpaper']['wallpaper'])}}" />
 		<div class="mp-decoration"></div>
 		<div class="mp-dock">
-			<img class="mp-dock-icon" ng-src="{{_V(theme['app_icon']['com_android_contacts_com_android_contacts_activities_dialtactsactivity'])}}">
-			<img class="mp-dock-icon" ng-src="{{_V(theme['app_icon']['com_android_contacts_com_android_contacts_activities_peopleactivity'])}}">
+			<img class="mp-dock-icon" ng-src="{{_V(theme['app_icon']['com_android_contacts_com_android_contacts_activities_dialtactsactivity'])}}" ng-click="select('app_icon', 'com_android_contacts_com_android_contacts_activities_dialtactsactivity')">
+			<img class="mp-dock-icon" ng-src="{{_V(theme['app_icon']['com_android_contacts_com_android_contacts_activities_peopleactivity'])}}" ng-click="select('app_icon', 'com_android_contacts_com_android_contacts_activities_peopleactivity')">
 
 			<div class="mp-dock-allapps" ng-mouseover="icon_status='pressed'" ng-mouseleave="icon_status='unpressed'" ng-switch="icon_status" ng-init="icon_status='unpressed'">
 				<img class="mp-dock-icon" ng-src="{{_V(theme['dock_icon']['ic_allapps'])}}" ng-switch-when="unpressed" title="Normal status">

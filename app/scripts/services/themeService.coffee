@@ -76,9 +76,8 @@ mod.factory 'themeService', [
 
 			# Update view
 			updateView: (updateData)->
-				for resType of updateData
-					service.packInfo[resType] = `service.packInfo[resType] ? service.packInfo[resType] : {}`
-					angular.extend(service.packInfo[resType], updateData[resType])
+				if updateData
+					service.packInfo[updateData.resType][updateData.resName].src = updateData.src
 
 				# Update localStorage if dirty
 				if service.dirty
