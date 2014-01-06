@@ -147,23 +147,53 @@ mod.factory 'themeConfig', ->
 
 			dock_icon: {
 				"ic_allapps": {
+					capital: "Drawer"
 					src: "/default_theme/dock_icon/ic_allapps.png"
+					link: [ 'dock_icon', 'ic_allapps_pressed' ]
 				}
 				"ic_allapps_pressed": {
+					capital: "Drawer(Pressed)"
 					src: "/default_theme/dock_icon/ic_allapps_pressed.png"
+				}
+				"ic_dockbar_bg": {
+					capital: "Dockbar Backgroud"
+					src: "/default_theme/dock_icon/ic_allapps.png"
 				}
 			}
 
 		}
 
+		# Show all icon list
 		groupList: {
 			'wallpaper': [
-				{
-					type: 'wallpaper'
-					name: 'wallpaper'
-				}
+				{ resType: 'wallpaper', resName: 'wallpaper' }
 			],
-			'appIcons': [ ]
+			'dockbar': [
+				{ resType: 'app_icon', resName: 'Phone' }
+				{ resType: 'app_icon', resName: 'Contacts' }
+				{ resType: 'app_icon', resName: 'Messages' }
+				{ resType: 'app_icon', resName: 'Browser' }
+				{ resType: 'dock_icon', resName: 'ic_allapps' }
+				{ resType: 'dock_icon', resName: 'ic_dockbar_bg' }
+			]
+			'appIcons': [
+				{ resType: 'app_icon', resName: 'Browser' }
+				{ resType: 'app_icon', resName: 'Calculator' }
+				{ resType: 'app_icon', resName: 'Calendar' }
+				{ resType: 'app_icon', resName: 'Camera' }
+				{ resType: 'app_icon', resName: 'Phone' }
+				{ resType: 'app_icon', resName: 'Contacts' }
+				{ resType: 'app_icon', resName: 'Clock' }
+				{ resType: 'app_icon', resName: 'Email' }
+				{ resType: 'app_icon', resName: 'Gallery' }
+				{ resType: 'app_icon', resName: 'Messages' }
+				{ resType: 'app_icon', resName: 'Music' }
+				{ resType: 'app_icon', resName: 'Video' }
+				{ resType: 'app_icon', resName: 'Download' }
+				{ resType: 'app_icon', resName: 'Search' }
+				{ resType: 'app_icon', resName: 'Settings' }
+				{ resType: 'app_icon', resName: 'Maps' }
+			]
 		}
 
 	}

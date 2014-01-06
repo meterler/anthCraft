@@ -15,5 +15,30 @@
 		line-height: 2em;
 		margin: 5px 0 10px;
 	}
+
+	.all-list {
+		figure {
+			position: relative;
+			display: inline-block;
+			margin: 0 3px;
+			overflow: hidden;
+			text-align: center;
+			width: 65px;
+			vertical-align: top;
+			height: 100px;
+			cursor: pointer;
+
+			&:hover img, &.active img {
+				background-color: #FFF5CF;
+				border-color: #DACFAC;
+			}
+		}
+		figure img {
+			width: 60px;
+			height: 60px;
+			padding: 3px;
+			border: 1px solid transparent;
+		}
+	}
 }
 

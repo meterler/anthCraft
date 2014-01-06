@@ -42,10 +42,10 @@
 	</section>
 
 	<header> Other </header>
-	<section ng-cloak>
-		<figure ng-repeat="item in groupList['wallpaper']" ng-init="item=wrapData(item)">
-			<img src="{{item.src}}" ng-click="select(item.type, item.name)">
-			<figcaption>{{ item.captial }}</figcaption>
+	<section class="all-list">
+		<figure ng-repeat="item in groupList['wallpaper']" ng-init="it=wrapData(item)">
+			<img src="{{srcPrefix}}/{{it.src}}" ng-click="select(item)" ng-cloak>
+			<figcaption>{{ it.capital }}</figcaption>
 		</figure>
 
 	</section>

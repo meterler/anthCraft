@@ -18,4 +18,7 @@ mod.controller 'dashCtrl', [
 		$scope.select = (type, name)->
 
 			return
+
+		$scope.groupList = themeConfig.groupList
+		$scope.wrapData = (item)-> $scope.themeData[item.resType][item.resName]
 ]
