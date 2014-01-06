@@ -32,7 +32,8 @@
     "ngprogress": "~1.0.4",
     "angular-dragndrop": "~1.0.4",
     "angular-carousel-directive": "~1.0.5",
-    "angular-flexslider": "~1.0.0"
+    "angular-flexslider": "~1.0.0",
+    "angular-bootstrap": "~0.9.0"
   },
   "resolutions": {
     "angular": "~1.2.6"

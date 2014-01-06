@@ -15,10 +15,10 @@ mod.controller 'previewCtrl', [
 		$scope.theme = themeService.packInfo
 
 		# Utils
-		$scope._V = (v)-> "#{themeConfig.themeFolder}#{v}"
+		$scope._V = (v)-> "#{themeConfig.themeFolder}#{v.src}"
 
 		$scope._IconBg = (v)-> {
-				'background-image': "url('#{themeConfig.themeFolder}#{$scope.theme['customize_mat']['default_customize_mat']}')"
+				'background-image': "url('#{themeConfig.themeFolder}#{$scope.theme['customize_mat']['default_customize_mat'].src}')"
 				'background-size': "43px"
 				'background-repeat': "no-repeat"
 			}
@@ -26,11 +26,14 @@ mod.controller 'previewCtrl', [
 		$scope._Mask = (v)-> {
 				'width': "39px"
 				'height': "39px"
-				'-webkit-mask-image': "url('#{themeConfig.themeFolder}#{$scope.theme['customize_mat']['default_customize_mask']}')"
+				'-webkit-mask-image': "url('#{themeConfig.themeFolder}#{$scope.theme['customize_mat']['default_customize_mask'].src}')"
 				'-webkit-mask-size': "39px"
 				'margin-top': "3px"
 				'margin-left': "-2px"
 			}
+
+		$scope.select = (type, name)->
+			console.log arguments
 
 		# Previewer update
 		$scope.$on 'theme.update', (event, newModel)->

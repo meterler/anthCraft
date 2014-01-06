@@ -8,6 +8,7 @@ mod = angular.module('anthCraftApp', [
 	'LocalStorageModule'
 	'dragAndDrop'
 
+	'ui.bootstrap'
 	'anthcraft.carousel'
 	'anthcraft.imageupload'
 ]).config [ '$routeProvider', '$compileProvider', ($routeProvider, $compileProvider)->

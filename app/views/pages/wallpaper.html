@@ -7,25 +7,48 @@
 <div ng-include="'/views/partials/menuList.html'" ng-controller="menuListCtrl"></div>
 <div ng-include="'/views/partials/previewer.html'" ng-controller="previewCtrl"></div>
 
-<div class="mod-lathe" ng-controller="latheCtrl">
-	<header>
-		Wallpaper
-	</header>
+<div class="mod-lathe" ng-controller="dashCtrl">
+	<header> Wallpaper </header>
+	<section>
+		<upload-img
+			theme-id="{{themeId}}"
+			res-type="wallpaper"
+			res-name="wallpaper"
+			default-data="themeData"
+			src-prefix="{{srcPrefix}}"
 
-	<upload-img
-		theme-id="{{themeId}}"
-		res-type="wallpaper"
-		res-name="wallpaper"
-		default-data="themeData"
-		src-prefix="{{srcPrefix}}"
+			scale="getScale"
+			res-captial="Wallpaper"
+			rec-height="1280"
+			rec-width="1440"
+			rec-type="jpg"
 
-		scale="getScale"
-		res-captial="Wallpaper"
-		rec-height="1280"
-		rec-width="1440"
-		rec-type="jpg"
+			callback="updatePreview"></upload-img>
 
-		callback="updatePreview"></upload-img>
+		<upload-img
+			theme-id="{{themeId}}"
+			res-type="wallpaper"
+			res-name="wallpaper-hd"
+			default-data="themeData"
+			src-prefix="{{srcPrefix}}"
+
+			scale="getScale"
+			res-captial="Wallpaper"
+			rec-height="960"
+			rec-width="800"
+			rec-type="jpg"
+
+			callback="updatePreview"></upload-img>
+	</section>
+
+	<header> Other </header>
+	<section ng-cloak>
+		<figure ng-repeat="item in groupList['wallpaper']" ng-init="item=wrapData(item)">
+			<img src="{{item.src}}" ng-click="select(item.type, item.name)">
+			<figcaption>{{ item.captial }}</figcaption>
+		</figure>
+
+	</section>
 
 </div>
 
