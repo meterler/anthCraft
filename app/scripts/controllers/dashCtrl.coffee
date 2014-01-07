@@ -36,7 +36,7 @@ mod.controller 'dashCtrl', [
 			$scope.selectedLinkedModel = selectedLinkedModel
 
 			$timeout ->
-				$rootScope.$broadcast "res.selectEditing", selected
+				$rootScope.$broadcast "res.selectEditing", selected, selectedModel.src
 			, 0
 
 

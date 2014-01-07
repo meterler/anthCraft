@@ -22,11 +22,17 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 
 		$scope.isEditing = !!$scope.$eval($attrs.isEditing)
 
-		# $scope.$on "uploader.refresh", ()->
-		# 	defaultImageSrc = themeConfig.defaultPackInfo[$attrs.resType][$attrs.resName].src
-		# 	$scope.image = {
-		# 		url: $attrs.srcPrefix + defaultImageSrc
-		# 	}
+		$scope.$on "uploader.refresh", ()->
+			defaultImageSrc = themeConfig.defaultPackInfo[$attrs.resType][$attrs.resName].src
+			$scope.image = {
+				url: $attrs.srcPrefix + defaultImageSrc
+			}
+
+		$scope.$on "uploader.updateSrc", (event, to, src)->
+			if $attrs.resType is to.resType and $attrs.resName is to.resName
+				$scope.image = {
+					url: $attrs.srcPrefix + src
+				}
 
 		$scope.dropImg = (img)->
 			resType = $attrs.resType
@@ -123,4 +129,5 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 			return
 
 		scope.$watch 'resType + "," + resName', refreshData
+
 }]
