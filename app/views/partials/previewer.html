@@ -16,16 +16,36 @@
 		<img class="mp-wallpaper" ng-src="{{_V(theme['wallpaper']['wallpaper'])}}" />
 		<div class="mp-decoration"></div>
 		<div class="mp-dock">
-			<img class="mp-dock-icon" ng-src="{{_V(theme['app_icon']['Phone'])}}" ng-click="select('app_icon', 'Phone')">
-			<img class="mp-dock-icon" ng-src="{{_V(theme['app_icon']['Contacts'])}}" ng-click="select('app_icon', 'Contacts')">
+			<img class="mp-dock-icon"
+				ng-src="{{_V(theme['app_icon']['Phone'])}}"
+				ng-click="select('app_icon', 'Phone')"
+				ng-class="{ active: isSelect('app_icon', 'Phone') }">
 
-			<div class="mp-dock-allapps" ng-mouseover="icon_status='pressed'" ng-mouseleave="icon_status='unpressed'" ng-switch="icon_status" ng-init="icon_status='unpressed'" ng-click="select('dock_icon', 'ic_allapps')">
+			<img class="mp-dock-icon"
+				ng-src="{{_V(theme['app_icon']['Contacts'])}}"
+				ng-click="select('app_icon', 'Contacts')"
+				ng-class="{ active: isSelect('app_icon', 'Contacts') }">
+
+			<div class="mp-dock-allapps"
+				ng-mouseover="icon_status='pressed'"
+				ng-mouseleave="icon_status='unpressed'"
+				ng-switch="icon_status"
+				ng-init="icon_status='unpressed'"
+				ng-click="select('dock_icon', 'ic_allapps')"
+				ng-class="{ active: isSelect('dock_icon', 'ic_allapps') }">
 				<img class="mp-dock-icon" ng-src="{{_V(theme['dock_icon']['ic_allapps'])}}" ng-switch-when="unpressed" title="Normal status">
 				<img class="mp-dock-icon" ng-src="{{_V(theme['dock_icon']['ic_allapps_pressed'])}}" ng-switch-when="pressed" title="Pressed status">
 			</div>
 
-			<img class="mp-dock-icon" ng-src="{{_V(theme['app_icon']['Messages'])}}" ng-click="select('app_icon', 'Messages')">
-			<img class="mp-dock-icon" ng-src="{{_V(theme['app_icon']['Browser'])}}" ng-click="select('app_icon', 'Browser')">
+			<img class="mp-dock-icon"
+				ng-src="{{_V(theme['app_icon']['Messages'])}}"
+				ng-click="select('app_icon', 'Messages')"
+				ng-class="{ active: isSelect('app_icon', 'Messages') }">
+
+			<img class="mp-dock-icon"
+				ng-src="{{_V(theme['app_icon']['Browser'])}}"
+				ng-click="select('app_icon', 'Browser')"
+				ng-class="{ active: isSelect('app_icon', 'Browser') }">
 		</div>
 	</div>
 

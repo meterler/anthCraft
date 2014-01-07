@@ -32,12 +32,17 @@ mod.controller 'previewCtrl', [
 				'margin-left': "-2px"
 			}
 
+		$scope.isSelect = (resType, resName)->
+				($scope.selected.resType is resType) and ($scope.selected.resName is resName)
+
 		$scope.select = (type, name)->
 			$rootScope.$broadcast "res.select", {
 				resType: type
 				resName: name
 			}
 			return
+		$rootScope.$on "res.select", (event, selected)->
+			$scope.selected = selected
 
 		# Previewer update
 		$scope.$on 'theme.update', (event, newModel)->

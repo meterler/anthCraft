@@ -53,6 +53,12 @@
 			height: 72px;
 			margin-left: 6px;
 			cursor: pointer;
+			border: 1px solid transparent;
+
+			&:hover, &.active {
+				background-color: #FFF5CF;
+				border-color: #DED7BD;
+			}
 		}
 
 		.mp-dock-allapps {
@@ -60,6 +66,10 @@
 			height: 72px;
 			display: inline-block;
 			cursor: pointer;
+			img:hover, &.active img {
+				background-color: #FFF5CF;
+				border-color: #DED7BD;
+			}
 		}
 
 		.mp-statusbar {
