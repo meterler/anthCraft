@@ -1,0 +1,22 @@
+<div class="mod-resLibrary">
+	<header>
+		Resources Library
+	</header>
+
+<!-- 	<div class="mod-resList" jrg-carousel opts="carouselOpts" nav-num-items=5 center-offset='1'>
+		<a ng-repeat="img in resList" drag ng-model="img">
+			<img ng-src="/resources/upload{{img}}" title="Drag and drop to right"/>
+		</a>
+	</div> -->
+
+	<carousel interval="99999" class="mod-resList">
+		<slide ng-repeat="trunk in resList" active="slide.active">
+
+			<a drag ng-model="img" ng-repeat="img in trunk">
+				<img ng-src="/resources/upload{{img}}" title="Drag and drop to right"/>
+			</a>
+
+		</slide>
+	</carousel>
+
+</div>

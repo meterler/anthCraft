@@ -43,11 +43,6 @@ mod.controller 'dashCtrl', [
 		# Init selected
 		# $scope.select(selected.resType, selected.resName)
 
-		# $scope.selectedModel = angular.extend(
-		# 	{,
-		# 	$scope.themeData[selected.resType][selected.resName])
-
-
 		$scope.groupList = themeConfig.groupList
 		$scope.wrapData = (item)-> $scope.themeData[item.resType][item.resName]
 ]

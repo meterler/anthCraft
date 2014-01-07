@@ -22,11 +22,11 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 
 		$scope.isEditing = !!$scope.$eval($attrs.isEditing)
 
-		$scope.$on "uploader.refresh", ()->
-			defaultImageSrc = themeConfig.defaultPackInfo[$attrs.resType][$attrs.resName].src
-			$scope.image = {
-				url: $attrs.srcPrefix + defaultImageSrc
-			}
+		# $scope.$on "uploader.refresh", ()->
+		# 	defaultImageSrc = themeConfig.defaultPackInfo[$attrs.resType][$attrs.resName].src
+		# 	$scope.image = {
+		# 		url: $attrs.srcPrefix + defaultImageSrc
+		# 	}
 
 		$scope.dropImg = (img)->
 			resType = $attrs.resType
@@ -67,7 +67,7 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 		$scope.$on 'res.selectEditing', changeStatusFn
 
 		# Raise event if isEditing
-		$scope.select() if $attrs.isEditing
+		# $scope.select() if $attrs.isEditing
 
 		$scope.upload = (image)->
 
