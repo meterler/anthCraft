@@ -139,9 +139,11 @@ mod.factory 'themeConfig', ->
 
 			customize_mat: {
 				"default_customize_mat": {
+					capital: "Icon background"
 					src: "/default_theme/customize_mat/default_customize_mat.png"
 				}
 				"default_customize_mask": {
+					capital: "Icon mask"
 					src: "/default_theme/customize_mat/default_customize_mask.png"
 				}
 				"default_customize_icon": {
@@ -201,3 +203,5 @@ mod.factory 'themeConfig', ->
 		}
 
 	}
+
+#深夜加班独自走在回家的路上，常常想起那些年夕阳下的奔跑，那是我逝去的，青春
