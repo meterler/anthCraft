@@ -18,18 +18,21 @@ mod.controller 'previewCtrl', [
 		$scope._V = (v)-> "#{themeConfig.themeFolder}#{v.src}"
 
 		$scope._IconBg = (v)-> {
-				'background-image': "url('#{themeConfig.themeFolder}#{$scope.theme['customize_mat']['default_customize_mat'].src}')"
-				'background-size': "43px"
+				'background-image': "url('#{v}')"
+				'background-size': "80px"
 				'background-repeat': "no-repeat"
+				'background-position': "-3px 1px"
 			}
 
 		$scope._Mask = (v)-> {
-				'width': "39px"
-				'height': "39px"
+				'width': "80px"
+				'height': "80px"
 				'-webkit-mask-image': "url('#{themeConfig.themeFolder}#{$scope.theme['customize_mat']['default_customize_mask'].src}')"
-				'-webkit-mask-size': "39px"
-				'margin-top': "3px"
-				'margin-left': "-2px"
+				'-webkit-mask-size': "70px"
+				'-webkit-mask-repeat': "no-repeat"
+				'margin-top': "6px"
+				'margin-left': "2px"
+				'padding': "4px"
 			}
 
 		$scope.isSelect = (resType, resName)->
