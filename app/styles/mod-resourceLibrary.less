@@ -22,7 +22,7 @@
 
 	.mod-resList {
 		margin: 0 5px;
-		a {
+		a.rl-item {
 			display: inline-block;
 			padding: 5px;
 			border: 1px solid #eee;
@@ -33,10 +33,27 @@
 			&:hover {
 				border: 1px solid #aaa;
 			}
+			img {
+				width: 64px;
+				height: 64px;
+			}
 		}
-		img {
-			width: 64px;
-			height: 64px;
+	}
+
+	.carousel-indicators {
+		display: none;
+	}
+	.carousel-control {
+		border: none;
+		background: none;
+		color: #787878;
+		width: 20px;
+		cursor: pointer;
+
+		span {
+			font-size: 48px;
+			margin-top: -40px;
+			right: 0;
 		}
 	}
 }

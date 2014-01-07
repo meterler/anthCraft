@@ -12,7 +12,7 @@
 	<carousel interval="99999" class="mod-resList">
 		<slide ng-repeat="trunk in resList" active="slide.active">
 
-			<a drag ng-model="img" ng-repeat="img in trunk">
+			<a drag ng-model="img" ng-repeat="img in trunk" class="rl-item">
 				<img ng-src="/resources/upload{{img}}" title="Drag and drop to right"/>
 			</a>
 

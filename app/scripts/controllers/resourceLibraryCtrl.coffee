@@ -26,7 +26,7 @@ mod.controller 'resLibraryCtrl', [
 			_list = $scope.plainList.slice(0)
 			console.log "------", value
 			result = []
-			trunk_size = 5
+			trunk_size = 6
 
 			# for i in [0...group_count]
 			while _list.length > 0
