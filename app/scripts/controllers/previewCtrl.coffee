@@ -17,8 +17,14 @@ mod.controller 'previewCtrl', [
 		# Utils
 		$scope._V = (v)-> "#{themeConfig.themeFolder}#{v.src}"
 
+		$scope._DockBg = (v)-> {
+				"background-image": "url('#{themeConfig.themeFolder}#{v.src}')"
+				"background-size": "100% 100%"
+				"background-repeat": "no-repeat"
+			}
+
 		$scope._IconBg = (v)-> {
-				'background-image': "url('#{v}')"
+				'background-image': "url('#{themeConfig.themeFolder}#{v.src}')"
 				'background-size': "80px"
 				'background-repeat': "no-repeat"
 				'background-position': "-3px 1px"
@@ -39,11 +45,12 @@ mod.controller 'previewCtrl', [
 				($scope.selected.resType is resType) and ($scope.selected.resName is resName)
 
 		$scope.select = (type, name)->
-			# $rootScope.$broadcast "res.select", {
-			# 	resType: type
-			# 	resName: name
-			# }
+			$rootScope.$broadcast "res.select", {
+				resType: type
+				resName: name
+			}
 			return
+
 		$rootScope.$on "res.select", (event, selected)->
 			$scope.selected = selected
 

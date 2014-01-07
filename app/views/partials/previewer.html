@@ -15,7 +15,12 @@
 
 		<img class="mp-wallpaper" ng-src="{{_V(theme['wallpaper']['wallpaper'])}}" />
 		<div class="mp-decoration"></div>
-		<div class="mp-dock">
+		<div class="mp-dock"
+			ng-mouseover="mcn=$event.target.className"
+			ng-mouseleave="mcn=false"
+			ng-click="(mcn == 'mp-dock')&&select('dock_icon', 'ic_dockbar_bg')"
+			ng-class="{ active: (mcn == 'mp-dock') }"
+			ng-style="_DockBg(theme['dock_icon']['ic_dockbar_bg'])">
 			<img class="mp-dock-icon"
 				ng-src="{{_V(theme['app_icon']['Phone'])}}"
 				ng-click="select('app_icon', 'Phone')"
