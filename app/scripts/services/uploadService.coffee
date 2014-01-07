@@ -14,16 +14,15 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 		srcPrefix: "@"
 
 		recStandard: "&"
-		recHeight: "@"
-		recWidth: "@"
-		recType: "@"
 
 		callback: "&"
 	}
 	templateUrl: "/views/partials/uploader.html"
 	controller: ['$rootScope', '$scope', '$attrs', '$http', '$element', 'themeConfig', ($rootScope, $scope, $attrs, $http, $element, themeConfig)->
 
-		$rootScope.$on "uploader.refresh", ()->
+		$scope.isEditing = $attrs.isEditing
+
+		$scope.$on "uploader.refresh", ()->
 			defaultImageSrc = themeConfig.defaultPackInfo[$attrs.resType][$attrs.resName].src
 			$scope.image = {
 				url: $attrs.srcPrefix + defaultImageSrc
@@ -55,6 +54,19 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 			angular.element($element).find("img").parent().css({
 				'box-shadow': "none"
 			})
+
+		$scope.select = ()->
+			$rootScope.$broadcast 'res.selectEditing', {
+				resType: $attrs.resType
+				resName: $attrs.resName
+			}
+
+
+		changeStatusFn = (event, select)->
+			$scope.isEditing = (select.resType is $attrs.resType and select.resName is $attrs.resName)
+
+		$scope.$on 'res.selectEditing', changeStatusFn
+
 
 		$scope.upload = (image)->
 

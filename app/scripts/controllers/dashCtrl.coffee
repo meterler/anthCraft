@@ -2,8 +2,8 @@ mod = angular.module('anthCraftApp')
 
 # Upload files
 mod.controller 'dashCtrl', [
-	'$rootScope', '$scope',"themeConfig", "themeService",
-	($rootScope, $scope, themeConfig, themeService)->
+	'$rootScope', '$scope', '$timeout', "themeConfig", "themeService",
+	($rootScope, $scope, $timeout, themeConfig, themeService)->
 
 		$scope.srcPrefix = themeConfig.themeFolder
 		$scope.themeId = themeService.themeModel._id
@@ -24,7 +24,7 @@ mod.controller 'dashCtrl', [
 				resName: name
 			}
 			return
-		$rootScope.$on "res.select", (evt, selected)->
+		$scope.$on "res.select", (evt, selected)->
 			$scope.selected = selected
 			selectedModel = $scope.themeData[selected.resType][selected.resName]
 			if selectedModel.link
@@ -34,6 +34,11 @@ mod.controller 'dashCtrl', [
 
 			$scope.selectedModel = selectedModel
 			$scope.selectedLinkedModel = selectedLinkedModel
+
+			$timeout ->
+				$rootScope.$broadcast "res.selectEditing", selected
+			, 0
+
 
 		# Init selected
 		# $scope.select(selected.resType, selected.resName)

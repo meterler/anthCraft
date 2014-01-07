@@ -12,9 +12,15 @@
 		overflow: hidden;
 		display: inline-block;
 		position: relative;
+
+		transition: all .5s;
+		cursor: pointer;
 		img {
 			width: 100px;
 			height: 100px;
+		}
+		&:hover, &.active {
+			background-color: #FFF4CF;
 		}
 	}
 
