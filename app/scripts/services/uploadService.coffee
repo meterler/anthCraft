@@ -20,7 +20,7 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 	templateUrl: "/views/partials/uploader.html"
 	controller: ['$rootScope', '$scope', '$attrs', '$http', '$element', 'themeConfig', ($rootScope, $scope, $attrs, $http, $element, themeConfig)->
 
-		$scope.isEditing = $attrs.isEditing
+		$scope.isEditing = !!$scope.$eval($attrs.isEditing)
 
 		$scope.$on "uploader.refresh", ()->
 			defaultImageSrc = themeConfig.defaultPackInfo[$attrs.resType][$attrs.resName].src
@@ -61,12 +61,13 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 				resName: $attrs.resName
 			}
 
-
 		changeStatusFn = (event, select)->
 			$scope.isEditing = (select.resType is $attrs.resType and select.resName is $attrs.resName)
 
 		$scope.$on 'res.selectEditing', changeStatusFn
 
+		# Raise event if isEditing
+		$scope.select() if $attrs.isEditing
 
 		$scope.upload = (image)->
 
