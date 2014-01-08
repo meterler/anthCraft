@@ -19,10 +19,16 @@ mod.controller 'dashCtrl', [
 
 		# When selected change
 		$scope.select = (type, name)->
-			$rootScope.$broadcast "res.select", {
+			selected = {
 				resType: type
 				resName: name
 			}
+			selectedModel = $scope.themeData[selected.resType][selected.resName]
+
+			$rootScope.$broadcast "res.select", selected
+			$timeout ->
+				$rootScope.$broadcast "res.selectEditing", selected, selectedModel.src
+			, 0
 			return
 		$scope.$on "res.select", (evt, selected)->
 			$scope.selected = selected

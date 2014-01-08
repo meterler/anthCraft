@@ -39,6 +39,7 @@ mod.controller 'resLibraryCtrl', [
 		$scope.isActive = (imgUrl)-> imgUrl is matchedImgUrl
 
 		$rootScope.$on 'res.selectEditing', (event, curRes, mImgUrl)->
+
 			# Load resources
 			$http.get("/resourceLib", {
 				params: curRes

@@ -30,6 +30,7 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 
 		$scope.$on "uploader.updateSrc", (event, to, src)->
 			if $attrs.resType is to.resType and $attrs.resName is to.resName
+				$attrs.defaultData = src
 				$scope.image = {
 					url: $attrs.srcPrefix + src
 				}
@@ -39,6 +40,7 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 			resName = $attrs.resName
 			callback = $attrs.callback
 
+			$attrs.defaultData = img
 			$scope.image = {
 				url: $attrs.srcPrefix + img
 			}
@@ -65,7 +67,7 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 			$rootScope.$broadcast 'res.selectEditing', {
 				resType: $attrs.resType
 				resName: $attrs.resName
-			}
+			}, $attrs.defaultData
 
 		changeStatusFn = (event, select)->
 			$scope.isEditing = (select.resType is $attrs.resType and select.resName is $attrs.resName)
