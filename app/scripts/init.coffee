@@ -9,8 +9,8 @@ mod = angular.module('anthCraftApp', [
 	'dragAndDrop'
 
 	'ui.bootstrap'
-	'anthcraft.carousel'
 	'anthcraft.imageupload'
+	'angular-carousel'
 ]).config [ '$routeProvider', '$compileProvider', ($routeProvider, $compileProvider)->
 
 	# Compile white list for image preview since angular-v1.2.1

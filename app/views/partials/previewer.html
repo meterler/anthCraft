@@ -10,11 +10,15 @@
 
 <div class="mod-previewer" ng-switch on="curSence">
 
-	<div class="sence sence-home" ng-switch-when="home">
-		<!-- <div ng-style="setBg(theme['wallpaper']['wallpaper'])"></div> -->
-
-		<img class="mp-wallpaper" ng-src="{{_V(theme['wallpaper']['wallpaper'])}}" />
-		<div class="mp-decoration"></div>
+	<div class="sence sence-home" ng-switch-when="home"
+		ng-style="_Wallpaper(_V(theme['wallpaper']['wallpaper']))">
+		<ul rn-carousel rn-carousel-index="1" rn-swipe-callback="swipeCallback">
+			<li></li>
+			<li>
+				<div class="mp-decoration"></div>
+			</li>
+			<li></li>
+		</ul>
 		<div class="mp-dock"
 			ng-mouseover="mcn=$event.target.className"
 			ng-mouseleave="mcn=false"
@@ -53,38 +57,39 @@
 				ng-class="{ active: isSelect('app_icon', 'Browser') }">
 		</div>
 	</div>
+	<div class="sence sence-apps" ng-switch-when="apps" ng-style="_Wallpaper(_V(theme['wallpaper']['wallpaper']))">
 
-	<div class="sence sence-apps" ng-switch-when="apps">
-		<img class="mp-wallpaper" ng-src="{{_V(theme['wallpaper']['wallpaper'])}}" />
-		<div class="mp-statusbar"></div>
-		<div class="mp-apps-bg"></div>
-		<div class="mp-apps-app">
+		<ul rn-carousel rn-carousel-index="0" rn-swipe-callback="swipeCallback">
+			<li>
+				<div class="mp-decoration"></div>
+				<div class="mp-apps-bg"></div>
+				<div class="mp-apps-app">
+					<div class="mp-apps-icon"
+						ng-repeat="(appId, app) in theme.app_icon"
+						ng-click="select('app_icon', appId)"
+						ng-class="{ active: isSelect('app_icon', appId) }">
+						<img ng-src="{{_V(app)}}">
+						<p>{{app.capital}}</p>
+					</div>
 
-			<div class="mp-apps-icon"
-				ng-repeat="(appId, app) in theme.app_icon"
-				ng-click="select('app_icon', appId)"
-				ng-class="{ active: isSelect('app_icon', appId) }">
-				<img ng-src="{{_V(app)}}">
-				<p>{{app.capital}}</p>
-			</div>
+					<div class="mp-apps-icon"
+						ng-click="select('customize_mat', 'default_customize_mat')"
+						ng-class="{ active: isSelect('customize_mat', 'default_customize_mat') }">
+						<img ng-src="{{_V(theme['customize_mat']['default_customize_mat'])}}">
+						<p>icon bg</p>
+					</div>
+					<div class="mp-apps-maskIcon"
+						ng-style="_IconBg(_V(theme['customize_mat']['default_customize_mat']))"
+						ng-click="select('customize_mat', 'default_customize_mask')"
+						ng-class="{ active: isSelect('customize_mat', 'default_customize_mask') }">
+						<img ng-src="{{_V(theme['customize_mat']['default_customize_icon'])}}"
+							ng-style="_Mask()">
+						<div class="active-bg"></div>
+						<p>Sample</p>
+					</div>
 
-			<div class="mp-apps-icon"
-				ng-click="select('customize_mat', 'default_customize_mat')"
-				ng-class="{ active: isSelect('customize_mat', 'default_customize_mat') }">
-				<img ng-src="{{_V(theme['customize_mat']['default_customize_mat'])}}">
-				<p>icon bg</p>
-			</div>
-			<div class="mp-apps-maskIcon"
-				ng-style="_IconBg(_V(theme['customize_mat']['default_customize_mat']))"
-				ng-click="select('customize_mat', 'default_customize_mask')"
-				ng-class="{ active: isSelect('customize_mat', 'default_customize_mask') }">
-				<img ng-src="{{_V(theme['customize_mat']['default_customize_icon'])}}"
-					ng-style="_Mask()">
-				<div class="active-bg"></div>
-				<p>Sample</p>
-			</div>
-
-		</div>
+				</div>
+			</li>
+		</ul>
 	</div>
 </div>
-

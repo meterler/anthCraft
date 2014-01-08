@@ -4,18 +4,34 @@ Control the theme previewer
 ###
 mod = angular.module('anthCraftApp')
 
-# TODO: Loading status
-
 mod.controller 'previewCtrl', [
 	'$scope', '$rootScope', 'themeConfig', 'themeService', 'menuFactory'
 	(
 		$scope, $rootScope, themeConfig, themeService, menuFactory
 	)->
+
+		# 1440*726/1280=>
+		IMAGE_WIDTH = 816
+		SENCE_WIDTH = 403
+		SENCE_HEIGHT = 726
+
 		$scope.curSence = menuFactory.sence
 		$scope.theme = themeService.packInfo
 
 		# Utils
 		$scope._V = (v)-> "#{themeConfig.themeFolder}#{v.src}"
+
+		$scope.swipeCallback = (ofx)->
+			senceDiv = document.querySelector(".sence")
+			senceDiv.style.backgroundPositionX = "#{-ofx / 3}px"
+
+		$scope._Wallpaper = (v)->
+			# delta = ((IMAGE_WIDTH - SENCE_WIDTH)/total)*(idx-1)
+			{
+				"background-image": "url('#{v}')"
+				"background-size": "#{IMAGE_WIDTH}px #{SENCE_HEIGHT}px"
+				"background-repeat": "no-repeat"
+			}
 
 		$scope._DockBg = (v)-> {
 				"background-image": "url('#{v}')"
