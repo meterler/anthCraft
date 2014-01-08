@@ -12,6 +12,7 @@
 
 	<div class="sence sence-home" ng-switch-when="home"
 		ng-style="_Wallpaper(_V(theme['wallpaper']['wallpaper']))">
+		<div class="mp-statusbar"></div>
 		<ul rn-carousel rn-carousel-index="1" rn-swipe-callback="swipeCallback">
 			<li></li>
 			<li>
@@ -58,11 +59,9 @@
 		</div>
 	</div>
 	<div class="sence sence-apps" ng-switch-when="apps" ng-style="_Wallpaper(_V(theme['wallpaper']['wallpaper']))">
-
+		<div class="mp-statusbar"></div>
 		<ul rn-carousel rn-carousel-index="0" rn-swipe-callback="swipeCallback">
 			<li>
-				<div class="mp-decoration"></div>
-				<div class="mp-apps-bg"></div>
 				<div class="mp-apps-app">
 					<div class="mp-apps-icon"
 						ng-repeat="(appId, app) in theme.app_icon"
@@ -91,5 +90,7 @@
 				</div>
 			</li>
 		</ul>
+		<div class="mp-apps-bg"></div>
+
 	</div>
 </div>
