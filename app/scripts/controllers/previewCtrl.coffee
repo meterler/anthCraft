@@ -18,13 +18,14 @@ mod.controller 'previewCtrl', [
 		$scope._V = (v)-> "#{themeConfig.themeFolder}#{v.src}"
 
 		$scope._DockBg = (v)-> {
-				"background-image": "url('#{themeConfig.themeFolder}#{v.src}')"
+				"background-image": "url('#{v}')"
 				"background-size": "100% 100%"
 				"background-repeat": "no-repeat"
 			}
 
-		$scope._IconBg = (v)-> {
-				'background-image': "url('#{themeConfig.themeFolder}#{v.src}')"
+		$scope._IconBg = (v)->
+			{
+				'background-image': "url('#{v}')"
 				'background-size': "80px"
 				'background-repeat': "no-repeat"
 				'background-position': "-3px 1px"

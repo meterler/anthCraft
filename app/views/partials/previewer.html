@@ -20,7 +20,7 @@
 			ng-mouseleave="mcn=false"
 			ng-click="(mcn == 'mp-dock')&&select('dock_icon', 'ic_dockbar_bg')"
 			ng-class="{ active: (mcn == 'mp-dock') }"
-			ng-style="_DockBg(theme['dock_icon']['ic_dockbar_bg'])">
+			ng-style="_DockBg(_V(theme['dock_icon']['ic_dockbar_bg']))">
 			<img class="mp-dock-icon"
 				ng-src="{{_V(theme['app_icon']['Phone'])}}"
 				ng-click="select('app_icon', 'Phone')"
