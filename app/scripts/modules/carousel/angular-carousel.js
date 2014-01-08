@@ -38,7 +38,7 @@ angular.module('angular-carousel')
 
     angular.module('angular-carousel')
 
-    .directive('rnCarousel', ['$swipe', '$window', '$document', '$parse', '$compile', function($swipe, $window, $document, $parse, $compile) {
+    .directive('rnCarousel', ['$timeout', '$swipe', '$window', '$document', '$parse', '$compile', function($timeout, $swipe, $window, $document, $parse, $compile) {
         // internal ids to allow multiple instances
         var carouselId = 0,
             // used to compute the sliding speed
@@ -112,6 +112,17 @@ angular.module('angular-carousel')
                         swipeCallback,
                         // javascript based animation easing
                         timestamp;
+
+                    // detect supported CSS property
+                    transformProperty = 'transform';
+                    ['webkit', 'Moz', 'O', 'ms'].every(function (prefix) {
+                        var e = prefix + 'Transform';
+                        if (typeof document.body.style[e] !== 'undefined') {
+                            transformProperty = e;
+                            return false;
+                        }
+                        return true;
+                    });
 
                     // add a wrapper div that will hide the overflow
                     var carousel = iElement.wrap("<div id='carousel-" + carouselId +"' class='rn-carousel-container'></div>"),
@@ -391,17 +402,6 @@ angular.module('angular-carousel')
                     if (!isIndexBound) {
                         goToSlide(scope.carouselIndex);
                     }
-
-                    // detect supported CSS property
-                    transformProperty = 'transform';
-                    ['webkit', 'Moz', 'O', 'ms'].every(function (prefix) {
-                        var e = prefix + 'Transform';
-                        if (typeof document.body.style[e] !== 'undefined') {
-                            transformProperty = e;
-                            return false;
-                        }
-                        return true;
-                    });
 
                     function onOrientationChange() {
                         updateContainerWidth();
