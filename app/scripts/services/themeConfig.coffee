@@ -231,8 +231,8 @@ mod.factory 'themeConfig', ->
 
 				{ resType: 'customize_mat', resName: 'default_customize_mask' }
 
-				{ resType: 'dock_icon', resName: 'ap_home' }
 				{ resType: 'dock_icon', resName: 'ap_search' }
+				{ resType: 'dock_icon', resName: 'ap_home' }
 				{ resType: 'dock_icon', resName: 'ap_menu' }
 			]
 		}
