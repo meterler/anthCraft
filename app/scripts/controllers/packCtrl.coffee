@@ -7,6 +7,7 @@ mod.controller 'packCtrl', [
 		$rootScope, $scope, $timeout, $cookies, $location, themeService
 	)->
 		$scope.curThumb = 0
+		$scope.upThumbnail = null
 
 		themeService.themeModel.userId = $cookies.userid
 		themeService.themeModel.author = $cookies.username
@@ -32,6 +33,11 @@ mod.controller 'packCtrl', [
 
 		$scope.check = (n)->
 			$scope.curThumb is n
+
+		$scope.uploadThumbnail = (image)->
+			$timeout ->
+				console.log $scope.upThumbnail
+			, 0
 
 		$scope.savePack = ()->
 			$scope.packing = true

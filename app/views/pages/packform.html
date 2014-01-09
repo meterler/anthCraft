@@ -22,7 +22,54 @@
 		</a>
 	</div>
 
+	<div class="pack-form" name="packForm" ng-submit="savePack()">
+		<form class="form-horizontal" role="form">
+			<div class="form-group">
+				<label for="inputEmail3" class="col-sm-3 control-label">Theme Name</label>
+				<div class="col-sm-6">
+					<input type="email" class="form-control" ng-model="theme.title" placeholder="" required maxlength="30">
+				</div>
+				<p class="help-block col-sm-3">Required</p>
+			</div>
+			<div class="form-group">
+				<label for="inputEmail3" class="col-sm-3 control-label">Designer</label>
+				<div class="col-sm-6">
+					<input type="email" class="form-control" ng-model="theme.author" placeholder="" required maxlength="30">
+				</div>
+				<p class="help-block col-sm-3">Required</p>
+			</div>
+			<div class="form-group">
+				<label for="inputEmail3" class="col-sm-3 control-label">Introduction</label>
+				<div class="col-sm-6">
+					<textarea name="description" class="form-control" ng-model="theme.description"required maxlength="1000"></textarea>
+				</div>
+				<p class="help-block col-sm-3">Required</p>
+			</div>
+			<div class="form-group">
+				<label for="inputEmail3" class="col-sm-3 control-label">Thumbnail</label>
+				<div class="col-sm-6 mod-uploader">
+					<div class="img-upload-handler">
+						<label for="upImage" class="file-upload btn btn-primary">
+							<span><strong>Change</strong></span>
+							<input name="upImage" type="file" accept="image/jpeg,image/jpg,image/png" image="upThumbnail" ng-model="xxx" ng-change="uploadThumbnail()">
+						</label>
+					</div>
+					<img ng-src="{{upThumbnail.url}}" type="{{upThumbnail.file.type}}" />
+				</div>
+				<p class="help-block col-sm-3">Required</p>
+			</div>
 
+			<div class="form-group">
+				<a href="/#/wallpaper" class="btn">Back</a>
+				<button class="btn btn-primary" type="submit" ng-disabled="packForm.$invalid">Save&amp;Package</button>
+				<i class="fa fa-spinner fa-spin" ng-show="packing" ng-init="packing=false"></i>
+				<a href="/resources/themes{{theme.packageFile.0.file}}" target="_blank" ng-show="theme.packageFile.0">
+					Download Theme
+				</a>
+			</div>
+		</form>
+	</div>
+<!--
 	<div class="pack-form" name="packForm" ng-submit="savePack()">
 		<form>
 			<div class="form-group">
@@ -52,12 +99,12 @@
 				<a href="/#/wallpaper" class="btn">Back</a>
 				<button class="btn btn-primary" type="submit" ng-disabled="packForm.$invalid">Save&amp;Package</button>
 				<i class="fa fa-spinner fa-spin" ng-show="packing" ng-init="packing=false"></i>
-				<!--
 				<a href="/resources/themes{{theme.packageFile.0.file}}" target="_blank" ng-show="theme.packageFile.0">
 					Download Theme
-				</a>-->
+				</a>
 			</div>
 
 		</form>
 	</div>
+	-->
 </div>
