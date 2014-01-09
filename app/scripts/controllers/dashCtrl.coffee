@@ -30,6 +30,11 @@ mod.controller 'dashCtrl', [
 				$rootScope.$broadcast "res.selectEditing", selected, selectedModel.src
 			, 0
 			return
+		$scope.resetImg = ->
+			$rootScope.$broadcast "uploader.restore"
+			$scope.select($scope.selected.resType, $scope.selected.resName)
+
+
 		$scope.$on "res.select", (evt, selected)->
 			$scope.selected = selected
 			selectedModel = $scope.themeData[selected.resType][selected.resName]

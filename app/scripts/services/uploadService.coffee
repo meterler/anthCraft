@@ -22,10 +22,15 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 
 		$scope.isEditing = !!$scope.$eval($attrs.isEditing)
 
-		$scope.$on "uploader.refresh", ()->
+		$scope.$on "uploader.restore", ()->
 			defaultImageSrc = themeConfig.defaultPackInfo[$attrs.resType][$attrs.resName].src
 			$scope.image = {
 				url: $attrs.srcPrefix + defaultImageSrc
+			}
+			$attrs.callback {
+				resType: $attrs.resType,
+				resName: $attrs.resName,
+				src: defaultImageSrc
 			}
 
 		$scope.$on "uploader.updateSrc", (event, to, src)->
