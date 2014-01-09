@@ -75,7 +75,7 @@
 						ng-click="select('customize_mat', 'default_customize_mat')"
 						ng-class="{ active: isSelect('customize_mat', 'default_customize_mat') }">
 						<img ng-src="{{_V(theme['customize_mat']['default_customize_mat'])}}">
-						<p>icon bg</p>
+						<p>{{theme['customize_mat']['default_customize_mat'].capital}}</p>
 					</div>
 					<div class="mp-apps-maskIcon"
 						ng-style="_IconBg(_V(theme['customize_mat']['default_customize_mat']))"
@@ -84,10 +84,11 @@
 						<img ng-src="{{_V(theme['customize_mat']['default_customize_icon'])}}"
 							ng-style="_Mask()">
 						<div class="active-bg"></div>
-						<p>Sample</p>
+						<p>{{theme['customize_mat']['default_customize_icon'].capital}}</p>
 					</div>
-
 				</div>
+
+
 			</li>
 		</ul>
 		<div class="mp-apps-bg"></div>

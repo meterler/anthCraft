@@ -139,14 +139,15 @@ mod.factory 'themeConfig', ->
 
 			customize_mat: {
 				"default_customize_mat": {
-					capital: "Icon background"
+					capital: "Icon Background"
 					src: "/default_theme/customize_mat/default_customize_mat.png"
 				}
 				"default_customize_mask": {
-					capital: "Icon mask"
+					capital: "Icon Mask"
 					src: "/default_theme/customize_mat/default_customize_mask.png"
 				}
 				"default_customize_icon": {
+					capital: "Test Icon Mask"
 					src: "/default_theme/customize_mat/default_customize_icon.png"
 				}
 			}
