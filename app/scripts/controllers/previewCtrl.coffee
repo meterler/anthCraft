@@ -58,6 +58,10 @@ mod.controller 'previewCtrl', [
 				'padding': "4px"
 			}
 
+		$scope._ABottomIcon = (v)-> {
+			"background-image": "url('#{v}')"
+		}
+
 		$scope.isSelect = (resType, resName)->
 				($scope.selected.resType is resType) and ($scope.selected.resName is resName)
 

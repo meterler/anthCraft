@@ -144,6 +144,7 @@ mod.factory 'themeConfig', ->
 				}
 				"default_customize_mask": {
 					capital: "Icon Mask"
+					link: [ 'customize_mat', 'default_customize_mat' ]
 					src: "/default_theme/customize_mat/default_customize_mask.png"
 				}
 				"default_customize_icon": {
@@ -165,6 +166,33 @@ mod.factory 'themeConfig', ->
 				"ic_dockbar_bg": {
 					capital: "Dockbar Backgroud"
 					src: "/default_theme/dock_icon/ic_allapps.png"
+				}
+				"ap_home": {
+					capital: "Home"
+					link: [ 'dock_icon', 'ap_home_pressed' ]
+					src: "/default_theme/dock_icon/ap_home.png"
+				}
+				"ap_home_pressed": {
+					capital: "Home(Pressed)"
+					src: "/default_theme/dock_icon/ap_home.png"
+				}
+				"ap_menu": {
+					capital: "Menu"
+					link: [ 'dock_icon', 'ap_menu_pressed' ]
+					src: "/default_theme/dock_icon/ap_menu.png"
+				}
+				"ap_menu_pressed": {
+					capital: "Menu(Pressed)"
+					src: "/default_theme/dock_icon/ap_menu.png"
+				}
+				"ap_search": {
+					capital: "Search"
+					link: [ 'dock_icon', 'ap_search_pressed' ]
+					src: "/default_theme/dock_icon/ap_search.png"
+				}
+				"ap_search_pressed": {
+					capital: "Search(Pressed)"
+					src: "/default_theme/dock_icon/ap_search.png"
 				}
 			}
 
@@ -200,6 +228,12 @@ mod.factory 'themeConfig', ->
 				{ resType: 'app_icon', resName: 'Search' }
 				{ resType: 'app_icon', resName: 'Settings' }
 				{ resType: 'app_icon', resName: 'Maps' }
+
+				{ resType: 'customize_mat', resName: 'default_customize_mask' }
+
+				{ resType: 'dock_icon', resName: 'ap_home' }
+				{ resType: 'dock_icon', resName: 'ap_search' }
+				{ resType: 'dock_icon', resName: 'ap_menu' }
 			]
 		}
 
