@@ -108,7 +108,7 @@ mod.factory 'themeConfig', ->
 					src: "/default_theme/app_icon/com_android_gallery3d_com_android_gallery3d_app_gallery.png"
 				}
 				"Messages": {
-					capital: "Messages"
+					capital: "Messaging"
 					src: "/default_theme/app_icon/com_android_mms_com_android_mms_ui_conversationlist.png"
 				}
 				"Music": {
@@ -120,7 +120,7 @@ mod.factory 'themeConfig', ->
 					src: "/default_theme/app_icon/com_android_music_com_android_music_videobrowseractivity.png"
 				}
 				"Download": {
-					capital: "Download"
+					capital: "Downloads"
 					src: "/default_theme/app_icon/com_android_providers_downloads_ui_com_android_providers_downloads_ui_downloadlist.png"
 				}
 				"Search": {
@@ -137,17 +137,17 @@ mod.factory 'themeConfig', ->
 				}
 			}
 
-			customize_mat: {
-				"default_customize_mat": {
+			customize: {
+				"customize_mat": {
 					capital: "Icon Background"
 					src: "/default_theme/customize_mat/default_customize_mat.png"
 				}
-				"default_customize_mask": {
+				"customize_mask": {
 					capital: "Icon Mask"
-					link: [ 'customize_mat', 'default_customize_mat' ]
+					link: [ 'customize', 'customize_mat' ]
 					src: "/default_theme/customize_mat/default_customize_mask.png"
 				}
-				"default_customize_icon": {
+				"customize_icon": {
 					capital: "Test Icon Mask"
 					src: "/default_theme/customize_mat/default_customize_icon.png"
 				}
@@ -167,6 +167,7 @@ mod.factory 'themeConfig', ->
 					capital: "Dockbar Backgroud"
 					src: "/default_theme/dock_icon/ic_allapps.png"
 				}
+
 				"ap_home": {
 					capital: "Home"
 					link: [ 'dock_icon', 'ap_home_pressed' ]
@@ -229,7 +230,7 @@ mod.factory 'themeConfig', ->
 				{ resType: 'app_icon', resName: 'Settings' }
 				{ resType: 'app_icon', resName: 'Maps' }
 
-				{ resType: 'customize_mat', resName: 'default_customize_mask' }
+				{ resType: 'customize', resName: 'customize_mask' }
 
 				{ resType: 'dock_icon', resName: 'ap_search' }
 				{ resType: 'dock_icon', resName: 'ap_home' }

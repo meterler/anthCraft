@@ -50,7 +50,7 @@ mod.controller 'previewCtrl', [
 		$scope._Mask = (v)-> {
 				'width': "80px"
 				'height': "80px"
-				'-webkit-mask-image': "url('#{themeConfig.themeFolder}#{$scope.theme['customize_mat']['default_customize_mask'].src}')"
+				'-webkit-mask-image': "url('#{v}')"
 				'-webkit-mask-size': "70px"
 				'-webkit-mask-repeat': "no-repeat"
 				'margin-top': "6px"
