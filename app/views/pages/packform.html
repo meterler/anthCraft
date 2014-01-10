@@ -27,14 +27,14 @@
 			<div class="form-group">
 				<label for="inputEmail3" class="col-sm-3 control-label">Theme Name</label>
 				<div class="col-sm-6">
-					<input type="email" class="form-control" ng-model="theme.title" placeholder="" required maxlength="30">
+					<input type="text" class="form-control" ng-model="theme.title" placeholder="" required maxlength="30">
 				</div>
 				<p class="help-block col-sm-3">Required</p>
 			</div>
 			<div class="form-group">
 				<label for="inputEmail3" class="col-sm-3 control-label">Designer</label>
 				<div class="col-sm-6">
-					<input type="email" class="form-control" ng-model="theme.author" placeholder="" required maxlength="30">
+					<input type="text" class="form-control" ng-model="theme.author" placeholder="" required maxlength="30">
 				</div>
 				<p class="help-block col-sm-3">Required</p>
 			</div>
@@ -54,12 +54,16 @@
 							<input name="upImage" type="file" accept="image/jpeg,image/jpg,image/png" image="upThumbnail" ng-model="xxx" ng-change="uploadThumbnail()">
 						</label>
 					</div>
-					<img ng-src="{{upThumbnail.url}}" type="{{upThumbnail.file.type}}" />
+					<div class="img-upload-previewer">
+						<img ng-src="{{upThumbnail.url}}" class="thumbnail-previewImg" type="{{upThumbnail.file.type}}" />
+						<div class="previewing" ng-show="thumbloading" ng-init="thumbloading=true">
+							<i class="fa fa-spinner fa-spin fa-3x"></i>
+						</div>
+					</div>
 				</div>
-				<p class="help-block col-sm-3">Required</p>
 			</div>
 
-			<div class="form-group">
+			<div class="form-group pull-right">
 				<a href="/#/wallpaper" class="btn">Back</a>
 				<button class="btn btn-primary" type="submit" ng-disabled="packForm.$invalid">Save&amp;Package</button>
 				<i class="fa fa-spinner fa-spin" ng-show="packing" ng-init="packing=false"></i>

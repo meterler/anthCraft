@@ -35,6 +35,7 @@ module.exports = (app)->
 		anthPack.format {
 			themeId: themeId
 			type: imgType
+			name: imgName
 			file: imgPath
 			scale: previewScale
 		}, (err, previewImgPath)->
@@ -58,7 +59,6 @@ module.exports = (app)->
 
 			# Because of win, convert path seperator to url path style
 			url = url.split(path.sep).join("/")
-
 
 			res.json {
 				success: true

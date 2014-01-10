@@ -30,6 +30,12 @@ mod.factory 'themeConfig', ->
 						height: 56
 						force: true
 					}
+				when 'thumbnail'
+					{
+						width: 216
+						height: 370
+						force: true
+					}
 
 		getStandard: (resType, resName)->
 			switch resType
