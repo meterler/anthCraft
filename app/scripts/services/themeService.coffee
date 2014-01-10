@@ -64,8 +64,10 @@ mod.factory 'themeService', [
 				unpublished_theme_packInfo = localStorage.get('unpublished_theme_packInfo')
 				if unpublished_theme_model
 					service.packInfo = unpublished_theme_packInfo
-					unpublished_theme_model = Theme.get { themeId: unpublished_theme_model._id }, (themeModel)->
-						service.themeModel = themeModel
+					service.themeModel = unpublished_theme_model
+					# Because there is no data persisted to database until theme upload, so..
+					# unpublished_theme_model = Theme.get { themeId: unpublished_theme_model._id }, (themeModel)->
+					# 	service.themeModel = themeModel
 
 
 				return true
