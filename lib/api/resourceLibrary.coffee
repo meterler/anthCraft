@@ -1,5 +1,6 @@
 
 ResourceModel = require "../models/Resource.coffee"
+redisClient = require('redis').client
 
 module.exports = (app)->
 
@@ -45,34 +46,47 @@ module.exports = (app)->
 	app.get "/resourceLib", (req, res)->
 		resType = req.query.resType
 		resName = req.query.resName
+		resId = "#{resType}|#{resName}"
+		cacheId = "resourceLibrary_#{resId}"
+		expireSec = 24 * 60 * 60 # expires in a day
 
-		list = Library[resType]?[resName]
-		list = list or []
-
-		ResourceModel.find({
-			"status": 0
-			"categoryId": "#{resType}|#{resName}"
-		})
-		.select({
-			"_id": false
-			"files.path": true
-			"files": {
-				"$elemMatch": {
-					width: 100
+		loadFromDB = ->
+			ResourceModel.find({
+				"status": 0
+				"categoryId": resId
+			})
+			.select({
+				"_id": false
+				"files.path": true
+				"files": {
+					"$elemMatch": {
+						width: 100
+					}
 				}
-			}
-		})
-		.sort({ orderNum: -1 })
-		.exec (err, docs)->
-			__log ".....", err, docs
-			if err
-				__logger.error err
-				res.send 404
-				return
-			list = docs.map (d)-> d.files[0].path
+			})
+			.sort({ orderNum: -1 })
+			.exec (err, docs)->
+				if err
+					__logger.error err
+					res.send 404
+					return
+				list = docs.map (d)-> d.files[0].path
 
-			# TODO: cache to redis
+				# Cache to redis
+				redisClient.set cacheId, JSON.stringify(list)
+				redisClient.expire cacheId, expireSec
+				res.json list
 
-			res.json list
+		# Check cache
+		redisClient.get cacheId, (err, data)->
+			if err or not data
+				# Miss
+				__log "Miss Cache!"
+				loadFromDB()
+			else
+				# Hit!
+				__log "Hit Cache!"
+				list = JSON.parse(data)
+				res.json list
 
 	return
