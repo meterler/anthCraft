@@ -17,6 +17,10 @@ mod.controller 'dashCtrl', [
 		$scope.getStandard = themeConfig.getStandard
 		$scope.selected = {}
 
+		$scope.getCapital = (res)->
+
+			themeConfig.defaultPackInfo[res.resType][res.resName].capital
+
 		# When selected change
 		$scope.select = (type, name)->
 			selected = {
