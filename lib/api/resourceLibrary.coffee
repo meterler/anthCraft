@@ -88,5 +88,13 @@ module.exports = (app)->
 				__log "Hit Cache!"
 				list = JSON.parse(data)
 				res.json list
+	app.get "/resourceLib/flushCache", (req, res)->
+		resType = req.query.resType
+		resName = req.query.resName
+		resId = "#{resType}|#{resName}"
+		cacheId = "resourceLibrary_#{resId}"
+
+		redisClient.del cacheId, (err)->
+			res.end(if err then "Flush cache with error: #{err}" else "Flush cache success!")
 
 	return
