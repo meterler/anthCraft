@@ -1,5 +1,5 @@
 
-
+ResourceModel = require "../models/Resource.coffee"
 
 module.exports = (app)->
 
@@ -48,6 +48,31 @@ module.exports = (app)->
 
 		list = Library[resType]?[resName]
 		list = list or []
-		res.json list
+
+		ResourceModel.find({
+			"status": 0
+			"categoryId": "#{resType}|#{resName}"
+		})
+		.select({
+			"_id": false
+			"files.path": true
+			"files": {
+				"$elemMatch": {
+					width: 100
+				}
+			}
+		})
+		.sort({ orderNum: -1 })
+		.exec (err, docs)->
+			__log ".....", err, docs
+			if err
+				__logger.error err
+				res.send 404
+				return
+			list = docs.map (d)-> d.files[0].path
+
+			# TODO: cache to redis
+
+			res.json list
 
 	return
