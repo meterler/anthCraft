@@ -67,12 +67,12 @@ mod.factory 'themeConfig', ->
 			wallpaper: {
 				"wallpaper": {
 					capital: "Wallpaper"
-					src: "/default_theme/wallpaper/wallpaper960x800.jpg"
+					src: "/default_theme/wallpaper/wallpaper.jpg"
 					link: [ 'wallpaper', 'wallpaper-hd' ]
 				}
 				"wallpaper-hd": {
 					capital: "Wallpaper"
-					src: "/default_theme/wallpaper/wallpaper960x800.jpg"
+					src: "/default_theme/wallpaper/wallpaper.jpg"
 				}
 			}
 
