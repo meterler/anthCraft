@@ -52,7 +52,7 @@ module.exports = (app)->
 
 		loadFromDB = ->
 			ResourceModel.find({
-				"status": 0
+				"status": 1
 				"categoryId": resId
 			})
 			.select({
@@ -60,11 +60,11 @@ module.exports = (app)->
 				"files.path": true
 				"files": {
 					"$elemMatch": {
-						width: 192
+						width: 0 # original image
 					}
 				}
 			})
-			.sort({ orderNum: -1 })
+			.sort({ orderNum: 1 })
 			.exec (err, docs)->
 				if err
 					__logger.error err
