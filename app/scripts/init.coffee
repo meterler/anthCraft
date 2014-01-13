@@ -50,5 +50,7 @@ mod.run [ '$rootScope', ($rootScope)->
 	$rootScope.PREVIEW_URL = "http://s.c-launcher.com/preview"
 	$rootScope.THUMBNAIL_URL = "http://s.c-launcher.com/thumbnail"
 	$rootScope.PACKAGE_URL = "http://s.c-launcher.com/themes"
-	$rootScope.RESOURCELIB_URL = "http://designer.c-launcher.com/resources/resourceslibrary"
+	$rootScope.UPLOAD_URL = "http://designer.c-launcher.com/resources/upload"
+	# $rootScope.RESOURCELIB_URL = "http://designer.c-launcher.com/resources/resourceslibrary"
+	$rootScope.RESOURCELIB_URL = $rootScope.UPLOAD_URL
 ]
