@@ -60,7 +60,8 @@ module.exports = (app)->
 				"files.path": true
 				"files": {
 					"$elemMatch": {
-						width: 0 # original image
+						# width: 0 # original image
+						original: true
 					}
 				}
 			})
