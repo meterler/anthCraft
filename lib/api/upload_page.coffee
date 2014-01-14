@@ -1,6 +1,8 @@
 fs = require "fs"
 async = require "async"
+
 DWallpaperModel = require "../models/DWallpaper"
+RingModel = require "../models/Ring"
 
 getDest = (type, filename)->
 	name = Date.now() + filename
@@ -8,7 +10,7 @@ getDest = (type, filename)->
 	result.path = {
 		"wallpaper": "#{__config.resources}/wallpaper"
 		"dwallpaper": "#{__config.resources}/dynamicwallpaper"
-		"rings": "#{__config.resources}/rings"
+		"ring": "#{__config.resources}/rings"
 		"icons": "#{__config.resources}/icons"
 		"thumbnail": "#{__config.resources}/thumbnail"
 	}[type] + "/#{name}"
@@ -73,8 +75,17 @@ module.exports = (app)->
 				res.send "ok"
 			return
 
-	app.post "/upload/rings", (req, res)->
+	app.post "/upload/ring", (req, res)->
 
-		ring = req.files.ringFile
+		ringFile = req.files.ringFile
+		ringData = JSON.parse(req.body.ring)
+
+		uploadProcess ringFile, 'ring', (err, file)->
+
+			ringData.ringPath = file.relativePath
+
+			ring = new RingModel(ringData)
+			ring.save (err)->
+				res.send "ok"
 
 	return

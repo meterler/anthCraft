@@ -5,8 +5,6 @@ mod.controller 'uploadCtrl', [
 	($scope, $timeout, $http, $upload)->
 
 		$scope.Wallpaper = {}
-
-
 		$scope.uploadObj = {}
 		$scope.progress = 0
 

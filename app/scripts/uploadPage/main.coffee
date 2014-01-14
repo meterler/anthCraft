@@ -19,8 +19,8 @@ mod = angular.module("uploadApp", [
 		.when('/dwallpaper', {
 			templateUrl: 'views/uploadPage/dwallpaper.html'
 		})
-		.when('/rings', {
-			templateUrl: 'views/uploadPage/rings.html'
+		.when('/ring', {
+			templateUrl: 'views/uploadPage/ring.html'
 		})
 		.otherwise {
 			redirectTo: '/'
