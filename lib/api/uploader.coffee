@@ -20,39 +20,7 @@ handleFileUpload = (req, res)->
 				src: "/#{newFileName}"
 			}
 
-getDest = (type, filename)->
-	console.log __config.resources
-	name = Date.now() + filename
-
-	{
-		"wallpaper": "#{__config.resources}/wallpaper"
-		"dwallpaper": "#{__config.resources}/dynamicwallpaper"
-		"rings": "#{__config.resources}/rings"
-	}[type] + "/#{name}"
-
-
 module.exports = (app)->
-	# Upload normal files
-	app.post "/upload", (req, res)->
-		resType = req.body.type
-
-		tempFile = req.files.uploadFile.path
-		fileName = req.files.uploadFile.name
-		savedFile = getDest(resType, fileName)
-
-		writeStream = fs.createWriteStream(savedFile)
-		fs.createReadStream(tempFile)
-			.on('end', ()->
-				res.json {
-					success: true
-				}
-			).on('error', (err)->
-				res.json {
-					success: false
-				}
-			).pipe(writeStream);
-		return
-
 	# Theme upload api
 	app.post "/api/upload", (req, res)->
 		# when testing

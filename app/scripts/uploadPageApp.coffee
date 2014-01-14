@@ -62,18 +62,17 @@ mod.controller 'uploadCtrl', [
 			return
 
 
-		$scope.startUpload = (event)->
+		$scope.startUpload = (event, type)->
 			event.preventDefault();
 			$scope.uploadObj = $upload.upload({
-				url: UPLOAD_URL
+				url: UPLOAD_URL + "/#{type}"
 				data: {
-					type: "wallpaper"
+					type: type
 				}
 				file: $scope.Wallpaper.file
 				fileFormDataName: 'uploadFile'
 			}).then((data, status, headers, config)->
-				console.log 'Upload success!'
-
+				$scope.uploadSuccess = true
 			, (err)->
 				console.log 'Upload fail!'
 			, (evt)->
@@ -82,6 +81,7 @@ mod.controller 'uploadCtrl', [
 
 		$scope.cancelUpload = ()->
 			$scope.uploadObj.abort()
+			$scope.uploadSuccess = false
 			$scope.Wallpaper = {}
 			$scope.uploadObj = {}
 			$scope.progress = 0
