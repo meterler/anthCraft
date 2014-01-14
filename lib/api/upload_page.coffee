@@ -10,11 +10,10 @@ getDest = (type, filename)->
 	}[type] + "/#{name}"
 
 # Upload normal files
-uploadProcess = (req, cb)->
-	resType = req.body.type
+uploadProcess = (uploadFile, resType, cb)->
 
-	tempFile = req.files.uploadFile.path
-	fileName = req.files.uploadFile.name
+	tempFile = uploadFile.path
+	fileName = uploadFile.name
 	savedFile = getDest(resType, fileName)
 
 	writeStream = fs.createWriteStream(savedFile)
@@ -30,7 +29,7 @@ module.exports = (app)->
 
 	app.post "/upload/wallpaper", (req ,res)->
 
-		uploadProcess req, (err)->
+		uploadProcess req.files.uploadFile, 'wallpaper', (err)->
 			if not err
 				# Save to database
 
@@ -40,3 +39,9 @@ module.exports = (app)->
 				res.statusCode = 404
 				res.json { success: false }
 			return
+
+	app.post "/upload/dwallpaper", (req, res)->
+
+
+
+	return

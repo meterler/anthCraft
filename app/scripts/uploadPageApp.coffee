@@ -16,6 +16,15 @@ mod = angular.module("uploadApp", [
 		.when('/', {
 			templateUrl: 'views/uploadPage/wallpaper.html'
 		})
+		.when('/dwallpaper', {
+			templateUrl: 'views/uploadPage/dwallpaper.html'
+		})
+		.when('/rings', {
+			templateUrl: 'views/uploadPage/rings.html'
+		})
+		.otherwise {
+			redirectTo: '/'
+		}
 ]
 
 mod.controller 'indexCtrl', [
