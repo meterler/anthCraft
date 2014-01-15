@@ -47,7 +47,8 @@ mod = angular.module('anthCraftApp', [
 # Init global configs
 mod.run [ '$rootScope', ($rootScope)->
 	$rootScope.cdnUrl = "http://cdn.c-launcher.com"
-	$rootScope.PREVIEW_URL = "http://s.c-launcher.com/preview"
+	# $rootScope.PREVIEW_URL = "http://s.c-launcher.com/preview"
+	$rootScope.PREVIEW_URL = "http://designer.c-launcher.com/resources/preview"
 	$rootScope.THUMBNAIL_URL = "http://s.c-launcher.com/thumbnail"
 	$rootScope.PACKAGE_URL = "http://s.c-launcher.com/themes"
 	$rootScope.UPLOAD_URL = "http://designer.c-launcher.com/resources/upload"
