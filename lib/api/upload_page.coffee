@@ -1,11 +1,19 @@
-fs = require "fs"
-async = require "async"
+fs = require 'fs'
+path = require 'path'
+async = require 'async'
+crypto = require 'crypto'
+fileUtil = require '../utils/fileUtil.js'
 
 DWallpaperModel = require "../models/DWallpaper"
 RingModel = require "../models/Ring"
 
 getDest = (type, filename, userId)->
-	name = Date.now() + filename
+
+	shasum = crypto.createHash('sha1')
+	shasum.update("#{Date.now()}-#{filename}")
+
+	hashCode = userId / (userId % 1000)
+	name = shasum.digest('hex')
 	result = {}
 	result.path = {
 		"wallpaper": "#{__config.resources}/wallpaper/img"
@@ -13,36 +21,40 @@ getDest = (type, filename, userId)->
 		"ring": "#{__config.resources}/rings"
 		"icons": "#{__config.resources}/icons"
 		"thumbnail": "#{__config.resources}/thumbnail"
-	}[type] + "/#{name}"
+	}[type] + "/#{hashCode}/#{userId}/#{name}"
 
 	result.relativePath = name
 
 	return result
 
 # Upload normal files
-uploadProcess = (uploadFile, resType, cb)->
+uploadProcess = (userId, uploadFile, resType, cb)->
 
 	tempFile = uploadFile.path
 	fileName = uploadFile.name
-	savedFile = getDest(resType, fileName)
+	savedFile = getDest(resType, fileName, userId)
 
-	writeStream = fs.createWriteStream(savedFile.path)
-	fs.createReadStream(tempFile)
-		.on('end', ()->
-			cb(undefined, savedFile)
-			# Remove image file in temp
-			__log "TempFile: ", tempFile
-			fs.unlink(tempFile)
-		).on('error', (err)->
-			cb(err)
-		).pipe(writeStream)
+	# Make folder for file
+	fileDirs = path.dirname(savedFile.path)
+	fileUtil.mkdir fileDirs, ->
+		writeStream = fs.createWriteStream(savedFile.path)
+		fs.createReadStream(tempFile)
+			.on('end', ()->
+				cb(undefined, savedFile)
+				# Remove image file in temp
+				__log "TempFile: ", tempFile
+				fs.unlink(tempFile)
+			).on('error', (err)->
+				cb(err)
+			).pipe(writeStream)
+
 	return
 
 module.exports = (app)->
 
 	app.post "/upload/wallpaper", (req ,res)->
-
-		uploadProcess req.files.uploadFile, 'wallpaper', (err)->
+		userId = req.body.userId or -1
+		uploadProcess userId, req.files.uploadFile, 'wallpaper', (err)->
 			if not err
 				# Save to database
 
@@ -55,6 +67,7 @@ module.exports = (app)->
 
 	app.post "/upload/dwallpaper", (req, res)->
 
+		userId = req.body.userId or -1
 		apkFile = req.files.apkFile
 		iconFile = req.files.iconFile
 		thumbnailFile = req.files.thumbnailFile
@@ -64,11 +77,11 @@ module.exports = (app)->
 		dWallpaper = DWallpaperModel(data)
 		async.parallel {
 			"apkPath": (callback)->
-				uploadProcess apkFile, 'dwallpaper', callback
+				uploadProcess userId, apkFile, 'dwallpaper', callback
 			"iconPath": (callback)->
-				uploadProcess iconFile, 'icons', callback
+				uploadProcess userId, iconFile, 'icons', callback
 			"thumbnail": (callback)->
-				uploadProcess thumbnailFile, 'thumbnail', callback
+				uploadProcess userId, thumbnailFile, 'thumbnail', callback
 		}, (err, files)->
 			dWallpaper.apkPath = files.apkPath.relativePath
 			dWallpaper.iconPath = files.iconPath.relativePath
@@ -85,10 +98,11 @@ module.exports = (app)->
 
 	app.post "/upload/ring", (req, res)->
 
+		userId = req.body.userId or -1
 		ringFile = req.files.ringFile
 		ringData = JSON.parse(req.body.ring)
 
-		uploadProcess ringFile, 'ring', (err, file)->
+		uploadProcess userId, ringFile, 'ring', (err, file)->
 
 			fs.unlink(ringFile)
 
