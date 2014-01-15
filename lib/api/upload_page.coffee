@@ -4,12 +4,12 @@ async = require "async"
 DWallpaperModel = require "../models/DWallpaper"
 RingModel = require "../models/Ring"
 
-getDest = (type, filename)->
+getDest = (type, filename, userId)->
 	name = Date.now() + filename
 	result = {}
 	result.path = {
-		"wallpaper": "#{__config.resources}/wallpaper"
-		"dwallpaper": "#{__config.resources}/dynamicwallpaper"
+		"wallpaper": "#{__config.resources}/wallpaper/img"
+		"dwallpaper": "#{__config.resources}/wallpaper/apk"
 		"ring": "#{__config.resources}/rings"
 		"icons": "#{__config.resources}/icons"
 		"thumbnail": "#{__config.resources}/thumbnail"
