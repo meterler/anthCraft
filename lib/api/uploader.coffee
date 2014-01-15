@@ -50,6 +50,9 @@ module.exports = (app)->
 				# }
 				return
 
+			# Remove image file in temp
+			fs.unlink(imgPath)
+
 			# __log "PreviewImgPath: ", previewImgPath
 			# __log "config.appPath: ", __config.appPath
 

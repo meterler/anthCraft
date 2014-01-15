@@ -30,6 +30,9 @@ uploadProcess = (uploadFile, resType, cb)->
 	fs.createReadStream(tempFile)
 		.on('end', ()->
 			cb(undefined, savedFile)
+			# Remove image file in temp
+			__log "TempFile: ", tempFile
+			fs.unlink(tempFile)
 		).on('error', (err)->
 			cb(err)
 		).pipe(writeStream)
@@ -71,6 +74,11 @@ module.exports = (app)->
 			dWallpaper.iconPath = files.iconPath.relativePath
 			dWallpaper.thumbnail = files.thumbnail.relativePath
 
+			# Remove file in temp
+			fs.unlink(apkFile)
+			fs.unlink(iconFile)
+			fs.unlink(thumbnailFile)
+
 			dWallpaper.save ->
 				res.send "ok"
 			return
@@ -81,6 +89,8 @@ module.exports = (app)->
 		ringData = JSON.parse(req.body.ring)
 
 		uploadProcess ringFile, 'ring', (err, file)->
+
+			fs.unlink(ringFile)
 
 			ringData.ringPath = file.relativePath
 
