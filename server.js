@@ -49,12 +49,17 @@ var initTasks = {
 		// all environments
 		app.set('port', process.env.PORT || __config.port || 3000);
 
-		app.use(express.logger('dev'));
+		if (__config.debug) {
+			app.use(express.logger('dev'));
+		}
 
 		app.use(express.cookieParser());
 		app.use(express.cookieSession({
 			secret: "anthcraft"
 		}));
+
+
+		
 		app.use(express.bodyParser());
 		app.use(express.methodOverride());
 		app.use(app.router);
