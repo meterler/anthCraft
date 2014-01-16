@@ -12,7 +12,7 @@ mod.controller 'uploadCtrl', [
 			$scope.Wallpaper.file = $files[0]
 
 			# Wallpaper name
-			$scope.Wallpaper.name = $files[0].name
+			$scope.Wallpaper.title = $files[0].name
 
 			# Preview
 			fileReader = new FileReader()
@@ -31,6 +31,7 @@ mod.controller 'uploadCtrl', [
 				url: UPLOAD_URL + "/#{type}"
 				data: {
 					type: type
+					title: $scope.Wallpaper.title
 				}
 				file: $scope.Wallpaper.file
 				fileFormDataName: 'uploadFile'

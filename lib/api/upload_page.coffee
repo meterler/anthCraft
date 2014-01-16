@@ -5,6 +5,7 @@ crypto = require 'crypto'
 fileUtil = require '../utils/fileUtil.js'
 
 DWallpaperModel = require "../models/DWallpaper"
+WallpaperModel = require "../models/Wallpaper"
 RingModel = require "../models/Ring"
 
 getDest = (type, filename, userId)->
@@ -54,12 +55,22 @@ module.exports = (app)->
 
 	app.post "/upload/wallpaper", (req ,res)->
 		userId = req.body.userId or -1
-		uploadProcess userId, req.files.uploadFile, 'wallpaper', (err)->
+		wallpaperFile = req.files.uploadFile
+		title = req.body.title
+		uploadProcess userId, wallpaperFile, 'wallpaper', (err, file)->
 			if not err
 				# Save to database
+				wallpaper = new WallpaperModel({
+					title: title
+					userId: userId
+					author: ""
+					bigPath: file.relativePath
+					smallPath: file.relativePath
+				})
 
-				res.json { success: true }
-				return
+				wallpaper.save (err)->
+					res.statusCode = 404 if err
+					res.json { success: !!err }
 			else
 				res.statusCode = 404
 				res.json { success: false }
