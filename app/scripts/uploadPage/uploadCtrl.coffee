@@ -12,7 +12,7 @@ mod.controller 'uploadCtrl', [
 			$scope.Wallpaper.file = $files[0]
 
 			# Wallpaper name
-			$scope.Wallpaper.title = $files[0].name
+			$scope.Wallpaper.title = $scope.grepName($files[0].name)
 
 			# Preview
 			fileReader = new FileReader()
@@ -23,6 +23,15 @@ mod.controller 'uploadCtrl', [
 					$scope.Wallpaper.dataUrl = evt.target.result
 				, 0
 			return
+
+		$scope.grepName = (filename)->
+
+			try
+				mr = filename.match /^(.+)\.[^.]+$/
+				name = mr[1]
+			catch e
+
+			return name or filename
 
 
 		$scope.startUpload = (event, type)->

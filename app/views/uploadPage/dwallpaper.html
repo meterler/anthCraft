@@ -13,7 +13,7 @@
 				<div class="col-sm-9">
 					<label for="upFile" class="file-upload btn btn-primary pull-left">
 						<span><strong>Chose APK file</strong></span>
-						<input name="upFile" type="file" ng-file-select="dWallpaper.apkFile = $files[0]" accept="image/jpeg,image/jpg,image/png">
+						<input name="upFile" type="file" ng-file-select="dWallpaper.apkFile = $files[0]; dWallpaper.title=grepName($files[0].name)" accept=".apk">
 					</label>
 					<small class="help-block col-sm-5 pull-left">必填项</small>
 				</div>
