@@ -13,7 +13,7 @@
 				<div class="col-sm-9">
 					<label for="upFile" class="file-upload btn btn-primary pull-left">
 						<span><strong>Chose APK file</strong></span>
-						<input name="upFile" type="file" ng-file-select="dWallpaper.apkFile = $files[0]; dWallpaper.title=grepName($files[0].name)" accept=".apk">
+						<input name="upFile" type="file" ng-file-select="dWallpaper.apkFile = $files[0]; dWallpaper.title=grepName($files[0].name)" accept=".apk" required />
 					</label>
 					<small class="help-block col-sm-5 pull-left">必填项</small>
 				</div>
@@ -21,19 +21,19 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">壁纸名称：</label>
 				<div class="col-sm-5">
-					<input type="text" class="form-control" ng-model="dWallpaper.title" placeholder="" />
+					<input type="text" class="form-control" ng-model="dWallpaper.title" placeholder="" required />
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">设计师：</label>
 				<div class="col-sm-5">
-					<input type="text" class="form-control" ng-model="dWallpaper.author" placeholder="" />
+					<input type="text" class="form-control" ng-model="dWallpaper.author" placeholder="" required value="launcher" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Category: </label>
 				<div class="col-sm-2">
-					<select class="form-control" ng-model="dWallpaper.category">
+					<select class="form-control" ng-model="dWallpaper.category" ng-init="dWallpaper.category=1">
 						<option value="1">印度</option>
 						<option value="2">印度</option>
 						<option value="3">印度</option>
@@ -45,7 +45,7 @@
 				<div class="col-sm-9">
 					<label for="upFile" class="file-upload btn btn-primary pull-left">
 						<span><strong>Upload</strong></span>
-						<input name="upFile" type="file" ng-file-select="dWallpaper.iconFile = $files[0]" accept="image/jpeg,image/jpg,image/png">
+						<input name="upFile" type="file" ng-file-select="dWallpaper.iconFile = $files[0]" accept=".jpg,.png,.jpeg" required />
 					</label>
 					<small class="help-block col-sm-5 pull-left">必填项</small>
 				</div>
@@ -55,7 +55,7 @@
 				<div class="col-sm-9">
 					<label for="upFile" class="file-upload btn btn-primary pull-left">
 						<span><strong>Upload</strong></span>
-						<input name="upFile" type="file" ng-file-select="dWallpaper.thumbnailFile = $files[0]"  accept="image/jpeg,image/jpg,image/png">
+						<input name="upFile" type="file" ng-file-select="dWallpaper.thumbnailFile = $files[0]" accept=".jpg,.png,.jpeg" required>
 					</label>
 					<small class="help-block col-sm-5 pull-left">必填项</small>
 				</div>
@@ -64,7 +64,7 @@
 			<div class="form-group">
 				<label for="upFile" class="col-sm-2 control-label">简介：</label>
 				<div class="col-sm-9">
-					<textarea ng-model="dWallpaper.description" class="form-control"></textarea>
+					<textarea ng-model="dWallpaper.description" class="form-control" required ></textarea>
 				</div>
 			</div>
 			<div class="form-group">

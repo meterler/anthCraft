@@ -13,7 +13,7 @@
 				<div class="col-sm-9">
 					<label for="upImage" class="file-upload btn btn-primary pull-left">
 						<span><strong>Chose file</strong></span>
-						<input name="upImage" type="file" ng-file-select="onFileSelect($files)" accept=".jpg,.png,.jpeg">
+						<input name="upImage" type="file" ng-file-select="onFileSelect($files)" accept=".jpg,.png,.jpeg" required />
 					</label>
 					<small class="help-block col-sm-8 pull-left">不能小于1024x768</small>
 					<br>
@@ -23,7 +23,7 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">壁纸名称：</label>
 				<div class="col-sm-5">
-					<input type="text" class="form-control" ng-model="Wallpaper.title" placeholder="程序自动获取，可修改" />
+					<input type="text" class="form-control" ng-model="Wallpaper.title" placeholder="程序自动获取，可修改" required />
 				</div>
 			</div>
 

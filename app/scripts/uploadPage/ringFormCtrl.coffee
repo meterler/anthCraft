@@ -21,7 +21,6 @@ mod.controller "ringFormCtrl", [
 			}).then((data, status, headers, config)->
 				$scope.uploadSuccess = true
 			, (err)->
-				console.log 'Upload fail!'
 				$scope.uploadError = true
 			, (evt)->
 				$scope.progress = parseInt(100.0 * evt.loaded / evt.total)
