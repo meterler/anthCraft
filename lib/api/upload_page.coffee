@@ -14,7 +14,7 @@ getDest = (type, filename, userId)->
 	shasum.update("#{Date.now()}-#{filename}")
 
 	hashCode = userId / (userId % 1000)
-	name = shasum.digest('hex')
+	name = shasum.digest('hex') + "." + path.extname(filename)
 	result = {}
 	result.path = {
 		"wallpaper": "#{__config.resources}/wallpaper/img"
