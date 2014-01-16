@@ -62,7 +62,6 @@ module.exports = (app)->
 				wallpaper = new WallpaperModel({
 					title: title
 					userId: userId
-					author: ""
 					bigPath: file.relativePath
 					smallPath: file.relativePath
 				})

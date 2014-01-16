@@ -7,6 +7,10 @@ DWallpaperStruct = {
 	dynamicWallpaperId: {
 		type: 'number'
 	}
+	_class: {
+		type: 'string'
+		default: 'com.cyou.theme.mongo.bean.DynamicWallpaper'
+	}
 	# 标题
 	title: {
 		type: 'string'
@@ -18,6 +22,7 @@ DWallpaperStruct = {
 	# 上传者
 	author: {
 		type: 'string'
+		default: 'launcher'
 	}
 	# 用户编号
 	userId: {

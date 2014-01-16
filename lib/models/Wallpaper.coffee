@@ -18,6 +18,7 @@ WallpaperStruct = {
 	# 上传者
 	author: {
 		type: 'string'
+		default: 'launcher'
 	}
 	# 用户编号
 	userId: {
