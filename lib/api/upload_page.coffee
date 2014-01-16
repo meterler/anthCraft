@@ -43,7 +43,6 @@ uploadProcess = (userId, uploadFile, resType, cb)->
 			.on('end', ()->
 				cb(undefined, savedFile)
 				# Remove image file in temp
-				__log "TempFile: ", tempFile
 				fs.unlink(tempFile)
 			).on('error', (err)->
 				cb(err)
