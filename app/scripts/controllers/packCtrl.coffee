@@ -23,6 +23,7 @@ mod.controller 'packCtrl', [
 
 		themeService.previewTheme (newTheme)->
 			$scope.thumblist = newTheme.preview
+			$scope.upThumbnail.url = newTheme.preview[1]
 			$scope.previewing = false
 			$scope.thumbloading = false
 
