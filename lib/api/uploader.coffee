@@ -20,8 +20,8 @@ handleFileUpload = (req, res)->
 				src: "/#{newFileName}"
 			}
 
-
 module.exports = (app)->
+	# Theme upload api
 	app.post "/api/upload", (req, res)->
 		# when testing
 		# return handleFileUpload(req, res)
@@ -49,6 +49,9 @@ module.exports = (app)->
 				# 	src: ''
 				# }
 				return
+
+			# Remove image file in temp
+			fs.unlink(imgPath)
 
 			# __log "PreviewImgPath: ", previewImgPath
 			# __log "config.appPath: ", __config.appPath

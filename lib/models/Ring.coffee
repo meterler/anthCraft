@@ -7,6 +7,10 @@ RingStruct = {
 	ringId: {
 		type: 'number'
 	}
+	_class: {
+		type: 'string'
+		default: 'com.cyou.theme.mongo.bean.Ring'
+	}
 	# 标题
 	title: {
 		type: 'string'
@@ -23,6 +27,7 @@ RingStruct = {
 	# 作曲者
 	author: {
 		type: 'string'
+		default: 'launcher'
 	}
 	# 用户编号
 	userId: {

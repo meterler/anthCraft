@@ -1,0 +1,66 @@
+
+<div class="row">
+	<div class="sub_header col-md-12">
+		<span>上传壁纸</span>
+	</div>
+</div>
+
+<div class="row">
+	<div class="form_content col-md-8 col-md-offset-2" ng-controller="uploadCtrl">
+		<form class="form-horizontal" role="form" ng-controller="ringFormCtrl">
+			<div class="form-group">
+				<label for="upFile" class="col-sm-2 control-label">上传铃声：</label>
+				<div class="col-sm-9">
+					<label for="upFile" class="file-upload btn btn-primary pull-left">
+						<span><strong>Chose file</strong></span>
+						<input name="upFile" type="file" ng-file-select="ring.file=$files[0]; ring.name=grepName($files[0].name)" accept=".mp3">
+					</label>
+					<small class="help-block col-sm-8 pull-left">.MP3 Only, within 10MB.</small>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">歌曲名称：</label>
+				<div class="col-sm-5">
+					<input type="text" class="form-control" ng-model="ring.name" placeholder="程序自动获取，可修改" required />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Tags: </label>
+				<div class="col-sm-2">
+					<select class="form-control" ng-model="ring.tags" ng-init="ring.tags=1">
+						<option value="1">流行</option>
+						<option value="2">流行</option>
+						<option value="3">流行</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group" ng-if="progress > 0">
+				<label for="" class="col-sm-2 control-label" ng-if="!uploadSuccess">正在上传：</label>
+				<label for="" class="col-sm-2 control-label" ng-if="uploadSuccess">上传成功：</label>
+				<div class="col-sm-9 row">
+
+					<div class="col-sm-9">
+						<progressbar max="100" value="progress">
+							<b style="float: left;">&nbsp; {{ring.name}}</b>
+							{{progress}}%
+						</progressbar>
+					</div>
+					<div class="col-sm-3">
+						<button class="btn btn-primary" ng-click="cancelUpload()" ng-if="!uploadSuccess"> Cancel </button>
+						<button class="btn btn-danger" ng-if="!uploadError" disabled> Fail </button>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary" ng-click="startUpload($event, 'ring')" ng-hide="uploadSuccess">提交审核</button>
+
+					<a href="javascript:location.reload();" class="btn btn-primary" ng-if="uploadSuccess">再传一首</a>
+					<button type="button" class="btn btn-primary">取消</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

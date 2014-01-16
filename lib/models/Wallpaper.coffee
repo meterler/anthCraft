@@ -2,21 +2,17 @@ restful = require 'node-restful'
 mongoose = restful.mongoose
 autoinc = require 'mongoose-id-autoinc2'
 
-DWallpaperStruct = {
+WallpaperStruct = {
 	# 动态壁纸编号
-	dynamicWallpaperId: {
+	wallpaperId: {
 		type: 'number'
 	}
-	_class: {
-		type: 'string'
-		default: 'com.cyou.theme.mongo.bean.DynamicWallpaper'
+	"_class": {
+		type: 'string',
+		default: "com.cyou.theme.mongo.bean.Wallpaper"
 	}
 	# 标题
 	title: {
-		type: 'string'
-	}
-	# 描述
-	description: {
 		type: 'string'
 	}
 	# 上传者
@@ -31,27 +27,18 @@ DWallpaperStruct = {
 	# 用户填写的标签
 	category: {
 		type: 'string'
+		default: "{}"
 	}
+	smallPath: {
+		type: 'string'
+	}
+	bigPath: 'string'
 	# 推荐标记
 	tag: {
 		type: 'string'
 	}
-	# 缩略图地址
-	thumbnail: {
-		type: 'string'
-	}
 	# 下载次数
 	downloads: {
-		type: 'number'
-	}
-	# 预览图地址
-	preview: [ 'string' ]
-	# 动态壁纸apk包地址
-	apkPath: {
-		type: 'string'
-	}
-	# 包大小
-	size: {
 		type: 'number'
 	}
 	# 更新时间
@@ -75,6 +62,7 @@ DWallpaperStruct = {
 	# 状态, 0待审核，1审核不通过，2已经上架，3正在下架，4已下架
 	status: {
 		type: 'number'
+		default: 0
 	}
 	# 审核不通过原因
 	reason: {
@@ -82,17 +70,17 @@ DWallpaperStruct = {
 	}
 }
 
-DWallpaperScheme = mongoose.Schema DWallpaperStruct
+WallpaperScheme = mongoose.Schema WallpaperStruct
 
 # Develop theme collection is RESTful
-DWallpaperModel = restful
-				.model('dynamicwallpaper', DWallpaperScheme)
+WallpaperModel = restful
+				.model('wallpaper', WallpaperScheme)
 				.methods(['get', 'post', 'put', 'delete'])
 
 # Config _id auto increase
-DWallpaperScheme.plugin autoinc.plugin, {
-	model: 'dynamicwallpaper',
-	field: 'dynamicWallpaperId',
+WallpaperScheme.plugin autoinc.plugin, {
+	model: 'wallpaper',
+	field: 'wallpaperId',
 	start: 100,
 	step: 1
 }
@@ -102,8 +90,8 @@ setUpdateTime = (req, res, next)->
 	req.body.updateTime = Date.now()
 	next()
 
-DWallpaperModel
+WallpaperModel
 	.before('post', setUpdateTime)
 	.before('put', setUpdateTime)
 
-module.exports = DWallpaperModel
+module.exports = WallpaperModel

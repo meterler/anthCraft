@@ -11,18 +11,13 @@
 	<meta name="viewport" content="width=device-width">
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-	<link rel="stylesheet" href="components/font-awesome/css/font-awesome.css">
-	<link rel="stylesheet" href="components/ngprogress/ngProgress.css">
-	<link rel="stylesheet" href="components/normalize-css/normalize.css">
-	<link rel="stylesheet" href="scripts/modules/carousel/carousel.css">
+	<!-- build:css(.tmp) styles/upload_main.css -->
 	<link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
-
-	<!-- build:css(.tmp) styles/main.css -->
 	<link rel="stylesheet" href="styles/main.css">
-	<link rel="stylesheet" href="styles/app.css">
+	<link rel="stylesheet" href="styles/uploadPage/index.css">
 	<!-- endbuild -->
 </head>
-<body ng-app="anthCraftApp">
+<body ng-app="uploadApp">
 	<!--[if lt IE 9]>
 	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 	<![endif]-->
@@ -101,51 +96,25 @@
 		</div>
 	</div>
  -->
+	<script src="components/ng-file-upload/angular-file-upload-shim.min.js"></script>
 	<script src="components/angular/angular.min.js"></script>
 
-	<!-- build:js scripts/components.js -->
-	<script src="components/ngprogress/build/ngProgress.min.js"></script>
+	<!-- build:js scripts/upload_components.js -->
 	<script src="components/angular-route/angular-route.min.js"></script>
 	<script src="components/angular-resource/angular-resource.js"></script>
-	<script src="components/angular-local-storage/angular-local-storage.min.js"></script>
 	<script src="components/angular-cookies/angular-cookies.js"></script>
-	<script src="components/angular-sanitize/angular-sanitize.js"></script>
-	<script src="components/angular-dragndrop/angular-dnd.min.js"></script>
-
+	<script src="components/angular-local-storage/angular-local-storage.min.js"></script>
 	<script src="components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	<script src="components/ng-file-upload/angular-file-upload.min.js"></script>
 
 	<!-- endbuild -->
 
-	<!-- build:js scripts/modules.js -->
-	<script src="scripts/modules/carousel/carousel.js"></script>
-	<!-- <script src="scripts/modules/dnd/file-dnd.js"></script> -->
-	<script src="scripts/modules/imageupload/imageupload.js"></script>
+	<!-- build:js({.tmp,app}) scripts/upload_scripts.js -->
+	<script src="scripts/uploadPage/main.js"></script>
+	<script src="scripts/uploadPage/uploadCtrl.js"></script>
+	<script src="scripts/uploadPage/dWallpaperFormCtrl.js"></script>
+	<script src="scripts/uploadPage/ringFormCtrl.js"></script>
 	<!-- endbuild -->
 
-	<!-- build:js({.tmp,app}) scripts/scripts.js -->
-	<script src="scripts/init.js"></script>
-	<script src="scripts/app.js"></script>
-	<!-- <script src="scripts/controllers/latheCtrl.js"></script>
-	<script src="scripts/controllers/packCtrl.js"></script>
-	<script src="scripts/controllers/previewCtrl.js"></script>
-	<script src="scripts/controllers/overlayCtrl.js"></script>
-	<script src="scripts/controllers/resourceLibraryCtrl.js"></script>
-	<script src="scripts/controllers/menuListCtrl.js"></script> -->
-	<script src="scripts/services/menuConfig.js"></script>
-	<script src="scripts/services/themeConfig.js"></script>
-	<script src="scripts/services/themeService.js"></script>
-	<script src="scripts/services/uploadService.js"></script>
-	<!-- endbuild -->
-
-<!-- 	<div class="overlay" ng-controller="overlayCtrl" ng-init="showing=false" ng-show="showing">
-		<div class="dialog dlg-confirm">
-			<p>{{options.text}}</p>
-			<div class="button-group">
-				<a class="btn btn-primary" ng-click="close('yes')" ng-if="options.yes">{{options.yes}}</a>
-				<a class="btn btn-warning" ng-click="close('no')" ng-if="options.no">{{options.no}}</a>
-			</div>
-		</div>
-	</div>
- -->
 </body>
 </html>
