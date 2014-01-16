@@ -47,7 +47,7 @@ mod.controller 'uploadCtrl', [
 			}).then((data, status, headers, config)->
 				$scope.uploadSuccess = true
 			, (err)->
-				console.log 'Upload fail!'
+				$scope.uploadError = true
 			, (evt)->
 				$scope.progress = parseInt(100.0 * evt.loaded / evt.total)
 			)
@@ -55,6 +55,7 @@ mod.controller 'uploadCtrl', [
 		$scope.cancelUpload = ()->
 			$scope.uploadObj.abort()
 			$scope.uploadSuccess = false
+			$scope.uploadError = false
 			$scope.Wallpaper = {}
 			$scope.uploadObj = {}
 			$scope.progress = 0
