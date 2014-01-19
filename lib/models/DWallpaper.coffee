@@ -43,6 +43,7 @@ DWallpaperStruct = {
 	# 下载次数
 	downloads: {
 		type: 'number'
+		default: 0
 	}
 	# 预览图地址
 	preview: [ 'string' ]
@@ -53,6 +54,7 @@ DWallpaperStruct = {
 	# 包大小
 	size: {
 		type: 'number'
+		default: 0
 	}
 	# 更新时间
 	updateTime: {
@@ -67,14 +69,17 @@ DWallpaperStruct = {
 	# 评价(0-5)
 	grade: {
 		type: 'number'
+		default: 3
 	}
 	# 积分
 	point: {
 		type: 'number'
+		default: 0
 	}
 	# 状态, 0待审核，1审核不通过，2已经上架，3正在下架，4已下架
 	status: {
 		type: 'number'
+		default: 0
 	}
 	# 审核不通过原因
 	reason: {

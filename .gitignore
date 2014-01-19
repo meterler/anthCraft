@@ -1,7 +1,6 @@
 node_modules
 .tmp
 .sass-cache
-logs/*
 app/components
 heroku
 public
@@ -15,4 +14,4 @@ app/resources/wallpaper/*
 app/resources/rings/*
 app/resources/dynamicwallpaper/*
 
-app/logs
+app/logs/*
