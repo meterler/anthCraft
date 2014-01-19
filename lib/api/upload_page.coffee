@@ -32,6 +32,10 @@ getDest = (type, filename, userId)->
 uploadProcess = (userId, uploadFile, resType, cb)->
 
 	tempFile = uploadFile.path
+
+	__log ">>>>>", tempFile
+	return cb(true) if not tempFile
+	
 	fileName = uploadFile.name
 	savedFile = getDest(resType, fileName, userId)
 
@@ -95,11 +99,7 @@ module.exports = (app)->
 			dWallpaper.apkPath = files.apkPath.relativePath
 			dWallpaper.iconPath = files.iconPath.relativePath
 			dWallpaper.thumbnail = files.thumbnail.relativePath
-
-			# Remove file in temp
-			fs.unlink(apkFile)
-			fs.unlink(iconFile)
-			fs.unlink(thumbnailFile)
+			dWallpaper.size = apkFile.size
 
 			dWallpaper.save ->
 				res.send "ok"
@@ -112,8 +112,6 @@ module.exports = (app)->
 		ringData = JSON.parse(req.body.ring)
 
 		uploadProcess userId, ringFile, 'ring', (err, file)->
-
-			fs.unlink(ringFile)
 
 			ringData.ringPath = file.relativePath
 
