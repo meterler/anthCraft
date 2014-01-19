@@ -3,6 +3,7 @@ mod.controller "dWallpaperFormCtrl", [
 	"$scope", "$http",
 	($scope, $http)->
 		$scope.dWallpaper = {}
+		$scope.uploadSuccess = false
 
 		# Get Category List
 		$http.get("/api/category", {
@@ -39,7 +40,7 @@ mod.controller "dWallpaperFormCtrl", [
 					'content-type': undefined
 				}
 			}).success( (data)->
-				console.log arguments
+				$scope.uploadSuccess = true
 			)
 
 ]
