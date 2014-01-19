@@ -8,6 +8,8 @@ mod.controller 'dashCtrl', [
 		$scope.srcPrefix = themeConfig.themeFolder
 		$scope.themeId = themeService.themeModel._id
 		$scope.themeData = themeService.packInfo
+		$scope.cacheFlags = themeService.cacheFlags
+		$scope.themeService = themeService
 
 		$scope.updatePreview = (packInfo)->
 			themeService.updateView packInfo
