@@ -13,9 +13,13 @@
 				<div class="col-sm-9">
 					<label for="upFile" class="file-upload btn btn-primary pull-left">
 						<span><strong>Chose file</strong></span>
-						<input name="upFile" type="file" ng-file-select="ring.file=$files[0]; ring.name=grepName($files[0].name)" accept=".mp3">
+						<input name="upFile" type="file" ng-file-select="onSelectRing($files[0]); ring.name=grepName($files[0].name);" accept=".mp3">
 					</label>
 					<small class="help-block col-sm-8 pull-left">.MP3 Only, within 10MB.</small>
+					<div class="row">
+					<br/><br/>
+						<audio id="ringPlayer" class="col-sm-9" controls ng-src="{{selectedRing}}"> </audio>
+					</div>
 				</div>
 			</div>
 			<div class="form-group">
