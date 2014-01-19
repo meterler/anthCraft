@@ -7,7 +7,6 @@ mod = angular.module("uploadApp", [
 	'ngResource'
 	'angularFileUpload'
 	'LocalStorageModule'
-	'Audio5'
 	'ui.bootstrap'
 ]).config [ '$routeProvider', '$compileProvider', ($routeProvider, $compileProvider)->
 
