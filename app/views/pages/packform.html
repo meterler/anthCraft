@@ -55,7 +55,7 @@
 						</label>
 					</div>
 					<div class="img-upload-previewer">
-						<img ng-src="{{upThumbnail.url}}" class="thumbnail-previewImg" type="{{upThumbnail.file.type}}" />
+						<img ng-src="{{THUMBNAIL_URL}}{{upThumbnail.url}}" class="thumbnail-previewImg" type="{{upThumbnail.file.type}}" />
 						<div class="previewing" ng-show="thumbloading" ng-init="thumbloading=true">
 							<i class="fa fa-spinner fa-spin fa-3x"></i>
 						</div>
