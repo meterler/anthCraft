@@ -68,13 +68,13 @@ mod.controller 'packCtrl', [
 			$timeout ->
 				uploadImage = $scope.upApkIcon.file
 				themeId = themeService.themeModel._id
-				previewScale = themeConfig.getPreviewScale('apk_icon', 'apk_icon')
+				previewScale = themeConfig.getPreviewScale('apk_icon', 'ic_launcher_home')
 
 				formData = new FormData()
 				formData.append('image', uploadImage, uploadImage.name)
 				formData.append('themeId', themeId)
 				formData.append('resType', 'apk_icon')
-				formData.append('resName', 'apk_icon')
+				formData.append('resName', 'ic_launcher_home')
 				formData.append('previewScale', JSON.stringify(previewScale))
 
 				$http.post('/api/upload', formData, {
