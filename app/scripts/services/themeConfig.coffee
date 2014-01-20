@@ -10,6 +10,13 @@ mod.factory 'themeConfig', ->
 
 		# Preview scale for processing uploaded image
 		getPreviewScale: (resType, resName)->
+			if resType is 'dock_icon' and resName is 'ic_dockbar_bg'
+				return {
+					width: 403
+					height: 100
+					force: true
+				}
+
 			switch resType
 				when 'wallpaper', 'wallpaper-hd'
 					{
@@ -44,6 +51,12 @@ mod.factory 'themeConfig', ->
 					}
 
 		getStandard: (resType, resName)->
+			if resType is 'dock_icon' and resName is 'ic_dockbar_bg'
+				return {
+					width: 403
+					height: 100
+					type: 'jpg'
+				}
 			switch resType
 				when 'wallpaper'
 					if resName is 'wallpaper-hd' then {
