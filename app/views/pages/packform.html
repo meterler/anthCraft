@@ -11,7 +11,7 @@
 		</a>
 		<div class="thumbnail-list clearfix" ng-animate="'animate'">
 			<div class="thumbnail-pic" ng-repeat="thumb in thumblist" ng-show="check($index)">
-				<img ng-src="{{PREVIEW_URL}}/{{thumb}}"/>
+				<img ng-src="{{PREVIEW_URL}}{{thumb}}"/>
 			</div>
 			<div class="previewing" ng-show="previewing" ng-init="previewing=true">
 				<i class="fa fa-spinner fa-spin fa-3x"></i>
@@ -46,16 +46,30 @@
 				<p class="help-block col-sm-3">Required</p>
 			</div>
 			<div class="form-group">
-				<label for="inputEmail3" class="col-sm-3 control-label">Thumbnail</label>
+				<label for="upApkIcon" class="col-sm-3 control-label"> Apk Icon</label>
+				<div class="col-sm-6 mod-uploader">
+					<div class="img-upload-handler">
+						<label for="upApkIcon" class="file-upload btn btn-primary">
+							<span><strong>Upload</strong></span>
+							<input name="upApkIcon" type="file" accept=".jpg,.jpeg,.png" image="upApkIcon" ng-model="xx" ng-change="uploadApkIcon()">
+						</label>
+					</div>
+					<p class="help-block col-sm-3" ng-if="apkIconUploadStatus == 'uploading'">Uploading...</p>
+					<p class="help-block col-sm-3" ng-if="apkIconUploadStatus == 'success'" style="color: green;">Success</p>
+					<p class="help-block col-sm-3" ng-if="apkIconUploadStatus == 'error'" style="color: red;">Error</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="upImage" class="col-sm-3 control-label">Thumbnail</label>
 				<div class="col-sm-6 mod-uploader">
 					<div class="img-upload-handler">
 						<label for="upImage" class="file-upload btn btn-primary">
 							<span><strong>Change</strong></span>
-							<input name="upImage" type="file" accept="image/jpeg,image/jpg,image/png" image="upThumbnail" ng-model="xxx" ng-change="uploadThumbnail()">
+							<input name="upImage" type="file" accept=".jpg,.jpeg,.png" image="upThumbnail" ng-model="xxx" ng-change="uploadThumbnail()">
 						</label>
 					</div>
 					<div class="img-upload-previewer">
-						<img ng-src="{{THUMBNAIL_URL}}{{upThumbnail.url}}" class="thumbnail-previewImg" type="{{upThumbnail.file.type}}" />
+						<img ng-src="{{upThumbnail.url}}" ng-cloak class="thumbnail-previewImg" type="{{upThumbnail.file.type}}" />
 						<div class="previewing" ng-show="thumbloading" ng-init="thumbloading=true">
 							<i class="fa fa-spinner fa-spin fa-3x"></i>
 						</div>

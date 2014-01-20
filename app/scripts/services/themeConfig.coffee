@@ -36,6 +36,12 @@ mod.factory 'themeConfig', ->
 						height: 370
 						force: true
 					}
+				when 'apk_icon'
+					{
+						width: 144
+						height: 144
+						force: true
+					}
 
 		getStandard: (resType, resName)->
 			switch resType
