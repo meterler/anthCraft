@@ -51,7 +51,9 @@ mod.factory 'themeService', [
 				service.dirty = false
 
 				# Restore uploader image preview data
-				$rootScope.$broadcast "uploader.refresh"
+				$rootScope.$broadcast "uploader.restore"
+				
+				
 				# TODO: FAILD?
 
 			hasUnpub: ()-> !!localStorage.get('unpublished_theme_model')
