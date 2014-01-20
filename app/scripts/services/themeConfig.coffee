@@ -24,7 +24,7 @@ mod.factory 'themeConfig', ->
 							y: 0
 						}
 					}
-				when 'app_icon', 'dock_icon', 'customize_mat'
+				when 'app_icon', 'dock_icon', 'customize'
 					{
 						width: 56
 						height: 56
@@ -55,7 +55,7 @@ mod.factory 'themeConfig', ->
 						height: 800
 						type: 'jpg'
 					}
-				when 'app_icon', 'dock_icon', 'customize_mat'
+				when 'app_icon', 'dock_icon', 'customize'
 					{
 						width: 192
 						height: 192
