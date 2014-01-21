@@ -55,18 +55,18 @@ mod.factory 'themeConfig', ->
 				return {
 					width: 403
 					height: 100
-					type: '.jpg'
+					type: '.jpg,.jpeg'
 				}
 			switch resType
 				when 'wallpaper'
 					if resName is 'wallpaper-hd' then {
 						width: 1440
 						height: 1280
-						type: '.jpg'
+						type: '.jpg,.jpeg'
 					} else {
 						width: 960
 						height: 800
-						type: '.jpg'
+						type: '.jpg,.jpeg'
 					}
 				when 'app_icon', 'dock_icon', 'customize'
 					{

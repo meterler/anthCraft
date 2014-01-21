@@ -102,7 +102,7 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 		$scope.checkAccepts = ()->
 			$timeout ->
 				fileExt = $scope.image.file.type.replace("image/", ".")
-				matchExp = new RegExp(fileExt)
+				matchExp = new RegExp(fileExt, "i")
 				matched = matchExp.test($scope.resAccepts)
 				if not fileExt or not matched
 					alert("Wrong File Type, Please chose #{$scope.resAccepts}");
