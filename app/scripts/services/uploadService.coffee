@@ -18,12 +18,23 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 		callback: "&"
 	}
 	templateUrl: "/views/partials/uploader.html"
-	controller: ['$rootScope', '$scope', '$attrs', '$http', '$element', 'themeConfig', ($rootScope, $scope, $attrs, $http, $element, themeConfig)->
-
+	controller: ['$rootScope', '$scope', '$attrs', '$http', '$timeout', '$element', 'themeConfig', ($rootScope, $scope, $attrs, $http, $timeout, $element, themeConfig)->
 		$scope.isEditing = !!$scope.$eval($attrs.isEditing)
+
+		saveLastValue = (value)->
+			$scope.lastValue.url = value
+
+		undo = ()->
+			$scope.image.url = $scope.lastValue.url
+			$scope.image.file = undefined
+
+		$scope.$watch 'resType', (value)->
+			$scope.resAccepts = themeConfig.getStandard($attrs.resType, $attrs.resName)?.type
 
 		$scope.$on "uploader.restore", ()->
 			defaultImageSrc = themeConfig.defaultPackInfo[$attrs.resType][$attrs.resName].src
+
+			saveLastValue($scope.image.url)
 			$scope.image = {
 				url: $attrs.srcPrefix + defaultImageSrc
 			}
@@ -36,9 +47,15 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 		$scope.$on "uploader.updateSrc", (event, to, src)->
 			if $attrs.resType is to.resType and $attrs.resName is to.resName
 				$attrs.defaultData = src
+				saveLastValue($scope.image.url)
 				$scope.image = {
 					url: $attrs.srcPrefix + src
 				}
+
+		# Undo image.src, not packInfo value
+		$scope.$on "uploader.undo", (event, to)->
+			if $attrs.resType is to.resType and $attrs.resName is to.resName
+				undo()
 
 		$scope.dropImg = (img)->
 			resType = $attrs.resType
@@ -82,6 +99,16 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 		# Raise event if isEditing
 		# $scope.select() if $attrs.isEditing
 
+		$scope.checkAccepts = ()->
+			$timeout ->
+				fileExt = $scope.image.file.type.replace("image/", ".")
+				matchExp = new RegExp(fileExt)
+				matched = matchExp.test($scope.resAccepts)
+				if not fileExt or not matched
+					alert("Wrong File Type, Please chose #{$scope.resAccepts}");
+					undo()
+			, 0
+
 		$scope.upload = (image)->
 
 			return if $scope.loading or not image
@@ -113,6 +140,7 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 					resName: resName,
 					src: result.src
 				})
+				saveLastValue($attrs.srcPrefix + result.src)
 				ngProgress.complete()
 				$scope.loading=false
 
@@ -132,6 +160,9 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 
 			scope.image = {
 				url: attr.srcPrefix + attr.defaultData
+			}
+			scope.lastValue = {
+				url: scope.image.url
 			}
 			return
 
