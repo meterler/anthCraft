@@ -4,7 +4,7 @@ mod.controller "dWallpaperFormCtrl", [
 	($scope, $http)->
 		$scope.dWallpaper = {}
 		$scope.uploadSuccess = false
-
+		$scope.categoryList = []
 		# Get Category List
 		$http.get("/api/category", {
 			params: {
@@ -19,6 +19,7 @@ mod.controller "dWallpaperFormCtrl", [
 		$scope.submit = (event)->
 			event.preventDefault()
 			data = $scope.dWallpaper
+			$scope.uploading = true
 
 			temp = data.category_raw.split("|")
 			categoryJson = {}
@@ -40,6 +41,7 @@ mod.controller "dWallpaperFormCtrl", [
 					'content-type': undefined
 				}
 			}).success( (data)->
+				$scope.uploading = false
 				$scope.uploadSuccess = true
 			)
 
