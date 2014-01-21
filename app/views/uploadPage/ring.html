@@ -13,7 +13,7 @@
 				<div class="col-sm-9">
 					<label for="upFile" class="file-upload btn btn-primary pull-left">
 						<span><strong>Chose file</strong></span>
-						<input name="upFile" type="file" ng-file-select="onSelectRing($files[0]); ring.name=grepName($files[0].name);" accept=".mp3">
+						<input name="upFile" type="file" ng-file-select="onSelectRing($files[0]); ring.title=grepName($files[0].name);" accept=".mp3">
 					</label>
 					<small class="help-block col-sm-8 pull-left">.MP3 Only, within 10MB.</small>
 					<div class="row">
@@ -25,20 +25,18 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">歌曲名称：</label>
 				<div class="col-sm-5">
-					<input type="text" class="form-control" ng-model="ring.name" placeholder="程序自动获取，可修改" required />
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-2 control-label">Tags: </label>
-				<div class="col-sm-2">
-					<select class="form-control" ng-model="ring.tags" ng-init="ring.tags='New'">
-						<option value="New">New</option>
-						<option value="Taste">Taste</option>
-						<option value="Free">Free</option>
-					</select>
+					<input type="text" class="form-control" ng-model="ring.title" placeholder="程序自动获取，可修改" required />
 				</div>
 			</div>
 
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Category: </label>
+				<div class="col-sm-2">
+					<select class="form-control" ng-model="ring.category_raw" >
+						<option value="{{category._id}}|{{category.name}}" ng-repeat="category in categoryList" ng-if="category" ng-selected="$index==0" ng-cloak>{{category.name}}</option>
+					</select>
+				</div>
+			</div>
 			<div class="form-group" ng-if="progress > 0">
 				<label for="" class="col-sm-2 control-label" ng-if="!uploadSuccess">正在上传：</label>
 				<label for="" class="col-sm-2 control-label" ng-if="uploadSuccess">上传成功：</label>
@@ -46,7 +44,7 @@
 
 					<div class="col-sm-9">
 						<progressbar max="100" value="progress">
-							<b style="float: left;">&nbsp; {{ring.name}}</b>
+							<b style="float: left;">&nbsp; {{ring.title}}</b>
 							{{progress}}%
 						</progressbar>
 					</div>

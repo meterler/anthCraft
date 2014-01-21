@@ -117,6 +117,12 @@ module.exports = (app)->
 
 			ring = new RingModel(ringData)
 			ring.save (err)->
-				res.send "ok"
+
+				if err
+					__log "Upload ring Error:", err
+					res.returnCode = 404
+					res.send "error"
+				else
+					res.send "ok"
 
 	return

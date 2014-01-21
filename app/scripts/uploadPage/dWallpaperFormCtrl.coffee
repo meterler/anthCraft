@@ -8,11 +8,13 @@ mod.controller "dWallpaperFormCtrl", [
 		# Get Category List
 		$http.get("/api/category", {
 			params: {
-				type: 0
+				type: 3
 				sort: "orderNum"
 			}
 		}).success( (list)->
 			$scope.categoryList = list
+			if list.length > 0
+				$scope.dWallpaper.category_raw = list[0]._id + "|" + list[0].name
 		).error( ->
 			# todo...
 		)
