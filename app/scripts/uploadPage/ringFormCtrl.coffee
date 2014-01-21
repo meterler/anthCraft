@@ -1,12 +1,11 @@
 mod = angular.module("uploadApp")
 
 mod.controller "ringFormCtrl", [
-	"$scope", "$http", "$timeout", "$upload", "AudioService"
-	($scope, $http, $timeout, $upload, AudioService)->
+	"$scope", "$http", "$timeout", "$upload",
+	($scope, $http, $timeout, $upload)->
 		$scope.ring = {}
 		$scope.progress = 0
 		$scope.uploadSuccess = false
-		$scope.player = $scope.player = AudioService
 
 		$scope.onSelectRing = (file)->
 			$scope.ring.file = file
