@@ -12,6 +12,7 @@ mod.controller "ringFormCtrl", [
 		$http.get("/api/category", {
 			params: {
 				type: 2
+				status: 1
 				sort: "orderNum"
 			}
 		}).success( (list)->

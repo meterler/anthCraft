@@ -9,6 +9,7 @@ mod.controller "dWallpaperFormCtrl", [
 		$http.get("/api/category", {
 			params: {
 				type: 3
+				status: 1
 				sort: "orderNum"
 			}
 		}).success( (list)->
