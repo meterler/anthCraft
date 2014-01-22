@@ -57,7 +57,7 @@ uploadProcess = (userId, uploadFile, resType, cb)->
 module.exports = (app)->
 
 	app.post "/upload/wallpaper", (req ,res)->
-		userId = req.body.userId or -1
+		userId = req.cookies.userId
 		wallpaperFile = req.files.uploadFile
 		title = req.body.title
 		uploadProcess userId, wallpaperFile, 'wallpaper', (err, file)->
@@ -80,12 +80,14 @@ module.exports = (app)->
 
 	app.post "/upload/dwallpaper", (req, res)->
 
-		userId = req.body.userId or -1
+		userId = req.cookies.userId
 		apkFile = req.files.apkFile
 		iconFile = req.files.iconFile
 		thumbnailFile = req.files.thumbnailFile
 
 		data = JSON.parse(req.body.dWallpaper)
+		data.userId = userId
+		data.uploader = req.cookies.userName
 
 		dWallpaper = DWallpaperModel(data)
 		async.parallel {
@@ -107,9 +109,11 @@ module.exports = (app)->
 
 	app.post "/upload/ring", (req, res)->
 
-		userId = req.body.userId or -1
 		ringFile = req.files.ringFile
 		ringData = JSON.parse(req.body.ring)
+		userId = req.cookies.userId
+		ringData.userId = req.cookies.userId
+		ringData.uploader = req.cookies.userName
 
 		uploadProcess userId, ringFile, 'ring', (err, file)->
 
@@ -125,4 +129,9 @@ module.exports = (app)->
 				else
 					res.send "ok"
 
+	app.get "/setCookie", (req, res)->
+		res.cookie('userId', '444432')
+		res.cookie('userName', 'ijse')
+
+		res.send "ok"
 	return
