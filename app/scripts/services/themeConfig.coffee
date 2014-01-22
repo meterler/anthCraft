@@ -10,6 +10,13 @@ mod.factory 'themeConfig', ->
 
 		# Preview scale for processing uploaded image
 		getPreviewScale: (resType, resName)->
+			if resType is 'dock_icon' and resName is 'ic_dockbar_bg'
+				return {
+					width: 403
+					height: 100
+					force: true
+				}
+
 			switch resType
 				when 'wallpaper', 'wallpaper-hd'
 					{
@@ -24,7 +31,7 @@ mod.factory 'themeConfig', ->
 							y: 0
 						}
 					}
-				when 'app_icon', 'dock_icon', 'customize_mat'
+				when 'app_icon', 'dock_icon', 'customize'
 					{
 						width: 56
 						height: 56
@@ -36,30 +43,42 @@ mod.factory 'themeConfig', ->
 						height: 370
 						force: true
 					}
+				when 'apk_icon'
+					{
+						width: 144
+						height: 144
+						force: true
+					}
 
 		getStandard: (resType, resName)->
+			if resType is 'dock_icon' and resName is 'ic_dockbar_bg'
+				return {
+					width: 403
+					height: 100
+					type: '.jpg,.jpeg'
+				}
 			switch resType
 				when 'wallpaper'
 					if resName is 'wallpaper-hd' then {
 						width: 1440
 						height: 1280
-						type: 'jpg'
+						type: '.jpg,.jpeg'
 					} else {
 						width: 960
 						height: 800
-						type: 'jpg'
+						type: '.jpg,.jpeg'
 					}
-				when 'app_icon', 'dock_icon', 'customize_mat'
+				when 'app_icon', 'dock_icon', 'customize'
 					{
 						width: 192
 						height: 192
-						type: 'png'
+						type: '.png'
 					}
 				when 'dock_icon'
 					if resName is 'ic_dockbar_bg' then {
 						width: 480
 						height: 90
-						type: 'png'
+						type: '.png'
 					}
 
 		# Default packInfo for reset style

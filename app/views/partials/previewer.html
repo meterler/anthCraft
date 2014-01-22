@@ -11,7 +11,7 @@
 <div class="mod-previewer" ng-switch on="curSence">
 
 	<div class="sence sence-home" ng-switch-when="home"
-		ng-style="_Wallpaper(_V(theme['wallpaper']['wallpaper']))">
+		ng-style="_Wallpaper(_V(theme['wallpaper']['wallpaper-hd']))">
 		<div class="mp-statusbar"></div>
 		<ul rn-carousel rn-carousel-index="1" rn-swipe-callback="swipeCallback">
 			<li></li>
@@ -58,7 +58,7 @@
 				ng-class="{ active: isSelect('app_icon', 'Browser') }">
 		</div>
 	</div>
-	<div class="sence sence-apps" ng-switch-when="apps" ng-style="_Wallpaper(_V(theme['wallpaper']['wallpaper']))">
+	<div class="sence sence-apps" ng-switch-when="apps" ng-style="_Wallpaper(_V(theme['wallpaper']['wallpaper-hd']))">
 		<div class="mp-statusbar"></div>
 		<div class="mp-apps-bg"></div>
 		<ul rn-carousel rn-carousel-index="0" rn-swipe-callback="swipeCallback">

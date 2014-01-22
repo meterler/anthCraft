@@ -19,12 +19,12 @@ getDest = (type, filename, userId)->
 	result.path = {
 		"wallpaper": "#{__config.resources}/wallpaper/img"
 		"dwallpaper": "#{__config.resources}/wallpaper/apk"
-		"ring": "#{__config.resources}/rings"
+		"ring": "#{__config.resources}/ring"
 		"icons": "#{__config.resources}/icons"
 		"thumbnail": "#{__config.resources}/thumbnail"
 	}[type] + "/#{hashCode}/#{userId}/#{name}"
 
-	result.relativePath = name
+	result.relativePath = "/#{hashCode}/#{userId}/#{name}"
 
 	return result
 
@@ -117,6 +117,12 @@ module.exports = (app)->
 
 			ring = new RingModel(ringData)
 			ring.save (err)->
-				res.send "ok"
+
+				if err
+					__log "Upload ring Error:", err
+					res.returnCode = 404
+					res.send "error"
+				else
+					res.send "ok"
 
 	return

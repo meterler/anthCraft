@@ -51,7 +51,9 @@ mod.factory 'themeService', [
 				service.dirty = false
 
 				# Restore uploader image preview data
-				$rootScope.$broadcast "uploader.refresh"
+				$rootScope.$broadcast "uploader.restore"
+				
+				
 				# TODO: FAILD?
 
 			hasUnpub: ()-> !!localStorage.get('unpublished_theme_model')
@@ -81,15 +83,14 @@ mod.factory 'themeService', [
 			updateView: (updateData)->
 				if updateData
 					service.packInfo[updateData.resType][updateData.resName].src = updateData.src
+					# Add timestamp to each resource
+					service.cacheFlags["#{themeConfig.themeFolder}#{updateData.src}"] = (new Date()).getTime()
 
 				# Update localStorage if dirty
 				if service.dirty
 					localStorage.set('unpublished_theme_packInfo', service.packInfo)
 
 				service.dirty = true
-
-				# Add timestamp to each resource
-				service.cacheFlags["#{themeConfig.themeFolder}#{updateData.src}"] = (new Date()).getTime()
 
 				# TBD: Not save every time?
 				# service.theme.$save()

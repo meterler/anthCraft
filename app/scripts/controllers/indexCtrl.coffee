@@ -1,3 +1,4 @@
+mod = angular.module('anthCraftApp')
 mod.controller 'indexCtrl', [
         '$rootScope', '$scope', '$location', '$cookies', '$http', 'localStorageService'
         'themeService',
@@ -17,7 +18,9 @@ mod.controller 'indexCtrl', [
                 createNewThemeAction = ->
                         themeService.init (err)->
                                 return $rootScope.$broadcast 'app.alert', 'error', 'Server Error!' if err
-                                $location.url('/wallpaper')
+                                #$location.url('/wallpaper')
+                                location.href="/#/wallpaper"
+                                location.reload()
 
                 $scope.hasUnpub = -> themeService.hasUnpub()
                 $scope.createTheme = ()->
