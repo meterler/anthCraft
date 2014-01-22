@@ -41,6 +41,7 @@ WallpaperStruct = {
 	# 下载次数
 	downloads: {
 		type: 'number'
+		default: 0
 	}
 	# 更新时间
 	updateTime: {

@@ -39,23 +39,26 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="upFile" class="col-sm-2 control-label">图标：</label>
-				<div class="col-sm-9">
-					<label for="upFile" class="file-upload btn btn-primary pull-left">
-						<span><strong>Upload</strong></span>
-						<input name="upFile" type="file" ng-file-select="dWallpaper.iconFile = $files[0]" accept=".jpg,.png,.jpeg" required />
-					</label>
-					<small class="help-block col-sm-5 pull-left">必填项</small>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="upFile" class="col-sm-2 control-label">壁纸截图：</label>
+				<label for="upFile" class="col-sm-2 control-label">缩略图：</label>
 				<div class="col-sm-9">
 					<label for="upFile" class="file-upload btn btn-primary pull-left">
 						<span><strong>Upload</strong></span>
 						<input name="upFile" type="file" ng-file-select="dWallpaper.thumbnailFile = $files[0]" accept=".jpg,.png,.jpeg" required>
 					</label>
 					<small class="help-block col-sm-5 pull-left">必填项</small>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="upFile" class="col-sm-2 control-label">预览图：</label>
+				<div class="col-sm-9">
+					<label for="upFile" class="file-upload btn btn-primary pull-left">
+						<span><strong>Upload</strong></span>
+						<input name="upFile" type="file" ng-file-select="dWallpaper.previewFiles = $files" accept=".jpg,.png,.jpeg" required multiple>
+					</label>
+					<small class="help-block col-sm-5 pull-left">
+						必填项
+						<span ng-if="dWallpaper.previewFiles.length>0" ng-cloak>选择了{{dWallpaper.previewFiles.length}}个文件。</span>
+					</small>
 				</div>
 			</div>
 
@@ -68,6 +71,7 @@
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<button type="submit" class="btn btn-primary" ng-if="!uploadSuccess" ng-hide="uploading">提交审核</button>
+					<button type="submit" class="btn btn-primary">提交审核</button>
 
 					<a href="javascript:;" class="btn btn-primary" ng-if="uploading">上传中...</a>
 					<a href="javascript:location.reload();" class="btn btn-primary" ng-if="uploadSuccess">再传一张</a>

@@ -33,7 +33,10 @@ mod.controller "dWallpaperFormCtrl", [
 			# TODO: Validate
 			formData = new FormData()
 			formData.append 'apkFile', data.apkFile, data.apkFile.name
-			formData.append 'iconFile', data.iconFile
+
+			data.previewFiles.forEach (file)->
+				formData.append 'previewFiles[]', file
+
 			formData.append 'thumbnailFile', data.thumbnailFile
 
 			formData.append 'dWallpaper', JSON.stringify(data)
