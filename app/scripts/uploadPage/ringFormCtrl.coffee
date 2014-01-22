@@ -30,7 +30,14 @@ mod.controller "ringFormCtrl", [
 			fReader = new FileReader()
 			fReader.onload = (e)->
 				#$scope.selectedRing = e.target.result
-				document.getElementById("ringPlayer").src = e.target.result
+				playerDom = document.getElementById("ringPlayer")
+				playerDom.src = e.target.result
+				playerDom.onloadeddata = ->
+					duration = Math.floor(playerDom.duration)
+					t = new Date(0)
+					t.setSeconds(duration)
+					$scope.ring.duration = t.toGMTString().split(" ")[4]
+					#$scope.ring.duration = "" + Math.floor(duration/60) + ":" + (duration%60)
 
 			fReader.readAsDataURL file
 			return
