@@ -33,9 +33,8 @@ uploadProcess = (userId, uploadFile, resType, cb)->
 
 	tempFile = uploadFile.path
 
-	__log ">>>>>", tempFile
 	return cb(true) if not tempFile
-	
+
 	fileName = uploadFile.name
 	savedFile = getDest(resType, fileName, userId)
 
@@ -58,7 +57,9 @@ module.exports = (app)->
 
 	app.post "/upload/wallpaper", (req ,res)->
 		userId = req.cookies.userid
+		userName = req.cookies.username
 		wallpaperFile = req.files.uploadFile
+
 		title = req.body.title
 		uploadProcess userId, wallpaperFile, 'wallpaper', (err, file)->
 			if not err
@@ -68,6 +69,7 @@ module.exports = (app)->
 					userId: userId
 					bigPath: file.relativePath
 					smallPath: file.relativePath
+					author: userName
 				})
 
 				wallpaper.save (err)->

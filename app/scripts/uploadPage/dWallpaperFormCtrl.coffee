@@ -1,8 +1,10 @@
 mod = angular.module("uploadApp")
 mod.controller "dWallpaperFormCtrl", [
-	"$scope", "$http",
-	($scope, $http)->
-		$scope.dWallpaper = {}
+	"$scope", "$http", "$cookies"
+	($scope, $http, $cookies)->
+		$scope.dWallpaper = {
+			author: $cookies.username
+		}
 		$scope.uploadSuccess = false
 		$scope.categoryList = []
 		# Get Category List
