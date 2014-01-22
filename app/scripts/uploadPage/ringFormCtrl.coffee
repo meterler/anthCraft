@@ -1,11 +1,24 @@
 mod = angular.module("uploadApp")
 
 mod.controller "ringFormCtrl", [
-	"$scope", "$http", "$upload"
-	($scope, $http, $upload)->
+	"$scope", "$http", "$timeout", "$upload", "AudioService"
+	($scope, $http, $timeout, $upload, AudioService)->
 		$scope.ring = {}
 		$scope.progress = 0
 		$scope.uploadSuccess = false
+		$scope.player = $scope.player = AudioService
+
+		$scope.onSelectRing = (file)->
+			$scope.ring.file = file
+
+			# read local mp3 file and preview
+			fReader = new FileReader()
+			fReader.onload = (e)->
+				#$scope.selectedRing = e.target.result
+				document.getElementById("ringPlayer").src = e.target.result
+
+			fReader.readAsDataURL file
+			return
 
 		# Override uploadCtrl#startUpload()
 		$scope.startUpload = (event, type)->

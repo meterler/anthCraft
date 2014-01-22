@@ -21,6 +21,7 @@ mod.factory 'themeService', [
 
 			# theme modified or not
 			dirty: false
+			cacheFlags: {}
 
 			# Theme Model
 			themeModel: {}
@@ -86,6 +87,9 @@ mod.factory 'themeService', [
 					localStorage.set('unpublished_theme_packInfo', service.packInfo)
 
 				service.dirty = true
+
+				# Add timestamp to each resource
+				service.cacheFlags["#{themeConfig.themeFolder}#{updateData.src}"] = (new Date()).getTime()
 
 				# TBD: Not save every time?
 				# service.theme.$save()

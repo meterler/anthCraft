@@ -18,6 +18,8 @@ mod.controller 'previewCtrl', [
 		$scope.curSence = menuFactory.sence
 		$scope.theme = themeService.packInfo
 
+		cacheFlags = themeService.cacheFlags
+
 		# Utils
 		$scope._V = (v)-> "#{themeConfig.themeFolder}#{v.src}"
 
@@ -27,30 +29,36 @@ mod.controller 'previewCtrl', [
 
 		$scope._Wallpaper = (v)->
 			# delta = ((IMAGE_WIDTH - SENCE_WIDTH)/total)*(idx-1)
+			vcode = cacheFlags[v]
 			{
-				"background-image": "url('#{v}')"
+				"background-image": "url('#{v}?#{vcode}')"
 				"background-size": "#{IMAGE_WIDTH}px #{SENCE_HEIGHT}px"
 				"background-repeat": "no-repeat"
 			}
 
-		$scope._DockBg = (v)-> {
-				"background-image": "url('#{v}')"
+		$scope._DockBg = (v)->
+			vcode = cacheFlags[v]
+			{
+				"background-image": "url('#{v}?#{vcode}')"
 				"background-size": "100% 100%"
 				"background-repeat": "no-repeat"
 			}
 
 		$scope._IconBg = (v)->
+			vcode = cacheFlags[v]
 			{
-				'background-image': "url('#{v}')"
+				'background-image': "url('#{v}?#{vcode}')"
 				'background-size': "80px"
 				'background-repeat': "no-repeat"
 				'background-position': "-3px 1px"
 			}
 
-		$scope._Mask = (v)-> {
+		$scope._Mask = (v)->
+			vcode = cacheFlags[v]
+			{
 				'width': "80px"
 				'height': "80px"
-				'-webkit-mask-image': "url('#{v}')"
+				'-webkit-mask-image': "url('#{v}?#{vcode}')"
 				'-webkit-mask-size': "70px"
 				'-webkit-mask-repeat': "no-repeat"
 				'margin-top': "6px"
@@ -58,9 +66,11 @@ mod.controller 'previewCtrl', [
 				'padding': "4px"
 			}
 
-		$scope._ABottomIcon = (v)-> {
-			"background-image": "url('#{v}')"
-		}
+		$scope._ABottomIcon = (v)->
+			vcode = cacheFlags[v]
+			{
+				"background-image": "url('#{v}?#{vcode}')"
+			}
 
 		$scope.isSelect = (resType, resName)->
 				($scope.selected.resType is resType) and ($scope.selected.resName is resName)

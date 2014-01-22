@@ -37,7 +37,7 @@
 	<header> Other </header>
 	<section class="all-list">
 		<figure ng-repeat="item in groupList[all_list]" ng-init="it=wrapData(item)" ng-class="{ active:(item.resType == selected.resType && item.resName == selected.resName )}">
-			<img ng-src="{{srcPrefix}}/{{it.src}}" ng-click="select(item.resType, item.resName)">
+			<img ng-src="{{srcPrefix}}{{it.src}}?{{themeService.cacheFlags[srcPrefix + wrapData(item).src]}}" ng-click="select(item.resType, item.resName)">
 			<figcaption>{{ it.capital }}</figcaption>
 		</figure>
 
