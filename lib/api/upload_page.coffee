@@ -13,7 +13,7 @@ getDest = (type, filename, userId)->
 	shasum = crypto.createHash('sha1')
 	shasum.update("#{Date.now()}-#{filename}")
 
-	hashCode = userId / (userId % 1000)
+	hashCode = userId % 1000
 	name = shasum.digest('hex') + path.extname(filename)
 	result = {}
 	result.path = {
