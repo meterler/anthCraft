@@ -36,6 +36,7 @@ WallpaperStruct = {
 	# 推荐标记
 	tag: {
 		type: 'string'
+		default: ''
 	}
 	# 下载次数
 	downloads: {
@@ -54,10 +55,12 @@ WallpaperStruct = {
 	# 评价(0-5)
 	grade: {
 		type: 'number'
+		default: 0
 	}
 	# 积分
 	point: {
 		type: 'number'
+		default: 0
 	}
 	# 状态, 0待审核，1审核不通过，2已经上架，3正在下架，4已下架
 	status: {

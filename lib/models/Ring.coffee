@@ -23,11 +23,12 @@ RingStruct = {
 	# 上传者
 	uploader: {
 		type: 'string'
+		default: 'launcher'
 	}
 	# 作曲者
 	author: {
 		type: 'string'
-		default: 'launcher'
+		default: ''
 	}
 	# 用户编号
 	userId: {
@@ -41,6 +42,7 @@ RingStruct = {
 	# 推荐标记
 	tag: {
 		type: 'string'
+		default: ""
 	}
 	# 音频播放时长
 	duration: {
@@ -49,6 +51,7 @@ RingStruct = {
 	# 音频大小
 	size: {
 		type: 'number'
+		default: 0
 	}
 	# 音频路径
 	ringPath: {
@@ -57,6 +60,7 @@ RingStruct = {
 	# 下载次数
 	downloads: {
 		type: 'number'
+		default: 0
 	}
 	# 更新时间
 	updateTime: {
@@ -71,14 +75,17 @@ RingStruct = {
 	# 评价(0-5)
 	grade: {
 		type: 'number'
+		default: 0
 	}
 	# 积分
 	point: {
 		type: 'number'
+		default: 0
 	}
 	# 状态, 0待审核，1审核不通过，2已经上架，3正在下架，4已下架
 	status: {
 		type: 'number'
+		default: 0
 	}
 	# 审核不通过原因
 	reason: {
