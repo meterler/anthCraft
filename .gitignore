@@ -11,7 +11,7 @@ app/resources/themes/*
 app/resources/preview/*
 app/resources/thumbnail/*
 app/resources/wallpaper/*
-app/resources/rings/*
+app/resources/ring/*
 app/resources/dynamicwallpaper/*
 
 app/logs/*
