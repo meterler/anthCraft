@@ -21,13 +21,13 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">壁纸名称：</label>
 				<div class="col-sm-5">
-					<input type="text" class="form-control" ng-model="dWallpaper.title" placeholder="" required />
+					<input type="text" class="form-control" ng-model="dWallpaper.title" placeholder="" required maxlength="50" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">设计师：</label>
 				<div class="col-sm-5">
-					<input type="text" class="form-control" ng-model="dWallpaper.author" placeholder="" required value="launcher" />
+					<input type="text" class="form-control" ng-model="dWallpaper.author" placeholder="" required value="launcher" maxlength="30" />
 				</div>
 			</div>
 			<div class="form-group">
@@ -65,7 +65,7 @@
 			<div class="form-group">
 				<label for="upFile" class="col-sm-2 control-label">简介：</label>
 				<div class="col-sm-9">
-					<textarea ng-model="dWallpaper.description" class="form-control" required ></textarea>
+					<textarea ng-model="dWallpaper.description" class="form-control" required maxlength="1000"></textarea>
 				</div>
 			</div>
 			<div class="form-group">
