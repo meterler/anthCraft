@@ -26,6 +26,12 @@ mod.controller "dWallpaperFormCtrl", [
 			data = $scope.dWallpaper
 			$scope.uploading = true
 
+			# Validate apk field
+			if not /\.apk$/.test(data.apkFile.name)
+				alert "Please chose apk file!"
+				$scope.uploading = false
+				return
+
 			temp = data.category_raw.split("|")
 			categoryJson = {}
 			categoryJson[temp[0]] = temp[1]
