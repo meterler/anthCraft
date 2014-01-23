@@ -9,19 +9,28 @@ mod.controller 'uploadCtrl', [
 		$scope.progress = 0
 
 		$scope.onFileSelect = ($files)->
-			$scope.Wallpaper.file = $files[0]
-
-			# Wallpaper name
-			$scope.Wallpaper.title = $scope.grepName($files[0].name)
 
 			# Preview
 			fileReader = new FileReader()
 			fileReader.readAsDataURL $files[0]
 
 			fileReader.onload = (evt)->
-				$timeout ->
-					$scope.Wallpaper.dataUrl = evt.target.result
-				, 0
+				# Check wallpaper image dimension
+				image = new Image()
+				image.onload = (img_evt)->
+					width = this.width;
+					height = this.height;
+					if width < 1024 or height < 768
+						alert("Wallpaper's dimension must be larger than 1024x768.")
+					else
+						$scope.Wallpaper.file = $files[0]
+						# Wallpaper name
+						$scope.Wallpaper.title = $scope.grepName($files[0].name)
+						$scope.Wallpaper.dataUrl = evt.target.result
+						$scope.$digest()
+
+				image.src = evt.target.result
+				$scope.$digest()
 			return
 
 		$scope.grepName = (filename)->
