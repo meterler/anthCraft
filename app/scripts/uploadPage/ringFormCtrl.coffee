@@ -47,6 +47,12 @@ mod.controller "ringFormCtrl", [
 			event.preventDefault();
 
 			data = $scope.ring
+
+			# Validate file type
+			if not /\.mp3$/.test(data.file.name)
+				alert("Please chose .mp3 file")
+				return
+
 			temp = data.category_raw.split("|")
 			categoryJson = {}
 			categoryJson[temp[0]] = temp[1]
