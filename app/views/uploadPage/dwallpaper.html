@@ -15,7 +15,8 @@
 						<span><strong>Chose APK file</strong></span>
 						<input name="upFile" type="file" ng-file-select="dWallpaper.apkFile = $files[0]; dWallpaper.title=grepName($files[0].name)" accept=".apk" required />
 					</label>
-					<small class="help-block col-sm-5 pull-left">必填项</small>
+					<small class="help-block col-sm-5 pull-left" ng-hide="dWallpaper.apkFile">必填项</small>
+					<small class="help-block col-sm-5 pull-left">{{dWallpaper.apkFile.name}}</small>
 				</div>
 			</div>
 			<div class="form-group">
@@ -45,7 +46,8 @@
 						<span><strong>Upload</strong></span>
 						<input name="upFile" type="file" ng-file-select="dWallpaper.thumbnailFile = $files[0]" accept=".jpg,.png,.jpeg" required>
 					</label>
-					<small class="help-block col-sm-5 pull-left">必填项</small>
+					<small class="help-block col-sm-5 pull-left" ng-hide="dWallpaper.thumbnailFile">必填项</small>
+					<small class="help-block col-sm-5 pull-left">{{dWallpaper.thumbnailFile.name}}</small>
 				</div>
 			</div>
 			<div class="form-group">
@@ -55,9 +57,9 @@
 						<span><strong>Upload</strong></span>
 						<input name="upFile" type="file" ng-file-select="dWallpaper.previewFiles = $files" accept=".jpg,.png,.jpeg" required multiple>
 					</label>
-					<small class="help-block col-sm-5 pull-left">
-						必填项
-						<span ng-if="dWallpaper.previewFiles.length>0" ng-cloak>选择了{{dWallpaper.previewFiles.length}}个文件。</span>
+					<small class="help-block col-sm-5 pull-left" ng-hide="dWallpaper.previewFiles"> 必填项 </small>
+					<small class="help-block col-sm-5 pull-left" ng-show="dWallpaper.previewFiles">
+						共选择了{{dWallpaper.previewFiles.length}}个文件。
 					</small>
 				</div>
 			</div>
