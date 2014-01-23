@@ -53,6 +53,11 @@ mod.controller "ringFormCtrl", [
 				alert("Please chose .mp3 file")
 				return
 
+			fileSize = data.file.size
+			if fileSize > 1024*1024*10 # 10MB
+				alert("The size of mp3 file must be less than 10MB.")
+				return
+
 			temp = data.category_raw.split("|")
 			categoryJson = {}
 			categoryJson[temp[0]] = temp[1]
