@@ -17,20 +17,19 @@ mod.factory 'themeConfig', ->
 					force: true
 				}
 
+			if resType is 'wallpaper' and resName is 'wallpaper'
+				return {
+					width: 513
+					height: 428
+					force: true
+				}
+			if resType is 'wallpaper' and resName is 'wallpaper-hd'
+				return {
+					width: 481
+					height: 428
+					force: true
+				}
 			switch resType
-				when 'wallpaper', 'wallpaper-hd'
-					{
-						width: 513
-						height: 428
-						force: true
-
-						crop: {
-							width: 239
-							height: 428
-							x: 137
-							y: 0
-						}
-					}
 				when 'app_icon', 'dock_icon', 'customize'
 					{
 						width: 56
