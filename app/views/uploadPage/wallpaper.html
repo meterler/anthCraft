@@ -27,7 +27,7 @@
 				</div>
 			</div>
 
-			<div class="form-group" ng-if="progress > 0">
+			<div class="form-group" ng-show="progress > 0">
 				<label for="" class="col-sm-2 control-label" ng-if="!uploadSuccess">正在上传：</label>
 				<label for="" class="col-sm-2 control-label" ng-if="uploadSuccess">上传成功：</label>
 				<div class="col-sm-9 row">
@@ -40,7 +40,7 @@
 					</div>
 					<div class="col-sm-3">
 						<button class="btn btn-primary" ng-click="cancelUpload()" ng-if="!uploadSuccess"> Cancel </button>
-						<button class="btn btn-danger" ng-if="uploadError" disabled> Fail </button>
+						<button class="btn btn-danger" ng-if="uploadError && !uploadSuccess" disabled> Fail </button>
 					</div>
 				</div>
 			</div>

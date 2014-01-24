@@ -59,8 +59,10 @@ mod.controller 'uploadCtrl', [
 				file: $scope.Wallpaper.file
 				fileFormDataName: 'uploadFile'
 			}).then((data, status, headers, config)->
+				$scope.uploadError = false
 				$scope.uploadSuccess = true
 			, (err)->
+				$scope.uploadSuccess = false
 				$scope.uploadError = true
 			, (evt)->
 				$scope.progress = parseInt(100.0 * evt.loaded / evt.total)
@@ -68,9 +70,10 @@ mod.controller 'uploadCtrl', [
 
 		$scope.cancelUpload = ()->
 			$scope.uploadObj.abort()
-			$scope.uploadSuccess = false
-			$scope.uploadError = false
-			$scope.Wallpaper = {}
-			$scope.uploadObj = {}
-			$scope.progress = 0
+			$timeout ->
+				$scope.uploadSuccess = false
+				$scope.uploadError = false
+				$scope.progress = 0
+				# $scope.Wallpaper = {}
+				# $scope.uploadObj = {}
 ]
