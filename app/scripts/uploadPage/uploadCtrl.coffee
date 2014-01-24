@@ -45,6 +45,11 @@ mod.controller 'uploadCtrl', [
 
 		$scope.startUpload = (event, type)->
 			event.preventDefault();
+			# Validate image file type
+			if not (\.jpg|\.jpeg)$/.test($scope.Wallpaper.file)
+				alert("Please chose jpeg/jpg file.")
+				return
+
 			$scope.uploadObj = $upload.upload({
 				url: UPLOAD_URL + "/#{type}"
 				data: {
