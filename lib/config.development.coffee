@@ -8,10 +8,10 @@ module.exports = {
 	port: 9000
 
 	debug: true
-	mongo: "mongodb://10.11.148.56:2884/anthcraft"
+	mongo: "mongodb://10.12.0.104:27017/anthcraft"
 	redis: {
 		port: 6379
-		host: "10.11.148.53"
+		host: "10.12.0.104"
 		auth_pass: null
 	}
 

@@ -54,7 +54,7 @@ mod.controller "ringFormCtrl", [
 				return
 
 			fileSize = data.file.size
-			if fileSize > 1024*1024*10 # 10MB
+			if fileSize > 1024*1024*5 # 5MB
 				alert("The size of mp3 file must be less than 10MB.")
 				return
 

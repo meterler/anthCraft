@@ -1,7 +1,7 @@
 
 <div class="row">
 	<div class="sub_header col-md-12">
-		<span>上传铃声</span>
+		<span>Upload Ringtones</span>
 	</div>
 </div>
 
@@ -9,13 +9,13 @@
 	<div class="form_content col-md-8 col-md-offset-2" ng-controller="uploadCtrl">
 		<form class="form-horizontal" role="form" ng-controller="ringFormCtrl">
 			<div class="form-group">
-				<label for="upFile" class="col-sm-2 control-label">上传铃声：</label>
+				<label for="upFile" class="col-sm-2 control-label">To upload ringtones：</label>
 				<div class="col-sm-9">
 					<label for="upFile" class="file-upload btn btn-primary pull-left">
 						<span><strong>Chose file</strong></span>
 						<input name="upFile" type="file" ng-file-select="onSelectRing($files[0]); ring.title=grepName($files[0].name);" accept=".mp3">
 					</label>
-					<small class="help-block col-sm-8 pull-left">.MP3 Only, within 10MB.</small>
+					<small class="help-block col-sm-8 pull-left">.MP3 Only, within 5MB.</small>
 					<div class="row">
 					<br/><br/>
 						<audio id="ringPlayer" class="col-sm-9" controls ng-src="{{selectedRing}}"> </audio>
@@ -23,9 +23,9 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-2 control-label">歌曲名称：</label>
+				<label class="col-sm-2 control-label">Song title：</label>
 				<div class="col-sm-5">
-					<input type="text" class="form-control" ng-model="ring.title" placeholder="程序自动获取，可修改" required maxlength="200"/>
+					<input type="text" class="form-control" ng-model="ring.title" placeholder="the program will obtain automatically, can be modified" required maxlength="200"/>
 				</div>
 			</div>
 
@@ -38,8 +38,8 @@
 				</div>
 			</div>
 			<div class="form-group" ng-if="progress > 0">
-				<label for="" class="col-sm-2 control-label" ng-if="!uploadSuccess">正在上传：</label>
-				<label for="" class="col-sm-2 control-label" ng-if="uploadSuccess">上传成功：</label>
+				<label for="" class="col-sm-2 control-label" ng-if="!uploadSuccess">Uploading：</label>
+				<label for="" class="col-sm-2 control-label" ng-if="uploadSuccess">Upload complete：</label>
 				<div class="col-sm-9 row">
 
 					<div class="col-sm-9">
@@ -57,9 +57,9 @@
 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-primary" ng-click="startUpload($event, 'ring')" ng-hide="uploadSuccess">提交审核</button>
+					<button type="submit" class="btn btn-primary" ng-click="startUpload($event, 'ring')" ng-hide="uploadSuccess">Submit audit</button>
 
-					<a href="javascript:location.reload();" class="btn btn-primary" ng-if="uploadSuccess">再传一首</a>
+					<a href="javascript:location.reload();" class="btn btn-primary" ng-if="uploadSuccess">Add another</a>
 				</div>
 			</div>
 		</form>
