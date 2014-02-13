@@ -6,6 +6,7 @@ p = (r)-> path.join(basePath, r)
 
 module.exports = {
 	appPath: basePath
+	host: "127.0.0.1"
 	port: 80
 
 	debug: false

@@ -92,7 +92,7 @@ async.auto(initTasks, function(err) {
 	if(err) {
 		throw err;
 	}
-	http.createServer(app).listen(app.get('port'), function () {
+	http.createServer(app).listen(app.get('port'), __config.host, function () {
 		// TODO: Print system info
 		global.__log('Server listening on port %d in %s mode', app.get('port'), app.get('env'));
 	});
