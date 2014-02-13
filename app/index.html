@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -8,19 +8,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Theme Builder for cLauncher</title>
 	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width">
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-	<link rel="stylesheet" href="components/font-awesome/css/font-awesome.css">
+	<meta name="version" content="v1.0">
+	<meta name="viewport" content="width=device-width,user-scalable=no">
 
 	<!-- build:css(.tmp) styles/main.css -->
-	<link rel="stylesheet" href="components/ngprogress/ngProgress.css">
 	<link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
-	<link rel="stylesheet" href="styles/main.css">
-	<link rel="stylesheet" href="styles/app.css">
 	<!-- endbuild -->
 </head>
-<body ng-app="anthCraftApp">
+<body ng-app="waterDrop">
 	<!--[if lt IE 9]>
 	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 	<![endif]-->
@@ -30,107 +25,24 @@
 	<script src="components/json3/lib/json3.min.js"></script>
 	<![endif]-->
 
-	<div class="hd">
-		<div class="bd" ng-controller="indexCtrl" ng-cloak>
-			<img src="styles/img/logo.png" alt="cLauncher Logo" usemap="logoLinkMap">
-			<map name="logoLinkMap">
-				<area shape="rect" coords="0,0,90,81" href="http://themes.c-launcher.com">
-				<area shape="rect" coords="90,0,441,81" href="/">
-			</map>
-			<section class="sec-login" ng-if="!isLogined()" ng-style="{ display: 'block' }">
-				<a href="http://themes.c-launcher.com/jump/register.htm">Register</a>
-				<span>|</span>
-				<a href="http://themes.c-launcher.com/jump/login.htm">Login</a>
-			</section>
-			<section class="sec-login" ng-if="isLogined()" ng-style="{ display: 'block' }">
-			<!--
-				Welcome: {{getUser().name}} ! &nbsp;
-				<a href="http://themes.c-launcher.com"> Back</a> -->
-
-				<div id="cyou-head-welcome">
-					Welcome:
-						<a href="javascript:void(0)" id="cyou-head-username" ng-click="user_menu_show=!!!user_menu_show" ng-blur="user_menu_show=false"> {{getUser().name}} </a>
-					<ul id="cyou-head-menu" style="width: 122px;" ng-show="user_menu_show" ng-cloak>
-						<li><a href="http://themes.c-launcher.com/jump/person_settings.htm"> Personal settings </a></li>
-						<li><a href="http://designer.c-launcher.com/"> Design Theme </a></li>
-						<li><a href="javascript:;" ng-click="logout()">Logout</a>
-						</li>
-					</ul>
-				</div>
-			</section>
-
-			<section class="sec-controlButton">
-				<a href="javascript:;" ng-click="createTheme()" class="icon-new">
-					<!-- <i class="fa fa-plus-circle fa-3x"></i> -->
-					New
-				</a>
-				<a ng-href="#/packForm" class="icon-pack" ng-show="hasUnpub()">
-					<!-- <i class="fa fa-upload fa-3x"></i> -->
-					Pack
-				</a>
-			</section>
-
-		</div>
-	</div>
-
-	<div class="container clearfix">
-		<div ng-view></div>
-	</div>
-
 	<script src="components/angular/angular.min.js"></script>
 
 	<!-- build:js scripts/components.js -->
-	<script src="components/ngprogress/build/ngProgress.min.js"></script>
 	<script src="components/angular-route/angular-route.min.js"></script>
 	<script src="components/angular-resource/angular-resource.js"></script>
 	<script src="components/angular-local-storage/angular-local-storage.min.js"></script>
 	<script src="components/angular-cookies/angular-cookies.js"></script>
 	<script src="components/angular-sanitize/angular-sanitize.js"></script>
-	<script src="components/angular-dragndrop/angular-dnd.min.js"></script>
 	<script src="components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 	<script src="components/angular-touch/angular-touch.js"></script>
 	<!-- endbuild -->
 
-	<!-- build:js scripts/modules.js -->
-	<script src="scripts/modules/imageupload/imageupload.js"></script>
-	<script src="scripts/modules/carousel/angular-carousel.js"></script>
-	<!-- endbuild -->
-
 	<!-- build:js({.tmp,app}) scripts/scripts.js -->
-	<script src="scripts/init.js"></script>
-	<script src="scripts/app.js"></script>
-	<script src="scripts/controllers/indexCtrl.js"></script>
-	<script src="scripts/controllers/latheCtrl.js"></script>
-	<script src="scripts/controllers/packCtrl.js"></script>
-	<script src="scripts/controllers/previewCtrl.js"></script>
-	<script src="scripts/controllers/overlayCtrl.js"></script>
-	<script src="scripts/controllers/resourceLibraryCtrl.js"></script>
-	<script src="scripts/services/menuConfig.js"></script>
-	<script src="scripts/controllers/menuListCtrl.js"></script>
-	<script src="scripts/services/themeConfig.js"></script>
-	<script src="scripts/services/themeService.js"></script>
-	<script src="scripts/services/uploadService.js"></script>
-
-	<script src="scripts/controllers/dashCtrl.js"></script>
-
+	<script src="scripts/waterDrop-init.js"></script>
 	<!-- endbuild -->
-
 
 	<div style="display: none;">
 		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5795081'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/stat.php%3Fid%3D5795081' type='text/javascript'%3E%3C/script%3E"));</script>
 	</div>
-
-	<div class="overlay" ng-controller="overlayCtrl" ng-init="showing=false" ng-show="showing">
-		<div class="dialog dlg-confirm">
-			<p>{{options.text}}</p>
-			<div class="button-group">
-				<a class="btn btn-primary" ng-click="close('yes')" ng-if="options.yes">{{options.yes}}</a>
-				<a class="btn btn-warning" ng-click="close('no')" ng-if="options.no">{{options.no}}</a>
-			</div>
-		</div>
-	</div>
-
 </body>
-
-
 </html>
