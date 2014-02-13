@@ -1,0 +1,67 @@
+
+<div class="row">
+	<div class="sub_header col-md-12">
+		<span>Upload Ringtones</span>
+	</div>
+</div>
+
+<div class="row">
+	<div class="form_content col-md-8 col-md-offset-2" ng-controller="uploadCtrl">
+		<form class="form-horizontal" role="form" ng-controller="ringFormCtrl">
+			<div class="form-group">
+				<label for="upFile" class="col-sm-3 control-label">Upload ringtones：</label>
+				<div class="col-sm-9">
+					<label for="upFile" class="file-upload btn btn-primary pull-left">
+						<span><strong>Chose file</strong></span>
+						<input name="upFile" type="file" ng-file-select="onSelectRing($files[0]); ring.title=grepName($files[0].name);" accept=".mp3">
+					</label>
+					<small class="help-block col-sm-8 pull-left">.MP3 Only, Maximum 5MB.</small>
+					<div class="row">
+					<br/><br/>
+						<audio id="ringPlayer" class="col-sm-9" controls ng-src="{{selectedRing}}"> </audio>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">Song title：</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" ng-model="ring.title" placeholder="can be modified, holds up to 200 character" required maxlength="200"/>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label">Category: </label>
+				<div class="col-sm-3">
+					<select class="form-control" ng-model="ring.category_raw" >
+						<option value="{{category._id}}|{{category.name}}" ng-repeat="category in categoryList" ng-if="category" ng-selected="$index==0" ng-cloak>{{category.name}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group" ng-if="progress > 0">
+				<label for="" class="col-sm-3 control-label" ng-if="!uploadSuccess">Uploading：</label>
+				<label for="" class="col-sm-3 control-label" ng-if="uploadSuccess">Upload complete：</label>
+				<div class="col-sm-9 row">
+
+					<div class="col-sm-9">
+						<progressbar max="100" value="progress">
+							<b class="progress-text">&nbsp; {{ring.title}}</b>
+							{{progress}}%
+						</progressbar>
+					</div>
+					<div class="col-sm-3">
+						<button class="btn btn-primary" ng-click="cancelUpload()" ng-if="!uploadSuccess"> Cancel </button>
+						<button class="btn btn-danger" ng-if="uploadError" disabled> Fail </button>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-offset-3 col-sm-10">
+					<button type="submit" class="btn btn-primary" ng-click="startUpload($event, 'ring')" ng-hide="uploadSuccess">Submit audit</button>
+
+					<a href="javascript:location.reload();" class="btn btn-primary" ng-if="uploadSuccess">Add another</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

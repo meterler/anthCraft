@@ -20,6 +20,8 @@ html,body {
 
 @import "buttons.less";
 @import "dialogs.less";
+@import "carousel.less";
+@import "progressbar.less";
 
 .hd {
 	height: 96px;
@@ -154,8 +156,8 @@ html,body {
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	user-select: none;
-	cursor: move;
-	border:1px solid black;
+	// cursor: move;
+	// border:1px solid black;
 	/* Required to make elements draggable in old WebKit */
 	-khtml-user-drag: element;
 	-webkit-user-drag: element;
@@ -209,7 +211,7 @@ html,body {
 	transition: all 0.5s;
 	position: absolute;
 	z-index: 1000;
-	top: 8px;
+	top: 20px;
 	right: 0px;
 	padding: 5px;
 	background-color: #fcfcfe;

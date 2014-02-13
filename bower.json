@@ -20,9 +20,7 @@
     "angular": "~1.2.6",
     "angular-cookies": "~1.2.2",
     "angular-route": "~1.2.2",
-    "angular-ui-bootstrap-bower": "~0.6.0",
     "angular-sanitize": "~1.2.2",
-    "angular-imageupload-directive": "*",
     "angular-resource": "~1.2.2",
     "json3": "~3.2.5",
     "es5-shim": "~2.1.0",
@@ -31,8 +29,10 @@
     "angular-local-storage": "*",
     "ngprogress": "~1.0.4",
     "angular-dragndrop": "~1.0.4",
-    "angular-carousel-directive": "~1.0.5",
-    "angular-flexslider": "~1.0.0"
+    "angular-bootstrap": "~0.9.0",
+    "angular-touch": "~1.2.7",
+    "ng-file-upload": "~1.2.3",
+    "audio5js": "*"
   },
   "resolutions": {
     "angular": "~1.2.6"

@@ -1,0 +1,57 @@
+
+<div class="row">
+	<div class="sub_header col-md-12">
+		<span>Upload Wallpapers</span>
+	</div>
+</div>
+
+<div class="row">
+	<div class="form_content col-md-8 col-sm-offset-2">
+		<form class="form-horizontal" role="form" ng-controller="uploadCtrl">
+			<div class="form-group">
+				<label for="upImage" class="col-sm-3 control-label">Upload wallpapers：</label>
+				<div class="col-sm-9">
+					<label for="upImage" class="file-upload btn btn-primary pull-left">
+						<span><strong>Chose file</strong></span>
+						<input name="upImage" type="file" ng-file-select="onFileSelect($files)" accept=".jpg,.png,.jpeg" required />
+					</label>
+					<small class="help-block col-sm-8 pull-left">Not less than 1024x768</small>
+					<br>
+					<img ng-src="{{Wallpaper.dataUrl}}" width="450" height="400">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">Wallpaper title：</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" ng-model="Wallpaper.title" placeholder="can be modified, holds up to 100 character" required maxlength="100" />
+				</div>
+			</div>
+
+			<div class="form-group" ng-show="progress > 0">
+				<label for="" class="col-sm-3 control-label" ng-if="!uploadSuccess">Uploading：</label>
+				<label for="" class="col-sm-3 control-label" ng-if="uploadSuccess">Upload complete：</label>
+				<div class="col-sm-9 row">
+
+					<div class="col-sm-9">
+						<progressbar max="100" value="progress">
+							<b class="progress-text">&nbsp; {{Wallpaper.title}}</b>
+							{{progress}}%
+						</progressbar>
+					</div>
+					<div class="col-sm-3">
+						<button class="btn btn-primary" ng-click="cancelUpload()" ng-if="!uploadSuccess"> Cancel </button>
+						<button class="btn btn-danger" ng-if="uploadError && !uploadSuccess" disabled> Fail </button>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-offset-3 col-sm-10">
+					<button type="submit" class="btn btn-primary" ng-click="startUpload($event, 'wallpaper')" ng-hide="uploadSuccess">Submit audit</button>
+
+					<a href="javascript:location.reload();" class="btn btn-primary" ng-if="uploadSuccess">Add another</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

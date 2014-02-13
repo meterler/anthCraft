@@ -1,0 +1,90 @@
+
+<div ng-controller="packCtrl">
+
+	<header class="pg-title">
+		<h1>Upload Package</h1>
+	</header>
+
+	<div class="preview-thumbnail">
+		<a href="javascript:;" ng-click="prev()" class="thumbnail-handler left">
+			<i class="fa fa-chevron-left"></i>
+		</a>
+		<div class="thumbnail-list clearfix" ng-animate="'animate'">
+			<div class="thumbnail-pic" ng-repeat="thumb in thumblist" ng-show="check($index)">
+				<img ng-src="{{PREVIEW_URL}}{{thumb}}"/>
+			</div>
+			<div class="previewing" ng-show="previewing" ng-init="previewing=true">
+				<i class="fa fa-spinner fa-spin fa-3x"></i>
+			</div>
+		</div>
+		<a href="javascript:;" ng-click="next()" class="thumbnail-handler right">
+			<i class="fa fa-chevron-right"></i>
+		</a>
+	</div>
+
+	<div class="pack-form" name="packForm" ng-submit="savePack()">
+		<form class="form-horizontal" role="form">
+			<div class="form-group">
+				<label for="inputEmail3" class="col-sm-3 control-label">Theme Name</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" ng-model="theme.title" placeholder="" required maxlength="30">
+				</div>
+				<p class="help-block col-sm-3">Required</p>
+			</div>
+			<div class="form-group">
+				<label for="inputEmail3" class="col-sm-3 control-label">Designer</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" ng-model="theme.author" placeholder="" required maxlength="30">
+				</div>
+				<p class="help-block col-sm-3">Required</p>
+			</div>
+			<div class="form-group">
+				<label for="inputEmail3" class="col-sm-3 control-label">Introduction</label>
+				<div class="col-sm-6">
+					<textarea name="description" class="form-control" ng-model="theme.description"required maxlength="1000"></textarea>
+				</div>
+				<p class="help-block col-sm-3">Required</p>
+			</div>
+			<div class="form-group">
+				<label for="upApkIcon" class="col-sm-3 control-label"> Apk Icon</label>
+				<div class="col-sm-6 mod-uploader">
+					<div class="img-upload-handler">
+						<label for="upApkIcon" class="file-upload btn btn-primary">
+							<span><strong>Upload</strong></span>
+							<input name="upApkIcon" type="file" accept=".jpg,.jpeg,.png" image="upApkIcon" ng-model="xx" ng-change="uploadApkIcon()">
+						</label>
+					</div>
+					<p class="help-block col-sm-3" ng-if="apkIconUploadStatus == 'uploading'">Uploading...</p>
+					<p class="help-block col-sm-3" ng-if="apkIconUploadStatus == 'success'" style="color: green;">Success</p>
+					<p class="help-block col-sm-3" ng-if="apkIconUploadStatus == 'error'" style="color: red;">Error</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="upImage" class="col-sm-3 control-label">Thumbnail</label>
+				<div class="col-sm-6 mod-uploader">
+					<div class="img-upload-handler">
+						<label for="upImage" class="file-upload btn btn-primary">
+							<span><strong>Change</strong></span>
+							<input name="upImage" type="file" accept=".jpg,.jpeg,.png" image="upThumbnail" ng-model="xxx" ng-change="uploadThumbnail()">
+						</label>
+					</div>
+					<div class="img-upload-previewer">
+						<img ng-src="{{upThumbnail.url}}" ng-cloak class="thumbnail-previewImg" type="{{upThumbnail.file.type}}" />
+						<div class="previewing" ng-show="thumbloading" ng-init="thumbloading=true">
+							<i class="fa fa-spinner fa-spin fa-3x"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group pull-right">
+				<a href="/#/wallpaper" class="btn">Back</a>
+				<button class="btn btn-primary" type="submit" ng-disabled="packForm.$invalid">Save&amp;Package</button>
+				<i class="fa fa-spinner fa-spin" ng-show="packing" ng-init="packing=false"></i>
+				<a href="/resources/themes{{theme.packageFile.0.file}}" target="_blank" ng-show="theme.packageFile.0">
+					Download Theme
+				</a>
+			</div>
+		</form>
+	</div>
+</div>

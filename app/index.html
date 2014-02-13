@@ -6,16 +6,16 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Theme Creator for cLauncher</title>
+	<title>Theme Builder for cLauncher</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
 	<link rel="stylesheet" href="components/font-awesome/css/font-awesome.css">
-	<link rel="stylesheet" href="components/ngprogress/ngProgress.css">
-	<link rel="stylesheet" href="components/normalize-css/normalize.css">
-	<link rel="stylesheet" href="scripts/modules/carousel/carousel.css">
+
 	<!-- build:css(.tmp) styles/main.css -->
+	<link rel="stylesheet" href="components/ngprogress/ngProgress.css">
+	<link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
 	<link rel="stylesheet" href="styles/main.css">
 	<link rel="stylesheet" href="styles/app.css">
 	<!-- endbuild -->
@@ -50,7 +50,7 @@
 				<div id="cyou-head-welcome">
 					Welcome:
 						<a href="javascript:void(0)" id="cyou-head-username" ng-click="user_menu_show=!!!user_menu_show" ng-blur="user_menu_show=false"> {{getUser().name}} </a>
-					<ul id="cyou-head-menu" style="width: 115px;" ng-show="user_menu_show" ng-cloak>
+					<ul id="cyou-head-menu" style="width: 122px;" ng-show="user_menu_show" ng-cloak>
 						<li><a href="http://themes.c-launcher.com/jump/person_settings.htm"> Personal settings </a></li>
 						<li><a href="http://designer.c-launcher.com/"> Design Theme </a></li>
 						<li><a href="javascript:;" ng-click="logout()">Logout</a>
@@ -77,45 +77,29 @@
 		<div ng-view></div>
 	</div>
 
-
-<!-- 	<div class="ft">
-		<ul class="link-list">
-			<div class="bd">
-				<li>
-					<a href="#">Link</a> |
-				</li>
-				<li>
-					<a href="#">Link</a> |
-				</li>
-			</div>
-		</ul>
-		<div class="site-info">
-			<div class="bd">
-				<img src="styles/img/cylogo.png" alt="CYou Inc." />
-				<p>北京畅游时代数码技术有限公司 版权所有&nbsp;</p>
-				<p>Copyright ©2011 ChangYou.com Limited. All rights reserved.</p>
-				<p>京ICP证：070525号《网络文化经营许可证》编号：京网文[2011]0260-093号京公网安备110107000007</p>
-			</div>
-		</div>
-	</div>
- -->
 	<script src="components/angular/angular.min.js"></script>
 
-	<!-- build:js scripts/modules.js -->
-
+	<!-- build:js scripts/components.js -->
 	<script src="components/ngprogress/build/ngProgress.min.js"></script>
 	<script src="components/angular-route/angular-route.min.js"></script>
 	<script src="components/angular-resource/angular-resource.js"></script>
 	<script src="components/angular-local-storage/angular-local-storage.min.js"></script>
 	<script src="components/angular-cookies/angular-cookies.js"></script>
 	<script src="components/angular-sanitize/angular-sanitize.js"></script>
-	<script src="components/angular-imageupload-directive/public/javascripts/imageupload.js"></script>
 	<script src="components/angular-dragndrop/angular-dnd.min.js"></script>
-	<script src="scripts/modules/carousel/carousel.js"></script>
+	<script src="components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	<script src="components/angular-touch/angular-touch.js"></script>
+	<!-- endbuild -->
+
+	<!-- build:js scripts/modules.js -->
+	<script src="scripts/modules/imageupload/imageupload.js"></script>
+	<script src="scripts/modules/carousel/angular-carousel.js"></script>
 	<!-- endbuild -->
 
 	<!-- build:js({.tmp,app}) scripts/scripts.js -->
+	<script src="scripts/init.js"></script>
 	<script src="scripts/app.js"></script>
+	<script src="scripts/controllers/indexCtrl.js"></script>
 	<script src="scripts/controllers/latheCtrl.js"></script>
 	<script src="scripts/controllers/packCtrl.js"></script>
 	<script src="scripts/controllers/previewCtrl.js"></script>
@@ -126,7 +110,15 @@
 	<script src="scripts/services/themeConfig.js"></script>
 	<script src="scripts/services/themeService.js"></script>
 	<script src="scripts/services/uploadService.js"></script>
+
+	<script src="scripts/controllers/dashCtrl.js"></script>
+
 	<!-- endbuild -->
+
+
+	<div style="display: none;">
+		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5795081'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/stat.php%3Fid%3D5795081' type='text/javascript'%3E%3C/script%3E"));</script>
+	</div>
 
 	<div class="overlay" ng-controller="overlayCtrl" ng-init="showing=false" ng-show="showing">
 		<div class="dialog dlg-confirm">
@@ -139,4 +131,6 @@
 	</div>
 
 </body>
+
+
 </html>

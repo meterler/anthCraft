@@ -20,8 +20,8 @@ handleFileUpload = (req, res)->
 				src: "/#{newFileName}"
 			}
 
-
 module.exports = (app)->
+	# Theme upload api
 	app.post "/api/upload", (req, res)->
 		# when testing
 		# return handleFileUpload(req, res)
@@ -35,6 +35,7 @@ module.exports = (app)->
 		anthPack.format {
 			themeId: themeId
 			type: imgType
+			name: imgName
 			file: imgPath
 			scale: previewScale
 		}, (err, previewImgPath)->
@@ -49,6 +50,9 @@ module.exports = (app)->
 				# }
 				return
 
+			# Remove image file in temp
+			fs.unlink(imgPath)
+
 			# __log "PreviewImgPath: ", previewImgPath
 			# __log "config.appPath: ", __config.appPath
 
@@ -58,7 +62,6 @@ module.exports = (app)->
 
 			# Because of win, convert path seperator to url path style
 			url = url.split(path.sep).join("/")
-
 
 			res.json {
 				success: true

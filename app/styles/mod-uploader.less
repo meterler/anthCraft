@@ -12,9 +12,15 @@
 		overflow: hidden;
 		display: inline-block;
 		position: relative;
+
+		transition: all .5s;
+		cursor: pointer;
 		img {
 			width: 100px;
 			height: 100px;
+		}
+		&:hover, &.active {
+			background-color: #FFF4CF;
 		}
 	}
 
@@ -49,24 +55,24 @@
 		}
 	}
 
-	.file-upload {
-		overflow: hidden;
-		display: inline-block;
-		position: relative;
-		vertical-align: middle;
-	}
 
-	.file-upload input {
-		cursor: pointer;
-		// Hide upload button
-		position: absolute;
-		top: 0;
-		left: 0;
-		margin: 0;
+}
+.file-upload {
+	overflow: hidden;
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
+}
 
-		// Loses tab index in webkit if width is set to 0
-		opacity: 0;
-		filter: alpha(opacity=0);
-	}
+.file-upload input {
+	cursor: pointer;
+	// Hide upload button
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
 
+	// Loses tab index in webkit if width is set to 0
+	opacity: 0;
+	filter: alpha(opacity=0);
 }

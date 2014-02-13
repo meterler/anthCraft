@@ -2,11 +2,12 @@
 mod = angular.module('anthCraftApp')
 
 mod.controller 'packCtrl', [
-	'$rootScope', '$scope', '$timeout', '$cookies', '$location', 'themeService'
+	'$rootScope', '$scope', '$timeout', '$cookies', '$location', '$http', 'themeService', 'themeConfig',
 	(
-		$rootScope, $scope, $timeout, $cookies, $location, themeService
+		$rootScope, $scope, $timeout, $cookies, $location, $http, themeService, themeConfig,
 	)->
 		$scope.curThumb = 0
+		$scope.upThumbnail = {}
 
 		themeService.themeModel.userId = $cookies.userid
 		themeService.themeModel.author = $cookies.username
@@ -20,7 +21,9 @@ mod.controller 'packCtrl', [
 
 		themeService.previewTheme (newTheme)->
 			$scope.thumblist = newTheme.preview
+			$scope.upThumbnail.url = $rootScope.THUMBNAIL_URL + newTheme.thumbnail
 			$scope.previewing = false
+			$scope.thumbloading = false
 
 		$scope.prev = ->
 			$scope.curThumb = $scope.curThumb - 1
@@ -32,6 +35,58 @@ mod.controller 'packCtrl', [
 
 		$scope.check = (n)->
 			$scope.curThumb is n
+
+		$scope.uploadThumbnail = ()->
+			$scope.thumbloading = true
+			$timeout ->
+				uploadImage = $scope.upThumbnail.file
+				themeId = themeService.themeModel._id
+
+				previewScale = themeConfig.getPreviewScale('thumbnail', 'thumbnail')
+
+				formData = new FormData()
+				formData.append('image', uploadImage, uploadImage.name)
+				formData.append('themeId', themeId)
+				formData.append('resType', 'thumbnail')
+				formData.append('resName', 'thumbnail')
+				formData.append('previewScale', JSON.stringify(previewScale))
+
+				$http.post('/api/upload', formData, {
+					transformRequest: angular.identity
+					headers: {
+						'content-type': undefined
+					}
+				}).success((result)->
+					 themeService.themeModel.thumbnail = result.src
+					 $scope.thumbloading = false
+				).error ()->
+
+			, 0
+
+		$scope.uploadApkIcon = ()->
+			$scope.apkIconUploadStatus = 'uploading'
+			$timeout ->
+				uploadImage = $scope.upApkIcon.file
+				themeId = themeService.themeModel._id
+				previewScale = themeConfig.getPreviewScale('apk_icon', 'ic_launcher_home')
+
+				formData = new FormData()
+				formData.append('image', uploadImage, uploadImage.name)
+				formData.append('themeId', themeId)
+				formData.append('resType', 'apk_icon')
+				formData.append('resName', 'ic_launcher_home')
+				formData.append('previewScale', JSON.stringify(previewScale))
+
+				$http.post('/api/upload', formData, {
+					transformRequest: angular.identity
+					headers: { 'content-type': undefined }
+				}).success( (result)->
+					themeService.themeModel.apk_icon = result.src
+					$scope.apkIconUploadStatus = 'success'
+				).error ()->
+					$scope.apkIconUploadStatus = 'error'
+			, 0
+			return
 
 		$scope.savePack = ()->
 			$scope.packing = true

@@ -2,28 +2,52 @@
 mod = angular.module("anthCraftApp")
 
 mod.controller 'resLibraryCtrl', [
-	'$rootScope', '$scope',
+	'$rootScope', '$scope', '$http', 'themeService'
+	($rootScope, $scope, $http, themeService)->
 
-	($rootScope, $scope)->
+		matchedImgUrl = ""
+		selectedInfo = {}
 
-		$scope.resList = [
-			"/default_theme/wallpaper/wallpaper960x800.jpg"
-			"/default_theme/app_icon/com_android_browser_com_android_browser_browseractivity.png"
-			"/default_theme/app_icon/com_android_contacts_com_android_contacts_activities_peopleactivity.png"
-			"/default_theme/app_icon/com_android_deskclock_com_android_deskclock_deskclock.png"
-			"/default_theme/app_icon/com_android_email_com_android_email_activity_welcome.png"
-			"/default_theme/app_icon/com_android_gallery3d_com_android_gallery3d_app_gallery.png"
-			"/default_theme/app_icon/com_android_mms_com_android_mms_ui_conversationlist.png"
-			"/default_theme/app_icon/com_android_music_com_android_music_musicbrowseractivity.png"
-			"/default_theme/app_icon/com_android_music_com_android_music_videobrowseractivity.png"
-			"/default_theme/app_icon/com_android_providers_downloads_ui_com_android_providers_downloads_ui_downloadlist.png"
+		$scope.plainList = []
+		$scope.resList = []
 
-		]
+		# Group resource list
+		$scope.$watch "plainList", (value)->
+			return if not value
+			_list = $scope.plainList.slice(0)
+			result = []
+			trunk_size = 6
 
-		$scope.applyImg = (img)->
+			# for i in [0...group_count]
+			while _list.length > 0
+				t = _list.splice 0, trunk_size
+				result.push t
 
-		$scope.carouselOpts = {
-			navNumItems: 5
-			alwaysShowNav: 4
-		}
+			$scope.resList = result
+
+		, false
+
+		$scope.select = (imgUrl)->
+			# Modify selected model data
+			model = themeService.packInfo[selectedInfo.resType][selectedInfo.resName]
+			model.src = imgUrl
+			$rootScope.$broadcast 'uploader.updateSrc', selectedInfo, imgUrl
+
+			# Update icon status to active
+			matchedImgUrl = imgUrl
+
+		$scope.isActive = (imgUrl)-> imgUrl is matchedImgUrl
+
+		$rootScope.$on 'res.selectEditing', (event, curRes, mImgUrl)->
+
+			# Load resources
+			$http.get("/resourceLib", {
+				params: curRes
+			}).success( (list)->
+				selectedInfo = curRes
+				$scope.plainList = list
+
+				# Update icon active status
+				matchedImgUrl = mImgUrl
+			)
 ]

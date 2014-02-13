@@ -1,0 +1,83 @@
+
+<div class="row">
+	<div class="sub_header col-md-12">
+		<span>Upload Live Wallpapers</span>
+	</div>
+</div>
+
+<div class="row" ng-controller="uploadCtrl" >
+	<div class="form_content col-md-8 col-md-offset-2">
+		<form class="form-horizontal" ng-submit="submit($event)" role="form" ng-controller="dWallpaperFormCtrl">
+			<div class="form-group">
+				<label for="upFile" class="col-sm-3 control-label">Upload APK：</label>
+				<div class="col-sm-9">
+					<label for="upFile" class="file-upload btn btn-primary pull-left">
+						<span><strong>Chose APK file</strong></span>
+						<input name="upFile" type="file" ng-file-select="dWallpaper.apkFile = $files[0]; dWallpaper.title=grepName($files[0].name)" accept=".apk" required />
+					</label>
+					<small class="help-block col-sm-5 pull-left" ng-hide="dWallpaper.apkFile">Required</small>
+					<small class="help-block col-sm-5 pull-left">{{dWallpaper.apkFile.name}}</small>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">Wallpaper title：</label>
+				<div class="col-sm-5">
+					<input type="text" class="form-control" ng-model="dWallpaper.title" placeholder="" required maxlength="50" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">Designer：</label>
+				<div class="col-sm-5">
+					<input type="text" class="form-control" ng-model="dWallpaper.author" placeholder="" required value="launcher" maxlength="30" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">Category: </label>
+				<div class="col-sm-2">
+					<select class="form-control" ng-model="dWallpaper.category_raw">
+						<option value="{{category._id}}|{{category.name}}" ng-repeat="category in categoryList" ng-if="category" ng-selected="$index==0" ng-cloak>{{category.name}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="upFile" class="col-sm-3 control-label">Thumbnail：</label>
+				<div class="col-sm-9">
+					<label for="upFile" class="file-upload btn btn-primary pull-left">
+						<span><strong>Upload</strong></span>
+						<input name="upFile" type="file" ng-file-select="dWallpaper.thumbnailFile = $files[0]" accept=".jpg,.png,.jpeg" required>
+					</label>
+					<small class="help-block col-sm-5 pull-left" ng-hide="dWallpaper.thumbnailFile">Required</small>
+					<small class="help-block col-sm-5 pull-left">{{dWallpaper.thumbnailFile.name}}</small>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="upFile" class="col-sm-3 control-label">Preview：</label>
+				<div class="col-sm-9">
+					<label for="upFile" class="file-upload btn btn-primary pull-left">
+						<span><strong>Upload</strong></span>
+						<input name="upFile" type="file" ng-file-select="dWallpaper.previewFiles = $files" accept=".jpg,.png,.jpeg" required multiple>
+					</label>
+					<small class="help-block col-sm-5 pull-left" ng-hide="dWallpaper.previewFiles">Required</small>
+					<small class="help-block col-sm-5 pull-left" ng-show="dWallpaper.previewFiles">
+						Choose {{dWallpaper.previewFiles.length}} file in totle.
+					</small>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="upFile" class="col-sm-3 control-label">Description：</label>
+				<div class="col-sm-9">
+					<textarea ng-model="dWallpaper.description" class="form-control" required maxlength="1000"></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-3 col-sm-9">
+					<button type="submit" class="btn btn-primary" ng-if="!uploadSuccess" ng-hide="uploading">Submit audit</button>
+
+					<a href="javascript:;" class="btn btn-primary" ng-if="uploading">Uploading...</a>
+					<a href="javascript:location.reload();" class="btn btn-primary" ng-if="uploadSuccess">Add another</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

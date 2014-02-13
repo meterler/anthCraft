@@ -77,7 +77,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '.tmp/styles/',
-          src: '{,*/}*.css',
+          src: '{,**/}*.css',
           dest: '.tmp/styles/'
         }]
       }
@@ -89,7 +89,12 @@ module.exports = function (grunt) {
           src: [
             '.tmp',
             '<%= yeoman.dist %>/*',
-            '!<%= yeoman.dist %>/.git*'
+            '!<%= yeoman.dist %>/{,**/}.git*',
+            '<%= yeoman.app %>/resources/preview/*',
+            '<%= yeoman.app %>/resources/themes/*',
+            '<%= yeoman.app %>/resources/thumbnail/*',
+            '<%= yeoman.app %>/resources/upload/*',
+            '!<%= yeoman.app %>/resources/upload/default_theme'
           ]
         }]
       },
@@ -124,7 +129,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/scripts',
-          src: '{,*/}*.coffee',
+          src: '{,**/}*.coffee',
           dest: '.tmp/scripts',
           ext: '.js'
         }]
@@ -133,7 +138,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: 'test/spec',
-          src: '{,*/}*.coffee',
+          src: '{,**/}*.coffee',
           dest: '.tmp/spec',
           ext: '.js'
         }]
@@ -148,7 +153,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/styles',
-          src: '{,*/}*.less',
+          src: '{,**/}*.less',
           dest: '.tmp/styles',
           ext: '.css'
         }]
@@ -159,7 +164,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/styles',
-          src: '{,*/}*.less',
+          src: '{,**/}*.less',
           dest: '.tmp/styles',
           ext: '.css'
         }]
@@ -183,7 +188,10 @@ module.exports = function (grunt) {
       }
     },
     useminPrepare: {
-      html: '<%= yeoman.app %>/index.html',
+      html: [
+        '<%= yeoman.app %>/index.html',
+        '<%= yeoman.app %>/upload-page.html'
+      ],
       options: {
         dest: '<%= yeoman.dist %>'
       }

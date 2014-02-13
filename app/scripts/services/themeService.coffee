@@ -3,17 +3,17 @@ mod = angular.module('anthCraftApp')
 
 
 # Theme Service
-mod.service 'themeService', [
+mod.factory 'themeService', [
 	'$rootScope', '$resource', 'localStorageService', 'themeConfig',
 	(
 		$rootScope, $resource, localStorage, themeConfig
 	)->
 
 		actions = {
-			create: { method: 'POST' }
-			save: { method: 'PUT' }
+			create: { method: 'POST', url: '/api/themes/create' }
+			save: { method: 'POST', url: '/api/themes' }
 			packageUp: { method: 'PUT', url: '/api/themes/:themeId/package' }
-			preview: { method: 'PUT', url: '/api/themes/:themeId/preview' }
+			preview: { method: 'PUT', url: '/api/themes/preview?id=:themeId' }
 		}
 		Theme = $resource('/api/themes/:themeId', { themeId: '@_id' }, actions)
 
@@ -21,6 +21,7 @@ mod.service 'themeService', [
 
 			# theme modified or not
 			dirty: false
+			cacheFlags: {}
 
 			# Theme Model
 			themeModel: {}
@@ -50,7 +51,9 @@ mod.service 'themeService', [
 				service.dirty = false
 
 				# Restore uploader image preview data
-				$rootScope.$broadcast "uploader.refresh"
+				$rootScope.$broadcast "uploader.restore"
+				
+				
 				# TODO: FAILD?
 
 			hasUnpub: ()-> !!localStorage.get('unpublished_theme_model')
@@ -64,8 +67,10 @@ mod.service 'themeService', [
 				unpublished_theme_packInfo = localStorage.get('unpublished_theme_packInfo')
 				if unpublished_theme_model
 					service.packInfo = unpublished_theme_packInfo
-					unpublished_theme_model = Theme.get { themeId: unpublished_theme_model._id }, (themeModel)->
-						service.themeModel = themeModel
+					service.themeModel = unpublished_theme_model
+					# Because there is no data persisted to database until theme upload, so..
+					# unpublished_theme_model = Theme.get { themeId: unpublished_theme_model._id }, (themeModel)->
+					# 	service.themeModel = themeModel
 
 
 				return true
@@ -76,9 +81,10 @@ mod.service 'themeService', [
 
 			# Update view
 			updateView: (updateData)->
-				for resType of updateData
-					service.packInfo[resType] = `service.packInfo[resType] ? service.packInfo[resType] : {}`
-					angular.extend(service.packInfo[resType], updateData[resType])
+				if updateData
+					service.packInfo[updateData.resType][updateData.resName].src = updateData.src
+					# Add timestamp to each resource
+					service.cacheFlags["#{themeConfig.themeFolder}#{updateData.src}"] = (new Date()).getTime()
 
 				# Update localStorage if dirty
 				if service.dirty
@@ -101,14 +107,16 @@ mod.service 'themeService', [
 			previewTheme: (callback)->
 				Theme.preview { themeId: service.themeModel._id }, service.packInfo, (data)->
 					service.themeModel.preview = data.preview
+					service.themeModel.thumbnail = data.thumbnail
 					callback(data);
 
 			# Package theme and get theme Url
 			packageTheme: (callback)->
 				return callback(false) if not service.dirty
 				# save themeModel
-				delete service.themeModel.thumbnail
-				service.themeModel.$save (doc)->
+				# delete service.themeModel.thumbnail
+				# service.themeModel.$save {}, (doc)->
+				Theme.save service.themeModel, (doc)->
 					# package up
 					Theme.packageUp { themeId: doc._id }, service.packInfo, (data)->
 

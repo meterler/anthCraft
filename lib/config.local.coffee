@@ -13,7 +13,7 @@ module.exports = {
 	debug: true
 	# mongo: "mongodb://root:anthcraft@ds053958.mongolab.com:53958/anthcraft"
 
-	mongo: "mongodb://127.0.0.1:27017/anthcraft"
+	mongo: "mongodb://root:abc@127.0.0.1:27017/anthcraft"
 	# redis: {
 	# 	port: 10422
 	# 	host: "pub-redis-10422.us-east-1-3.2.ec2.garantiadata.com"

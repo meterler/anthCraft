@@ -8,47 +8,108 @@
 
  -->
 
-<div class="mod-previewer" ng-controller="previewCtrl" ng-switch on="curSence">
+<div class="mod-previewer" ng-switch on="curSence">
 
-	<div class="sence sence-home" ng-switch-when="home">
-		<!-- <div ng-style="setBg(theme['wallpaper']['wallpaper'])"></div> -->
+	<div class="sence sence-home" ng-switch-when="home"
+		ng-style="_Wallpaper(_V(theme['wallpaper']['wallpaper-hd']))">
+		<div class="mp-statusbar"></div>
+		<ul rn-carousel rn-carousel-index="1" rn-swipe-callback="swipeCallback">
+			<li></li>
+			<li>
+				<div class="mp-decoration"></div>
+			</li>
+			<li></li>
+		</ul>
+		<div class="mp-dock"
+			ng-mouseover="mcn=$event.target.className"
+			ng-mouseleave="mcn=false"
+			ng-click="(mcn == 'mp-dock')&&select('dock_icon', 'ic_dockbar_bg')"
+			ng-class="{ active: (mcn == 'mp-dock') }"
+			ng-style="_DockBg(_V(theme['dock_icon']['ic_dockbar_bg']))">
+			<img class="mp-dock-icon"
+				ng-src="{{_V(theme['app_icon']['Phone'])}}"
+				ng-click="select('app_icon', 'Phone')"
+				ng-class="{ active: isSelect('app_icon', 'Phone') }">
 
-		<img class="mp-wallpaper" ng-src="{{_V(theme['wallpaper']['wallpaper'])}}" />
-		<div class="mp-decoration"></div>
-		<div class="mp-dock">
-			<img class="mp-dock-icon" ng-src="{{_V(theme['app_icon']['com_android_contacts_com_android_contacts_activities_dialtactsactivity'])}}">
-			<img class="mp-dock-icon" ng-src="{{_V(theme['app_icon']['com_android_contacts_com_android_contacts_activities_peopleactivity'])}}">
+			<img class="mp-dock-icon"
+				ng-src="{{_V(theme['app_icon']['Contacts'])}}"
+				ng-click="select('app_icon', 'Contacts')"
+				ng-class="{ active: isSelect('app_icon', 'Contacts') }">
 
-			<div class="mp-dock-allapps" ng-mouseover="icon_status='pressed'" ng-mouseleave="icon_status='unpressed'" ng-switch="icon_status" ng-init="icon_status='unpressed'">
+			<div class="mp-dock-allapps"
+				ng-mouseover="icon_status='pressed'"
+				ng-mouseleave="icon_status='unpressed'"
+				ng-switch="icon_status"
+				ng-init="icon_status='unpressed'"
+				ng-click="select('dock_icon', 'ic_allapps')"
+				ng-class="{ active: isSelect('dock_icon', 'ic_allapps') }">
 				<img class="mp-dock-icon" ng-src="{{_V(theme['dock_icon']['ic_allapps'])}}" ng-switch-when="unpressed" title="Normal status">
 				<img class="mp-dock-icon" ng-src="{{_V(theme['dock_icon']['ic_allapps_pressed'])}}" ng-switch-when="pressed" title="Pressed status">
 			</div>
 
-			<img class="mp-dock-icon" ng-src="{{_V(theme['app_icon']['com_android_mms_com_android_mms_ui_conversationlist'])}}">
-			<img class="mp-dock-icon" ng-src="{{_V(theme['app_icon']['com_android_browser_com_android_browser_browseractivity'])}}">
+			<img class="mp-dock-icon"
+				ng-src="{{_V(theme['app_icon']['Messages'])}}"
+				ng-click="select('app_icon', 'Messages')"
+				ng-class="{ active: isSelect('app_icon', 'Messages') }">
+
+			<img class="mp-dock-icon"
+				ng-src="{{_V(theme['app_icon']['Browser'])}}"
+				ng-click="select('app_icon', 'Browser')"
+				ng-class="{ active: isSelect('app_icon', 'Browser') }">
 		</div>
 	</div>
-
-	<div class="sence sence-apps" ng-switch-when="apps">
-		<img class="mp-wallpaper" ng-src="{{_V(theme['wallpaper']['wallpaper'])}}" />
+	<div class="sence sence-apps" ng-switch-when="apps" ng-style="_Wallpaper(_V(theme['wallpaper']['wallpaper-hd']))">
 		<div class="mp-statusbar"></div>
 		<div class="mp-apps-bg"></div>
-		<div class="mp-apps-app">
+		<ul rn-carousel rn-carousel-index="0" rn-swipe-callback="swipeCallback">
+			<li>
+				<div class="mp-apps-app">
+					<div class="mp-apps-icon"
+						ng-repeat="(appId, app) in theme.app_icon"
+						ng-click="select('app_icon', appId)"
+						ng-class="{ active: isSelect('app_icon', appId) }">
+						<img ng-src="{{_V(app)}}">
+						<p>{{app.capital}}</p>
+					</div>
 
-			<div class="mp-apps-icon" ng-repeat="app in appIconList">
-				<img ng-src="{{_V(theme['app_icon'][app.id])}}">
-				<p>{{app.captial}}</p>
-			</div>
-			<div class="mp-apps-icon">
-				<img ng-src="{{_V(theme['customize_mat']['default_customize_mat'])}}">
-				<p>icon bg</p>
-			</div>
-			<div class="mp-apps-icon" ng-style="_IconBg()">
-				<img ng-src="{{_V(theme['customize_mat']['default_customize_icon'])}}" ng-style="_Mask()">
-				<p>Sample</p>
-			</div>
+					<div class="mp-apps-maskIcon"
+						ng-style="_IconBg(_V(theme['customize']['customize_mat']))"
+						ng-click="select('customize', 'customize_mask')"
+						ng-class="{ active: isSelect('customize', 'customize_mask') }">
+						<img ng-src="{{_V(theme['customize']['customize_icon'])}}"
+							ng-style="_Mask(_V(theme['customize']['customize_mask']))">
+						<div class="active-bg"></div>
+						<p>{{theme['customize']['customize_icon'].capital}}</p>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<div class="mp-apps-menus">
+			<div class="mp-menus-bottomIcon"
+				ng-init="img1=_V(theme['dock_icon']['ap_search'])"
+				ng-style="_ABottomIcon(img1)"
+				ng-click="select('dock_icon', 'ap_search')"
+				ng-class="{ active: isSelect('dock_icon', 'ap_search') }"
+				ng-mouseenter="img1=_V(theme['dock_icon']['ap_search_pressed'])"
+				ng-mouseleave="img1=_V(theme['dock_icon']['ap_search'])"></div>
 
+			<div class="mp-menus-bottomIcon"
+				ng-init="img2=_V(theme['dock_icon']['ap_home'])"
+				ng-style="_ABottomIcon(img2)"
+				ng-click="select('dock_icon', 'ap_home')"
+				ng-class="{ active: isSelect('dock_icon', 'ap_home') }"
+				ng-mouseenter="img2=_V(theme['dock_icon']['ap_home_pressed'])"
+				ng-mouseleave="img2=_V(theme['dock_icon']['ap_home'])"></div>
+
+			<div class="mp-menus-bottomIcon"
+				ng-init="img3=_V(theme['dock_icon']['ap_menu'])"
+				ng-style="_ABottomIcon(img3)"
+				ng-click="select('dock_icon', 'ap_menu')"
+				ng-class="{ active: isSelect('dock_icon', 'ap_menu') }"
+				ng-mouseenter="img3=_V(theme['dock_icon']['ap_menu_pressed'])"
+				ng-mouseleave="img3=_V(theme['dock_icon']['ap_menu'])"></div>
 		</div>
+
+
 	</div>
 </div>
-
