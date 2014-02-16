@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en_US"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -74,12 +74,15 @@
 	</div>
 
 	<div class="container clearfix">
+		{{'TITLE' | translate }}
 		<div ng-view></div>
 	</div>
 
 	<script src="components/angular/angular.min.js"></script>
 
 	<!-- build:js scripts/components.js -->
+	<script src="components/angular-translate/angular-translate.js"></script>
+	<script src="components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
 	<script src="components/ngprogress/build/ngProgress.min.js"></script>
 	<script src="components/angular-route/angular-route.min.js"></script>
 	<script src="components/angular-resource/angular-resource.js"></script>
@@ -115,10 +118,11 @@
 
 	<!-- endbuild -->
 
-
+<!--
 	<div style="display: none;">
 		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5795081'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/stat.php%3Fid%3D5795081' type='text/javascript'%3E%3C/script%3E"));</script>
 	</div>
+-->
 
 	<div class="overlay" ng-controller="overlayCtrl" ng-init="showing=false" ng-show="showing">
 		<div class="dialog dlg-confirm">
