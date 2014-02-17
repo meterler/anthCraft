@@ -1,38 +1,36 @@
-app = angular.module('waterDrop', [
-	'ui.router'
+app = angular.module('anthCraftApp', [
+	'ngRoute'
+	'ngResource'
+	'angular-carousel'
+	'LocalStorageModule'
+	'pascalprecht.translate'
 ]).config [
-	'$urlRouterProvider', '$stateProvider',
-	'$compileProvider',
-	($urlRouterProvider, $stateProvider, $compileProvider)->
+	'$routeProvider',
+	'$compileProvider', '$translateProvider',
+	($routeProvider, $compileProvider, $translateProvider)->
 		# Compile white list for image preview since angular-v1.2.1
 		$compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|blob):|data:image\//)
 
-		$urlRouterProvider
-			.otherwise("/")
+		$routeProvider.when("/", {
+			templateUrl: "/views/waterDrop/main.html"
+		}).otherwise {
+			redirectTo: "/"
+		}
 
-		$stateProvider
-			.state('home', {
-				url: "/",
-				views: {
-					"": {
-						templateUrl: '/views/waterDrop/main.html'
-					}
-					"@operation-panel": {
-						templateUrl: "/views/waterDrop/operationPanel.html"
-					}
-					"emulator-panel": {
-						templateUrl: "/views/waterDrop/emulatorPanel.html"
-					}
-				}
-			})
-			.state('www', {
-				url: "/www",
-				template: "<h1> www </h1>"
-				})
+		# $translateProvider.translations('en_US', {
+		# 	"TITLE": "cLauncher(ttt)"
+		# })
+		# $translateProvider.preferredLanguage('en_US')
+		$translateProvider.determinePreferredLanguage()
+		$translateProvider.fallbackLanguage('en_US')
+		$translateProvider.useStaticFilesLoader({
+			prefix: "i18n/locale-"
+			suffix: ".json"
+		})
+
 ]
 
-app.run(["$rootScope", "$state", "$stateParams",
-	($rootScope, $state, $stateParams)->
-		$rootScope.$state = $state
-		$rootScope.$stateParams = $stateParams
+app.run(["$rootScope", '$translate',
+	($rootScope, $translate)->
+		$translate.use "en_US"
 	])

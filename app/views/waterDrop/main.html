@@ -1,13 +1,13 @@
 <div class="container">
 	<div class="col-md-2">
 		<div class="well">
-			left menu list
+			{{'TITLE' | translate }}
 		</div>
 	</div>
-	<div class="col-md-6" ui-view="operation-panel">
+	<div class="col-md-6" ng-include="'/views/waterDrop/operationPanel.html'">
 
 	</div>
-	<div class="col-md-4" ui-view="emulator-panel">
+	<div class="col-md-4" ng-include="'/views/partials/previewer.html'" ng-controller="previewCtrl">
 
 	</div>
 </div>

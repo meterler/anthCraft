@@ -35,7 +35,8 @@
     "audio5js": "*",
     "angular-ui-router": "0.2.8-bowratic-tedium",
     "angular-translate": "~2.0.0",
-    "angular-translate-loader-static-files": "~0.1.7"
+    "angular-translate-loader-static-files": "~0.1.7",
+    "angular-translate-storage-local": "~0.1.7"
   },
   "resolutions": {
     "angular": "~1.2.6"
