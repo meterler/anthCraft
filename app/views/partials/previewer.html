@@ -18,36 +18,44 @@
 			ng-click="(mcn == 'mp-dock')&&select('dock_icon', 'ic_dockbar_bg')"
 			ng-class="{ active: (mcn == 'mp-dock') }"
 			ng-style="_DockBg(_V(theme['dock_icon']['ic_dockbar_bg']))">
-			<img class="mp-dock-icon"
-				ng-src="{{_V(theme['app_icon']['Phone'])}}"
+
+			<div class="mp-dock-icon"
 				ng-click="select('app_icon', 'Phone')"
 				ng-class="{ active: isSelect('app_icon', 'Phone') }">
+				<img ng-src="{{_V(theme['app_icon']['Phone'])}}">
+				<p>{{theme['app_icon']['Phone'].capital}}</p>
+			</div>
 
-			<img class="mp-dock-icon"
-				ng-src="{{_V(theme['app_icon']['Contacts'])}}"
+			<div class="mp-dock-icon"
 				ng-click="select('app_icon', 'Contacts')"
 				ng-class="{ active: isSelect('app_icon', 'Contacts') }">
-
-			<div class="mp-dock-allapps"
+				<img ng-src="{{_V(theme['app_icon']['Contacts'])}}">
+				<p>{{theme['app_icon']['Contacts'].capital}}</p>
+			</div>
+			<div class="mp-dock-icon mp-dock-allapps"
 				ng-mouseover="icon_status='pressed'"
 				ng-mouseleave="icon_status='unpressed'"
 				ng-switch="icon_status"
 				ng-init="icon_status='unpressed'"
 				ng-click="select('dock_icon', 'ic_allapps')"
 				ng-class="{ active: isSelect('dock_icon', 'ic_allapps') }">
-				<img class="mp-dock-icon" ng-src="{{_V(theme['dock_icon']['ic_allapps'])}}" ng-switch-when="unpressed" title="Normal status">
-				<img class="mp-dock-icon" ng-src="{{_V(theme['dock_icon']['ic_allapps_pressed'])}}" ng-switch-when="pressed" title="Pressed status">
+				<img ng-src="{{_V(theme['dock_icon']['ic_allapps'])}}" ng-switch-when="unpressed" title="Normal status">
+				<img ng-src="{{_V(theme['dock_icon']['ic_allapps_pressed'])}}" ng-switch-when="pressed" title="Pressed status">
 			</div>
 
-			<img class="mp-dock-icon"
-				ng-src="{{_V(theme['app_icon']['Messages'])}}"
+			<div class="mp-dock-icon"
 				ng-click="select('app_icon', 'Messages')"
 				ng-class="{ active: isSelect('app_icon', 'Messages') }">
+				<img ng-src="{{_V(theme['app_icon']['Messages'])}}">
+				<p>{{theme['app_icon']['Messages'].capital}}</p>
+			</div>
 
-			<img class="mp-dock-icon"
-				ng-src="{{_V(theme['app_icon']['Browser'])}}"
+			<div class="mp-dock-icon"
 				ng-click="select('app_icon', 'Browser')"
 				ng-class="{ active: isSelect('app_icon', 'Browser') }">
+				<img ng-src="{{_V(theme['app_icon']['Browser'])}}">
+				<p>{{theme['app_icon']['Browser'].capital}}</p>
+			</div>
 		</div>
 	</div>
 	<div class="sence sence-apps" ng-switch-when="apps" ng-style="_Wallpaper(_V(theme['wallpaper']['wallpaper-hd']))">

@@ -1,0 +1,232 @@
+// @dftSrc: "/resources/phone/default";
+@dftSrc: "/styles/img";
+.mod-previewer {
+	position: relative;
+
+	padding: 3px;
+
+	border: 1px solid #E9E9E9;
+	border-radius: 3px;
+	background-color: white;
+
+	overflow: hidden;
+
+	[rn-carousel] {
+		height: 533px;
+		font-size: 0;
+		-webkit-text-size-adjust: none;
+		z-index: 50;
+	}
+	[rn-carousel] li {
+		height: 100%;
+		width: 100%;
+		display: inline-block;
+	}
+
+	.sence {
+		position: relative;
+		width: 300px;
+		height: 100%;
+		overflow: hidden;
+		display: inline-block;
+
+		// &:first-child {
+		// 	display: block;
+		// }
+		// &>div {
+		// 	position: absolute;
+		// 	left: 0;
+		// 	top: 0;
+		// }
+
+		.mp-decoration {
+			width: 100%;
+			height: 100%;
+			background: url("@{dftSrc}/pw04dec.png") no-repeat;
+			background-size: 100% auto;
+			z-index: 90;
+		}
+
+		.mp-wallpaper {
+			// width: 513px; // Full width size of wallpaper
+			height: 100%;
+			background-color: #aaa;
+			z-index: 0;
+		}
+
+		.mp-dock {
+			position: absolute;
+			bottom: 0;
+			top: auto;
+			height: 72px;
+			z-index: 95;
+			width: 100%;
+
+			cursor: pointer;
+			transition: all .5s;
+
+			&.active {
+				background-color: #FFF5CF;
+				border-color: #DED7BD;
+			}
+		}
+
+		.mp-dock-icon {
+			width: 52px;
+			height: 52px;
+			display: inline-block;
+			vertical-align: top;
+			margin: 3px 0 0 4px;
+			cursor: pointer;
+			border: 1px solid transparent;
+			transition: all .5s;
+			text-align: center;
+
+			img {
+				width: 48px;
+				height: 48px;
+				padding: 3px;
+				vertical-align: top;
+			}
+
+			p {
+				font-size: 11px;
+				text-align: center;
+				color: white;
+			}
+
+			&:hover, &.active {
+				background-color: #FFF5CF;
+				border-color: #DED7BD;
+			}
+		}
+
+		.mp-dock-allapps {
+			width: 48px;
+			height: 48px;
+			display: inline-block;
+			vertical-align: top;
+			cursor: pointer;
+			transition: all .5s;
+			img:hover, &.active img {
+				background-color: #FFF5CF;
+				border-color: #DED7BD;
+			}
+		}
+
+		.mp-statusbar {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 29px;
+			background: url("@{dftSrc}/pw04bar.png") no-repeat;
+			z-index: 100;
+		}
+
+		.mp-apps-bg {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			margin-top: 29px;
+			background-color: rgba(0,0,0,0.5);
+			z-index: 40;
+		}
+		.mp-apps-app {
+			position: absolute;
+			top: 0;
+			left: 0;
+			padding: 0 10px;
+			margin-top: 40px;
+			z-index: 90;
+			.mp-apps-maskIcon {
+				.mp-apps-icon;
+				.active-bg {
+					width: 80px;
+					height: 80px;
+					position: absolute;
+					top: 0;
+					left: -3px;
+					border: 1px solid transparent;
+					z-index: -1;
+					transition: all .5s;
+				}
+				&:hover .active-bg, &.active .active-bg {
+					background-color: #FFF5CF;
+					border-color: #DED7BD;
+				}
+				p {
+					bottom: 1px;
+					left: -3px;
+				}
+			}
+			.mp-apps-icon {
+				position: relative;
+				width: 80px;
+				height: 95px;
+				margin: 0 7px 5px;
+
+				display: inline-block;
+				text-align: center;
+				img {
+					width: 80px;
+					height: 80px;
+					vertical-align: top;
+					border: 1px solid transparent;
+					cursor: pointer;
+					transition: all .5s;
+				}
+				&:hover img, &.active img {
+					background-color: #FFF5CF;
+					border-color: #DED7BD;
+				}
+				p {
+					position: absolute;
+					display: block;
+					height: 10px;
+					margin: 0;
+					bottom: 3px;
+					left: 0;
+					width: 100%;
+					text-align: center;
+
+					color: white;
+					font-family: Arial;
+					line-height: 1em;
+					font-size: 13px;
+				}
+			}
+
+		}
+
+		.mp-apps-menus {
+			position: absolute;
+			width: 100%;
+			height: 95px;
+			bottom: 0;
+			left: 0;
+			line-height: 95px;
+			z-index: 60;
+		}
+
+		.mp-menus-bottomIcon {
+			display: inline-block;
+			width: 80px;
+			height: 80px;
+			margin-left: 40px;
+
+			transition: all .5s;
+			background-repeat: no-repeat;
+			background-size: 80px 80px;
+			cursor: pointer;
+
+			&:hover.active, &.active.active {
+				background-color: #FFF5CF;
+				border-color: #DED7BD;
+			}
+		}
+	}
+}
+

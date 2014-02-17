@@ -189,7 +189,7 @@ mod.factory 'themeConfig', ->
 				}
 				"ic_dockbar_bg": {
 					capital: "Dockbar Backgroud"
-					src: "/default_theme/dock_icon/ic_allapps.png"
+					src: "/default_theme/dock_icon/dockbg.png"
 				}
 
 				"ap_home": {

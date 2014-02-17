@@ -63,11 +63,11 @@ module.exports = function (grunt) {
           }
       },
       styles: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
+        files: ['<%= yeoman.app %>/styles/**/*.css'],
         tasks: ['copy:styles', 'autoprefixer']
       },
       less: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.less'],
+        files: ['<%= yeoman.app %>/styles/**/*.less'],
         tasks: ['less:test']
       }
     },
@@ -153,7 +153,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/styles',
-          src: '{,**/}*.less',
+          src: '**/*.less',
           dest: '.tmp/styles',
           ext: '.css'
         }]
@@ -164,7 +164,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/styles',
-          src: '{,**/}*.less',
+          src: '**/*.less',
           dest: '.tmp/styles',
           ext: '.css'
         }]
@@ -307,7 +307,7 @@ module.exports = function (grunt) {
         expand: true,
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
-        src: '{,*/}*.css'
+        src: '**/*.css'
       }
     },
     concurrent: {
