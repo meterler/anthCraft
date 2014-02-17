@@ -9,7 +9,7 @@
 	<title>Theme Builder for cLauncher</title>
 	<meta name="description" content="">
 	<meta name="version" content="v1.0">
-	<meta name="viewport" content="width=device-width,user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 	<!-- build:css(.tmp) styles/main.css -->
 	<link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
@@ -25,10 +25,34 @@
 	<script src="components/json3/lib/json3.min.js"></script>
 	<![endif]-->
 
+	<nav class="navbar navbar-default navbar-static-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a href="/" class="navbar-brand">C-Launcher</a>
+			</div>
+
+			<ul class="nav navbar-nav navbar-right">
+				<li><a ui-sref="www">New</a></li>
+				<li><a href="#">Preview</a></li>
+				<li><a href="#">Package</a></li>
+				<li><a href="#">Help</a></li>
+				<li>
+					<button type="button" class="btn btn-default navbar-btn">Login</button>
+					<button type="button" class="btn btn-default navbar-btn">Register</button>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<div ui-view>
+
+	</div>
+
 	<script src="components/angular/angular.min.js"></script>
 
 	<!-- build:js scripts/components.js -->
 	<script src="components/angular-route/angular-route.min.js"></script>
+	<script src="components/angular-ui-router/release/angular-ui-router.min.js"></script>
 	<script src="components/angular-resource/angular-resource.js"></script>
 	<script src="components/angular-local-storage/angular-local-storage.min.js"></script>
 	<script src="components/angular-cookies/angular-cookies.js"></script>
@@ -40,9 +64,10 @@
 	<!-- build:js({.tmp,app}) scripts/scripts.js -->
 	<script src="scripts/waterDrop-init.js"></script>
 	<!-- endbuild -->
-
+<!--
 	<div style="display: none;">
 		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5795081'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/stat.php%3Fid%3D5795081' type='text/javascript'%3E%3C/script%3E"));</script>
 	</div>
+	-->
 </body>
 </html>
