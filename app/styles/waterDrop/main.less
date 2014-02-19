@@ -29,6 +29,7 @@
 		width: 92px;
 		height: 134px;
 		display: inline-block;
+		position: relative;
 		margin: 3px 2px;
 
 		text-align: center;
@@ -36,6 +37,15 @@
 		&:hover, &.active {
 			cursor: pointer;
 			background-color: #ccc;
+		}
+
+		i {
+			position: absolute;
+			right: 5px;
+			top: 0;
+			width: 16px;
+			height: 16px;
+			color: green;
 		}
 	}
 }
