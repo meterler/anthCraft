@@ -1,6 +1,7 @@
 app = angular.module('anthCraftApp', [
 	'ngRoute'
 	'ngResource'
+	'dragAndDrop'
 	'angular-carousel'
 	'LocalStorageModule'
 	'pascalprecht.translate'
@@ -21,13 +22,13 @@ app = angular.module('anthCraftApp', [
 		# 	"TITLE": "cLauncher(ttt)"
 		# })
 		# $translateProvider.preferredLanguage('en_US')
-		$translateProvider.determinePreferredLanguage()
-		$translateProvider.fallbackLanguage('en_US')
+
 		$translateProvider.useStaticFilesLoader({
 			prefix: "i18n/locale-"
 			suffix: ".json"
 		})
-
+		$translateProvider.fallbackLanguage('en_US')
+		$translateProvider.determinePreferredLanguage()
 ]
 
 app.run(["$rootScope", '$translate',

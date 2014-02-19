@@ -1,13 +1,13 @@
-<div class="container">
-	<div class="col-md-2">
-		<div class="well">
-			{{'TITLE' | translate }}
-		</div>
+<div class="col-md-2" drop="changeLayout" drag ng-model="pan">
+	<div class="well">
+		{{'TITLE' | translate }}
 	</div>
-	<div class="col-md-6" ng-include="'/views/waterDrop/operationPanel.html'">
-
-	</div>
-	<div class="col-md-4" ng-include="'/views/partials/previewer.html'" ng-controller="previewCtrl">
-
-	</div>
+</div>
+<div class="col-md-6" drop="changeLayout" drag ng-model="pan">
+	<div ng-include="'/views/waterDrop/operationPanel.html'"
+		class="panel panel-default well"></div>
+</div>
+<div class="col-md-4" drop="changeLayout" drag ng-model="pan" >
+	<div ng-include="'/views/partials/previewer.html'"
+		class="panel panel-default well" ng-switch on="curSence" ng-controller="previewCtrl"></div>
 </div>

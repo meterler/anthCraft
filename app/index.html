@@ -46,13 +46,13 @@
 		</div>
 	</nav>
 
-	<div class="container">
+	<div class="container" ng-controller="layoutController">
 		<div ng-view></div>
 	</div>
 
 	<script src="components/angular/angular.min.js"></script>
 
-	<!-- build:js scripts/components.js -->
+	<!-- build:js scripts/waterDrop-components.js -->
 	<script src="components/angular-translate/angular-translate.js"></script>
 	<script src="components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
 	<script src="components/angular-route/angular-route.min.js"></script>
@@ -62,12 +62,13 @@
 	<script src="components/angular-sanitize/angular-sanitize.js"></script>
 	<script src="components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 	<script src="components/angular-touch/angular-touch.js"></script>
-
+	<script src="components/angular-dragndrop/angular-dnd.js"></script>
 	<script src="scripts/modules/carousel/angular-carousel.js"></script>
 	<!-- endbuild -->
 
-	<!-- build:js({.tmp,app}) scripts/scripts.js -->
+	<!-- build:js({.tmp,app}) scripts/waterDrop-scripts.js -->
 	<script src="scripts/waterDrop-init.js"></script>
+	<script src="scripts/waterDrop/layoutController.js"></script>
 	<script src="scripts/services/menuConfig.js"></script>
 	<script src="scripts/services/themeConfig.js"></script>
 	<script src="scripts/services/themeService.js"></script>

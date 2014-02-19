@@ -1,3 +1,7 @@
 {
-	"TITLE": "希蓝车儿"
+	"TITLE": "希蓝车儿",
+	"ACCOUNT": {
+		"LOGIN": "登陆",
+		"REGIST": "注册"
+	}
 }
