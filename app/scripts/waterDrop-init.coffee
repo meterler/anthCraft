@@ -34,4 +34,6 @@ app = angular.module('anthCraftApp', [
 app.run(["$rootScope", '$translate',
 	($rootScope, $translate)->
 		$translate.use "en_US"
+
+		$rootScope.UPLOAD_PATH = "/resources/upload"
 	])

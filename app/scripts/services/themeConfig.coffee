@@ -223,45 +223,6 @@ mod.factory 'themeConfig', ->
 
 		}
 
-		# Show all icon list
-		groupList: {
-			'wallpaper': [
-				{ resType: 'wallpaper', resName: 'wallpaper' }
-			],
-			'dockbar': [
-				{ resType: 'app_icon', resName: 'Phone' }
-				{ resType: 'app_icon', resName: 'Contacts' }
-				{ resType: 'app_icon', resName: 'Messages' }
-				{ resType: 'app_icon', resName: 'Browser' }
-				{ resType: 'dock_icon', resName: 'ic_allapps' }
-				{ resType: 'dock_icon', resName: 'ic_dockbar_bg' }
-			]
-			'appIcons': [
-				{ resType: 'app_icon', resName: 'Browser' }
-				{ resType: 'app_icon', resName: 'Calculator' }
-				{ resType: 'app_icon', resName: 'Calendar' }
-				{ resType: 'app_icon', resName: 'Camera' }
-				{ resType: 'app_icon', resName: 'Phone' }
-				{ resType: 'app_icon', resName: 'Contacts' }
-				{ resType: 'app_icon', resName: 'Clock' }
-				{ resType: 'app_icon', resName: 'Email' }
-				{ resType: 'app_icon', resName: 'Gallery' }
-				{ resType: 'app_icon', resName: 'Messages' }
-				{ resType: 'app_icon', resName: 'Music' }
-				{ resType: 'app_icon', resName: 'Video' }
-				{ resType: 'app_icon', resName: 'Download' }
-				{ resType: 'app_icon', resName: 'Search' }
-				{ resType: 'app_icon', resName: 'Settings' }
-				{ resType: 'app_icon', resName: 'Maps' }
-
-				{ resType: 'customize', resName: 'customize_mask' }
-
-				{ resType: 'dock_icon', resName: 'ap_search' }
-				{ resType: 'dock_icon', resName: 'ap_home' }
-				{ resType: 'dock_icon', resName: 'ap_menu' }
-			]
-		}
-
 	}
 
 #深夜加班独自走在回家的路上，常常想起那些年夕阳下的奔跑，那是我逝去的，青春
