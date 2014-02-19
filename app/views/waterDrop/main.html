@@ -5,7 +5,7 @@
 </div>
 <div class="col-md-6" drop="changeLayout" drag ng-model="pan">
 	<div ng-include="'/views/waterDrop/operationPanel.html'"
-		class="panel panel-default well"></div>
+		class="panel panel-default well" ng-controller="operationController"></div>
 </div>
 <div class="col-md-4" drop="changeLayout" drag ng-model="pan" >
 	<div ng-include="'/views/partials/previewer.html'"
