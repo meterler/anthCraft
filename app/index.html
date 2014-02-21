@@ -15,7 +15,7 @@
 	<link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
 
 	<link rel="stylesheet" href="styles/waterDrop/main.css">
-	<link rel="stylesheet" href="http://i.icomoon.io/public/temp/a5a7df798c/UntitledProject3/style.css">
+	<link rel="stylesheet" href="http://i.icomoon.io/public/temp/4b91b1e1fb/anthCraft/style.css">	
 	<!-- endbuild -->
 </head>
 <body ng-app="anthCraftApp">
@@ -54,10 +54,8 @@
 				{{'TITLE' | translate }}
 			</div>
 		</div>
-		<div class="col-md-6" drop="changeLayout" drag ng-model="pan">
-
-			<div ng-view class="panel panel-default well"></div>
-
+		<div class="col-md-6" ng-view drop="changeLayout" drag ng-model="pan" ng-controller="operationController">
+			<span>Loading views...</span>
 		</div>
 		<div class="col-md-4" drop="changeLayout" drag ng-model="pan" >
 			<div ng-include="'/views/partials/previewer.html'"

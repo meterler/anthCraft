@@ -1,47 +1,14 @@
 
-<div class="ac-opIcons">
+<div class="ac-opIcons panel panel-default well">
 	<ul class="ac-opIcons-list">
-		<li ng-click="editIcon(222)">
+		<li ng-click="editIcon(222)"
+			ng-repeat="(name, icon) in themePack.app_icon"
+			ng-init="meta=getMeta('app_icon', name)">
+
 			<i class="icon-checkmark-circle"></i>
-			<img src="{{UPLOAD_PATH}}/default_theme/app_icon/com_android_browser_com_android_browser_browseractivity.png">
-			<span>title</span>
-			<span>192x192px</span>
-		</li>
-		<li>
-			<i class="icon-checkmark-circle"></i>
-			<img src="{{UPLOAD_PATH}}/default_theme/app_icon/com_android_browser_com_android_browser_browseractivity.png">
-			<span>title</span>
-			<span>192x192px</span>
-		</li>
-		<li>
-			<i class="icon-checkmark-circle"></i>
-			<img src="{{UPLOAD_PATH}}/default_theme/app_icon/com_android_browser_com_android_browser_browseractivity.png">
-			<span>title</span>
-			<span>192x192px</span>
-		</li>
-		<li>
-			<i class="icon-checkmark-circle"></i>
-			<img src="{{UPLOAD_PATH}}/default_theme/app_icon/com_android_browser_com_android_browser_browseractivity.png">
-			<span>title</span>
-			<span>192x192px</span>
-		</li>
-		<li>
-			<i class="icon-checkmark-circle"></i>
-			<img src="{{UPLOAD_PATH}}/default_theme/app_icon/com_android_browser_com_android_browser_browseractivity.png">
-			<span>title</span>
-			<span>192x192px</span>
-		</li>
-		<li>
-			<i class="icon-checkmark-circle"></i>
-			<img src="{{UPLOAD_PATH}}/default_theme/app_icon/com_android_browser_com_android_browser_browseractivity.png">
-			<span>title</span>
-			<span>192x192px</span>
-		</li>
-		<li>
-			<i class="icon-checkmark-circle"></i>
-			<img src="{{UPLOAD_PATH}}/default_theme/app_icon/com_android_browser_com_android_browser_browseractivity.png">
-			<span>title</span>
-			<span>192x192px</span>
+			<img ng-src="{{UPLOAD_PATH}}{{icon.src}}">
+			<span>{{icon.capital}}</span>
+			<span>{{meta.width}}x{{meta.height}}px</span>
 		</li>
 	</ul>
 </div>
