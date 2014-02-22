@@ -1,0 +1,19 @@
+
+<div class="op-editor panel panel-default">
+    <div class="panel-heading clearfix">
+    	<div class="pull-left">
+    		<a href="#" ng-click="edit_nav_back()">
+    			<i class="icon-reply"></i> Back
+    		</a>
+    	</div>
+        <div class="pull-right">
+        	<a ng-href="/edit/{{}}"><i class="icon-left-circled-1"></i> Last</span></a>
+        	<a ng-href-"/edit/{{}}"><i class="icon-right-circled-1"></i> Next</a>
+        </div>
+    </div>
+    <div class="panel-body">
+        <img ng-src="{{UPLOAD_PATH}}{{resInfo.data.src}}">
+        <span>{{resInfo.data.capital}}</span>
+    </div>
+</div>
+
