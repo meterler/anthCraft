@@ -7,5 +7,4 @@ angular.module("anthCraftApp").controller "operationController", [
 		$scope.getMeta = themeConfig.getStandard
 
 
-
 ]

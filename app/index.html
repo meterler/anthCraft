@@ -12,10 +12,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 	<!-- build:css(.tmp) styles/main.css -->
-	<link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="/styles/bootstrap/bootstrap.min.css">
 
-	<link rel="stylesheet" href="styles/waterDrop/main.css">
-	<link rel="stylesheet" href="http://i.icomoon.io/public/temp/4b91b1e1fb/anthCraft/style.css">	
+	<link rel="stylesheet" href="/styles/waterDrop/main.css">
+	<link rel="stylesheet" href="/styles/webicons/css/webicons.css">
+	<link rel="stylesheet" href="/styles/webicons/css/animation.css">
+
 	<!-- endbuild -->
 </head>
 <body ng-app="anthCraftApp">
@@ -54,7 +56,7 @@
 				{{'TITLE' | translate }}
 			</div>
 		</div>
-		<div class="col-md-6" ng-view drop="changeLayout" drag ng-model="pan" ng-controller="operationController">
+		<div class="col-md-6" ng-view drop="changeLayout" drag ng-model="pan">
 			<span>Loading views...</span>
 		</div>
 		<div class="col-md-4" drop="changeLayout" drag ng-model="pan" >
@@ -68,32 +70,33 @@
 
 
 
-	<script src="components/angular/angular.min.js"></script>
+	<script src="/components/angular/angular.min.js"></script>
 
 	<!-- build:js scripts/waterDrop-components.js -->
-	<script src="components/angular-translate/angular-translate.js"></script>
-	<script src="components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
-	<script src="components/angular-route/angular-route.min.js"></script>
-	<script src="components/angular-resource/angular-resource.js"></script>
-	<script src="components/angular-local-storage/angular-local-storage.min.js"></script>
-	<script src="components/angular-cookies/angular-cookies.js"></script>
-	<script src="components/angular-sanitize/angular-sanitize.js"></script>
-	<script src="components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-	<script src="components/angular-touch/angular-touch.js"></script>
-	<script src="components/angular-dragndrop/angular-dnd.js"></script>
-	<script src="scripts/modules/carousel/angular-carousel.js"></script>
+	<script src="/components/angular-translate/angular-translate.js"></script>
+	<script src="/components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+	<script src="/components/angular-route/angular-route.min.js"></script>
+	<script src="/components/angular-resource/angular-resource.js"></script>
+	<script src="/components/angular-local-storage/angular-local-storage.min.js"></script>
+	<script src="/components/angular-cookies/angular-cookies.js"></script>
+	<script src="/components/angular-sanitize/angular-sanitize.js"></script>
+	<script src="/components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	<script src="/components/angular-touch/angular-touch.js"></script>
+	<script src="/components/angular-dragndrop/angular-dnd.js"></script>
+	<script src="/scripts/modules/carousel/angular-carousel.js"></script>
 	<!-- endbuild -->
 
 	<!-- build:js({.tmp,app}) scripts/waterDrop-scripts.js -->
-	<script src="scripts/waterDrop-init.js"></script>
-	<script src="scripts/waterDrop/layoutController.js"></script>
-	<script src="scripts/waterDrop/operationController.js"></script>
-	<script src="scripts/waterDrop/systemIconsController.js"></script>
-	<script src="scripts/services/menuConfig.js"></script>
-	<script src="scripts/services/themeConfig.js"></script>
-	<script src="scripts/services/themeService.js"></script>
-	<script src="scripts/controllers/previewCtrl.js"></script>
-	<script src="scripts/controllers/menuListCtrl.js"></script>
+	<script src="/scripts/waterDrop-init.js"></script>
+	<script src="/scripts/waterDrop/layoutController.js"></script>
+	<script src="/scripts/waterDrop/systemIconListController.js"></script>
+	<script src="/scripts/waterDrop/backgroundListController.js"></script>
+	<script src="/scripts/waterDrop/resEditorController.js"></script>
+	<script src="/scripts/services/menuConfig.js"></script>
+	<script src="/scripts/services/themeConfig.js"></script>
+	<script src="/scripts/services/themeService.js"></script>
+	<script src="/scripts/controllers/previewCtrl.js"></script>
+	<script src="/scripts/controllers/menuListCtrl.js"></script>
 	<!-- endbuild -->
 <!--
 	<div style="display: none;">

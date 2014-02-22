@@ -1,11 +1,11 @@
 
 <div class="ac-opIcons panel panel-default well">
 	<ul class="ac-opIcons-list">
-		<li ng-click="editIcon(222)"
-			ng-repeat="(name, icon) in themePack.app_icon"
-			ng-init="meta=getMeta('app_icon', name)">
+		<li ng-click="editIcon(resKey)"
+			ng-repeat="(resKey, icon) in list"
+			ng-init="meta=getMeta(resKey)">
 
-			<i class="icon-checkmark-circle"></i>
+			<i class="icon-ok-circled"></i>
 			<img ng-src="{{UPLOAD_PATH}}{{icon.src}}">
 			<span>{{icon.capital}}</span>
 			<span>{{meta.width}}x{{meta.height}}px</span>

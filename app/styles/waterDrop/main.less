@@ -22,12 +22,16 @@
 
 
 .ac-opIcons-list {
+	height: 550px;
 	padding: 0;
 
 	li {
+		@width: 92px;
+		@height: 92px;
+
 		list-style: none;
 		width: 92px;
-		height: 134px;
+		height: @height + 42px;
 		display: inline-block;
 		position: relative;
 		margin: 3px 2px;
@@ -38,11 +42,16 @@
 			cursor: pointer;
 			background-color: #ccc;
 		}
+		img {
+			width: @width;
+			height: @height;
+			padding: 3px;
+		}
 
 		i {
 			position: absolute;
-			right: 5px;
-			top: 0;
+			right: 0;
+			top: -4px;
 			width: 16px;
 			height: 16px;
 			color: green;

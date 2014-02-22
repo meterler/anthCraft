@@ -89,7 +89,7 @@ mod.factory 'themeConfig', ->
 					link: [ 'wallpaper', 'wallpaper-hd' ]
 				}
 				"wallpaper-hd": {
-					capital: "Wallpaper"
+					capital: "Wallpaper(hd)"
 					src: "/default_theme/wallpaper/wallpaper.jpg"
 				}
 			}

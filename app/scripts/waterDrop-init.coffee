@@ -6,30 +6,61 @@ app = angular.module('anthCraftApp', [
 	'LocalStorageModule'
 	'pascalprecht.translate'
 ]).config [
-	'$routeProvider',
+	'$routeProvider', '$locationProvider',
 	'$compileProvider', '$translateProvider',
-	($routeProvider, $compileProvider, $translateProvider)->
+	($routeProvider, $locationProvider, $compileProvider, $translateProvider)->
+
+		$locationProvider.html5Mode(true).hashPrefix('!');
 		# Compile white list for image preview since angular-v1.2.1
 		$compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|blob):|data:image\//)
 
+		tpl_list = "/views/waterDrop/operationPanels/list_panel.html"
+		tpl_edit = "/views/waterDrop/operationPanels/edit_panel.html"
+
+
+		inject_resModel = (params)-> ['$route', 'themeService', ($route, themeService)->
+				result = {}
+				resType = params.resType
+				resName = $route.current.params.resName
+				resData = themeService.packInfo[resType][resName]
+				result = {
+					type: resType
+					name: resName
+					data: resData
+				}
+				angular.extend result, params
+				return result
+			]
 		$routeProvider
 			.when("/", {
-				templateUrl: "/views/waterDrop/operationPanel.html"
+				redirectTo: "/edit/background"
 			})
-			.when("/edit/system-icons", {
-				templateUrl: "/views/waterDrop/operationPanels/list_panel.html"
-				controller: "systemIconsController"
+			.when("/edit/background", {
+				templateUrl: tpl_list
+				controller: "backgroundListController"
+			})
+			.when("/edit/background/:resName", {
+				templateUrl: tpl_edit
+				controller: "resEditorController"
 				resolve: {
-					"resId": -> {}
+					"resModel": inject_resModel({
+						resType: "wallpaper"
+						backUrl: "/edit/background"
+					})
 				}
 			})
-			.when("/edit/system-icons/:resId", {
-				templateUrl: "/views/waterDrop/operationPanels/icon_panel.html"
-				controller: "systemIconsController"
+			.when("/edit/icons", {
+				templateUrl: tpl_list
+				controller: "systemIconListController"
+			})
+			.when("/edit/icons/:resName", {
+				templateUrl: tpl_edit
+				controller: "resEditorController"
 				resolve: {
-					"resId": ($route)->
-						# todo: Get the resource object
-						return $route.current.params
+					"resModel": inject_resModel({
+						resType: "app_icon"
+						backUrl: "/edit/icons"
+					})
 				}
 
 			})
@@ -43,7 +74,7 @@ app = angular.module('anthCraftApp', [
 		# $translateProvider.preferredLanguage('en_US')
 
 		$translateProvider.useStaticFilesLoader({
-			prefix: "i18n/locale-"
+			prefix: "/i18n/locale-"
 			suffix: ".json"
 		})
 		$translateProvider.fallbackLanguage('en_US')
