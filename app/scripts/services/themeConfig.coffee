@@ -132,7 +132,7 @@ mod.factory 'themeConfig', ->
 					src: "/default_theme/app_icon/com_android_gallery3d_com_android_gallery3d_app_gallery.png"
 				}
 				"Messages": {
-					capital: "Messaging"
+					capital: "Messages"
 					src: "/default_theme/app_icon/com_android_mms_com_android_mms_ui_conversationlist.png"
 				}
 				"Music": {
