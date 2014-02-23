@@ -17,8 +17,14 @@
                 <div class="preview-area">
                     <img ng-src="{{UPLOAD_PATH}}{{resInfo.data.src}}" class="preview_area">
                 </div>
-
-                <button class="upload_btn btn btn-clGreen">UPLOAD</button>
+                <label for="upImage" class="file-upload btn btn-clGreen">
+                    <b>UPLOAD</b>
+                    <input type="file" name="upImage"
+                        accept="{{resAccepts}}"
+                        image="image"
+                        ng-model="x"
+                        ng-change="checkAccepts(image.file, x)" />
+                </label>
             </div>
             <div class="col-md-6">
                 <h2>{{resInfo.data.capital}}</h2>
