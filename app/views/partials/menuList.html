@@ -9,7 +9,7 @@
 		</header>
 		<ul ng-show="menu.active || hasActive(menu.submenus)">
 			<li ng-repeat="item in menu.submenus">
-				<a ng-href="{{'#' + item.url}}" ng-class="{ active: (curPath==item.url) }" ng-click="item.active=true;" ng-init="spk(item)"> {{item.title}} {{item.sence}} </a>
+				<a ng-href="{{item.url}}" ng-class="{ active: (curPath==item.url) }" ng-click="item.active=true;" ng-init="spk(item)"> {{item.title}} {{item.sence}} </a>
 			</li>
 		</ul>
 	</section>

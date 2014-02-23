@@ -1,7 +1,6 @@
 <div class="col-md-2" drop="changeLayout" drag ng-model="pan">
-	<div class="well">
-		{{'TITLE' | translate }}
-	</div>
+	<div ng-include="'/views/partials/menuList.html'"
+		class="well" ng-controller="menuListController"></div>
 </div>
 <div class="col-md-6" drop="changeLayout" drag ng-model="pan">
 	<div ng-include="'/views/waterDrop/operationPanel.html'"
