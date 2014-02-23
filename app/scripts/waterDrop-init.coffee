@@ -17,20 +17,20 @@ app = angular.module('anthCraftApp', [
 		tpl_list = "/views/waterDrop/operationPanels/list_panel.html"
 		tpl_edit = "/views/waterDrop/operationPanels/edit_panel.html"
 
-
 		inject_resModel = (params)-> ['$route', 'themeService', ($route, themeService)->
-				result = {}
-				resType = params.resType
-				resName = $route.current.params.resName
-				resData = themeService.packInfo[resType][resName]
-				result = {
-					type: resType
-					name: resName
-					data: resData
-				}
-				angular.extend result, params
-				return result
-			]
+			result = {}
+			resType = params.resType
+			resName = $route.current.params.resName
+			resData = themeService.packInfo[resType][resName]
+			result = {
+				type: resType
+				name: resName
+				data: resData
+			}
+			angular.extend result, params
+			return result
+		]
+
 		$routeProvider
 			.when("/", {
 				redirectTo: "/edit/background"

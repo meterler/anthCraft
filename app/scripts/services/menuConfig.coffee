@@ -8,6 +8,7 @@ mod.factory 'menuFactory', ->
 		list: [
 			{
 				title: "Home Screen"
+				icon: "icon-mobile"
 				submenus: [
 					{
 						title: "Backgrounds"
@@ -44,6 +45,7 @@ mod.factory 'menuFactory', ->
 			}
 			{
 				title: "Lock Screen"
+				icon: "icon-lock-filled"
 				submenus: [
 					{
 						title: "Backgrounds"
@@ -64,6 +66,7 @@ mod.factory 'menuFactory', ->
 			}
 			{
 				title: "Widget"
+				icon: "icon-tools"
 				submenus: [
 					{
 						title: "Analog Clock"
