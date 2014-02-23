@@ -5,6 +5,7 @@ app = angular.module('anthCraftApp', [
 	'angular-carousel'
 	'LocalStorageModule'
 	'pascalprecht.translate'
+	'anthcraft.imageupload'
 ]).config [
 	'$routeProvider', '$locationProvider',
 	'$compileProvider', '$translateProvider',
@@ -23,8 +24,8 @@ app = angular.module('anthCraftApp', [
 			resName = $route.current.params.resName
 			resData = themeService.packInfo[resType][resName]
 			result = {
-				type: resType
-				name: resName
+				resType: resType
+				resName: resName
 				data: resData
 			}
 			angular.extend result, params

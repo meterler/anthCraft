@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="preview-area">
-                    <img ng-src="{{UPLOAD_PATH}}{{resInfo.data.src}}" class="preview_area">
+                    <img ng-src="{{UPLOAD_PATH}}{{resInfo.data.src}}?{{etag}}" type="{{image.file.type}}" class="preview_area">
                 </div>
                 <label for="upImage" class="file-upload btn btn-clGreen">
                     <b>UPLOAD</b>
@@ -23,7 +23,7 @@
                         accept="{{resAccepts}}"
                         image="image"
                         ng-model="x"
-                        ng-change="checkAccepts(image.file, x)" />
+                        ng-change="uploadFile(image.file, x)" />
                 </label>
             </div>
             <div class="col-md-6">
