@@ -1,78 +1,27 @@
-.btn {
-	display: inline-block;
-	margin: 3px 6px;
-	padding: 6px 20px;
-	line-height: 1em;
-	overflow: hidden;
-	vertical-align: middle;
-	text-align: center;
-	position: relative;
-	cursor: pointer;
-	outline: none;
+/* Custom button
+-------------------------------------------------- */
 
-	// default style
-	border: 1px solid #C0C0C0;
-	border-radius: 6px;
-	background-color: #fff;
-	color: #179BA0;
-	text-decoration: none;
+/* Override base .btn styles */
+/* Apply text and background changes to three key states: default, hover, and active (click). */
+.btn-clGreen,
+.btn-clGreen:hover,
+.btn-clGreen:active {
+  color: white;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #00A484;
 
-	&:hover, &.hover {
-		background-color: #EBFEFF;
-	}
-
-	&:active, &.active {
-		background-color: #EBEBEB;
-	}
+  border-bottom: 2px solid #00836A;
 }
 
-// label.btn {
-// 	padding: 6px 0;
-// }
-
-.btn.btn-primary {
-	border: 1px solid #179BA0;
-	background-color: #179BA0;
-	color: white;
-	&:hover, &.hover {
-		background-color: #1CBAC0;
-	}
-	&:active, &.active {
-		background-color: #148A8E;
-	}
+/* Apply the custom-colored gradients */
+/* Note: you'll need to include all the appropriate gradients for various browsers and standards. */
+.btn-clGreen {
+  background-repeat: repeat-x;
+  background-image: linear-gradient(top, #00A484 0%, #00A484 100%);
 }
 
-.btn.btn-warning {
-	border: 1px solid #B85124;
-	background-color: #B85124;
-	color: white;
-	&:hover, &.hover {
-		background-color: #D75F2A;
-	}
-	&:active, &.active {
-		background-color: #97431E;
-	}
-}
-
-.btn.btn-darkgreen {
-	border: none;
-	border-bottom: 2px solid #157E77;
-	background-color: #1A9D95;
-	color: white;
-	&:active, &.active {
-		background-color: #15857E;
-		border-color: #116A65;
-	}
-}
-
-.btn.btn-lightgreen {
-	border: none;
-	border-bottom: 2px solid #408D62;
-	background-color: #50B07B;
-	color: white;
-
-	&:active, &.active {
-		background-color: #328658;
-		border-color: #286B46;
-	}
+/* Set the hover state */
+/* An easy hover state is just to move the gradient up a small amount. Add other embellishments as you see fit. */
+.btn-clGreen:hover {
+  background-position: 0 -15px;
 }
