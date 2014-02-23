@@ -30,21 +30,45 @@
 	<script src="components/json3/lib/json3.min.js"></script>
 	<![endif]-->
 
-	<nav class="navbar navbar-default navbar-static-top" role="navigation">
+	<nav id="page-header" class="navbar navbar-default navbar-static-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
-				<a href="/" class="navbar-brand">{{'TITLE' | translate }}</a>
+				<a href="/" class="navbar-brand" title="{{'TITLE' | translate }}">
+					<img src="/styles/img/logo-clauncher.png" />
+				</a>
 			</div>
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">{{'HEADER.NEW' | translate }}</a></li>
-				<li><a href="#">{{'HEADER.PREVIEW' | translate }}</a></li>
-				<li><a href="#">{{'HEADER.PACKAGE' | translate }}</a></li>
-				<li><a href="#">{{'HEADER.HELP' | translate }}</a></li>
+				<li>
+					<a href="#">
+						<i class="icon-doc-new"></i>
+						{{'HEADER.NEW' | translate }}
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="icon-search"></i>
+						{{'HEADER.PREVIEW' | translate }}
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="icon-folder"></i>
+						{{'HEADER.PACKAGE' | translate }}
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="icon-help"></i>
+						{{'HEADER.HELP' | translate }}
+					</a>
+				</li>
+				<!--
 				<li>
 					<button type="button" class="btn btn-default navbar-btn">{{'ACCOUNT.LOGIN' | translate }}</button>
 					<button type="button" class="btn btn-default navbar-btn">{{'ACCOUNT.REGIST' | translate }}</button>
 				</li>
+				-->
 			</ul>
 		</div>
 	</nav>
