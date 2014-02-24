@@ -10,6 +10,13 @@ mod.controller "menuListCtrl", [
 		$scope.menuList = menuFactory.list
 
 		$scope.$on "$routeChangeSuccess", ()->
+			# When page first load, init menu status
+			$scope.menuList.forEach (menu)->
+				menu.submenus.forEach (item)->
+					reg = new RegExp("^#{item.url}")
+
+					if reg.test $location.path()
+						$scope.refreshStats(menu, item)
 
 		$scope.refreshStats = (menu, item)->
 			$scope.menuList.forEach (menu)->
@@ -26,13 +33,6 @@ mod.controller "menuListCtrl", [
 
 			return
 
-		# When page first load, init menu status
-		$scope.menuList.forEach (menu)->
-			menu.submenus.forEach (item)->
-				reg = new RegExp("^#{item.url}")
-
-				if reg.test $location.path()
-					$scope.refreshStats(menu, item)
 
 
 		return
