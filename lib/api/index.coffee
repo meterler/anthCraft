@@ -7,9 +7,10 @@ DWallpaperModel = require '../models/DWallpaper.coffee'
 CategoryModel = require '../models/Category.coffee'
 module.exports = (app)->
 
+	publicFolder = if __config.debug then 'app' else 'public'
 	# Static routes
 	app.get "/edit/*", (req, res)->
-		app_index = path.join(__dirname, "../../app/index.html")
+		app_index = path.join(__dirname, "../../#{publicFolder}/index.html")
 		res.sendfile app_index
 
 	RingModel.register app, '/api/ring'
