@@ -39,6 +39,8 @@
     "angular-translate-storage-local": "~0.1.7"
   },
   "resolutions": {
-    "angular": "~1.2.6"
+    "angular": "~1.2.6",
+    "angular-cookies": "~1.2.2",
+    "angular-translate": "~2.0.0"
   }
 }
