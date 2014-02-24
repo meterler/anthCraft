@@ -49,6 +49,7 @@ mod.factory 'themeService', [
 				service.packInfo = angular.copy(themeConfig.defaultPackInfo)
 				service.updateView()
 				service.dirty = false
+				service.cacheFlags = {}
 
 				# Restore uploader image preview data
 				$rootScope.$broadcast "uploader.restore"

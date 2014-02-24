@@ -1,6 +1,6 @@
 angular.module("anthCraftApp").controller "resEditorController", [
-	"$scope", "$location", "$http", "$timeout", "resModel", "themeConfig", "themeService",
-	($scope, $location, $http, $timeout, resModel, themeConfig, themeService)->
+	"$rootScope", "$scope", "$location", "$http", "$timeout", "resModel", "themeConfig", "themeService",
+	($rootScope, $scope, $location, $http, $timeout, resModel, themeConfig, themeService)->
 		urlPath = $location.path()
 
 		$scope.edit_nav_back = ()->
@@ -17,7 +17,7 @@ angular.module("anthCraftApp").controller "resEditorController", [
 			$timeout ->
 				image = $scope.image.file
 
-				themeId = '3de23f7uh39gfh79fh79q' # todo !!
+				themeId = themeService.themeModel._id
 				previewScale = themeConfig.getPreviewScale(resModel.resType, resModel.resName)
 
 				formData = new FormData()

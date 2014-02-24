@@ -6,6 +6,7 @@ app = angular.module('anthCraftApp', [
 	'LocalStorageModule'
 	'pascalprecht.translate'
 	'anthcraft.imageupload'
+	'ui.bootstrap'
 ]).config [
 	'$routeProvider', '$locationProvider',
 	'$compileProvider', '$translateProvider',

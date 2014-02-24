@@ -29,7 +29,10 @@
 	<script src="/components/json3/lib/json3.min.js"></script>
 	<![endif]-->
 
-	<nav id="page-header" class="navbar navbar-default navbar-static-top" role="navigation">
+	<nav id="page-header"
+		class="navbar navbar-default navbar-static-top"
+		role="navigation"
+		ng-controller="navController">
 		<div class="container">
 			<div class="navbar-header">
 				<a href="/" class="navbar-brand" title="{{'TITLE' | translate }}">
@@ -39,7 +42,7 @@
 
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="#">
+					<a href="#" ng-click="createNew()">
 						<i class="icon-doc-new"></i>
 						{{'HEADER.NEW' | translate }}
 					</a>
@@ -57,7 +60,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="#" ng-click="openHelpBox()">
 						<i class="icon-help"></i>
 						{{'HEADER.HELP' | translate }}
 					</a>
@@ -114,6 +117,10 @@
 	<script src="/scripts/waterDrop/systemIconListController.js"></script>
 	<script src="/scripts/waterDrop/backgroundListController.js"></script>
 	<script src="/scripts/waterDrop/resEditorController.js"></script>
+
+	<script src="/scripts/waterDrop/navController.js"></script>
+	<script src="/scripts/waterDrop/modals/helpModalController.js"></script>
+
 	<script src="/scripts/services/menuConfig.js"></script>
 	<script src="/scripts/modules/imageupload/imageupload.js"></script>
 	<script src="/scripts/services/themeConfig.js"></script>
