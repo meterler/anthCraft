@@ -83,6 +83,12 @@
       "css": "doc-new",
       "code": 59401,
       "src": "elusive"
+    },
+    {
+      "uid": "8da3ac534210aae9c0f0e13804c1df97",
+      "css": "cancel",
+      "code": 59405,
+      "src": "websymbols"
     }
   ]
 }

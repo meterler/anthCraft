@@ -10,13 +10,13 @@ Font license info
    Homepage:  http://fortawesome.github.com/Font-Awesome/
 
 
-## Elusive
+## Web Symbols
 
-   Copyright (C) 2013 by Aristeides Stathopoulos
+   Copyright (c) 2011 by Just Be Nice studio. All rights reserved.
 
-   Author:    Aristeides Stathopoulos
+   Author:    Just Be Nice studio
    License:   SIL (http://scripts.sil.org/OFL)
-   Homepage:  http://aristeides.com/
+   Homepage:  http://www.justbenicestudio.com/
 
 
 ## Entypo
@@ -35,5 +35,14 @@ Font license info
    Author:    Stephen Hutchings
    License:   CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0/)
    Homepage:  http://typicons.com/
+
+
+## Elusive
+
+   Copyright (C) 2013 by Aristeides Stathopoulos
+
+   Author:    Aristeides Stathopoulos
+   License:   SIL (http://scripts.sil.org/OFL)
+   Homepage:  http://aristeides.com/
 
 

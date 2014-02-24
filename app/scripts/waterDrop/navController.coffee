@@ -40,7 +40,8 @@ angular.module('anthCraftApp').controller 'navController', [
 			alertInst = $modal.open {
 				template: """
 				<div class="modal-header text-center">
-					<h3> New </h3>
+					New
+					<span class="icon-cancel pull-right" ng-click="cancel()"></span>
 				</div>
 				<div class="modal-body text-center">
 
