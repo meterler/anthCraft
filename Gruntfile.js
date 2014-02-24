@@ -29,7 +29,7 @@ module.exports = function (grunt) {
         prod: {
             options: {
                 script: 'server.js',
-                node_env: 'production'
+                node_env: 'test'
             }
         }
     },
@@ -272,8 +272,11 @@ module.exports = function (grunt) {
             'resources/phone/**/*',
             'resources/upload/default_theme/**/*',
             'images/{,*/}*.{gif,webp}',
+            'i18n/**/*',
+            'logs',
             'styles/img/*',
-            'styles/fonts/*'
+            'styles/fonts/*',
+            'styles/webicons/**/*'
           ]
         }, {
           expand: true,
