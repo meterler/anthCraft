@@ -11,9 +11,9 @@ mod.controller 'previewCtrl', [
 	)->
 
 		# 1440*726/1280=>
-		IMAGE_WIDTH = 816
-		SENCE_WIDTH = 403
-		SENCE_HEIGHT = 726
+		IMAGE_WIDTH = 568.125
+		SENCE_WIDTH = 284
+		SENCE_HEIGHT = 505
 
 		$scope.curSence = menuFactory.sence
 		$scope.theme = themeService.packInfo
