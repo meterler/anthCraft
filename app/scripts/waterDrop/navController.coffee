@@ -40,20 +40,14 @@ angular.module('anthCraftApp').controller 'navController', [
 
 		showPackageResult = (result, theme)->
 			# todo: success or faile
-			if result is 'success'
-				dlg = $modal.open {
-					templateUrl: "/views/waterDrop/modals/packageSuccess.html"
-					controller: "simpleModalController"
-					resolve: {
-						themeModel: ()-> theme
-					}
+			dlg = $modal.open {
+				templateUrl: "/views/waterDrop/modals/packageResult.html"
+				controller: "packageResultModalController"
+				resolve: {
+					result: ()-> result
+					themeModel: ()-> theme
 				}
-			else if result is 'fail'
-				dlg = $modal.open {
-					templateUrl: "/views/waterDrop/modals/packageFail.html"
-					controller: "simpleModalController"
-				}
-
+			}
 			return dlg.result
 
 		# New
@@ -99,27 +93,31 @@ angular.module('anthCraftApp').controller 'navController', [
 		# Package
 		$scope.packageTheme = ->
 
-			previewed = generatePreviewImage()
+			showPackageResult('success', {
+				packageFile: [ { file: "xxx/aabb" }]
+			})
 
-			showPackageForm()
-				.then((formData)->
+			# previewed = generatePreviewImage()
 
-					# Merge form data with themeModel
-					angular.extend themeService.themeModel, formData
+			# showPackageForm()
+			# 	.then((formData)->
 
-					# Make preview images AND THEN package
-					previewed.then -> packageTheme().then((theme)->
-						console.log "Package success!", theme
-						showPackageResult('success', theme)
-					, ->
-						# package error...
-						console.log "Package failed!"
-						showPackageResult('fail')
-					)
-				)
-				.catch(->
-					console.log "User canceled package."
-				)
+			# 		# Merge form data with themeModel
+			# 		angular.extend themeService.themeModel, formData
+
+			# 		# Make preview images AND THEN package
+			# 		previewed.then -> packageTheme().then((theme)->
+			# 			console.log "Package success!", theme
+			# 			showPackageResult('success', theme)
+			# 		, ->
+			# 			# package error...
+			# 			console.log "Package failed!"
+			# 			showPackageResult('fail')
+			# 		)
+			# 	)
+			# 	.catch(->
+			# 		console.log "User canceled package."
+			# 	)
 
 				# # Package the theme
 				# themeService.packageTheme (theme)->
@@ -140,6 +138,6 @@ angular.module('anthCraftApp').controller 'navController', [
 		$scope.openHelpBox = ->
 			$modal.open {
 				templateUrl: '/views/waterDrop/modals/helpBox.html'
-				controller: "helpModalController"
+				controller: "simpleModalController"
 			}
 ]
