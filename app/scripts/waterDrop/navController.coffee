@@ -93,31 +93,27 @@ angular.module('anthCraftApp').controller 'navController', [
 		# Package
 		$scope.packageTheme = ->
 
-			showPackageResult('success', {
-				packageFile: [ { file: "xxx/aabb" }]
-			})
+			previewed = generatePreviewImage()
 
-			# previewed = generatePreviewImage()
+			showPackageForm()
+				.then((formData)->
 
-			# showPackageForm()
-			# 	.then((formData)->
+					# Merge form data with themeModel
+					angular.extend themeService.themeModel, formData
 
-			# 		# Merge form data with themeModel
-			# 		angular.extend themeService.themeModel, formData
-
-			# 		# Make preview images AND THEN package
-			# 		previewed.then -> packageTheme().then((theme)->
-			# 			console.log "Package success!", theme
-			# 			showPackageResult('success', theme)
-			# 		, ->
-			# 			# package error...
-			# 			console.log "Package failed!"
-			# 			showPackageResult('fail')
-			# 		)
-			# 	)
-			# 	.catch(->
-			# 		console.log "User canceled package."
-			# 	)
+					# Make preview images AND THEN package
+					previewed.then -> packageTheme().then((theme)->
+						console.log "Package success!", theme
+						showPackageResult('success', theme)
+					, ->
+						# package error...
+						console.log "Package failed!"
+						showPackageResult('fail')
+					)
+				)
+				.catch(->
+					console.log "User canceled package."
+				)
 
 				# # Package the theme
 				# themeService.packageTheme (theme)->
