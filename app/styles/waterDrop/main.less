@@ -37,6 +37,12 @@
 	background: linear-gradient(to bottom,  #5b5b5b 0%,#454545 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5b5b5b', endColorstr='#454545',GradientType=0 ); /* IE6-9 */
 
+
+	.nav li.splitter {
+		height: 70px;
+		border-left: 1px solid #676767;
+		border-right: 1px solid #363636;
+	}
 	.nav li {
 		color: #FDFAA7;
 		a {
@@ -44,8 +50,8 @@
 			width: 64px;
 			margin: 0;
 			padding: 8px;
+			color: #c4c4c4;
 			text-align: center;
-			color: #FDFAA7;
 			&:hover, &:active {
 				color: white;
 				background: #00c69f; /* Old browsers */
@@ -56,7 +62,23 @@
 				background: -ms-linear-gradient(top,  #00c69f 0%,#009175 100%); /* IE10+ */
 				background: linear-gradient(to bottom,  #00c69f 0%,#009175 100%); /* W3C */
 				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00c69f', endColorstr='#009175',GradientType=0 ); /* IE6-9 */
-
+			}
+		}
+		i {
+			font-size: 24px;
+			color: #c4c4c4;
+			&:before {
+				width: 38px;
+				height: 38px;
+				padding-top: 6px;
+				padding-left: 2px;
+			}
+		}
+		&.circled {
+			a {
+				color: #FDFAA7;
+			}
+			a:hover, a:active {
 				i {
 					color: white;
 					&:before {
@@ -64,17 +86,12 @@
 					}
 				}
 			}
-		}
-		i {
-			font-size: 24px;
-			color: #FDFAA7;
-			&:before {
-				width: 38px;
-				height: 38px;
-				border: 1px solid #FDFAA7;
-				border-radius: 50%;
-				padding-top: 6px;
-				padding-left: 2px;
+			i {
+				color: #FDFAA7;
+				&:before {
+					border: 1px solid #FDFAA7;
+					border-radius: 50%;
+				}
 			}
 		}
 	}
