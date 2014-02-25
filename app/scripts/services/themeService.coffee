@@ -110,24 +110,24 @@ mod.factory 'themeService', [
 					callback(data);
 
 			# Package theme and get theme Url
-			packageTheme: (callback)->
+			packageTheme: (callback, fail)->
 				return callback(false) if not service.dirty
 				# save themeModel
 				# delete service.themeModel.thumbnail
 				# service.themeModel.$save {}, (doc)->
 				Theme.save service.themeModel, (doc)->
 					# package up
-					Theme.packageUp { themeId: doc._id }, service.packInfo, (data)->
+					Theme.packageUp({ themeId: doc._id }, service.packInfo, (data)->
+							service.themeModel.updateTime = data.theme.updateTime
+							service.themeModel.packageFile = data.theme.packageFile
+							callback.apply(null, arguments)
 
-						service.themeModel.updateTime = data.theme.updateTime
-						service.themeModel.packageFile = data.theme.packageFile
-						callback.apply(null, arguments)
+							# Clear localStorage
+							localStorage.remove('unpublished_theme_model')
+							localStorage.remove('unpublished_theme_packInfo')
 
-						# Clear localStorage
-						localStorage.remove('unpublished_theme_model')
-						localStorage.remove('unpublished_theme_packInfo')
-
-						service.dirty = false
+							service.dirty = false
+						, fail)
 
 		}
 

@@ -24,6 +24,10 @@ angular.module('anthCraftApp').controller 'navController', [
 				# Package saved successfully
 				console.log "Package success:", theme
 				deferred.resolve(theme)
+			, ()->
+				# Server package failed
+				deferred.reject()
+
 			return deferred.promise
 
 		showPackageForm = ()->
@@ -31,6 +35,24 @@ angular.module('anthCraftApp').controller 'navController', [
 				templateUrl: "/views/waterDrop/modals/packageForm.html"
 				controller: "packageFormController"
 			}
+
+			return dlg.result
+
+		showPackageResult = (result, theme)->
+			# todo: success or faile
+			if result is 'success'
+				dlg = $modal.open {
+					templateUrl: "/views/waterDrop/modals/packageSuccess.html"
+					controller: "simpleModalController"
+					resolve: {
+						themeModel: ()-> theme
+					}
+				}
+			else if result is 'fail'
+				dlg = $modal.open {
+					templateUrl: "/views/waterDrop/modals/packageFail.html"
+					controller: "simpleModalController"
+				}
 
 			return dlg.result
 
@@ -81,15 +103,18 @@ angular.module('anthCraftApp').controller 'navController', [
 
 			showPackageForm()
 				.then((formData)->
+
 					# Merge form data with themeModel
 					angular.extend themeService.themeModel, formData
 
 					# Make preview images AND THEN package
 					previewed.then -> packageTheme().then((theme)->
 						console.log "Package success!", theme
+						showPackageResult('success', theme)
 					, ->
 						# package error...
 						console.log "Package failed!"
+						showPackageResult('fail')
 					)
 				)
 				.catch(->
