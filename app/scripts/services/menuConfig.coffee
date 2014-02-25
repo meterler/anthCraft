@@ -29,16 +29,19 @@ mod.factory 'menuFactory', ->
 						title: "MainMenu"
 						url: "/edit/main_menu"
 						sence: "home"
+						disabled: true
 					}
 					{
 						title: "Other"
 						url: "/edit/other"
 						sence: "home"
+						disabled: true
 					}
 					{
 						title: "Colors"
 						url: "/edit/colors"
 						sence: "home"
+						disabled: true
 					}
 
 				]
@@ -46,6 +49,7 @@ mod.factory 'menuFactory', ->
 			{
 				title: "Lock Screen"
 				icon: "icon-lock-filled"
+				locked: true
 				submenus: [
 					{
 						title: "Backgrounds"
@@ -67,6 +71,7 @@ mod.factory 'menuFactory', ->
 			{
 				title: "Widget"
 				icon: "icon-tools"
+				locked: true
 				submenus: [
 					{
 						title: "Analog Clock"

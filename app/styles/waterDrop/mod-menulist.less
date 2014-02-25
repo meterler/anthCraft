@@ -22,6 +22,9 @@
 			-webkit-transition: all 0.3s;
 			.fn_menuItemHeaderBlur();
 		}
+		&.disabled {
+			cursor: not-allowed;
+		}
 
 		&.active header a {
 			.fn_menuItemHeaderActive();
@@ -47,6 +50,12 @@
 
 				&:hover, &.active {
 					border-left: 4px solid #00987A;
+				}
+			}
+			a.disabled {
+				cursor: not-allowed;
+				&:hover, &.active {
+					border-left: 1px solid #D9D9D9;
 				}
 			}
 		}

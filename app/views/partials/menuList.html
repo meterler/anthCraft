@@ -1,8 +1,8 @@
 
 <div class="mod-menuList">
-	<section class="menu-item" ng-class="{ active: menu.active }" ng-repeat="menu in menuList">
+	<section class="menu-item" ng-class="{ active: menu.active, disabled: menu.locked }" ng-repeat="menu in menuList">
 		<header>
-			<a href="javascript:;" ng-click="menu.active=!menu.active">
+			<a href="javascript:;" ng-click="!menu.locked && menu.active=!menu.active">
 				<i class="{{menu.icon}}"></i>
 				{{menu.title}}
 				<i class="icon-down-open-big pull-right" ng-if="menu.active"></i>
@@ -13,7 +13,7 @@
 		<ul ng-show="menu.active">
 			<li ng-repeat="item in menu.submenus">
 				<a	ng-href="{{item.url}}"
-					ng-class="{ active: item.active }"
+					ng-class="{ active: item.active, disabled: item.disabled }"
 					ng-click="refreshStats(menu, item)">
 					{{item.title}}
 				</a>
