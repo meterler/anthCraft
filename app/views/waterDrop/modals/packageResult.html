@@ -14,7 +14,7 @@
 
 	</div>
 	<div class="modal-footer">
-		<a ng-href="{{UPLOAD_PATH}}/{{theme.packageFile[0].file}}" class="btn btn-primary">
+		<a ng-href="{{UPLOAD_PATH}}/{{theme.packageFile.0.file}}" ng-if="theme.packageFile.0" class="btn btn-primary">
 		Download
 		</a>
 		<a href="#" class="btn btn-default">View</a>
