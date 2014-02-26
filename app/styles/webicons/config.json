@@ -7,12 +7,6 @@
   "ascent": 850,
   "glyphs": [
     {
-      "uid": "12f4ece88e46abd864e40b35e05b11cd",
-      "css": "ok",
-      "code": 59408,
-      "src": "fontawesome"
-    },
-    {
       "uid": "c6be5a58ee4e63a5ec399c2b0d15cf2c",
       "css": "reply",
       "code": 59396,
@@ -89,6 +83,12 @@
       "css": "folder",
       "code": 59402,
       "src": "typicons"
+    },
+    {
+      "uid": "ce50292e85eb5d6ee3be61b32bf2bdf3",
+      "css": "ok",
+      "code": 59409,
+      "src": "mfglabs"
     },
     {
       "uid": "67a9d2e5512b8aa812eff7da6d36bffc",
