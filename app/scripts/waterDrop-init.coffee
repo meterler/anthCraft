@@ -70,6 +70,16 @@ app = angular.module('anthCraftApp', [
 				templateUrl: tpl_mask
 				controller: "maskListController"
 			})
+			.when("/edit/mask/:resName", {
+				templateUrl: tpl_edit
+				controller: "resEditorController"
+				resolve: {
+					"resModel": inject_resModel({
+						resType: "customize"
+						backUrl: "/edit/mask"
+					})
+				}
+			})
 			.otherwise {
 				redirectTo: "/"
 			}
