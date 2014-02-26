@@ -48,6 +48,7 @@ angular.module("anthCraftApp").controller "packageFormController", [
 
 		$scope.theme = themeService.themeModel
 		$scope.theme.category = $scope.theme.category or 'None'
+		$scope.theme.isShared = $scope.theme.isShared or '1'
 
 		$scope.ok = ->
 			# todo: Gather form field values
