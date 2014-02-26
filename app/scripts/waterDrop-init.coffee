@@ -18,6 +18,7 @@ app = angular.module('anthCraftApp', [
 
 		tpl_list = "/views/waterDrop/operationPanels/list_panel.html"
 		tpl_edit = "/views/waterDrop/operationPanels/edit_panel.html"
+		tpl_mask = "/views/waterDrop/operationPanels/mask_panel.html"
 
 		inject_resModel = (params)-> ['$route', 'themeService', ($route, themeService)->
 			result = {}
@@ -64,7 +65,10 @@ app = angular.module('anthCraftApp', [
 						backUrl: "/edit/icons"
 					})
 				}
-
+			})
+			.when("/edit/mask", {
+				templateUrl: tpl_mask
+				controller: "maskListController"
 			})
 			.otherwise {
 				redirectTo: "/"
