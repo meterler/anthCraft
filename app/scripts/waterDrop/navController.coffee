@@ -66,8 +66,8 @@ angular.module('anthCraftApp').controller 'navController', [
 
 				</div>
 				<div class="modal-footer">
-					<button class="btn btn-primary" ng-click="ok()">Yes</button>
-					<button class="btn btn-warning" ng-click="cancel()">No</button>
+					<button class="btn btn-clDarkGreen" ng-click="ok()">Yes</button>
+					<button class="btn btn-default" ng-click="cancel()">No</button>
 				</div>
 				"""
 				controller: [ '$scope', '$modalInstance', ($scope, $modalInstance)->
