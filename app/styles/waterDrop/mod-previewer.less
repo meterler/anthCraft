@@ -149,14 +149,16 @@
 			padding: 0 10px;
 			margin-top: 40px;
 			z-index: 90;
+			text-align: left;
 			.mp-apps-maskIcon {
+				display: block;
+				width:56px;
 				.mp-apps-icon;
 				.active-bg {
-					width: 80px;
-					height: 80px;
+					width: 56px;
+					height: 56px;
 					position: absolute;
 					top: 0;
-					left: -3px;
 					border: 1px solid transparent;
 					z-index: -1;
 					transition: all .5s;
@@ -164,10 +166,6 @@
 				&:hover .active-bg, &.active .active-bg {
 					background-color: #FFF5CF;
 					border-color: #DED7BD;
-				}
-				p {
-					bottom: 1px;
-					left: -3px;
 				}
 			}
 			.mp-apps-icon {

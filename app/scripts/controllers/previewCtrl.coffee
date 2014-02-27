@@ -50,21 +50,18 @@ mod.controller 'previewCtrl', [
 			vcode = cacheFlags[v]
 			{
 				'background-image': "url('#{v}')"
-				'background-size': "80px"
+				'background-size': "56px"
 				'background-repeat': "no-repeat"
-				'background-position': "-3px 1px"
 			}
 
 		$scope._Mask = (v)->
 			vcode = cacheFlags[v]
 			{
-				'width': "80px"
-				'height': "80px"
+				'width': "56px"
+				'height': "56px"
 				'-webkit-mask-image': "url('#{v}')"
-				'-webkit-mask-size': "70px"
+				'-webkit-mask-size': "56px"
 				'-webkit-mask-repeat': "no-repeat"
-				'margin-top': "6px"
-				'margin-left': "2px"
 				'padding': "4px"
 			}
 
