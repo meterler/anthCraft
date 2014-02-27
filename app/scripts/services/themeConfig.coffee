@@ -83,14 +83,14 @@ mod.factory 'themeConfig', ->
 		# Default packInfo for reset style
 		defaultPackInfo: {
 			wallpaper: {
+				"wallpaper-hd": {
+					capital: "Wallpaper"
+					src: "/default_theme/wallpaper/wallpaper.jpg"
+				}
 				"wallpaper": {
 					capital: "Wallpaper"
 					src: "/default_theme/wallpaper/wallpaper.jpg"
 					link: [ 'wallpaper', 'wallpaper-hd' ]
-				}
-				"wallpaper-hd": {
-					capital: "Wallpaper(hd)"
-					src: "/default_theme/wallpaper/wallpaper.jpg"
 				}
 			}
 

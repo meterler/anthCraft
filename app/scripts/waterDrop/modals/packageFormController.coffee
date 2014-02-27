@@ -85,10 +85,10 @@ angular.module("anthCraftApp").controller "packageFormController", [
 
 				$timeout ->
 					$scope.uploading = 60
-					packageTheme().then (theme)->
+					packageTheme().then (data)->
 						$scope.uploading = 100
 						$timeout ->
-							$modalInstance.close('success', theme)
+							$modalInstance.close('success', data.theme)
 						, 1500
 					, ->
 						$scope.uploading = 100
