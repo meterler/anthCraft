@@ -1,6 +1,6 @@
 angular.module("anthCraftApp").controller "homeListController", [
-	"$scope", "$location", "themeService", "themeConfig",
-	($scope, $location, themeService, themeConfig)->
+	"$rootScope", "$scope", "$location", "themeService", "themeConfig",
+	($rootScope, $scope, $location, themeService, themeConfig)->
 		$scope.packInfo = themeService.packInfo
 		$scope.getMeta = themeConfig.getStandard
 
@@ -9,8 +9,9 @@ angular.module("anthCraftApp").controller "homeListController", [
 
 		packObjs = (arr)->
 			result = []
-			arr.forEach ([resKey, resName])->
+			arr.forEach ([resKey, resName], idx)->
 				result.push {
+					index: idx
 					resKey: resKey
 					resName: resName
 					data: themeService.packInfo[resKey][resName]
@@ -19,14 +20,6 @@ angular.module("anthCraftApp").controller "homeListController", [
 
 			return result
 
-		$scope.list = packObjs [
-			['wallpaper', 'wallpaper']
-			['wallpaper', 'wallpaper-hd']
-			['app_icon', 'Phone']
-			['app_icon', 'Contacts']
-			['dock_icon', 'ic_allapps']
-			['app_icon', 'Messages']
-			['app_icon', 'Browser']
-		]
+		$scope.list = packObjs themeConfig.editGroup['home']
 
 ]

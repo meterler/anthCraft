@@ -79,6 +79,40 @@ mod.factory 'themeConfig', ->
 						height: 90
 						type: '.png'
 					}
+		editGroup: {
+			home: [
+				['wallpaper', 'wallpaper']
+				['wallpaper', 'wallpaper-hd']
+				['app_icon', 'Phone']
+				['app_icon', 'Contacts']
+				['dock_icon', 'ic_allapps']
+				['app_icon', 'Messages']
+				['app_icon', 'Browser']
+			]
+			icons: [
+				['app_icon', 'Browser']
+				['app_icon', 'Calculator']
+				['app_icon', 'Calendar']
+				['app_icon', 'Camera']
+				['app_icon', 'Phone']
+				['app_icon', 'Contacts']
+				['app_icon', 'Clock']
+				['app_icon', 'Email']
+				['app_icon', 'Gallery']
+				['app_icon', 'Messages']
+				['app_icon', 'Music']
+				['app_icon', 'Video']
+				['app_icon', 'Download']
+				['app_icon', 'Search']
+				['app_icon', 'Settings']
+				['app_icon', 'Maps']
+			]
+			mask: [
+				[ 'customize', 'customize_mat' ]
+				[ 'customize', 'customize_mask' ]
+				[ 'customize', 'customize_icon' ]
+			]
+		}
 
 		# Default packInfo for reset style
 		defaultPackInfo: {

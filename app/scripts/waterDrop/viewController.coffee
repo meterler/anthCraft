@@ -1,7 +1,7 @@
 
 angular.module("anthCraftApp").controller "viewController", [
-	"$scope", '$location', 'themeService',
-	($scope, $location, themeService)->
+	"$rootScope", "$scope", '$location', 'themeService',
+	($rootScope, $scope, $location, themeService)->
 
 		$scope.pan = {}
 		$scope.changeLayout = (data, from, evt)->
@@ -18,5 +18,6 @@ angular.module("anthCraftApp").controller "viewController", [
 		# Check the resource modified or not
 		$scope.isDirty = (res)-> not /^\/default_theme/.test(res.src)
 		$scope.themePack = themeService.packInfo
-		$scope.editIcon = (cat, res)-> $location.url("#{$location.url()}/edit/#{cat}.#{res}")
+		$scope.editIcon = (cat, res, last, next)->
+			$location.url("#{$location.url()}/edit/#{cat}.#{res}")
 ]

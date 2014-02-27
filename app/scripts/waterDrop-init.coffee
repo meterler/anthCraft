@@ -45,7 +45,7 @@ app = angular.module('anthCraftApp', [
 				controller: "resEditorController"
 				resolve: {
 					"resModel": inject_resModel({
-						backUrl: "/list/home"
+						category: "home"
 					})
 				}
 			})
@@ -58,7 +58,7 @@ app = angular.module('anthCraftApp', [
 				controller: "resEditorController"
 				resolve: {
 					"resModel": inject_resModel({
-						backUrl: "/list/icons"
+						category: "icons"
 					})
 				}
 			})
@@ -71,7 +71,7 @@ app = angular.module('anthCraftApp', [
 				controller: "resEditorController"
 				resolve: {
 					"resModel": inject_resModel({
-						backUrl: "/list/mask"
+						category: "mask"
 					})
 				}
 			})

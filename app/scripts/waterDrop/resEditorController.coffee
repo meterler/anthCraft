@@ -3,13 +3,22 @@ angular.module("anthCraftApp").controller "resEditorController", [
 	($rootScope, $scope, $location, $http, $timeout, resModel, themeConfig, themeService)->
 		urlPath = $location.path()
 
-		$scope.edit_nav_back = ()->
-			$location.url(resModel.backUrl)
+		$scope.backUrl = "/list/#{resModel.category}"
 
 		$scope.resInfo = resModel
 
 		$scope.standard = themeConfig.getStandard(resModel.resType, resModel.resName)
 
+		# Find last and next item to edit
+		siblingItems = themeConfig.editGroup[resModel.category]
+		siblingItems.forEach (item, idx)->
+			if item[0] is resModel.resType and item[1] is resModel.resName
+				lItem = siblingItems[idx - 1]
+				nItem = siblingItems[idx + 1]
+				$scope.lastItemUrl = if lItem then "/list/#{resModel.category}/edit/#{lItem[0]}.#{lItem[1]}" else false
+				$scope.nextItemUrl = if nItem then "/list/#{resModel.category}/edit/#{nItem[0]}.#{nItem[1]}" else false
+
+		# Fight with cache!
 		$scope.etag = 0
 		refreshImage = -> $scope.etag = (new Date).getTime()
 		$scope.image = {}
