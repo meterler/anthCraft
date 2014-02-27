@@ -39,11 +39,9 @@ angular.module("anthCraftApp").controller "packageFormController", [
 			themeService.packageTheme (theme)->
 				if not theme
 					# Data is not dirty cant save
-					console.log "Theme is not dirty!"
 					deferred.reject(false)
 					return
 				# Package saved successfully
-				console.log "Package success:", theme
 				deferred.resolve(theme)
 			, ()->
 				# Server package failed
@@ -92,15 +90,14 @@ angular.module("anthCraftApp").controller "packageFormController", [
 				$scope.uploading = 40
 
 				$timeout ->
-					$scope.uploading = 60
 					packageTheme().then (data)->
 						$scope.uploading = 100
 						$timeout ->
-							$modalInstance.close('success', data.theme)
+							$modalInstance.close(['success', data.theme])
 						, 1500
 					, ->
 						$scope.uploading = 100
-						$modalInstance.close('fail')
+						$modalInstance.close(['fail'])
 				, 0
 
 		$scope.cancel = ->

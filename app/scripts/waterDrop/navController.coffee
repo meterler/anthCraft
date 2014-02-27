@@ -75,8 +75,8 @@ angular.module('anthCraftApp').controller 'navController', [
 		# Package
 		$scope.packageTheme = ->
 			showPackageForm()
-				.then((result, theme)->
-					showPackageResult(result, theme)
+				.then((returned)->
+					showPackageResult.apply(null, returned)
 				)
 				.catch(->
 					console.log "User canceled package."
