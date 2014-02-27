@@ -1,8 +1,8 @@
 
 angular.module("anthCraftApp").controller "packageFormController", [
-	'$scope', '$http', '$q', '$timeout', '$modalInstance', 'themeService', 'localStorageService',
+	'$scope', '$http', '$q', '$timeout', '$modalInstance', '$cookies', 'themeService', 'localStorageService',
 	(
-		$scope, $http, $q, $timeout, $modalInstance, themeService, localStorage
+		$scope, $http, $q, $timeout, $modalInstance, $cookies, themeService, localStorage
 	)->
 		$scope.uploading = 0
 
@@ -75,6 +75,7 @@ angular.module("anthCraftApp").controller "packageFormController", [
 		$scope.theme = themeService.themeModel
 		$scope.theme.category = $scope.theme.category or 'None'
 		$scope.theme.isShared = $scope.theme.isShared or '1'
+		$scope.theme.userId = $cookies.userid
 
 		# $scope.$watch 'theme', (newVal)->
 		# 	localStorage.set('unpublished_theme_model', newVal)
