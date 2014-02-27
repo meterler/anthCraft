@@ -10,4 +10,3 @@ angular.module('anthCraftApp').controller 'maskListController', [
 angular.module('anthCraftApp').filter 'getAwayCustomize_icon', ->
 	(input)->
 		console.log arguments
-		

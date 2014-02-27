@@ -95,6 +95,7 @@ app = angular.module('anthCraftApp', [
 		})
 		$translateProvider.fallbackLanguage('en_US')
 		$translateProvider.determinePreferredLanguage()
+
 ]
 
 app.run(["$rootScope", '$translate',
@@ -102,4 +103,7 @@ app.run(["$rootScope", '$translate',
 		$translate.use "en_US"
 
 		$rootScope.UPLOAD_PATH = "/resources/upload"
+
+		$rootScope.$on '$translateChangeSuccess', ()->
+			$rootScope.loadSuccess = true
 	])

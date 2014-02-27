@@ -167,7 +167,7 @@ mod.factory 'themeConfig', ->
 					src: "/default_theme/customize_mat/default_customize_mat.png"
 				}
 				"customize_mask": {
-					capital: "Icon Mask"
+					capital: "Icon Shape"
 					link: [ 'customize', 'customize_mat' ]
 					src: "/default_theme/customize_mat/default_customize_mask.png"
 				}
