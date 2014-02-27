@@ -1,8 +1,8 @@
 
 angular.module("anthCraftApp").controller "packageFormController", [
-	'$scope', '$http', '$q', '$timeout', '$modalInstance', 'themeService',
+	'$scope', '$http', '$q', '$timeout', '$modalInstance', 'themeService', 'localStorageService',
 	(
-		$scope, $http, $q, $timeout, $modalInstance, themeService
+		$scope, $http, $q, $timeout, $modalInstance, themeService, localStorage
 	)->
 		$scope.uploading = 0
 
@@ -76,9 +76,16 @@ angular.module("anthCraftApp").controller "packageFormController", [
 		$scope.theme.category = $scope.theme.category or 'None'
 		$scope.theme.isShared = $scope.theme.isShared or '1'
 
+		# $scope.$watch 'theme', (newVal)->
+		# 	localStorage.set('unpublished_theme_model', newVal)
+
+		saveToLocalStorage = ->
+			localStorage.set('unpublished_theme_model', themeService.themeModel)
+
 		$scope.ok = ->
 			# Merge form data with themeModel
 			angular.extend themeService.themeModel, $scope.theme
+			saveToLocalStorage()
 			generatePreviewImage().then ->
 				# update progress...
 				$scope.uploading = 40
@@ -95,6 +102,8 @@ angular.module("anthCraftApp").controller "packageFormController", [
 						$modalInstance.close('fail')
 				, 0
 
-		$scope.cancel = -> $modalInstance.dismiss()
+		$scope.cancel = ->
+			saveToLocalStorage()
+			$modalInstance.dismiss()
 
 ]
