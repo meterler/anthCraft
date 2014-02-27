@@ -1,9 +1,10 @@
 
 angular.module("anthCraftApp").controller "packageFormController", [
-	'$scope', '$http', '$modalInstance', 'themeService',
+	'$scope', '$http', '$q', '$timeout', '$modalInstance', 'themeService',
 	(
-		$scope, $http, $modalInstance, themeService
+		$scope, $http, $q, $timeout, $modalInstance, themeService
 	)->
+		$scope.uploading = 0
 
 		# $scope.categories = [
 		# 	{ name: 'None', value: 'None' }
@@ -24,6 +25,31 @@ angular.module("anthCraftApp").controller "packageFormController", [
 		# 	{ name: 'Festive', value: 'Festive' }
 		# 	{ name: 'Sexy', value: 'Sexy' }
 		# ]
+		generatePreviewImage = ->
+			deferred = $q.defer()
+			themeService.previewTheme (newTheme)->
+				# Get preview image list and thumbnail
+				deferred.resolve(newTheme)
+
+			return deferred.promise
+
+		packageTheme = ->
+			deferred = $q.defer()
+			# Package the theme
+			themeService.packageTheme (theme)->
+				if not theme
+					# Data is not dirty cant save
+					console.log "Theme is not dirty!"
+					deferred.reject(false)
+					return
+				# Package saved successfully
+				console.log "Package success:", theme
+				deferred.resolve(theme)
+			, ()->
+				# Server package failed
+				deferred.reject()
+
+			return deferred.promise
 
 		$scope.categories = [
 			'None'
@@ -51,8 +77,23 @@ angular.module("anthCraftApp").controller "packageFormController", [
 		$scope.theme.isShared = $scope.theme.isShared or '1'
 
 		$scope.ok = ->
-			# todo: Gather form field values
-			$modalInstance.close($scope.theme)
+			# Merge form data with themeModel
+			angular.extend themeService.themeModel, $scope.theme
+			generatePreviewImage().then ->
+				# update progress...
+				$scope.uploading = 40
+
+				$timeout ->
+					$scope.uploading = 60
+					packageTheme().then (theme)->
+						$scope.uploading = 100
+						$timeout ->
+							$modalInstance.close('success', theme)
+						, 1500
+					, ->
+						$scope.uploading = 100
+						$modalInstance.close('fail')
+				, 0
 
 		$scope.cancel = -> $modalInstance.dismiss()
 

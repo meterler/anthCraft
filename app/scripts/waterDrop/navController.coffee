@@ -4,32 +4,6 @@ angular.module('anthCraftApp').controller 'navController', [
 		$rootScope, $scope, $modal, $location, $q, themeService
 	)->
 
-		generatePreviewImage = ->
-			deferred = $q.defer()
-			themeService.previewTheme (newTheme)->
-				# Get preview image list and thumbnail
-				deferred.resolve(newTheme)
-
-			return deferred.promise
-
-		packageTheme = ->
-			deferred = $q.defer()
-			# Package the theme
-			themeService.packageTheme (theme)->
-				if not theme
-					# Data is not dirty cant save
-					console.log "Theme is not dirty!"
-					deferred.reject(false)
-					return
-				# Package saved successfully
-				console.log "Package success:", theme
-				deferred.resolve(theme)
-			, ()->
-				# Server package failed
-				deferred.reject()
-
-			return deferred.promise
-
 		showPackageForm = ()->
 			dlg = $modal.open {
 				templateUrl: "/views/waterDrop/modals/packageForm.html"
@@ -92,24 +66,9 @@ angular.module('anthCraftApp').controller 'navController', [
 
 		# Package
 		$scope.packageTheme = ->
-
-			previewed = generatePreviewImage()
-
 			showPackageForm()
-				.then((formData)->
-
-					# Merge form data with themeModel
-					angular.extend themeService.themeModel, formData
-
-					# Make preview images AND THEN package
-					previewed.then -> packageTheme().then((theme)->
-						console.log "Package success!", theme
-						showPackageResult('success', theme)
-					, ->
-						# package error...
-						console.log "Package failed!"
-						showPackageResult('fail')
-					)
+				.then((result, theme)->
+					showPackageResult(result, theme)
 				)
 				.catch(->
 					console.log "User canceled package."
@@ -127,8 +86,6 @@ angular.module('anthCraftApp').controller 'navController', [
 				# 	console.log "Package success:", theme
 
 				# 	# todo: show dialog contains buttons: download, check theme, share theme
-
-
 
 		# Help
 		$scope.openHelpBox = ->
