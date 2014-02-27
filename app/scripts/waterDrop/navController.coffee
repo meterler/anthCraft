@@ -1,7 +1,7 @@
 angular.module('anthCraftApp').controller 'navController', [
-	'$rootScope', '$scope', '$modal', '$location', '$q', 'themeService',
+	'$rootScope', '$scope', '$modal', '$cookies', '$location', '$q', 'themeService',
 	(
-		$rootScope, $scope, $modal, $location, $q, themeService
+		$rootScope, $scope, $modal, $cookies, $location, $q, themeService
 	)->
 
 		showPackageForm = ()->
@@ -23,6 +23,14 @@ angular.module('anthCraftApp').controller 'navController', [
 				}
 			}
 			return dlg.result
+
+		$scope.isLogined = -> !!$cookies.userid
+		$scope.getUser = ->
+			{
+				name: $cookies.username
+				id: $cookies.userid
+				avatar: $cookies.avatar
+			}
 
 		# New
 		$scope.createNew = ->

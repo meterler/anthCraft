@@ -63,6 +63,10 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5b5b5b', endColorstr='#454545',GradientType=0 ); /* IE6-9 */
 
 
+
+	.nav {
+		margin-right: 40px;
+	}
 	.nav li.splitter {
 		height: 70px;
 		border-left: 1px solid #676767;
@@ -70,7 +74,7 @@
 	}
 	.nav li {
 		color: #FDFAA7;
-		a {
+		&>a {
 			display: block;
 			width: 64px;
 			margin: 0;
@@ -117,6 +121,29 @@
 					border: 1px solid #FDFAA7;
 					border-radius: 50%;
 				}
+			}
+		}
+	}
+
+	.avatar {
+		margin-top: 15px;
+		margin-left: 10px;
+		img {
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			overflow: hidden;
+		}
+	}
+
+	.user-info {
+		margin-top: 15px;
+		color: #C4C4C4;
+		text-align: center;
+		a {
+			color: #FDFAA7;
+			&:hover {
+				text-decoration: none;
 			}
 		}
 	}

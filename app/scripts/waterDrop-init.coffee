@@ -1,5 +1,6 @@
 app = angular.module('anthCraftApp', [
 	'ngRoute'
+	'ngCookies'
 	'ngResource'
 	'dragAndDrop'
 	'angular-carousel'
@@ -100,10 +101,9 @@ app = angular.module('anthCraftApp', [
 
 app.run(["$rootScope", '$translate',
 	($rootScope, $translate)->
-		$translate.use "en_US"
-
 		$rootScope.UPLOAD_PATH = "/resources/upload"
 
+		$translate.use "en_US"
 		$rootScope.$on '$translateChangeSuccess', ()->
 			$rootScope.loadSuccess = true
 	])

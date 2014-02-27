@@ -18,8 +18,9 @@ module.exports = (app)->
 	CategoryModel.register app, '/api/category'
 
 	# Cookie test
-	# app.get "/", (req ,res, next)->
-	# 	res.cookie('username', 'ijse')
-	# 	res.cookie('userid', '123')
-	# 	next()
+	app.get "/add-cookie", (req ,res, next)->
+		res.cookie('username', 'ijse')
+		res.cookie('userid', '123')
+		res.cookie('avatar', 'http://a.disquscdn.com/uploads/users/6818/2203/avatar92.jpg?1376936026')
+		res.send 'ok'
 	return
