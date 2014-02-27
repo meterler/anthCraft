@@ -11,35 +11,35 @@ mod.factory 'menuFactory', ->
 				icon: "icon-mobile"
 				submenus: [
 					{
-						title: "Backgrounds"
-						url: "/edit/background"
+						title: "Home"
+						url: "/list/home"
 						sence: "home"
 					}
 					{
-						title: "System Icons"
-						url: "/edit/icons"
+						title: "Drawer"
+						url: "/list/icons"
 						sence: "apps"
 					}
 					{
 						title: "Mask"
-						url: "/edit/mask"
+						url: "/list/mask"
 						sence: "apps"
 					}
 					# {
 					# 	title: "MainMenu"
-					# 	url: "/edit/main_menu"
+					# 	url: "/list/main_menu"
 					# 	sence: "home"
 					# 	disabled: true
 					# }
 					# {
 					# 	title: "Other"
-					# 	url: "/edit/other"
+					# 	url: "/list/other"
 					# 	sence: "home"
 					# 	disabled: true
 					# }
 					# {
 					# 	title: "Colors"
-					# 	url: "/edit/colors"
+					# 	url: "/list/colors"
 					# 	sence: "home"
 					# 	disabled: true
 					# }
@@ -53,17 +53,17 @@ mod.factory 'menuFactory', ->
 				submenus: [
 					{
 						title: "Backgrounds"
-						url: "/edit/lock_backgrounds"
+						url: "/list/lock_backgrounds"
 						sence: "lock"
 					}
 					{
 						title: "Lock screen time"
-						url: "/edit/lock_screen_time"
+						url: "/list/lock_screen_time"
 						sence: "lock"
 					}
 					{
 						title: "Unlock apps"
-						url: "/edit/unlock_apps"
+						url: "/list/unlock_apps"
 						sence: "lock"
 					}
 				]
@@ -75,22 +75,22 @@ mod.factory 'menuFactory', ->
 				submenus: [
 					{
 						title: "Analog Clock"
-						url: "/edit/analog_clock"
+						url: "/list/analog_clock"
 						sence: "home"
 					}
 					{
 						title: "Clean-up"
-						url: "/edit/clean_up"
+						url: "/list/clean_up"
 						sence: "home"
 					}
 					{
 						title: "Acceleration"
-						url: "/edit/acceleration"
+						url: "/list/acceleration"
 						sence: "home"
 					}
 					{
 						title: "Saving optimization"
-						url: "/edit/saving_optimization"
+						url: "/list/saving_optimization"
 						sence: "home"
 					}
 				]

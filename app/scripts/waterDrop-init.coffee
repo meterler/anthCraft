@@ -17,14 +17,11 @@ app = angular.module('anthCraftApp', [
 		# Compile white list for image preview since angular-v1.2.1
 		$compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|blob):|data:image\//)
 
-		tpl_list = "/views/waterDrop/operationPanels/list_panel.html"
-		tpl_edit = "/views/waterDrop/operationPanels/edit_panel.html"
-		tpl_mask = "/views/waterDrop/operationPanels/mask_panel.html"
+		tpl = (name)-> "/views/waterDrop/operationPanels/#{name}_panel.html"
 
 		inject_resModel = (params)-> ['$route', 'themeService', ($route, themeService)->
 			result = {}
-			resType = params.resType
-			resName = $route.current.params.resName
+			[resType, resName] = $route.current.params.resName.split('.')
 			resData = themeService.packInfo[resType][resName]
 			result = {
 				resType: resType
@@ -37,47 +34,44 @@ app = angular.module('anthCraftApp', [
 
 		$routeProvider
 			.when("/", {
-				redirectTo: "/edit/background"
+				redirectTo: "/edit/home"
 			})
-			.when("/edit/background", {
-				templateUrl: tpl_list
-				controller: "backgroundListController"
+			.when("/list/home", {
+				templateUrl: tpl('homelist')
+				controller: "homeListController"
 			})
-			.when("/edit/background/:resName", {
-				templateUrl: tpl_edit
+			.when("/list/home/edit/:resName", {
+				templateUrl: tpl('edit')
 				controller: "resEditorController"
 				resolve: {
 					"resModel": inject_resModel({
-						resType: "wallpaper"
-						backUrl: "/edit/background"
+						backUrl: "/list/home"
 					})
 				}
 			})
-			.when("/edit/icons", {
-				templateUrl: tpl_list
+			.when("/list/icons", {
+				templateUrl: tpl('iconList')
 				controller: "systemIconListController"
 			})
-			.when("/edit/icons/:resName", {
-				templateUrl: tpl_edit
+			.when("/list/icons/edit/:resName", {
+				templateUrl: tpl('edit')
 				controller: "resEditorController"
 				resolve: {
 					"resModel": inject_resModel({
-						resType: "app_icon"
-						backUrl: "/edit/icons"
+						backUrl: "/list/icons"
 					})
 				}
 			})
-			.when("/edit/mask", {
-				templateUrl: tpl_mask
+			.when("/list/mask", {
+				templateUrl: tpl('mask')
 				controller: "maskListController"
 			})
-			.when("/edit/mask/:resName", {
-				templateUrl: tpl_edit
+			.when("/list/mask/edit/:resName", {
+				templateUrl: tpl('edit')
 				controller: "resEditorController"
 				resolve: {
 					"resModel": inject_resModel({
-						resType: "customize"
-						backUrl: "/edit/mask"
+						backUrl: "/list/mask"
 					})
 				}
 			})

@@ -18,5 +18,5 @@ angular.module("anthCraftApp").controller "viewController", [
 		# Check the resource modified or not
 		$scope.isDirty = (res)-> not /^\/default_theme/.test(res.src)
 		$scope.themePack = themeService.packInfo
-		$scope.editIcon = (resKey)-> $location.url("#{$location.url()}/#{resKey}")
+		$scope.editIcon = (cat, res)-> $location.url("#{$location.url()}/edit/#{cat}.#{res}")
 ]
