@@ -179,7 +179,7 @@ mod.factory 'themeConfig', ->
 
 			dock_icon: {
 				"ic_allapps": {
-					capital: "Drawer"
+					capital: "Apps"
 					src: "/default_theme/dock_icon/ic_allapps.png"
 					link: [ 'dock_icon', 'ic_allapps_pressed' ]
 				}
