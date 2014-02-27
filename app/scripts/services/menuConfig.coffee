@@ -25,24 +25,24 @@ mod.factory 'menuFactory', ->
 						url: "/edit/mask"
 						sence: "apps"
 					}
-					{
-						title: "MainMenu"
-						url: "/edit/main_menu"
-						sence: "home"
-						disabled: true
-					}
-					{
-						title: "Other"
-						url: "/edit/other"
-						sence: "home"
-						disabled: true
-					}
-					{
-						title: "Colors"
-						url: "/edit/colors"
-						sence: "home"
-						disabled: true
-					}
+					# {
+					# 	title: "MainMenu"
+					# 	url: "/edit/main_menu"
+					# 	sence: "home"
+					# 	disabled: true
+					# }
+					# {
+					# 	title: "Other"
+					# 	url: "/edit/other"
+					# 	sence: "home"
+					# 	disabled: true
+					# }
+					# {
+					# 	title: "Colors"
+					# 	url: "/edit/colors"
+					# 	sence: "home"
+					# 	disabled: true
+					# }
 
 				]
 			}
