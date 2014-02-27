@@ -34,7 +34,7 @@ app = angular.module('anthCraftApp', [
 
 		$routeProvider
 			.when("/", {
-				redirectTo: "/edit/home"
+				redirectTo: "/list/home"
 			})
 			.when("/list/home", {
 				templateUrl: tpl('homelist')
