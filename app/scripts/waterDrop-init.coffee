@@ -96,6 +96,7 @@ app = angular.module('anthCraftApp', [
 app.run(["$rootScope", '$translate',
 	($rootScope, $translate)->
 		$rootScope.UPLOAD_PATH = "/resources/upload"
+		$rootScope.THEME_PATH = "/resources/themes"
 
 		$translate.use "en_US"
 		$rootScope.$on '$translateChangeSuccess', ()->
