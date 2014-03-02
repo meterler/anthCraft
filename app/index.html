@@ -30,7 +30,6 @@
 	<![endif]-->
 
 	<div class="load-mask" ng-hide="loadSuccess">
-		Loading...
 	</div>
 
 	<nav id="page-header"
@@ -107,7 +106,7 @@
 			<span>Loading views...</span>
 		</div>
 		<div class="col-md-4 preview-container" ng-model="pan" >
-			<div ng-include="'/views/partials/previewer.html'"
+			<div ng-include="'/views/waterDrop/emulatorPanel.html'"
 				class="preview-wrap panel panel-default well"
 				ng-controller="previewCtrl"></div>
 		</div>

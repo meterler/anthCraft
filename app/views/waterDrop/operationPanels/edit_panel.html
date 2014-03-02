@@ -16,6 +16,8 @@
             <div class="col-md-6">
                 <div class="preview-area">
                     <img ng-src="{{UPLOAD_PATH}}{{resInfo.data.src}}?{{etag}}" type="{{image.file.type}}" class="preview_area">
+
+                    <div class="loading" ng-if="isLoading"></div>
                 </div>
                 <label for="upImage" class="file-upload btn btn-clGreen">
                     <b>UPLOAD</b>
@@ -23,6 +25,7 @@
                         accept="{{resAccepts}}"
                         image="image"
                         ng-model="x"
+                        ng-disabled="isLoading"
                         ng-change="uploadFile(image.file, x)" />
                 </label>
             </div>

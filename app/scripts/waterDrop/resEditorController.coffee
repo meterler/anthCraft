@@ -22,7 +22,9 @@ angular.module("anthCraftApp").controller "resEditorController", [
 		$scope.etag = 0
 		refreshImage = -> $scope.etag = (new Date).getTime()
 		$scope.image = {}
+		$scope.isLoading = false
 		$scope.uploadFile = ()->
+			$scope.isLoading = true
 			$timeout ->
 				image = $scope.image.file
 
@@ -48,6 +50,7 @@ angular.module("anthCraftApp").controller "resEditorController", [
 						src: result.src
 					}
 					refreshImage()
+					$scope.isLoading = false
 				).error ()->
 			, 0
 ]
