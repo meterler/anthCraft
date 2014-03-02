@@ -1,6 +1,6 @@
 angular.module("anthCraftApp").controller "resEditorController", [
-	"$rootScope", "$scope", "$location", "$http", "$timeout", "resModel", "themeConfig", "themeService",
-	($rootScope, $scope, $location, $http, $timeout, resModel, themeConfig, themeService)->
+	"$rootScope", "$document", "$scope", "$location", "$http", "$timeout", "resModel", "themeConfig", "themeService",
+	($rootScope, $document, $scope, $location, $http, $timeout, resModel, themeConfig, themeService)->
 		urlPath = $location.path()
 
 		$scope.backUrl = "/list/#{resModel.category}"
@@ -53,4 +53,8 @@ angular.module("anthCraftApp").controller "resEditorController", [
 					$scope.isLoading = false
 				).error ()->
 			, 0
+
+		$scope.openFile = ()->
+			$document.find("input")[0].click()
+			return
 ]

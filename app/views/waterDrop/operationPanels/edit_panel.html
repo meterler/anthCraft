@@ -14,7 +14,7 @@
     <div class="panel-body">
         <div class="row mod-editPanel">
             <div class="col-md-6">
-                <div class="preview-area">
+                <div class="preview-area" ng-click="openFile()">
                     <img ng-src="{{UPLOAD_PATH}}{{resInfo.data.src}}?{{etag}}" type="{{image.file.type}}" class="preview_area">
 
                     <div class="loading" ng-if="isLoading"></div>
