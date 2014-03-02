@@ -74,10 +74,11 @@ mod.controller 'previewCtrl', [
 		$scope.isSelect = (resType, resName)->
 				$scope.selected and ($scope.selected.resType is resType) and ($scope.selected.resName is resName)
 
-		$scope.select = (type, name)->
+		$scope.select = (type, name, category)->
 			$rootScope.$broadcast "res.select", {
 				resType: type
 				resName: name
+				category: category
 			}
 			return
 

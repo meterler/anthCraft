@@ -21,36 +21,36 @@
 			ng-style="_DockBg(_V(theme['dock_icon']['ic_dockbar_bg']))">
 -->
 		<div class="mp-dock">
-			<div class="mp-dock-icon"
-				ng-click="select('app_icon', 'Phone')"
+			<div class="mp-dock-icon activatable"
+				ng-click="select('app_icon', 'Phone', 'home')"
 				ng-class="{ active: isSelect('app_icon', 'Phone') }">
 				<img ng-src="{{_V(theme['app_icon']['Phone'])}}">
 				<p>{{theme['app_icon']['Phone'].capital}}</p>
 			</div>
 
-			<div class="mp-dock-icon"
-				ng-click="select('app_icon', 'Contacts')"
+			<div class="mp-dock-icon activatable"
+				ng-click="select('app_icon', 'Contacts', 'home')"
 				ng-class="{ active: isSelect('app_icon', 'Contacts') }">
 				<img ng-src="{{_V(theme['app_icon']['Contacts'])}}">
 				<p>{{theme['app_icon']['Contacts'].capital}}</p>
 			</div>
 
-			<div class="mp-dock-icon"
-				ng-click="select('dock_icon', 'ic_allapps')"
+			<div class="mp-dock-icon activatable"
+				ng-click="select('dock_icon', 'ic_allapps', 'home')"
 				ng-class="{ active: isSelect('dock_icon', 'ic_allapps') }">
 				<img ng-src="{{_V(theme['dock_icon']['ic_allapps'])}}">
 				<p>{{theme['dock_icon']['ic_allapps'].capital}}</p>
 			</div>
 
-			<div class="mp-dock-icon"
-				ng-click="select('app_icon', 'Messages')"
+			<div class="mp-dock-icon activatable"
+				ng-click="select('app_icon', 'Messages', 'home')"
 				ng-class="{ active: isSelect('app_icon', 'Messages') }">
 				<img ng-src="{{_V(theme['app_icon']['Messages'])}}">
 				<p>{{theme['app_icon']['Messages'].capital}}</p>
 			</div>
 
-			<div class="mp-dock-icon"
-				ng-click="select('app_icon', 'Browser')"
+			<div class="mp-dock-icon activatable"
+				ng-click="select('app_icon', 'Browser', 'home')"
 				ng-class="{ active: isSelect('app_icon', 'Browser') }">
 				<img ng-src="{{_V(theme['app_icon']['Browser'])}}">
 				<p>{{theme['app_icon']['Browser'].capital}}</p>
@@ -63,16 +63,16 @@
 		<ul rn-carousel rn-carousel-index="0" rn-swipe-callback="swipeCallback">
 			<li>
 				<div class="mp-apps-app">
-					<div class="mp-apps-icon"
+					<div class="mp-apps-icon activatable"
 						ng-repeat="(appId, app) in theme.app_icon"
-						ng-click="select('app_icon', appId)"
+						ng-click="select('app_icon', appId, 'icons')"
 						ng-class="{ active: isSelect('app_icon', appId) }">
 						<img ng-src="{{_V(app)}}">
 						<p>{{app.capital}}</p>
 					</div>
-					<div class="mp-apps-maskIcon"
+					<div class="mp-apps-maskIcon activatable"
 						ng-style="_IconBg(_V(theme['customize']['customize_mat']))"
-						ng-click="select('customize', 'customize_mask')"
+						ng-click="select('customize', 'customize_mask', 'mask')"
 						ng-class="{ active: isSelect('customize', 'customize_mask') }">
 						<img ng-src="{{_V(theme['customize']['customize_icon'])}}"
 							ng-style="_Mask(_V(theme['customize']['customize_mask']))">
@@ -83,26 +83,23 @@
 			</li>
 		</ul>
 		<div class="mp-apps-menus">
-			<div class="mp-menus-bottomIcon"
+			<div class="mp-menus-bottomIcon activatable"
 				ng-init="img1=_V(theme['dock_icon']['ap_search'])"
 				ng-style="_ABottomIcon(img1)"
-				ng-click="select('dock_icon', 'ap_search')"
 				ng-class="{ active: isSelect('dock_icon', 'ap_search') }"
 				ng-mouseenter="img1=_V(theme['dock_icon']['ap_search_pressed'])"
 				ng-mouseleave="img1=_V(theme['dock_icon']['ap_search'])"></div>
 
-			<div class="mp-menus-bottomIcon"
+			<div class="mp-menus-bottomIcon activatable"
 				ng-init="img2=_V(theme['dock_icon']['ap_home'])"
 				ng-style="_ABottomIcon(img2)"
-				ng-click="select('dock_icon', 'ap_home')"
 				ng-class="{ active: isSelect('dock_icon', 'ap_home') }"
 				ng-mouseenter="img2=_V(theme['dock_icon']['ap_home_pressed'])"
 				ng-mouseleave="img2=_V(theme['dock_icon']['ap_home'])"></div>
 
-			<div class="mp-menus-bottomIcon"
+			<div class="mp-menus-bottomIcon activatable"
 				ng-init="img3=_V(theme['dock_icon']['ap_menu'])"
 				ng-style="_ABottomIcon(img3)"
-				ng-click="select('dock_icon', 'ap_menu')"
 				ng-class="{ active: isSelect('dock_icon', 'ap_menu') }"
 				ng-mouseenter="img3=_V(theme['dock_icon']['ap_menu_pressed'])"
 				ng-mouseleave="img3=_V(theme['dock_icon']['ap_menu'])"></div>

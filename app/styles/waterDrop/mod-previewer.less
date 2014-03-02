@@ -45,6 +45,14 @@
 		// 	left: 0;
 		// 	top: 0;
 		// }
+		.activatable {
+			&:hover img, &.active img,
+			&:hover .active-bg, &.active .active-bg {
+				border: 1px solid #25D4DF !important;
+				box-shadow: 0px 0px 20px #25D4DF inset, 0px 0px 20px #25D4DF;
+				border-radius: 6px;
+			}
+		}
 
 		.mp-decoration {
 			width: 100%;
@@ -73,10 +81,6 @@
 			cursor: pointer;
 			transition: all .5s;
 
-			&.active {
-				background-color: #FFF5CF;
-				border-color: #DED7BD;
-			}
 		}
 
 		.mp-dock-icon {
@@ -103,10 +107,6 @@
 				color: white;
 			}
 
-			&:hover, &.active {
-				background-color: #FFF5CF;
-				border-color: #DED7BD;
-			}
 		}
 
 		.mp-dock-allapps {
@@ -116,10 +116,6 @@
 			vertical-align: top;
 			cursor: pointer;
 			transition: all .5s;
-			img:hover, &.active img {
-				background-color: #FFF5CF;
-				border-color: #DED7BD;
-			}
 		}
 
 		.mp-statusbar {
@@ -163,10 +159,6 @@
 					z-index: -1;
 					transition: all .5s;
 				}
-				&:hover .active-bg, &.active .active-bg {
-					background-color: #FFF5CF;
-					border-color: #DED7BD;
-				}
 			}
 			.mp-apps-icon {
 				position: relative;
@@ -184,10 +176,6 @@
 					border: 1px solid transparent;
 					cursor: pointer;
 					transition: all .5s;
-				}
-				&:hover img, &.active img {
-					background-color: #FFF5CF;
-					border-color: #DED7BD;
 				}
 				p {
 					position: absolute;
@@ -229,10 +217,6 @@
 			background-size: 48px 48px;
 			cursor: pointer;
 
-			&:hover.active, &.active.active {
-				background-color: #FFF5CF;
-				border-color: #DED7BD;
-			}
 		}
 	}
 }

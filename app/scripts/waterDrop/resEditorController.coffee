@@ -9,6 +9,9 @@ angular.module("anthCraftApp").controller "resEditorController", [
 
 		$scope.standard = themeConfig.getStandard(resModel.resType, resModel.resName)
 
+		# Active in preview panel
+		$rootScope.$broadcast 'res.select', resModel
+
 		# Find last and next item to edit
 		siblingItems = themeConfig.editGroup[resModel.category]
 		siblingItems.forEach (item, idx)->

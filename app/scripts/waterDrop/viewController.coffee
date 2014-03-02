@@ -20,4 +20,9 @@ angular.module("anthCraftApp").controller "viewController", [
 		$scope.themePack = themeService.packInfo
 		$scope.editIcon = (cat, res, last, next)->
 			$location.url("#{$location.url()}/edit/#{cat}.#{res}")
+
+		$scope.$on 'res.select', (event, data)->
+			# Switch to that
+			$location.url("/list/#{data.category}/edit/#{data.resType}.#{data.resName}")
+			return
 ]
