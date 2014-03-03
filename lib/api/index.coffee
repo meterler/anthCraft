@@ -13,6 +13,11 @@ module.exports = (app)->
 		app_index = path.join(__dirname, "../../#{publicFolder}/index.html")
 		res.sendfile app_index
 
+	app.get "/resources/upload/default_theme/*", (req, res)->
+		__log req.path
+		resFile = path.join(__dirname, "../../#{publicFolder}/#{req.path.replace('/resources/upload/', '')}")
+		res.sendfile resFile
+
 	RingModel.register app, '/api/ring'
 	DWallpaperModel.register app, '/api/dwallpaper'
 	CategoryModel.register app, '/api/category'

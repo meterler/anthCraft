@@ -270,7 +270,7 @@ module.exports = function (grunt) {
             '.htaccess',
             'components/**/*',
             'resources/phone/**/*',
-            'resources/upload/default_theme/**/*',
+            'default_theme/**/*',
             'images/{,*/}*.{gif,webp}',
             'i18n/**/*',
             'logs',
