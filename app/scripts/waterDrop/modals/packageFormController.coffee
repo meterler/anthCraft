@@ -60,8 +60,13 @@ angular.module("anthCraftApp").controller "packageFormController", [
 			localStorage.set('unpublished_theme_model', themeService.themeModel)
 
 		$scope.ok = ->
+
+			# Copy apk_icon value
+			$scope.theme.apk_icon = themeService.packInfo.customize.customize_icon.src
+
 			# Merge form data with themeModel
 			angular.extend themeService.themeModel, $scope.theme
+
 			saveToLocalStorage()
 			generatePreviewImage().then ->
 				# update progress...
