@@ -6,25 +6,6 @@ angular.module("anthCraftApp").controller "packageFormController", [
 	)->
 		$scope.uploading = 0
 
-		# $scope.categories = [
-		# 	{ name: 'None', value: 'None' }
-		# 	{ name: 'Cartoon & Anime', value: 'Cartoon & Anime' }
-		# 	{ name: 'Celebrity', value: 'Celebrity' }
-		# 	{ name: 'People', value: 'People' }
-		# 	{ name: 'Love & Romance', value: 'Love & Romance' }
-		# 	{ name: 'Religion & Myth', value: 'Religion & Myth' }
-		# 	{ name: 'Animals', value: 'Animals' }
-		# 	{ name: 'Nature', value: 'Nature' }
-		# 	{ name: 'Lifestyle & Arts', value: 'Lifestyle & Arts' }
-		# 	{ name: 'Science & Technology', value: 'Science & Technology' }
-		# 	{ name: 'Movies & TV', value: 'Movies & TV' }
-		# 	{ name: 'Games', value: 'Games' }
-		# 	{ name: 'Cars', value: 'Cars' }
-		# 	{ name: 'Sports', value: 'Sports' }
-		# 	{ name: 'Music', value: 'Music' }
-		# 	{ name: 'Festive', value: 'Festive' }
-		# 	{ name: 'Sexy', value: 'Sexy' }
-		# ]
 		generatePreviewImage = ->
 			deferred = $q.defer()
 			themeService.previewTheme (newTheme)->
@@ -49,29 +30,25 @@ angular.module("anthCraftApp").controller "packageFormController", [
 
 			return deferred.promise
 
-		$scope.categories = [
-			'None'
-			'Cartoon & Anime'
-			'Celebrity'
-			'People'
-			'Love & Romance'
-			'Religion & Myth'
-			'Animals'
-			'Nature'
-			'Lifestyle & Arts'
-			'Science & Technology'
-			'Movies & TV'
-			'Games'
-			'Cars'
-			'Sports'
-			'Music'
-			'Festive'
-			'Sexy'
-
-		]
+		$http.get("/api/category", {
+			params: {
+				type: 0
+				status: 1
+				sort: "orderNum"
+				select: "name"
+			}
+		}).success( (list)->
+			$scope.categories = list.map (item)->
+				t = {}
+				t[item._id] = item.name
+				{
+					name: item.name
+					value: JSON.stringify(t)
+				}
+			$scope.theme.category = $scope.theme.category or $scope.categories[0].value
+		).error ->
 
 		$scope.theme = themeService.themeModel
-		$scope.theme.category = $scope.theme.category or 'None'
 		$scope.theme.title = $scope.theme.title or 'cLauncher Theme'
 		$scope.theme.isShared = $scope.theme.isShared or '1'
 		$scope.theme.userId = $cookies.userid
