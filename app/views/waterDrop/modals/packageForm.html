@@ -45,13 +45,13 @@
 					<div class="radio-inline">
 						<label>
 							<input type="radio" value="1" name="isShared" placeholder="None" ng-model="theme.isShared" >
-							Public
+							public
 						</label>
 					</div>
 					<div class="radio-inline">
 						<label>
 							<input type="radio" value="0" name="isShared" placeholder="None" ng-model="theme.isShared" >
-							Private
+							private
 						</label>
 					</div>
 				</div>
@@ -62,7 +62,7 @@
 		</progressbar>
 		<div class="row text-center">
 			<button class="btn btn-clDarkGreen" ng-click="ok()" ng-disabled="uploading> 0 || !packageInfoForm.title.$valid">Submit</button>
-			<button class="btn btn-default" ng-click="cancel()">Cancel</button>
+			<button class="btn btn-default col-md-offset-1" ng-click="cancel()">Cancel</button>
 		</div>
 	</form>
 </div>
