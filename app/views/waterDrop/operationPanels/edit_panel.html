@@ -19,7 +19,7 @@
 
                     <div class="loading" ng-if="isLoading"></div>
                 </div>
-                <label for="upImage" class="file-upload btn btn-clGreen">
+                <label for="upImage" class="file-upload btn btn-clGreen" ng-click="openFile()">
                     <b>UPLOAD</b>
                     <input type="file" name="upImage"
                         accept="{{resAccepts}}"
