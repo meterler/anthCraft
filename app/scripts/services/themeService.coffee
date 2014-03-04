@@ -9,13 +9,19 @@ mod.factory 'themeService', [
 		$rootScope, $resource, localStorage, themeConfig
 	)->
 
-		actions = {
+		saveLocalData = ->
+			localStorage.set 'theme.data', {
+				meta: service.themeModel
+				packInfo: service.packInfo
+			}
+		getLocalData = -> localStorage.get 'theme.data'
+
+		Theme = $resource('/api/themes/:themeId', { themeId: '@_id' }, {
 			create: { method: 'POST', url: '/api/themes/create' }
 			save: { method: 'POST', url: '/api/themes' }
 			packageUp: { method: 'PUT', url: '/api/themes/:themeId/package' }
 			preview: { method: 'PUT', url: '/api/themes/preview?id=:themeId' }
-		}
-		Theme = $resource('/api/themes/:themeId', { themeId: '@_id' }, actions)
+		})
 
 		service = {
 
@@ -30,41 +36,36 @@ mod.factory 'themeService', [
 			# Get themeModel model from server side
 			init: (callback)->
 				# Clear localStorage
-				localStorage.remove('unpublished_theme_model')
-				localStorage.remove('unpublished_theme_packInfo')
+				localStorage.clearAll()
 
 				# Get themeId from server, but no record in database
-				service.themeModel = Theme.create {}, (doc)->
+				Theme.create {}, (doc)->
+
+					service.themeModel = doc
+					service.themeModel._dirty = false
 
 					# Save to local storage
-					localStorage.set('unpublished_theme_model', doc)
-					localStorage.set('unpublished_theme_packInfo', service.packInfo)
+					saveLocalData()
+
+					# init default packInfo
+					service.packInfo = angular.copy(themeConfig.defaultPackInfo)
+
+					# Inform theme update and need refresh status
+					service.themeUpdate()
+
 					callback?()
 				, callback
 
 
-				# init default packInfo
-				service.packInfo = angular.copy(themeConfig.defaultPackInfo)
-				service.updateView()
-				service.themeModel._dirty = false
-
-				# Restore uploader image preview data
-				$rootScope.$broadcast "uploader.restore"
-
-				# TODO: FAILD?
-
-			hasUnpub: ()-> !!localStorage.get('unpublished_theme_model')
+			hasUnpub: ()-> !!getLocalData()
 			continueWork: ()->
-				return false if not service.hasUnpub()
-
 				# Check localStorage,
 				# 	recover data if exists
 
-				unpublished_theme_model = localStorage.get('unpublished_theme_model')
-				unpublished_theme_packInfo = localStorage.get('unpublished_theme_packInfo')
-				if unpublished_theme_model
-					service.packInfo = unpublished_theme_packInfo
-					service.themeModel = unpublished_theme_model
+				localData = getLocalData()
+				if localData
+					service.packInfo = localData.packInfo
+					service.themeModel = localData.meta
 					# Because there is no data persisted to database until theme upload, so..
 					# unpublished_theme_model = Theme.get { themeId: unpublished_theme_model._id }, (themeModel)->
 					# service.themeModel = themeModel
@@ -83,11 +84,11 @@ mod.factory 'themeService', [
 					# Add timestamp to each resource
 					service.cacheFlags["#{themeConfig.themeFolder}#{updateData.src}"] = (new Date()).getTime()
 
+					service.themeModel._dirty = true
+
 				# Update localStorage if dirty
 				# if service.themeModel._dirty
-				localStorage.set('unpublished_theme_packInfo', service.packInfo)
-
-				service.themeModel._dirty = true
+				saveLocalData()
 
 				# TBD: Not save every time?
 				# service.theme.$save()
@@ -121,8 +122,7 @@ mod.factory 'themeService', [
 							callback.apply(null, arguments)
 
 							# Clear localStorage
-							localStorage.remove('unpublished_theme_model')
-							localStorage.remove('unpublished_theme_packInfo')
+							localStorage.clearAll()
 
 							service.themeModel._dirty = false
 						, fail)
