@@ -1,12 +1,6 @@
 angular.module('anthCraftApp').controller 'maskListController', [
-		"$scope", "$location", "themeService", "themeConfig",
-		($scope, $location, themeService, themeConfig)->
-			$scope.getMeta = (resKey)-> themeConfig.getStandard 'customize', resKey
+		"$scope", "$location", "themeService", "themeConfig", "acUtils",
+		($scope, $location, themeService, themeConfig, acUtils)->
 
-			$scope.list = themeService.packInfo.customize
-
+			$scope.list = acUtils.getOperationItemList('mask')
 	]
-
-angular.module('anthCraftApp').filter 'getAwayCustomize_icon', ->
-	(input)->
-		console.log arguments

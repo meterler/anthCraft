@@ -131,7 +131,7 @@ mod.factory 'themeService', [
 
 		}
 
-		service.init() if not service.continueWork()
+		# service.init() if not service.continueWork()
 
 		return service
 ]
