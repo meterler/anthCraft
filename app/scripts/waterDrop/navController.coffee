@@ -90,6 +90,5 @@ angular.module('anthCraftApp').controller 'navController', [
 		$scope.openHelpBox = ->
 			$modal.open {
 				templateUrl: '/views/waterDrop/modals/helpBox.html'
-				controller: "simpleModalController"
 			}
 ]
