@@ -32,9 +32,15 @@
     "angular-bootstrap": "~0.9.0",
     "angular-touch": "~1.2.7",
     "ng-file-upload": "~1.2.3",
-    "audio5js": "*"
+    "audio5js": "*",
+    "angular-ui-router": "0.2.8-bowratic-tedium",
+    "angular-translate": "~2.0.0",
+    "angular-translate-loader-static-files": "~0.1.7",
+    "angular-translate-storage-local": "~0.1.7"
   },
   "resolutions": {
-    "angular": "~1.2.6"
+    "angular": "~1.2.6",
+    "angular-cookies": "~1.2.2",
+    "angular-translate": "~2.0.0"
   }
 }

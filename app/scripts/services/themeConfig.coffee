@@ -79,18 +79,52 @@ mod.factory 'themeConfig', ->
 						height: 90
 						type: '.png'
 					}
+		editGroup: {
+			home: [
+				['wallpaper', 'wallpaper']
+				['wallpaper', 'wallpaper-hd']
+				['app_icon', 'Phone']
+				['app_icon', 'Contacts']
+				['dock_icon', 'ic_allapps']
+				['app_icon', 'Messages']
+				['app_icon', 'Browser']
+			]
+			icons: [
+				['app_icon', 'Browser']
+				['app_icon', 'Calculator']
+				['app_icon', 'Calendar']
+				['app_icon', 'Camera']
+				['app_icon', 'Clock']
+				['app_icon', 'Contacts']
+				['app_icon', 'Download']
+				['app_icon', 'Email']
+				['app_icon', 'Gallery']
+				['app_icon', 'Maps']
+				['app_icon', 'Messages']
+				['app_icon', 'Music']
+				['app_icon', 'Phone']
+				['app_icon', 'Search']
+				['app_icon', 'Settings']
+				['app_icon', 'Video']
+			]
+			mask: [
+				[ 'customize', 'customize_mat' ]
+				[ 'customize', 'customize_mask' ]
+				[ 'customize', 'customize_icon' ]
+			]
+		}
 
 		# Default packInfo for reset style
 		defaultPackInfo: {
 			wallpaper: {
+				"wallpaper-hd": {
+					capital: "Wallpaper"
+					src: "/default_theme/wallpaper/wallpaper.jpg"
+				}
 				"wallpaper": {
 					capital: "Wallpaper"
 					src: "/default_theme/wallpaper/wallpaper.jpg"
 					link: [ 'wallpaper', 'wallpaper-hd' ]
-				}
-				"wallpaper-hd": {
-					capital: "Wallpaper"
-					src: "/default_theme/wallpaper/wallpaper.jpg"
 				}
 			}
 
@@ -132,7 +166,7 @@ mod.factory 'themeConfig', ->
 					src: "/default_theme/app_icon/com_android_gallery3d_com_android_gallery3d_app_gallery.png"
 				}
 				"Messages": {
-					capital: "Messaging"
+					capital: "Messages"
 					src: "/default_theme/app_icon/com_android_mms_com_android_mms_ui_conversationlist.png"
 				}
 				"Music": {
@@ -163,23 +197,23 @@ mod.factory 'themeConfig', ->
 
 			customize: {
 				"customize_mat": {
-					capital: "Icon Background"
+					capital: "Icon Base"
 					src: "/default_theme/customize_mat/default_customize_mat.png"
 				}
 				"customize_mask": {
-					capital: "Icon Mask"
+					capital: "Icon Shape"
 					link: [ 'customize', 'customize_mat' ]
 					src: "/default_theme/customize_mat/default_customize_mask.png"
 				}
 				"customize_icon": {
-					capital: "Test Icon Mask"
+					capital: "Test Icon"
 					src: "/default_theme/customize_mat/default_customize_icon.png"
 				}
 			}
 
 			dock_icon: {
 				"ic_allapps": {
-					capital: "Drawer"
+					capital: "Apps"
 					src: "/default_theme/dock_icon/ic_allapps.png"
 					link: [ 'dock_icon', 'ic_allapps_pressed' ]
 				}
@@ -189,7 +223,7 @@ mod.factory 'themeConfig', ->
 				}
 				"ic_dockbar_bg": {
 					capital: "Dockbar Backgroud"
-					src: "/default_theme/dock_icon/ic_allapps.png"
+					src: "/default_theme/dock_icon/dockbg.png"
 				}
 
 				"ap_home": {
@@ -221,45 +255,6 @@ mod.factory 'themeConfig', ->
 				}
 			}
 
-		}
-
-		# Show all icon list
-		groupList: {
-			'wallpaper': [
-				{ resType: 'wallpaper', resName: 'wallpaper' }
-			],
-			'dockbar': [
-				{ resType: 'app_icon', resName: 'Phone' }
-				{ resType: 'app_icon', resName: 'Contacts' }
-				{ resType: 'app_icon', resName: 'Messages' }
-				{ resType: 'app_icon', resName: 'Browser' }
-				{ resType: 'dock_icon', resName: 'ic_allapps' }
-				{ resType: 'dock_icon', resName: 'ic_dockbar_bg' }
-			]
-			'appIcons': [
-				{ resType: 'app_icon', resName: 'Browser' }
-				{ resType: 'app_icon', resName: 'Calculator' }
-				{ resType: 'app_icon', resName: 'Calendar' }
-				{ resType: 'app_icon', resName: 'Camera' }
-				{ resType: 'app_icon', resName: 'Phone' }
-				{ resType: 'app_icon', resName: 'Contacts' }
-				{ resType: 'app_icon', resName: 'Clock' }
-				{ resType: 'app_icon', resName: 'Email' }
-				{ resType: 'app_icon', resName: 'Gallery' }
-				{ resType: 'app_icon', resName: 'Messages' }
-				{ resType: 'app_icon', resName: 'Music' }
-				{ resType: 'app_icon', resName: 'Video' }
-				{ resType: 'app_icon', resName: 'Download' }
-				{ resType: 'app_icon', resName: 'Search' }
-				{ resType: 'app_icon', resName: 'Settings' }
-				{ resType: 'app_icon', resName: 'Maps' }
-
-				{ resType: 'customize', resName: 'customize_mask' }
-
-				{ resType: 'dock_icon', resName: 'ap_search' }
-				{ resType: 'dock_icon', resName: 'ap_home' }
-				{ resType: 'dock_icon', resName: 'ap_menu' }
-			]
 		}
 
 	}

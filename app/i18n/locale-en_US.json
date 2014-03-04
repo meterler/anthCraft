@@ -1,0 +1,13 @@
+{
+	"TITLE": "cLauncher",
+	"HEADER": {
+		"NEW": "New",
+		"PREVIEW": "Preview",
+		"PACKAGE": "Package",
+		"HELP": "Help"
+	},
+	"ACCOUNT": {
+		"LOGIN": "Login",
+		"REGIST": "Regist"
+	}
+}

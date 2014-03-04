@@ -1,12 +1,4 @@
-<!-- Theme Previewer Here
-<div class="phone" ng-controller="previewCtrl">
-	<div class="scence main-screen" ng-style="setBg('/resources/upload'+theme.wallpaper.wallpaper)">
-		<div class="app-list"></div>
-	</div>
-	<div class="wallpaper"></div>
-</div>
-
- -->
+<!-- Theme Previewer Here -->
 
 <div class="mod-previewer" ng-switch on="curSence">
 
@@ -20,42 +12,49 @@
 			</li>
 			<li></li>
 		</ul>
+		<!--
 		<div class="mp-dock"
 			ng-mouseover="mcn=$event.target.className"
 			ng-mouseleave="mcn=false"
 			ng-click="(mcn == 'mp-dock')&&select('dock_icon', 'ic_dockbar_bg')"
 			ng-class="{ active: (mcn == 'mp-dock') }"
 			ng-style="_DockBg(_V(theme['dock_icon']['ic_dockbar_bg']))">
-			<img class="mp-dock-icon"
-				ng-src="{{_V(theme['app_icon']['Phone'])}}"
+-->
+		<div class="mp-dock">
+			<div class="mp-dock-icon"
 				ng-click="select('app_icon', 'Phone')"
 				ng-class="{ active: isSelect('app_icon', 'Phone') }">
-
-			<img class="mp-dock-icon"
-				ng-src="{{_V(theme['app_icon']['Contacts'])}}"
-				ng-click="select('app_icon', 'Contacts')"
-				ng-class="{ active: isSelect('app_icon', 'Contacts') }">
-
-			<div class="mp-dock-allapps"
-				ng-mouseover="icon_status='pressed'"
-				ng-mouseleave="icon_status='unpressed'"
-				ng-switch="icon_status"
-				ng-init="icon_status='unpressed'"
-				ng-click="select('dock_icon', 'ic_allapps')"
-				ng-class="{ active: isSelect('dock_icon', 'ic_allapps') }">
-				<img class="mp-dock-icon" ng-src="{{_V(theme['dock_icon']['ic_allapps'])}}" ng-switch-when="unpressed" title="Normal status">
-				<img class="mp-dock-icon" ng-src="{{_V(theme['dock_icon']['ic_allapps_pressed'])}}" ng-switch-when="pressed" title="Pressed status">
+				<img ng-src="{{_V(theme['app_icon']['Phone'])}}">
+				<p>{{theme['app_icon']['Phone'].capital}}</p>
 			</div>
 
-			<img class="mp-dock-icon"
-				ng-src="{{_V(theme['app_icon']['Messages'])}}"
+			<div class="mp-dock-icon"
+				ng-click="select('app_icon', 'Contacts')"
+				ng-class="{ active: isSelect('app_icon', 'Contacts') }">
+				<img ng-src="{{_V(theme['app_icon']['Contacts'])}}">
+				<p>{{theme['app_icon']['Contacts'].capital}}</p>
+			</div>
+
+			<div class="mp-dock-icon"
+				ng-click="select('dock_icon', 'ic_allapps')"
+				ng-class="{ active: isSelect('dock_icon', 'ic_allapps') }">
+				<img ng-src="{{_V(theme['dock_icon']['ic_allapps'])}}">
+				<p>{{theme['dock_icon']['ic_allapps'].capital}}</p>
+			</div>
+
+			<div class="mp-dock-icon"
 				ng-click="select('app_icon', 'Messages')"
 				ng-class="{ active: isSelect('app_icon', 'Messages') }">
+				<img ng-src="{{_V(theme['app_icon']['Messages'])}}">
+				<p>{{theme['app_icon']['Messages'].capital}}</p>
+			</div>
 
-			<img class="mp-dock-icon"
-				ng-src="{{_V(theme['app_icon']['Browser'])}}"
+			<div class="mp-dock-icon"
 				ng-click="select('app_icon', 'Browser')"
 				ng-class="{ active: isSelect('app_icon', 'Browser') }">
+				<img ng-src="{{_V(theme['app_icon']['Browser'])}}">
+				<p>{{theme['app_icon']['Browser'].capital}}</p>
+			</div>
 		</div>
 	</div>
 	<div class="sence sence-apps" ng-switch-when="apps" ng-style="_Wallpaper(_V(theme['wallpaper']['wallpaper-hd']))">
@@ -71,7 +70,6 @@
 						<img ng-src="{{_V(app)}}">
 						<p>{{app.capital}}</p>
 					</div>
-
 					<div class="mp-apps-maskIcon"
 						ng-style="_IconBg(_V(theme['customize']['customize_mat']))"
 						ng-click="select('customize', 'customize_mask')"
@@ -109,7 +107,6 @@
 				ng-mouseenter="img3=_V(theme['dock_icon']['ap_menu_pressed'])"
 				ng-mouseleave="img3=_V(theme['dock_icon']['ap_menu'])"></div>
 		</div>
-
 
 	</div>
 </div>
