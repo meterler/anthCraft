@@ -74,6 +74,27 @@ angular.module('anthCraftApp').controller 'navController', [
 
 		# Package
 		$scope.packageTheme = ->
+
+			# Check if theme isnt dirty
+			if not themeService.themeModel._dirty
+				# There is no modification, do not upload to server
+				$modal.open {
+					templateUrl: "/views/waterDrop/modals/simpleDialog.html"
+					controller: "simpleModalController"
+					resolve: {
+						param: -> {
+							title: "WARNING"
+							content: "You did nothing modified, we can't package for you."
+							cls: { 'text-center': true }
+							closable: true
+							buttons: {
+								ok: "Okay"
+							}
+						}
+					}
+				}
+				return
+
 			showPackageForm()
 				.then((returned)->
 					showPackageResult.apply(null, returned)
