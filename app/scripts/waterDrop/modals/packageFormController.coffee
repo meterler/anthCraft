@@ -67,7 +67,8 @@ angular.module("anthCraftApp").controller "packageFormController", [
 			# Merge form data with themeModel
 			angular.extend themeService.themeModel, $scope.theme
 
-			saveToLocalStorage()
+			# saveToLocalStorage()
+			themeService.updateView()
 			generatePreviewImage().then ->
 				# update progress...
 				$scope.uploading = 40
@@ -84,7 +85,7 @@ angular.module("anthCraftApp").controller "packageFormController", [
 				, 0
 
 		$scope.cancel = ->
-			saveToLocalStorage()
+			themeService.updateView()
 			$modalInstance.dismiss()
 
 ]
