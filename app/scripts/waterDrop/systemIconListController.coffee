@@ -1,7 +1,9 @@
 angular.module("anthCraftApp").controller "systemIconListController", [
-	"$scope", "$location", "themeService", "themeConfig",
-	($scope, $location, themeService, themeConfig)->
+	"$scope", "$location", "themeService", "themeConfig", "acUtils",
+	($scope, $location, themeService, themeConfig, acUtils)->
 
-		$scope.list = themeService.packInfo.app_icon
-		$scope.getMeta = (resKey)-> themeConfig.getStandard 'app_icon', resKey
+		$scope.list = acUtils.getOperationItemList('icons')
+		$scope.$on 'theme.update', ()->
+			$scope.list = acUtils.getOperationItemList('icons')
+
 ]

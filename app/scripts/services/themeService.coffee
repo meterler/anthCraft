@@ -69,8 +69,8 @@ mod.factory 'themeService', [
 					service.themeModel = unpublished_theme_model
 					# Because there is no data persisted to database until theme upload, so..
 					# unpublished_theme_model = Theme.get { themeId: unpublished_theme_model._id }, (themeModel)->
-					# 	service.themeModel = themeModel
-
+					# service.themeModel = themeModel
+					service.themeUpdate()
 
 				return true
 
@@ -86,8 +86,8 @@ mod.factory 'themeService', [
 					service.cacheFlags["#{themeConfig.themeFolder}#{updateData.src}"] = (new Date()).getTime()
 
 				# Update localStorage if dirty
-				if service.dirty
-					localStorage.set('unpublished_theme_packInfo', service.packInfo)
+				# if service.dirty
+				localStorage.set('unpublished_theme_packInfo', service.packInfo)
 
 				service.dirty = true
 
@@ -107,7 +107,7 @@ mod.factory 'themeService', [
 				Theme.preview { themeId: service.themeModel._id }, service.packInfo, (data)->
 					service.themeModel.preview = data.preview
 					service.themeModel.thumbnail = data.thumbnail
-					callback(data);
+					callback(data)
 
 			# Package theme and get theme Url
 			packageTheme: (callback, fail)->

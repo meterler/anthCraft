@@ -6,4 +6,6 @@ angular.module("anthCraftApp").controller "homeListController", [
 		# $scope.getMeta = (resKey)-> themeConfig.getStandard 'wallpaper', resKey
 
 		$scope.list = acUtils.getOperationItemList('home')
+		$scope.$on 'theme.update', ()->
+			$scope.list = acUtils.getOperationItemList('home')
 ]

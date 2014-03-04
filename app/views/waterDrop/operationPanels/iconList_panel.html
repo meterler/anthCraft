@@ -1,14 +1,11 @@
 
 <div class="ac-opIcons panel panel-default well">
 	<ul class="ac-opIcons-list">
-		<li ng-click="editIcon('app_icon', resKey)"
-			ng-repeat="(resKey, icon) in list"
-			ng-init="meta=getMeta(resKey)">
-
-			<i class="icon-ok-circled" ng-if="isDirty(icon)"></i>
-			<img ng-src="{{UPLOAD_PATH}}{{icon.src}}">
-			<span>{{icon.capital}}</span>
-			<span>{{meta.width}}x{{meta.height}}px</span>
+		<li ng-click="editIcon(r.resKey, r.resName)" ng-repeat="r in list">
+			<i class="icon-ok-circled" ng-if="isDirty(r.data)"></i>
+			<img ng-src="{{UPLOAD_PATH}}{{r.data.src}}">
+			<span>{{r.data.capital}}</span>
+			<span>{{r.meta.width}}x{{r.meta.height}}px</span>
 		</li>
 	</ul>
 </div>

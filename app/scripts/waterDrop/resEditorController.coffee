@@ -24,8 +24,14 @@ angular.module("anthCraftApp").controller "resEditorController", [
 		# Fight with cache!
 		$scope.etag = 0
 		refreshImage = -> $scope.etag = (new Date).getTime()
+
 		$scope.image = {}
 		$scope.isLoading = false
+
+		# Sync data
+		$scope.$on 'theme.update', (event, data)->
+			$scope.resInfo.data.src = themeService.packInfo[resModel.resType][resModel.resName].src
+
 		$scope.uploadFile = ()->
 			$scope.isLoading = true
 			$timeout ->
