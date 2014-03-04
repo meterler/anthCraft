@@ -58,6 +58,8 @@ angular.module("anthCraftApp").controller "resEditorController", [
 			, 0
 
 		$scope.openFile = ()->
-			$document.find("input")[0].click()
+			$timeout ->
+				$document.find("input")[0].click()
+			, 0
 			return
 ]
