@@ -17,7 +17,9 @@
                 <div class="preview-area" ng-click="openFile()">
                     <img ng-src="{{UPLOAD_PATH}}{{resInfo.data.src}}?{{etag}}" type="{{image.file.type}}" class="preview_area">
 
-                    <div class="loading" ng-if="isLoading"></div>
+                    <div class="loading" ng-if="isLoading">
+                        <i class="icon-spin4 animate-spin"></i>
+                    </div>
                 </div>
                 <label for="upImage" class="file-upload btn btn-clGreen" ng-click="openFile()">
                     <b>UPLOAD</b>
