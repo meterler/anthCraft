@@ -61,8 +61,9 @@ angular.module("anthCraftApp").controller "packageFormController", [
 
 		$scope.ok = ->
 
-			# Copy apk_icon value
-			$scope.theme.apk_icon = themeService.packInfo.customize.customize_icon.src
+			# Copy apk_icon value, empty if default value
+			t = themeService.packInfo.customize.customize_icon.src
+			$scope.theme.apk_icon = if not /\/default_theme\//.test(t) then t else ""
 
 			# Merge form data with themeModel
 			angular.extend themeService.themeModel, $scope.theme
