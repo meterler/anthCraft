@@ -82,15 +82,16 @@ angular.module('anthCraftApp').controller 'navController', [
 		# Package
 		$scope.packageTheme = ->
 
-			acUtils.ifUserLogined()
-				.then( ->
-					# user logined
-					acUtils.ifThemeModified().then -> showPackageForm().then(showPackageResult)
-				)
-				.catch( ->
+			# Disable for them time being
+			# acUtils.ifUserLogined()
+			# 	.then( ->
+			# 		# user logined
+			# 		acUtils.ifThemeModified().then -> showPackageForm().then(showPackageResult)
+			# 	)
+			# 	.catch( ->
 
-				)
-
+			# 	)
+			acUtils.ifThemeModified().then -> showPackageForm().then(showPackageResult)
 
 
 		# Help
@@ -98,4 +99,7 @@ angular.module('anthCraftApp').controller 'navController', [
 			$modal.open {
 				templateUrl: '/views/waterDrop/modals/helpBox.html'
 			}
+
+		$scope.openLoginBox = ->
+			# acUtils.ifUserLogined()
 ]
