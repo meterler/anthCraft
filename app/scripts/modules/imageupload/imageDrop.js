@@ -9,15 +9,11 @@ angular.module('anthCraft.imagedrop', [])
             onDragEnterLeave: "&"
         },
         link: function (scope, element, attrs) {
-            //The on-image-drop event attribute
-            var onImageDrop = $parse(attrs.onImageDrop);
-            var onDragEnterLeave = $parse(attrs.onDragEnterLeave);
 
             function dragEnterLeave(evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
-                // scope.$apply(onDragEnterLeave(evt));
-                scope.onDragEnterLeave({ event: evt });
+                scope.onDragEnterLeave({ event: evt, element: element });
             }
 
             element.bind('dragenter', dragEnterLeave);
@@ -26,19 +22,13 @@ angular.module('anthCraft.imagedrop', [])
             element.bind('dragover', function(evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
-                var ok = evt.dataTransfer && evt.dataTransfer.types && evt.dataTransfer.types.indexOf('Files') >= 0
+                // var ok = evt.dataTransfer && evt.dataTransfer.types && evt.dataTransfer.types.indexOf('Files') >= 0
             });
 
             element.bind('drop', function(evt) {
                 evt.stopPropagation();
                 evt.preventDefault();
 
-                // scope.$apply(onImageDrop(evt, evt.dataTransfer.files));
-                // onImageDrop(evt, evt.dataTransfer.files);
-                // scope.$apply(onImageDrop(scope));
-                // scope.$apply(function() {
-                //     scope.onImageDrop(evt, evt.dataTransfer.files);
-                // })
                 var resObj = {
                     resName: scope.resName,
                     resType: scope.resType

@@ -55,6 +55,10 @@ angular.module("anthCraftApp").controller "viewController", [
 			$location.url("/list/#{data.category}/edit/#{data.resType}.#{data.resName}")
 			return
 
+		$scope.onDragging = (event, element)->
+
+			element.toggleClass 'active'
+
 		$scope.uploadImage = (event, files, resModel)->
 			# Upload files
 			image = files[0]

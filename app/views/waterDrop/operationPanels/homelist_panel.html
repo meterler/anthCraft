@@ -5,7 +5,9 @@
 		<li ng-click="editIcon(r.resKey, r.resName)"
 			ng-repeat="r in list"
 			imagedrop res-type="{{r.resKey}}" res-name="{{r.resName}}"
-			on-image-drop="uploadImage(event, files, resModel)">
+			on-image-drop="uploadImage(event, files, resModel)"
+			on-drag-enter-leave="onDragging(event, element)"
+			>
 			<i class="icon-ok-circled" ng-if="isDirty(r.data)"></i>
 			<img ng-src="{{UPLOAD_PATH}}{{r.data.src}}">
 			<span>{{r.data.capital}}</span>
