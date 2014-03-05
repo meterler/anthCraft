@@ -106,11 +106,11 @@ mod.factory 'themeConfig', ->
 				['app_icon', 'Search']
 				['app_icon', 'Settings']
 				['app_icon', 'Video']
+				[ 'customize', 'customize_icon' ]
 			]
 			mask: [
 				[ 'customize', 'customize_mat' ]
 				[ 'customize', 'customize_mask' ]
-				[ 'customize', 'customize_icon' ]
 			]
 		}
 
@@ -206,7 +206,7 @@ mod.factory 'themeConfig', ->
 					src: "/default_theme/customize_mat/default_customize_mask.png"
 				}
 				"customize_icon": {
-					capital: "Test Icon"
+					capital: "Theme Icon"
 					src: "/default_theme/customize_mat/default_customize_icon.png"
 				}
 			}
