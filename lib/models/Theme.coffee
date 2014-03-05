@@ -47,6 +47,11 @@ schemaStruct = {
 		trim: true,
 		default: ''
 	}
+	userTag: {
+		type: 'string',
+		trim: true,
+		default: ''
+	}
 	# 缩略图
 	thumbnail: {
 		type: 'string',
