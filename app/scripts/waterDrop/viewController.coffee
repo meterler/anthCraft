@@ -1,7 +1,7 @@
 
 angular.module("anthCraftApp").controller "viewController", [
-	"$rootScope", "$scope", '$location', '$modal', 'themeService',
-	($rootScope, $scope, $location, $modal, themeService)->
+	"$rootScope", "$scope", '$http', '$location', '$modal', 'themeService', 'themeConfig',
+	($rootScope, $scope, $http, $location, $modal, themeService, themeConfig)->
 
 		$scope.pan = {}
 		$scope.changeLayout = (data, from, evt)->
@@ -54,4 +54,30 @@ angular.module("anthCraftApp").controller "viewController", [
 			# Switch to that
 			$location.url("/list/#{data.category}/edit/#{data.resType}.#{data.resName}")
 			return
+
+		$scope.uploadImage = (event, files, resModel)->
+			# Upload files
+			image = files[0]
+			previewScale = themeConfig.getPreviewScale(resModel.resType, resModel.resName)
+
+			formData = new FormData()
+			formData.append('image', image, image.name)
+			formData.append('themeId', themeService.themeModel._id)
+			formData.append('resType', resModel.resType)
+			formData.append('resName', resModel.resName)
+			formData.append('previewScale', JSON.stringify(previewScale))
+
+			$http.post('/api/upload', formData, {
+				transformRequest: angular.identity
+				headers: {
+					'content-type': undefined
+				}
+			}).success((result)->
+				themeService.updateView {
+					resType: resModel.resType
+					resName: resModel.resName
+					src: result.src
+				}
+			).error ()->
+
 ]

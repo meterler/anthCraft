@@ -8,6 +8,7 @@ app = angular.module('anthCraftApp', [
 	'pascalprecht.translate'
 	'anthcraft.imageupload'
 	'ui.bootstrap'
+	'anthCraft.imagedrop'
 ]).config [
 	'$routeProvider', '$locationProvider',
 	'$compileProvider', '$translateProvider',
