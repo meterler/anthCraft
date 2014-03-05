@@ -6,17 +6,22 @@ angular.module('anthCraftApp').controller 'navController', [
 
 		showPackageForm = ()->
 			dlg = $modal.open {
+				backdrop: 'static'
+				keyboard: false
 				templateUrl: "/views/waterDrop/modals/packageForm.html"
 				controller: "packageFormController"
 			}
 
 			return dlg.result
 
-		showPackageResult = (result, theme)->
+		showPackageResult = (data)->
+			[result, theme] = data
 			# todo: success or faile
 			dlg = $modal.open {
 				templateUrl: "/views/waterDrop/modals/packageResult.html"
 				controller: "packageResultModalController"
+				backdrop: 'static'
+				keyboard: false
 				resolve: {
 					result: ()-> result
 					themeModel: ()-> theme
@@ -36,6 +41,8 @@ angular.module('anthCraftApp').controller 'navController', [
 		$scope.createNew = ->
 
 			alertInst = $modal.open {
+				backdrop: 'static'
+				keyboard: false
 				template: """
 				<div class="modal-header text-center">
 					New
