@@ -1,0 +1,63 @@
+<div class="modal-header">
+	Theme Preview
+	<span class="icon-cancel" ng-click="$close()"></span>
+</div>
+<div class="modal-body clearfix">
+
+	<div class="sence home"
+		style="background-image: url({{UPLOAD_PATH}}{{theme['wallpaper']['wallpaper-hd'].src}});">
+		<div class="status-bar"></div>
+		<div class="widget-clock"></div>
+		<div class="home-buttons">
+			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['app_icon']['Phone'].src}});"></div>
+			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['app_icon']['Contacts'].src}});"></div>
+			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['dock_icon']['ic_allapps'].src}});"></div>
+			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['app_icon']['Messages'].src}});"></div>
+			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['app_icon']['Browser'].src}});"></div>
+		</div>
+	</div>
+	<div class="sence apps"
+		style="background-image: url({{UPLOAD_PATH}}{{theme['wallpaper']['wallpaper-hd'].src}});">
+		<div class="status-bar"></div>
+		<div class="widget-clock"></div>
+		<div class="home-buttons">
+			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['app_icon']['Phone'].src}});"></div>
+			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['app_icon']['Contacts'].src}});"></div>
+			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['dock_icon']['ic_allapps'].src}});"></div>
+			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['app_icon']['Messages'].src}});"></div>
+			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['app_icon']['Browser'].src}});"></div>
+		</div>
+		<div class="bgMask"></div>
+
+		<div class="drawer-apps">
+			<div class="app-icon"
+				ng-repeat="(type, icon) in theme.app_icon"
+				style="background-image: url({{UPLOAD_PATH}}{{icon.src}});">
+				<span>{{icon.capital}}</span>
+			</div>
+		</div>
+		<div class="drawer-buttons">
+			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['dock_icon']['ap_search'].src}});"></div>
+			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['dock_icon']['ap_home'].src}});"></div>
+			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['dock_icon']['ap_menu'].src}});"></div>
+		</div>
+	</div>
+	<div class="sence widget"
+		style="background-image: url({{UPLOAD_PATH}}{{theme['wallpaper']['wallpaper-hd'].src}});">
+		<div class="status-bar"></div>
+		<div class="widget-battery"></div>
+
+		<div class="home-buttons">
+			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['app_icon']['Phone'].src}});"></div>
+			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['app_icon']['Contacts'].src}});"></div>
+			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['dock_icon']['ic_allapps'].src}});"></div>
+			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['app_icon']['Messages'].src}});"></div>
+			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['app_icon']['Browser'].src}});"></div>
+		</div>
+	</div>
+
+
+</div>
+<div class="modal-footer">
+	<button class="btn btn-clDarkGreen" ng-click="$close()">Close</button>
+</div>

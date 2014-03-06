@@ -77,6 +77,15 @@ angular.module('anthCraftApp').controller 'navController', [
 
 			# todo: open preview dialog
 			# todo: load preview image
+			$modal.open {
+				backdrop: 'static'
+				keyboard: false
+				templateUrl: "/views/waterDrop/modals/previewModal.html"
+				windowClass : "preview-static"
+				controller: [ '$scope', 'themeService', ($scope, themeService)->
+					$scope.theme = themeService.packInfo
+				]
+			}
 			return
 
 		# Package
