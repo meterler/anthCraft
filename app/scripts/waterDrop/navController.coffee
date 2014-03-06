@@ -82,8 +82,11 @@ angular.module('anthCraftApp').controller 'navController', [
 				keyboard: false
 				templateUrl: "/views/waterDrop/modals/previewModal.html"
 				windowClass : "preview-static"
-				controller: [ '$scope', 'themeService', ($scope, themeService)->
-					$scope.theme = themeService.packInfo
+				controller: [ '$scope', '$modalInstance', 'themeService', (_scope, $modalInstance, themeService)->
+					_scope.theme = themeService.packInfo
+					_scope.submit = ->
+						$modalInstance.dismiss()
+						$scope.packageTheme()
 				]
 			}
 			return
