@@ -13,8 +13,8 @@ getDest = (type, filename, userId)->
 	shasum = crypto.createHash('sha1')
 	shasum.update("#{Date.now()}-#{filename}")
 
-	hashCode = userId / (userId % 1000)
-	name = shasum.digest('hex') + "." + path.extname(filename)
+	hashCode = userId % 1000
+	name = shasum.digest('hex') + path.extname(filename)
 	result = {}
 	result.path = {
 		"wallpaper": "#{__config.resources}/wallpaper/img"
@@ -33,9 +33,8 @@ uploadProcess = (userId, uploadFile, resType, cb)->
 
 	tempFile = uploadFile.path
 
-	__log ">>>>>", tempFile
 	return cb(true) if not tempFile
-	
+
 	fileName = uploadFile.name
 	savedFile = getDest(resType, fileName, userId)
 
@@ -57,8 +56,10 @@ uploadProcess = (userId, uploadFile, resType, cb)->
 module.exports = (app)->
 
 	app.post "/upload/wallpaper", (req ,res)->
-		userId = req.body.userId or -1
+		userId = req.cookies.userid
+		userName = req.cookies.username
 		wallpaperFile = req.files.uploadFile
+
 		title = req.body.title
 		uploadProcess userId, wallpaperFile, 'wallpaper', (err, file)->
 			if not err
@@ -68,6 +69,7 @@ module.exports = (app)->
 					userId: userId
 					bigPath: file.relativePath
 					smallPath: file.relativePath
+					author: userName
 				})
 
 				wallpaper.save (err)->
@@ -80,24 +82,31 @@ module.exports = (app)->
 
 	app.post "/upload/dwallpaper", (req, res)->
 
-		userId = req.body.userId or -1
+		userId = req.cookies.userid
 		apkFile = req.files.apkFile
-		iconFile = req.files.iconFile
 		thumbnailFile = req.files.thumbnailFile
+		previewFiles = req.files.previewFiles[0]
 
 		data = JSON.parse(req.body.dWallpaper)
+		data.userId = userId
+		data.uploader = req.cookies.username
 
 		dWallpaper = DWallpaperModel(data)
 		async.parallel {
 			"apkPath": (callback)->
 				uploadProcess userId, apkFile, 'dwallpaper', callback
-			"iconPath": (callback)->
-				uploadProcess userId, iconFile, 'icons', callback
 			"thumbnail": (callback)->
 				uploadProcess userId, thumbnailFile, 'thumbnail', callback
+			"preview": (callback)->
+				async.map previewFiles, (file, cb)->
+					uploadProcess userId, file, 'preview', (err, result)->
+						cb(err, result?.relativePath)
+				, callback
+
 		}, (err, files)->
+
 			dWallpaper.apkPath = files.apkPath.relativePath
-			dWallpaper.iconPath = files.iconPath.relativePath
+			dWallpaper.preview = files.preview
 			dWallpaper.thumbnail = files.thumbnail.relativePath
 			dWallpaper.size = apkFile.size
 
@@ -107,9 +116,12 @@ module.exports = (app)->
 
 	app.post "/upload/ring", (req, res)->
 
-		userId = req.body.userId or -1
 		ringFile = req.files.ringFile
 		ringData = JSON.parse(req.body.ring)
+		userId = req.cookies.userid
+		ringData.userId = req.cookies.userid
+		ringData.uploader = req.cookies.username
+		ringData.size = req.files.ringFile.size
 
 		uploadProcess userId, ringFile, 'ring', (err, file)->
 
@@ -125,4 +137,9 @@ module.exports = (app)->
 				else
 					res.send "ok"
 
+	app.get "/setCookie", (req, res)->
+		res.cookie('userid', '444432')
+		res.cookie('username', 'ijse')
+
+		res.send "ok"
 	return

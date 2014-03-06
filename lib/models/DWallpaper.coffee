@@ -35,6 +35,7 @@ DWallpaperStruct = {
 	# 推荐标记
 	tag: {
 		type: 'string'
+		default: ""
 	}
 	# 缩略图地址
 	thumbnail: {
@@ -69,7 +70,7 @@ DWallpaperStruct = {
 	# 评价(0-5)
 	grade: {
 		type: 'number'
-		default: 3
+		default: 0
 	}
 	# 积分
 	point: {

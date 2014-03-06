@@ -1,3 +1,4 @@
+path = require 'path'
 
 ThemeModel = require '../models/Theme.coffee'
 RingModel = require '../models/Ring.coffee'
@@ -10,9 +11,25 @@ module.exports = (app)->
 	DWallpaperModel.register app, '/api/dwallpaper'
 	CategoryModel.register app, '/api/category'
 
-	# Cookie test
-	# app.get "/", (req ,res, next)->
-	# 	res.cookie('username', 'ijse')
-	# 	res.cookie('userid', '123')
-	# 	next()
+
+
+	#########################
+	# ROUTES FOR DEVELOPMENT
+	#########################
+	publicFolder = if __config.debug then 'app' else 'public'
+	# Static routes
+	app.get "/list/*", (req, res)->
+		app_index = path.join(__dirname, "../../#{publicFolder}/index.html")
+		res.sendfile app_index
+
+	app.get "/resources/upload/default_theme/*", (req, res)->
+		resFile = path.join(__dirname, "../../#{publicFolder}/#{req.path.replace('/resources/upload/', '')}")
+		res.sendfile resFile
+
+	# Cookie test(only for test)
+	app.get "/add-cookie", (req ,res, next)->
+		res.cookie('username', 'ijse')
+		res.cookie('userid', '123')
+		res.cookie('avatar', 'http://a.disquscdn.com/uploads/users/6818/2203/avatar92.jpg?1376936026')
+		res.send 'ok'
 	return

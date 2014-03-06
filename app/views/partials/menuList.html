@@ -1,15 +1,22 @@
 
 <div class="mod-menuList">
-	<section class="menu-item" ng-repeat="menu in menuList">
+	<section class="menu-item" ng-class="{ active: menu.active, disabled: menu.locked }" ng-repeat="menu in menuList">
 		<header>
-			<a href="javascript:;" ng-click="switchMenu(menu)">
+			<a href="javascript:;" ng-click="!menu.locked && (menu.active=!menu.active)">
+				<i class="{{menu.icon}}"></i>
 				{{menu.title}}
-				<i class="fa fa-angle-down fa-fw"></i>
+				<i class="icon-down-open-big pull-right" ng-if="menu.active"></i>
+				<i class="icon-right-open-big pull-right" ng-if="!menu.active"></i>
+
 			</a>
 		</header>
-		<ul ng-show="menu.active || hasActive(menu.submenus)">
+		<ul ng-show="menu.active">
 			<li ng-repeat="item in menu.submenus">
-				<a ng-href="{{'#' + item.url}}" ng-class="{ active: (curPath==item.url) }" ng-click="item.active=true;" ng-init="spk(item)"> {{item.title}} {{item.sence}} </a>
+				<a	ng-href="{{item.url}}"
+					ng-class="{ active: item.active, disabled: item.disabled }"
+					ng-click="item.disabled && refreshStats(menu, item)">
+					{{item.title}}
+				</a>
 			</li>
 		</ul>
 	</section>

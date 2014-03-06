@@ -1,24 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en_US"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Theme Builder for cLauncher</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width">
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<title>Design android themes -- personalize your phone--Clauncher</title>
+	<meta name="keyword" content="design android theme,create theme,make theme, Personalized theme, Samsung phone theme,  Micromax phone theme,Huawei phone theme,clauncher theme">
+	<meta name="description" content="Clauncher theme tools includes: desktop, icons, quick bar, menu, folders, etc. You are free to replace any of these elements. We also provide all kinds of exquisite material, for your choice.">
+	<meta name="version" content="v1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<link rel="stylesheet" href="components/font-awesome/css/font-awesome.css">
+	<!-- build:css(.tmp) /styles/main.css -->
+	<link rel="stylesheet" href="/styles/bootstrap/bootstrap.min.css">
 
-	<!-- build:css(.tmp) styles/main.css -->
-	<link rel="stylesheet" href="components/ngprogress/ngProgress.css">
-	<link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
-	<link rel="stylesheet" href="styles/main.css">
-	<link rel="stylesheet" href="styles/app.css">
+	<link rel="stylesheet" href="/styles/waterDrop/main.css">
 	<!-- endbuild -->
+	<link rel="stylesheet" href="/styles/webicons/css/webicons.css">
+	<link rel="stylesheet" href="/styles/webicons/css/animation.css">
 </head>
 <body ng-app="anthCraftApp">
 	<!--[if lt IE 9]>
@@ -26,111 +26,140 @@
 	<![endif]-->
 
 	<!--[if lt IE 9]>
-	<script src="components/es5-shim/es5-shim.js"></script>
-	<script src="components/json3/lib/json3.min.js"></script>
+	<script src="/components/es5-shim/es5-shim.js"></script>
+	<script src="/components/json3/lib/json3.min.js"></script>
 	<![endif]-->
 
-	<div class="hd">
-		<div class="bd" ng-controller="indexCtrl" ng-cloak>
-			<img src="styles/img/logo.png" alt="cLauncher Logo" usemap="logoLinkMap">
-			<map name="logoLinkMap">
-				<area shape="rect" coords="0,0,90,81" href="http://themes.c-launcher.com">
-				<area shape="rect" coords="90,0,441,81" href="/">
-			</map>
-			<section class="sec-login" ng-if="!isLogined()" ng-style="{ display: 'block' }">
-				<a href="http://themes.c-launcher.com/jump/register.htm">Register</a>
-				<span>|</span>
-				<a href="http://themes.c-launcher.com/jump/login.htm">Login</a>
-			</section>
-			<section class="sec-login" ng-if="isLogined()" ng-style="{ display: 'block' }">
-			<!--
-				Welcome: {{getUser().name}} ! &nbsp;
-				<a href="http://themes.c-launcher.com"> Back</a> -->
+	<div class="load-mask" ng-hide="loadSuccess">
+	</div>
 
-				<div id="cyou-head-welcome">
-					Welcome:
-						<a href="javascript:void(0)" id="cyou-head-username" ng-click="user_menu_show=!!!user_menu_show" ng-blur="user_menu_show=false"> {{getUser().name}} </a>
-					<ul id="cyou-head-menu" style="width: 115px;" ng-show="user_menu_show" ng-cloak>
-						<li><a href="http://themes.c-launcher.com/jump/person_settings.htm"> Personal settings </a></li>
-						<li><a href="http://designer.c-launcher.com/"> Design Theme </a></li>
-						<li><a href="javascript:;" ng-click="logout()">Logout</a>
-						</li>
-					</ul>
-				</div>
-			</section>
-
-			<section class="sec-controlButton">
-				<a href="javascript:;" ng-click="createTheme()" class="icon-new">
-					<!-- <i class="fa fa-plus-circle fa-3x"></i> -->
-					New
+	<nav id="page-header"
+		class="navbar navbar-default navbar-static-top"
+		role="navigation"
+		ng-controller="navController">
+		<div class="container">
+			<div class="navbar-header">
+				<a href="http://themes.c-launcher.com/" class="navbar-brand" title="{{'TITLE' | translate }}">
+					<img src="/styles/img/logo-clauncher.png" />
 				</a>
-				<a ng-href="#/packForm" class="icon-pack" ng-show="hasUnpub()">
-					<!-- <i class="fa fa-upload fa-3x"></i> -->
-					Pack
-				</a>
-			</section>
+			</div>
 
+			<ul class="nav navbar-nav navbar-right">
+				<li class="circled">
+					<a href="#" ng-click="createNew()">
+						<i class="icon-doc-new"></i>
+						{{'HEADER.NEW' | translate }}
+					</a>
+				</li>
+				<li class="circled">
+					<a href="#" ng-click="previewTheme()">
+						<i class="icon-search"></i>
+						{{'HEADER.PREVIEW' | translate }}
+					</a>
+				</li>
+				<li class="circled">
+					<a href="#" ng-click="packageTheme()">
+						<i class="icon-folder"></i>
+						{{'HEADER.PACKAGE' | translate }}
+					</a>
+				</li>
+				<li class="circled">
+					<a href="#" ng-click="openHelpBox()">
+						<i class="icon-help"></i>
+						{{'HEADER.HELP' | translate }}
+					</a>
+				</li>
+				<li class="splitter"></li>
+				<li ng-if="!isLogined()">
+					<a href="http://themes.c-launcher.com/jump/login.do" ng-click="openLoginBox()">
+						<i class="icon-user"></i>
+						{{'ACCOUNT.LOGIN' | translate }}
+					</a>
+				</li>
+				<li ng-if="!isLogined()">
+					<a href="http://themes.c-launcher.com/jump/register.do">
+						<i class="icon-edit"></i>
+						{{'ACCOUNT.REGIST' | translate }}
+					</a>
+				</li>
+				<li ng-if="isLogined()" class="row">
+					<div class="avatar col-md-4">
+						<img ng-src="{{getUser().avatar}}" >
+					</div>
+					<div class="user-info col-md-6">
+						Welcome <br>
+						<a href="http://themes.c-launcher.com/jump/person_settings.do" target="_blank">
+							{{ getUser().name }}
+						</a>
+					</div>
+				</li>
+			</ul>
 		</div>
+	</nav>
+
+	<div class="container view-container" ng-controller="viewController">
+
+		<div class="col-md-2 menu-container" ng-model="pan">
+			<div ng-include="'/views/partials/menuList.html'"
+				ng-controller="menuListCtrl"></div>
+		</div>
+		<div class="col-md-6 operation-container" ng-view ng-model="pan">
+			<span>Loading views...</span>
+		</div>
+		<div class="col-md-4 preview-container" ng-model="pan" >
+			<div ng-include="'/views/waterDrop/emulatorPanel.html'"
+				class="preview-wrap panel panel-default well"
+				ng-controller="previewController"></div>
+		</div>
+
 	</div>
 
-	<div class="container clearfix">
-		<div ng-view></div>
-	</div>
 
-	<script src="components/angular/angular.min.js"></script>
 
-	<!-- build:js scripts/components.js -->
-	<script src="components/ngprogress/build/ngProgress.min.js"></script>
-	<script src="components/angular-route/angular-route.min.js"></script>
-	<script src="components/angular-resource/angular-resource.js"></script>
-	<script src="components/angular-local-storage/angular-local-storage.min.js"></script>
-	<script src="components/angular-cookies/angular-cookies.js"></script>
-	<script src="components/angular-sanitize/angular-sanitize.js"></script>
-	<script src="components/angular-dragndrop/angular-dnd.min.js"></script>
-	<script src="components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-	<script src="components/angular-touch/angular-touch.js"></script>
+
+	<script src="/components/angular/angular.min.js"></script>
+
+	<!-- build:js /scripts/waterDrop-components.js -->
+	<script src="/components/angular-translate/angular-translate.js"></script>
+	<script src="/components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+	<script src="/components/angular-route/angular-route.min.js"></script>
+	<script src="/components/angular-resource/angular-resource.js"></script>
+	<script src="/components/angular-local-storage/angular-local-storage.min.js"></script>
+	<script src="/components/angular-cookies/angular-cookies.js"></script>
+	<script src="/components/angular-sanitize/angular-sanitize.js"></script>
+	<script src="/components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	<script src="/components/angular-touch/angular-touch.js"></script>
+	<script src="/components/angular-dragndrop/angular-dnd.js"></script>
+	<script src="/scripts/modules/carousel/angular-carousel.js"></script>
+	<script src="/scripts/modules/imageupload/imageupload.js"></script>
+	<script src="/scripts/modules/imageupload/imageDrop.js"></script>
 	<!-- endbuild -->
 
-	<!-- build:js scripts/modules.js -->
-	<script src="scripts/modules/imageupload/imageupload.js"></script>
-	<script src="scripts/modules/carousel/angular-carousel.js"></script>
+	<!-- build:js({.tmp,app}) /scripts/waterDrop-scripts.js -->
+	<script src="/scripts/waterDrop-init.js"></script>
+	<script src="/scripts/waterDrop/viewController.js"></script>
+	<script src="/scripts/waterDrop/systemIconListController.js"></script>
+	<script src="/scripts/waterDrop/homeListController.js"></script>
+	<script src="/scripts/waterDrop/resEditorController.js"></script>
+	<script src="/scripts/waterDrop/maskListController.js"></script>
+
+	<script src="/scripts/waterDrop/navController.js"></script>
+	<script src="/scripts/waterDrop/modals/helpModalController.js"></script>
+	<script src="/scripts/waterDrop/modals/simpleModalController.js"></script>
+	<script src="/scripts/waterDrop/modals/packageFormController.js"></script>
+	<script src="/scripts/waterDrop/modals/packageResultModalController.js"></script>
+	<script src="/scripts/waterDrop/modals/loginModalController.js"></script>
+
+	<script src="/scripts/services/menuConfig.js"></script>
+	<script src="/scripts/services/acUtils.js"></script>
+	<script src="/scripts/services/themeConfig.js"></script>
+	<script src="/scripts/services/themeService.js"></script>
+	<script src="/scripts/waterDrop/emulator/previewController.js"></script>
+	<script src="/scripts/controllers/menuListCtrl.js"></script>
 	<!-- endbuild -->
-
-	<!-- build:js({.tmp,app}) scripts/scripts.js -->
-	<script src="scripts/init.js"></script>
-	<script src="scripts/app.js"></script>
-	<script src="scripts/controllers/indexCtrl.js"></script>
-	<script src="scripts/controllers/latheCtrl.js"></script>
-	<script src="scripts/controllers/packCtrl.js"></script>
-	<script src="scripts/controllers/previewCtrl.js"></script>
-	<script src="scripts/controllers/overlayCtrl.js"></script>
-	<script src="scripts/controllers/resourceLibraryCtrl.js"></script>
-	<script src="scripts/services/menuConfig.js"></script>
-	<script src="scripts/controllers/menuListCtrl.js"></script>
-	<script src="scripts/services/themeConfig.js"></script>
-	<script src="scripts/services/themeService.js"></script>
-	<script src="scripts/services/uploadService.js"></script>
-
-	<script src="scripts/controllers/dashCtrl.js"></script>
-
-	<!-- endbuild -->
-
-
 	<div style="display: none;">
 		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5795081'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/stat.php%3Fid%3D5795081' type='text/javascript'%3E%3C/script%3E"));</script>
 	</div>
 
-	<div class="overlay" ng-controller="overlayCtrl" ng-init="showing=false" ng-show="showing">
-		<div class="dialog dlg-confirm">
-			<p>{{options.text}}</p>
-			<div class="button-group">
-				<a class="btn btn-primary" ng-click="close('yes')" ng-if="options.yes">{{options.yes}}</a>
-				<a class="btn btn-warning" ng-click="close('no')" ng-if="options.no">{{options.no}}</a>
-			</div>
-		</div>
-	</div>
-
 </body>
-
-
 </html>

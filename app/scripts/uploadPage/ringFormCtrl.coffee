@@ -30,7 +30,14 @@ mod.controller "ringFormCtrl", [
 			fReader = new FileReader()
 			fReader.onload = (e)->
 				#$scope.selectedRing = e.target.result
-				document.getElementById("ringPlayer").src = e.target.result
+				playerDom = document.getElementById("ringPlayer")
+				playerDom.src = e.target.result
+				playerDom.onloadeddata = ->
+					duration = Math.floor(playerDom.duration)
+					t = new Date(0)
+					t.setSeconds(duration)
+					$scope.ring.duration = t.toGMTString().split(" ")[4]
+					#$scope.ring.duration = "" + Math.floor(duration/60) + ":" + (duration%60)
 
 			fReader.readAsDataURL file
 			return
@@ -40,6 +47,17 @@ mod.controller "ringFormCtrl", [
 			event.preventDefault();
 
 			data = $scope.ring
+
+			# Validate file type
+			if not /\.mp3$/.test(data.file.name)
+				alert("Please chose .mp3 file")
+				return
+
+			fileSize = data.file.size
+			if fileSize > 1024*1024*5 # 5MB
+				alert("The size of mp3 file must be less than 10MB.")
+				return
+
 			temp = data.category_raw.split("|")
 			categoryJson = {}
 			categoryJson[temp[0]] = temp[1]

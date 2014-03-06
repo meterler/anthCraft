@@ -3,15 +3,26 @@ path = require 'path'
 basePath = path.join(__dirname, "../public")
 p = (r)-> path.join(basePath, r)
 
+#mongo: "mongodb://root:anthcraft@ds053958.mongolab.com:53958/anthcraft"
+
 module.exports = {
     appPath: basePath
-    port: 9600
+    host: "127.0.0.1"
+    port: 9000
 
     debug: false
-    mongo: "mongodb://127.0.0.1:27017/anthcraft"
+    # mongo: "mongodb://root:anthcraft@ds053958.mongolab.com:53958/anthcraft"
+
+    mongo: "mongodb://admin:123@10.127.129.88:27017/anthcraft"
+    # redis: {
+    #   port: 10422
+    #   host: "pub-redis-10422.us-east-1-3.2.ec2.garantiadata.com"
+    #   auth_pass: "anthCraft"
+    # }
+
     redis: {
         port: 6379
-        host: "127.0.0.1"
+        host: "10.127.129.88"
         auth_pass: null
     }
 
@@ -28,6 +39,28 @@ module.exports = {
         widget_src: p('/resources/phone/default/widget.png')
         pageswitch_src: p('/resources/phone/default/pageswitch.png')
 
-        icon_size: 192
+        icon_size: 56
+    }
+
+    log4js: {
+        appenders: [
+            { type: "console" }
+            {
+                type: 'file'
+                filename: p('logs/anthpack.log')
+                maxLogSize: 204800
+                backups: 3
+                category: "anthpack"
+            }
+            {
+                type: 'file'
+                filename: p('logs/master.log')
+                maxLogSize: 204800
+                backups: 3
+                category: "master"
+            }
+        ],
+        replaceConsole: true
     }
 }
+
