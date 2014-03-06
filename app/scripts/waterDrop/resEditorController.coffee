@@ -18,8 +18,14 @@ angular.module("anthCraftApp").controller "resEditorController", [
 			if item[0] is resModel.resType and item[1] is resModel.resName
 				lItem = siblingItems[idx - 1]
 				nItem = siblingItems[idx + 1]
-				$scope.lastItemUrl = if lItem then "/list/#{resModel.category}/edit/#{lItem[0]}.#{lItem[1]}" else false
-				$scope.nextItemUrl = if nItem then "/list/#{resModel.category}/edit/#{nItem[0]}.#{nItem[1]}" else false
+				$scope.lastItemUrl = if lItem
+						"/list/#{resModel.category}/edit/#{lItem[0]}.#{lItem[1]}"
+					else
+						"/list/#{item[2]}/edit/#{item[3]}.#{item[4]}"
+				$scope.nextItemUrl = if nItem
+						"/list/#{resModel.category}/edit/#{nItem[0]}.#{nItem[1]}"
+					else
+						"/list/#{item[2]}/edit/#{item[3]}.#{item[4]}"
 
 		# Fight with cache!
 		$scope.etag = 0
