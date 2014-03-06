@@ -91,8 +91,10 @@ angular.module('anthCraftApp').controller 'navController', [
 			# 	.catch( ->
 
 			# 	)
-			acUtils.ifThemeModified().then -> showPackageForm().then(showPackageResult)
-
+			acUtils.ifThemeModified().then ->
+				showPackageForm().then ->
+					showPackageResult().then ->
+						themeService.init -> $location.url('/')
 
 		# Help
 		$scope.openHelpBox = ->
