@@ -72,9 +72,15 @@ angular.module("anthCraftApp").controller "packageFormController", [
 			themeService.updateView()
 			generatePreviewImage().then ->
 				# update progress...
-				$scope.uploading = 40
+				timeCount = ->
+					clearTimeout(t) if $scope.uploading >= 90
+					$scope.uploading = $scope.uploading + 5;
+					t = $timeout( ()->
+						timeCount()
+					, 1000)
 
 				$timeout ->
+					timeCount()
 					packageTheme().then (data)->
 						$scope.uploading = 100
 						$timeout ->
