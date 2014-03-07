@@ -161,19 +161,20 @@
 	border: 1px solid #BBBBBB;
 }
 .ac-opIcons-list {
-	height: 478px;
+	height: 475px;
 	padding: 0;
 
 	li {
-		@width: 64px;
-		@height: 64px;
+		@width: 56px;
+		@height: 56px;
 
 		list-style: none;
 		width: 70px;
-		height: @height + 46px;
+		height: @height + 52px;
+		padding-top: 7px;
 		display: inline-block;
 		position: relative;
-		margin: 9px 6px;
+		margin: 9px 0 0 16px;
 
 		text-align: center;
 		font-size: 11px;
@@ -182,10 +183,13 @@
 			cursor: pointer;
 			background-color: white;
 		}
+		&:nth-child(5n + 1) {
+			margin-left: 26px;
+		}
 		img {
 			width: @width;
 			height: @height;
-			padding: 6px;
+			margin-bottom: 7px;
 		}
 
 		i {
@@ -203,6 +207,7 @@
 		width: 172px;
 	}
 	.operation-container {
+		width: 524px;
 		.ac-opIcons, .mod-editor {
 			width: 470px;
 		}
@@ -213,9 +218,9 @@
 			width: 304px;
 		}
 	}
-	.container {
+	.content {
 		&:nth-child(2n) {
-			padding: 0 30px 0 25px;
+			padding: 0 29px 0 25px;
 		}
 	}
 }
@@ -225,5 +230,14 @@
 		.preview-area {
 		}
 
+	}
+}
+.preview-footer {
+	margin: 0;
+	padding: 0 0 20px 0;
+	.btn-l {
+		width: 205px;
+		height: 40px;
+		font-size: 20px;
 	}
 }

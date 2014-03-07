@@ -99,14 +99,14 @@
 
 	<div class="container view-container" ng-controller="viewController">
 
-		<div class="col-md-2 menu-container container" ng-model="pan">
+		<div class="col-md-2 menu-container content" ng-model="pan">
 			<div ng-include="'/views/partials/menuList.html'"
 				ng-controller="menuListCtrl"></div>
 		</div>
-		<div class="col-md-6 operation-container container" ng-view ng-model="pan">
+		<div class="col-md-6 operation-container content" ng-view ng-model="pan">
 			<span>Loading views...</span>
 		</div>
-		<div class="col-md-4 preview-container container" ng-model="pan" >
+		<div class="col-md-4 preview-container content" ng-model="pan" >
 			<div ng-include="'/views/waterDrop/emulatorPanel.html'"
 				class="preview-wrap panel panel-default well"
 				ng-controller="previewController"></div>
