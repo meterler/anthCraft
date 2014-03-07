@@ -84,4 +84,26 @@ angular.module("anthCraftApp").controller "viewController", [
 				}
 			).error ()->
 
+		$scope.openFeedbackBox = ->
+			$modal.open({
+				backdrop: 'static'
+				keyboard: false
+				templateUrl: "/views/waterDrop/modals/feedbackModal.html"
+				controller: "feedbackController"
+				windowClass: "feedbackModal"
+			}).result.then ->
+				$modal.open {
+					templateUrl: "/views/waterDrop/modals/simpleDialog.html"
+					controller: "simpleModalController"
+					resolve: {
+						param: -> {
+							title: "Thanks"
+							cls: { 'text-center': true }
+							content: "Thank you for your feedback!"
+							buttons: {
+								ok: "OK"
+							}
+						}
+					}
+				}
 ]

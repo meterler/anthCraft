@@ -1,0 +1,69 @@
+<div class="modal-header">
+	FeedBack
+	<span class="icon-cancel" ng-click="$dismiss()"></span>
+</div>
+<div class="modal-body">
+
+	<form role="form" name="feedbackForm">
+		<div class="form-group feeling">
+			<label for="feeling">How feel the website</label>
+			<div>
+				<div class="btn-group">
+					<button class="btn" type="button" ng-model="feedback.feeling" btn-radio="'great'">
+						<i class="icon-smile"></i>
+					</button>
+					<button class="btn" type="button" ng-model="feedback.feeling" btn-radio="'bad'">
+						<i class="icon-meh"></i>
+					</button>
+					<button class="btn" type="button" ng-model="feedback.feeling" btn-radio="'good'">
+						<i class="icon-frown"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group why">
+			<label for="why">Why</label>
+			<div>
+				<div class="btn-group">
+					<button class="btn" type="button" ng-model="feedback.why.n1" btn-checkbox>
+						Function too small
+					</button>
+					<button class="btn" type="button" ng-model="feedback.why.n2" btn-checkbox>
+						Interface unsightly
+					</button>
+					<button class="btn" type="button" ng-model="feedback.why.n3" btn-checkbox>
+						Difficult to use
+					</button>
+					<button class="btn" type="button" ng-model="feedback.why.n4" btn-checkbox>
+						Easy to use
+					</button>
+					<button class="btn" type="button" ng-model="feedback.why.n5" btn-checkbox>
+						So cool
+					</button>
+					<button class="btn" type="button" ng-model="feedback.why.n6" btn-checkbox>
+						General
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="saying">Say something</label>
+			<textarea name="saying" class="form-control" ng-model='feedback.saying'></textarea>
+		</div>
+
+		<div class="form-group">
+			<label for="email">Your email</label>
+			<div class="row">
+				<div class="col-md-8">
+					<input type="email" class="form-control" name="email" ng-model="feedback.email">
+				</div>
+			</div>
+		</div>
+	</form>
+
+</div>
+<div class="modal-footer">
+	<button class="btn btn-clDarkGreen" ng-click="submit()">Submit</button>
+	<button class="btn btn-default" ng-click="$dismiss()">Cancel</button>
+</div>

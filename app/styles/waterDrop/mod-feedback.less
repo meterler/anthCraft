@@ -1,0 +1,56 @@
+.feedback {
+	position: absolute;
+	right: 10px;
+	bottom: 22px;
+	font-size: 32px;
+
+	padding-left: 3px;
+	padding-top: 3px;
+	cursor: pointer;
+	color: #999;
+	background-color: #eee;
+	border: 1px solid;
+	border-radius: 6px;
+	transition: all 0.6s;
+	opacity: 0.5;
+	&:hover {
+		color: #000;
+		opacity: 1;
+	}
+}
+
+.feedbackModal {
+	.feeling .btn {
+		font-size: 48px;
+		color: #D76F00;
+		padding: 0;
+		background-color: transparent;
+	}
+	.why .btn {
+		background-color: #E9F4F5;
+		border: 1px solid #C7C7C7;
+		color: #7D7D7D;
+		border-radius: 6px !important;
+		margin: 3px 3px;
+		width: 132px;
+
+		&.active {
+			background-color: white;
+		}
+	}
+
+	.btn-group .btn {
+		&.active::after {
+			position: absolute;
+			top: -3px;
+			right: -3px;
+			content: '\e802'; // ok-circled icon
+			font-family: 'webicons';
+			font-style: normal;
+			font-weight: normal;
+			font-size: 16px;
+			color: #04A800;
+		}
+	}
+
+}

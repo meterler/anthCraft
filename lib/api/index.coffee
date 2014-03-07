@@ -3,6 +3,7 @@ path = require 'path'
 ThemeModel = require '../models/Theme.coffee'
 RingModel = require '../models/Ring.coffee'
 DWallpaperModel = require '../models/DWallpaper.coffee'
+FeedbackModel = require '../models/Feedback.coffee'
 
 CategoryModel = require '../models/Category.coffee'
 module.exports = (app)->
@@ -10,6 +11,7 @@ module.exports = (app)->
 	RingModel.register app, '/api/ring'
 	DWallpaperModel.register app, '/api/dwallpaper'
 	CategoryModel.register app, '/api/category'
+	FeedbackModel.register app, '/api/feedback'
 
 
 
