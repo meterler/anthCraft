@@ -77,6 +77,18 @@ angular.module('anthCraftApp').controller 'navController', [
 
 			# todo: open preview dialog
 			# todo: load preview image
+			$modal.open {
+				backdrop: 'static'
+				keyboard: false
+				templateUrl: "/views/waterDrop/modals/previewModal.html"
+				windowClass : "preview-static"
+				controller: [ '$scope', '$modalInstance', 'themeService', (_scope, $modalInstance, themeService)->
+					_scope.theme = themeService.packInfo
+					_scope.submit = ->
+						$modalInstance.dismiss()
+						$scope.packageTheme()
+				]
+			}
 			return
 
 		# Package
@@ -91,8 +103,10 @@ angular.module('anthCraftApp').controller 'navController', [
 			# 	.catch( ->
 
 			# 	)
-			acUtils.ifThemeModified().then -> showPackageForm().then(showPackageResult)
-
+			acUtils.ifThemeModified().then ->
+				showPackageForm().then (data)->
+					showPackageResult(data).then ->
+						themeService.init -> $location.url('/')
 
 		# Help
 		$scope.openHelpBox = ->

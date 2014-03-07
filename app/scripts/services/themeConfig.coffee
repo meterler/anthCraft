@@ -81,16 +81,16 @@ mod.factory 'themeConfig', ->
 					}
 		editGroup: {
 			home: [
-				['wallpaper', 'wallpaper']
+				['wallpaper', 'wallpaper', 'mask', 'customize', 'customize_mask']
 				['wallpaper', 'wallpaper-hd']
 				['app_icon', 'Phone']
 				['app_icon', 'Contacts']
 				['dock_icon', 'ic_allapps']
 				['app_icon', 'Messages']
-				['app_icon', 'Browser']
+				['app_icon', 'Browser', 'icons', 'app_icon', 'Browser']
 			]
 			icons: [
-				['app_icon', 'Browser']
+				['app_icon', 'Browser', 'home', 'wallpaper', 'wallpaper']
 				['app_icon', 'Calculator']
 				['app_icon', 'Calendar']
 				['app_icon', 'Camera']
@@ -106,11 +106,11 @@ mod.factory 'themeConfig', ->
 				['app_icon', 'Search']
 				['app_icon', 'Settings']
 				['app_icon', 'Video']
-				[ 'customize', 'customize_icon' ]
+				[ 'customize', 'customize_icon', 'mask', 'customize', 'customize_mat']
 			]
 			mask: [
-				[ 'customize', 'customize_mat' ]
-				[ 'customize', 'customize_mask' ]
+				[ 'customize', 'customize_mat', 'icons', 'customize', 'customize_icon']
+				[ 'customize', 'customize_mask', 'home', 'wallpaper', 'wallpaper' ]
 			]
 		}
 
