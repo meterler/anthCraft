@@ -155,35 +155,31 @@
 	}
 }
 
-.view-container {
+.view-container, .menu-container, .preview-container {
 	padding: 0;
-}
-.menu-container {
-	padding: 0;
-}
-.operation-container {
-	padding-left: 30px;
 }
 
 
 .ac-opIcons {
+	padding: 19px 0;
 	background-color: #E7E7E7;
 	border: 1px solid #BBBBBB;
 }
 .ac-opIcons-list {
-	height: 478px;
+	height: 475px;
 	padding: 0;
 
 	li {
-		@width: 64px;
-		@height: 64px;
+		@width: 56px;
+		@height: 56px;
 
 		list-style: none;
-		width: 80px;
-		height: @height + 46px;
+		width: 70px;
+		height: @height + 52px;
+		padding-top: 7px;
 		display: inline-block;
 		position: relative;
-		margin: 9px 0;
+		margin: 9px 0 0 16px;
 
 		text-align: center;
 		font-size: 11px;
@@ -192,10 +188,13 @@
 			cursor: pointer;
 			background-color: white;
 		}
+		&:nth-child(5n + 1) {
+			margin-left: 26px;
+		}
 		img {
 			width: @width;
 			height: @height;
-			padding: 3px;
+			margin-bottom: 7px;
 		}
 
 		i {
@@ -206,5 +205,44 @@
 			height: 16px;
 			color: green;
 		}
+	}
+}
+.view-container {
+	.menu-container {
+		width: 172px;
+	}
+	.operation-container {
+		width: 524px;
+		.ac-opIcons, .mod-editor {
+			width: 470px;
+		}
+	}
+	.preview-container {
+		width: 304px;
+		.preview-wrap {
+			width: 304px;
+		}
+	}
+	.content {
+		&:nth-child(2n) {
+			padding: 0 29px 0 25px;
+		}
+	}
+}
+.mod-editor {
+	.mod-editPanel {
+		padding: 0;
+		.preview-area {
+		}
+
+	}
+}
+.preview-footer {
+	margin: 0;
+	padding: 0 0 20px 0;
+	.btn-l {
+		width: 205px;
+		height: 40px;
+		font-size: 20px;
 	}
 }
