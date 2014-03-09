@@ -1,13 +1,14 @@
 app = angular.module('anthCraftApp', [
 	'ngRoute'
+	'ngAnimate'
 	'ngCookies'
 	'ngResource'
 	'dragAndDrop'
 	'angular-carousel'
 	'LocalStorageModule'
 	'pascalprecht.translate'
-	'anthcraft.imageupload'
 	'ui.bootstrap'
+	'anthcraft.imageupload'
 	'anthCraft.imagedrop'
 ]).config [
 	'$routeProvider', '$locationProvider',

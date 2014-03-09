@@ -11,6 +11,7 @@
 @import "mod-modal.less";
 @import "mod-mask.less";
 @import "mod-feedback.less";
+@import "mod-animate.less";
 
 .load-mask {
 	position: absolute;
@@ -223,10 +224,8 @@
 			width: 304px;
 		}
 	}
-	.content {
-		&:nth-child(2n) {
-			padding: 0 29px 0 25px;
-		}
+	>:nth-child(2) {
+		padding: 0 29px 0 25px;
 	}
 }
 .mod-editor {
