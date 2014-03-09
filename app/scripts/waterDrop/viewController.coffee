@@ -1,7 +1,7 @@
 
 angular.module("anthCraftApp").controller "viewController", [
-	"$rootScope", "$scope", '$http', '$location', '$modal', 'themeService', 'themeConfig',
-	($rootScope, $scope, $http, $location, $modal, themeService, themeConfig)->
+	"$rootScope", "$scope", '$http', '$location', '$modal', '$cookies', 'themeService', 'themeConfig',
+	($rootScope, $scope, $http, $location, $modal, $cookies, themeService, themeConfig)->
 
 		$scope.pan = {}
 		$scope.changeLayout = (data, from, evt)->
@@ -16,7 +16,8 @@ angular.module("anthCraftApp").controller "viewController", [
 			dest_clone = null
 
 		# Check if continuable
-		if themeService.hasUnpub()
+		if themeService.hasUnpub() && not $cookies.s
+			document.cookie = 's=1'
 			# ask if continue last work
 			dlg = $modal.open {
 				templateUrl: "/views/waterDrop/modals/simpleDialog.html"
@@ -39,6 +40,8 @@ angular.module("anthCraftApp").controller "viewController", [
 				themeService.continueWork()
 			, ->
 				themeService.init()
+		else if $cookies.s && themeService.hasUnpub()
+			themeService.continueWork()
 		else
 			themeService.init()
 
@@ -85,6 +88,7 @@ angular.module("anthCraftApp").controller "viewController", [
 			).error ()->
 
 		$scope.openFeedbackBox = ->
+			console.log $cookies.s
 			$modal.open({
 				backdrop: 'static'
 				keyboard: false
