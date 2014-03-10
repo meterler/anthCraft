@@ -4,6 +4,7 @@
 </div>
 <div class="modal-body clearfix">
 
+	<!-- Use ng-style and style to be compatible with ie and chrome -->
 	<div class="sence home" ng-style="{ 'background-image': 'url(' + UPLOAD_PATH + theme['wallpaper']['wallpaper-hd'].src + ');' } "
 		style="background-image: url({{UPLOAD_PATH}}{{theme['wallpaper']['wallpaper-hd'].src}});">
 		<div class="status-bar"></div>
@@ -25,7 +26,14 @@
 		<div class="drawer-apps">
 			<div class="app-icon"
 				ng-repeat="(type, icon) in theme.app_icon"
-				style="background-image: url({{UPLOAD_PATH}}{{icon.src}});">
+				style="background-image: url({{UPLOAD_PATH}}{{theme.customize.customize_mat.src}});">
+				<img ng-src="{{UPLOAD_PATH}}{{icon.src}}"
+					ng-init="t = UPLOAD_PATH + theme.customize.customize_mask.src;"
+					style="-webkit-mask-image: url({{t}});
+						-moz-mask-image: url({{t}});
+						-ms-mask-image: url({{t}});
+						-o-mask-image: url({{t}});
+						mask-image: url({{t}});" />
 				<span>{{icon.capital}}</span>
 			</div>
 		</div>
