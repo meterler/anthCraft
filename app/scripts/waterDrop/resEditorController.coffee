@@ -2,7 +2,7 @@ angular.module("anthCraftApp").controller "resEditorController", [
 	"$rootScope", "$document", "$scope", "$location", "$http", "$timeout", "resModel", "themeConfig", "themeService",
 	($rootScope, $document, $scope, $location, $http, $timeout, resModel, themeConfig, themeService)->
 		urlPath = $location.path()
-
+		$scope.x = ''
 		$scope.backUrl = "/list/#{resModel.category}"
 
 		$scope.resInfo = resModel
@@ -67,6 +67,9 @@ angular.module("anthCraftApp").controller "resEditorController", [
 					refreshImage()
 					$scope.isLoading = false
 				).error ()->
+
+				# Reset x model to file input to support the same filename uploading
+				$scope.x = ''
 			, 0
 
 		$scope.openFile = ()->
