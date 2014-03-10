@@ -5,20 +5,28 @@
 <div class="modal-body clearfix">
 
 	<!-- Use ng-style and style to be compatible with ie and chrome -->
-	<div class="sence home" ng-style="{ 'background-image': 'url(' + UPLOAD_PATH + theme['wallpaper']['wallpaper-hd'].src + ');' } "
-		style="background-image: url({{UPLOAD_PATH}}{{theme['wallpaper']['wallpaper-hd'].src}});">
+	<div class="sence home" ng-style="{ 'background-image': 'url({{UPLOAD_PATH}}' + theme.wallpaper['wallpaper-hd'].src + ')' } ">
 		<div class="status-bar"></div>
 		<div class="widget-clock"></div>
 		<div class="home-buttons">
-			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['app_icon']['Phone'].src}});"></div>
-			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['app_icon']['Contacts'].src}});"></div>
-			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['dock_icon']['ic_allapps'].src}});"></div>
-			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['app_icon']['Messages'].src}});"></div>
-			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['app_icon']['Browser'].src}});"></div>
+			<div class="app-icon" ng-style="{ 'background-image': 'url({{UPLOAD_PATH}}{{theme.app_icon.Phone.src}})' }">
+				<span>{{theme['app_icon']['Phone'].capital}}</span>
+			</div>
+			<div class="app-icon" ng-style="{ 'background-image': 'url({{UPLOAD_PATH}}{{theme.app_icon.Contacts.src}})' }">
+				<span>{{theme['app_icon']['Contacts'].capital}}</span>
+			</div>
+			<div class="app-icon" ng-style="{ 'background-image': 'url({{UPLOAD_PATH}}{{theme.dock_icon.ic_allapps.src}})' }">
+				<span>{{theme['dock_icon']['ic_allapps'].capital}}</span>
+			</div>
+			<div class="app-icon" ng-style="{ 'background-image': 'url({{UPLOAD_PATH}}{{theme.app_icon.Messages.src}})' }">
+				<span>{{theme['app_icon']['Messages'].capital}}</span>
+			</div>
+			<div class="app-icon" ng-style="{ 'background-image': 'url({{UPLOAD_PATH}}{{theme.app_icon.Browser.src}})' }">
+				<span>{{theme['app_icon']['Browser'].capital}}</span>
+			</div>
 		</div>
 	</div>
-	<div class="sence apps" ng-style="{ 'background-image': 'url(' + UPLOAD_PATH + theme['wallpaper']['wallpaper-hd'].src + ');' } "
-		style="background-image: url({{UPLOAD_PATH}}{{theme['wallpaper']['wallpaper-hd'].src}});">
+	<div class="sence apps" ng-style="{ 'background-image': 'url({{UPLOAD_PATH}}' + theme.wallpaper['wallpaper-hd'].src + ')' } ">
 		<div class="status-bar"></div>
 		<div class="widget-clock"></div>
 		<div class="bgMask"></div>
@@ -43,17 +51,26 @@
 			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['dock_icon']['ap_menu'].src}});"></div>
 		</div>
 	</div>
-	<div class="sence widget" ng-style="{ 'background-image': 'url(' + UPLOAD_PATH + theme['wallpaper']['wallpaper-hd'].src + ');' } "
-		style="background-image: url({{UPLOAD_PATH}}{{theme['wallpaper']['wallpaper-hd'].src}});">
+	<div class="sence widget" ng-style="{ 'background-image': 'url({{UPLOAD_PATH}}' + theme.wallpaper['wallpaper-hd'].src + ')' } ">
 		<div class="status-bar"></div>
 		<div class="widget-battery"></div>
 
 		<div class="home-buttons">
-			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['app_icon']['Phone'].src}});"></div>
-			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['app_icon']['Contacts'].src}});"></div>
-			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['dock_icon']['ic_allapps'].src}});"></div>
-			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['app_icon']['Messages'].src}});"></div>
-			<div class="app-icon" style="background-image: url({{UPLOAD_PATH}}{{theme['app_icon']['Browser'].src}});"></div>
+			<div class="app-icon" ng-style="{ 'background-image': 'url({{UPLOAD_PATH}}{{theme.app_icon.Phone.src}})' }">
+				<span>{{theme['app_icon']['Phone'].capital}}</span>
+			</div>
+			<div class="app-icon" ng-style="{ 'background-image': 'url({{UPLOAD_PATH}}{{theme.app_icon.Contacts.src}})' }">
+				<span>{{theme['app_icon']['Contacts'].capital}}</span>
+			</div>
+			<div class="app-icon" ng-style="{ 'background-image': 'url({{UPLOAD_PATH}}{{theme.dock_icon.ic_allapps.src}})' }">
+				<span>{{theme['dock_icon']['ic_allapps'].capital}}</span>
+			</div>
+			<div class="app-icon" ng-style="{ 'background-image': 'url({{UPLOAD_PATH}}{{theme.app_icon.Messages.src}})' }">
+				<span>{{theme['app_icon']['Messages'].capital}}</span>
+			</div>
+			<div class="app-icon" ng-style="{ 'background-image': 'url({{UPLOAD_PATH}}{{theme.app_icon.Browser.src}})' }">
+				<span>{{theme['app_icon']['Browser'].capital}}</span>
+			</div>
 		</div>
 	</div>
 
