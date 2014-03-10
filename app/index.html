@@ -83,10 +83,10 @@
 					</a>
 				</li>
 				<li ng-if="isLogined()" class="row">
-					<div class="avatar col-md-4">
+					<div class="avatar col-xs-4">
 						<img ng-src="{{getUser().avatar}}" >
 					</div>
-					<div class="user-info col-md-6">
+					<div class="user-info col-xs-6">
 						Welcome <br>
 						<a href="http://themes.c-launcher.com/jump/person_settings.do" target="_blank">
 							{{ getUser().name }}
@@ -99,14 +99,14 @@
 
 	<div class="container view-container">
 
-		<div class="col-md-2 menu-container" ng-model="pan">
+		<div class="col-xs-2 menu-container hidden-xs hidden-sm" ng-model="pan">
 			<div ng-include="'/views/partials/menuList.html'"
 				ng-controller="menuListCtrl"></div>
 		</div>
-		<div class="col-md-6 operation-container" ng-view ng-model="pan">
+		<div class="col-xs-6 operation-container" ng-view ng-model="pan">
 			<span>Loading views...</span>
 		</div>
-		<div class="col-md-4 preview-container" ng-model="pan" >
+		<div class="col-xs-4 preview-container" ng-model="pan" >
 			<div ng-include="'/views/waterDrop/emulatorPanel.html'"
 				class="preview-wrap panel panel-default well"
 				ng-controller="previewController"></div>
