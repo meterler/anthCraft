@@ -74,12 +74,14 @@ mod.controller 'previewController', [
 		$scope.isSelect = (resType, resName)->
 				$scope.selected and ($scope.selected.resType is resType) and ($scope.selected.resName is resName)
 
-		$scope.select = (type, name, category)->
+		$scope.select = (event, type, name, category)->
 			$rootScope.$broadcast "res.select", {
 				resType: type
 				resName: name
 				category: category
 			}
+			event.stopPropagation()
+			event.preventDefault()
 			return
 
 		$rootScope.$on "res.select", (event, selected)->
