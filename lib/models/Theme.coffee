@@ -68,6 +68,12 @@ schemaStruct = {
 		default: 0
 	}
 
+	# 是否公开
+	isShared: {
+		type: 'number',
+		default: 1
+	}
+
 	# 预览图 [url]
 	preview: [ 'string' ]
 
