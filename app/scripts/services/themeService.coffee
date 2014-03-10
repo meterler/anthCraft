@@ -44,11 +44,11 @@ mod.factory 'themeService', [
 					service.themeModel = doc
 					service.themeModel._dirty = false
 
-					# Save to local storage
-					saveLocalData()
-
 					# init default packInfo
 					service.packInfo = angular.copy(themeConfig.defaultPackInfo)
+
+					# Save to local storage
+					saveLocalData()
 
 					# Inform theme update and need refresh status
 					service.themeUpdate()
