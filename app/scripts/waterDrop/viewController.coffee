@@ -4,6 +4,7 @@ angular.module("anthCraftApp").controller "viewController", [
 	($rootScope, $scope, $http, $location, $modal, $cookies, themeService, themeConfig)->
 
 		$scope.pan = {}
+		$scope.progressRecord = (c) -> themeService.themeModel.progressRecord[c]
 		$scope.changeLayout = (data, from, evt)->
 			dest = angular.element(evt.currentTarget)
 			dest_clone = dest.clone()

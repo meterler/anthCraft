@@ -16,6 +16,10 @@
 					ng-class="{ active: item.active, disabled: item.disabled }"
 					ng-click="item.disabled && refreshStats(menu, item)">
 					{{item.title}}
+
+					<span class="pull-right">
+						{{progressRecord(item.category).finish}}/{{progressRecord(item.category).total}}
+					</span>
 				</a>
 			</li>
 		</ul>

@@ -16,6 +16,31 @@ mod.factory 'themeService', [
 			}
 		getLocalData = -> localStorage.get 'theme.data'
 
+		findCategoryOfRes = (resType, resName)->
+			result = []
+			for catName, list of themeConfig.editGroup
+				matched = list.some (item)-> item[0] is resType and item[1] is resName
+				result.push(catName) if matched
+			return result
+
+		updateProgressRecord = (oldValue, data)->
+			isChanged = /^\/default_theme/.test oldValue
+			isRestore = /^\/default_theme/.test data.src
+
+			# Count stay unchange
+			return if not( not isChanged ^ not isRestore )
+
+			# Find its category
+			categories = findCategoryOfRes(data.resType, data.resName)
+
+			if isChanged and not isRestore
+				# modifying default value, count + 1
+				service.themeModel.progressRecord[category].finish++ for category in categories
+			else
+				# restore to default value, count - 1
+				service.themeModel.progressRecord[category].finish-- for category in categories
+
+
 		Theme = $resource('/api/themes/:themeId', { themeId: '@_id' }, {
 			create: { method: 'POST', url: '/api/themes/create' }
 			save: { method: 'POST', url: '/api/themes' }
@@ -46,6 +71,15 @@ mod.factory 'themeService', [
 
 					# init default packInfo
 					service.packInfo = angular.copy(themeConfig.defaultPackInfo)
+
+					# init progress record
+					progressRecord = {}
+					for catName, catItems of themeConfig.editGroup
+						progressRecord[catName] = {
+							total: catItems.length
+							finish: 0
+						}
+					service.themeModel.progressRecord = progressRecord
 
 					# Save to local storage
 					saveLocalData()
@@ -80,7 +114,13 @@ mod.factory 'themeService', [
 			# Update view
 			updateView: (updateData)->
 				if updateData
+					# Check if updated
+					oldValue = service.packInfo[updateData.resType][updateData.resName].src
+					updateProgressRecord( oldValue, updateData )
+
+					# Apply value
 					service.packInfo[updateData.resType][updateData.resName].src = updateData.src
+
 					# Add timestamp to each resource
 					service.cacheFlags["#{themeConfig.themeFolder}#{updateData.src}"] = (new Date()).getTime()
 
