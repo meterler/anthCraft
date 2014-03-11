@@ -28,7 +28,67 @@
 	<![endif]-->
 
 	<div class="hd">
-		<div class="bd" ng-controller="indexCtrl" ng-cloak>
+		<div class="head">
+			<div class="top" ng-controller="indexCtrl" ng-cloak>
+				<a class="logo" alt="CLauncher logo" title="Clauncher" href="http://www.c-launcher.com">CLauncher
+					<span>
+						www.c-launcher.com
+					</span>
+				</a>
+				<section class="sec-login" ng-if="!isLogined()" ng-style="{ display: 'block' }">
+					<a href="http://www.c-launcher.com/jump/register.htm">Register</a>
+					<span>|</span>
+					<a href="http://www.c-launcher.com/jump/login.htm">Login</a>
+				</section>
+				<section class="sec-login" ng-if="isLogined()" ng-style="{ display: 'block' }">
+					<!--
+					Welcome: {{getUser().name}} ! &nbsp;
+					<a href="http://themes.c-launcher.com"> Back</a> -->
+
+					Welcome:
+					<a href="javascript:void(0)" class="username" ng-click="user_menu_show=!!!user_menu_show" ng-blur="user_menu_show=false"> {{getUser().name}} </a>
+					<ul class="menu" ng-show="user_menu_show" ng-cloak>
+						<li><a href="http://www.c-launcher.com/jump/person_settings.htm"> Personal settings </a></li>
+						<li><a href="http://designer.c-launcher.com/"> Design Theme </a></li>
+						<li><a href="javascript:;" ng-click="logout()">Logout</a>
+						</li>
+					</ul>
+				</section>
+				<div class="nav-outter">
+					<form id="queryForm" action="">
+						<input type='hidden' id='category' name='category' value=''/>
+						<input type='hidden' id='tag' name='tag' value=''/>
+						<input type='hidden' id='sortTag' name='sortTag' value=''/>
+					</form>
+					<ul class="nav">
+						<li><a href="http://www.c-launcher.com/" id="home"> Home </a>
+						</li>
+						<li><a href="http://www.c-launcher.com/theme/list.do" id="theme" typeId="0"> Themes </a>
+						</li>
+						<li><a href="http://www.c-launcher.com/wallpaper/list.do" id="wallpaper" typeId="1"> Wallpapers </a>
+						</li>
+						<!-- <li><a href="http://www.c-launcher.com/dynamicwallpaper/list.do" id="dynamicwallpaper" typeId="3"> Live Wallpaper </a>
+						</li>
+						<li><a href="http://www.c-launcher.com/ring/show.do" id="ring" typeId="2"> Ring </a>
+						</li> -->
+						<li> <a href="http://designer.c-launcher.com/" class="cyou-head-nav"> Design Themes </a>
+						</li>
+						<li><a href="http://bbs.c-launcher.com/"> BBS </a>
+						</li>
+						<li class="search">
+							<form id="searchForm" action="http://www.c-launcher.com/theme/search.do" method="post">
+								<div class="searchBox">
+									<input id="keyword" name="keyword" value="" type="text" placeholder="Enter search term" maxlength="20"/>
+									<button type="button" id="cyou-searchbtn">&nbsp;&nbsp;</button>
+								</div>
+							</form>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- <div class="bd" ng-controller="indexCtrl" ng-cloak>
 			<img src="styles/img/logo.png" alt="cLauncher Logo" usemap="logoLinkMap">
 			<map name="logoLinkMap">
 				<area shape="rect" coords="0,0,90,81" href="http://themes.c-launcher.com">
@@ -40,9 +100,8 @@
 				<a href="http://themes.c-launcher.com/jump/login.htm">Login</a>
 			</section>
 			<section class="sec-login" ng-if="isLogined()" ng-style="{ display: 'block' }">
-			<!--
 				Welcome: {{getUser().name}} ! &nbsp;
-				<a href="http://themes.c-launcher.com"> Back</a> -->
+				<a href="http://themes.c-launcher.com"> Back</a>
 
 				<div id="cyou-head-welcome">
 					Welcome:
@@ -58,16 +117,16 @@
 
 			<section class="sec-controlButton">
 				<a href="javascript:;" ng-click="createTheme()" class="icon-new">
-					<!-- <i class="fa fa-plus-circle fa-3x"></i> -->
+					<i class="fa fa-plus-circle fa-3x"></i>
 					New
 				</a>
 				<a ng-href="#/packForm" class="icon-pack" ng-show="hasUnpub()">
-					<!-- <i class="fa fa-upload fa-3x"></i> -->
+					 <i class="fa fa-upload fa-3x"></i>
 					Pack
 				</a>
 			</section>
 
-		</div>
+		</div> -->
 	</div>
 
 	<div class="container clearfix">
