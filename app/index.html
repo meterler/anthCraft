@@ -32,74 +32,11 @@
 	<div class="load-mask" ng-hide="loadSuccess">
 	</div>
 
-	<nav id="page-header"
-		class="navbar navbar-default navbar-static-top"
-		role="navigation"
-		ng-controller="navController">
-		<div class="container">
-			<div class="navbar-header">
-				<a href="http://themes.c-launcher.com/" class="navbar-brand" title="{{'TITLE' | translate }}">
-					<img src="/styles/img/logo-clauncher.png" />
-				</a>
-			</div>
-
-			<ul class="nav navbar-nav navbar-right">
-				<li class="circled">
-					<a href="#" ng-click="createNew()">
-						<i class="icon-doc-new"></i>
-						{{'HEADER.NEW' | translate }}
-					</a>
-				</li>
-				<li class="circled">
-					<a href="#" ng-click="previewTheme()">
-						<i class="icon-search"></i>
-						{{'HEADER.PREVIEW' | translate }}
-					</a>
-				</li>
-				<li class="circled">
-					<a href="#" ng-click="packageTheme()">
-						<i class="icon-folder"></i>
-						{{'HEADER.PACKAGE' | translate }}
-					</a>
-				</li>
-				<li class="circled">
-					<a href="#" ng-click="openHelpBox()">
-						<i class="icon-help"></i>
-						{{'HEADER.HELP' | translate }}
-					</a>
-				</li>
-				<li class="splitter"></li>
-				<li ng-if="!isLogined()">
-					<a href="http://themes.c-launcher.com/jump/login.do" ng-click="openLoginBox()">
-						<i class="icon-user"></i>
-						{{'ACCOUNT.LOGIN' | translate }}
-					</a>
-				</li>
-				<li ng-if="!isLogined()">
-					<a href="http://themes.c-launcher.com/jump/register.do">
-						<i class="icon-edit"></i>
-						{{'ACCOUNT.REGIST' | translate }}
-					</a>
-				</li>
-				<li ng-if="isLogined()" class="row">
-					<div class="avatar col-xs-4">
-						<img ng-src="{{getUser().avatar}}" >
-					</div>
-					<div class="user-info col-xs-6">
-						Welcome <br>
-						<a href="http://themes.c-launcher.com/jump/person_settings.do" target="_blank">
-							{{ getUser().name }}
-						</a>
-					</div>
-				</li>
-			</ul>
-		</div>
-	</nav>
-
+	<div ng-include="'/views/waterDrop/pageHeader.html'"></div>
 	<div class="container view-container">
 
 		<div class="col-xs-2 menu-container hidden-xs hidden-sm" ng-model="pan">
-			<div ng-include="'/views/partials/menuList.html'"
+			<div ng-include="'/views/waterDrop/menuList.html'"
 				ng-controller="menuController"></div>
 		</div>
 		<div class="col-xs-6 operation-container" ng-view ng-model="pan">
