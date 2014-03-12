@@ -1,7 +1,7 @@
 
 mod = angular.module('anthCraftApp')
 
-mod.controller "menuListCtrl", [
+mod.controller "menuController", [
 	'$rootScope', '$scope', '$location', 'menuFactory'
 
 	(
