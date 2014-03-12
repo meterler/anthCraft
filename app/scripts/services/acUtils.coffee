@@ -16,7 +16,7 @@ angular.module("anthCraftApp").service 'acUtils', [
 						resolve: {
 							param: -> {
 								title: "WARNING"
-								content: "You did nothing modified, we can't package for you."
+								content: "Haven't made any changes, yet."
 								cls: { 'text-center': true }
 								closable: true
 								buttons: {

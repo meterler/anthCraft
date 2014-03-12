@@ -12,6 +12,10 @@
 @import "mod-mask.less";
 @import "mod-feedback.less";
 @import "mod-animate.less";
+@font-face {
+	font-family: "hnlt";
+	src: url("../fonts/HelveticaNeueLTStd-Lt.otf");
+}
 
 html {
 	// Always show vertical scrollbar to prevent for the shaking of content when modal shows
@@ -98,7 +102,13 @@ body {
 	background: linear-gradient(to bottom,  #5b5b5b 0%,#454545 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5b5b5b', endColorstr='#454545',GradientType=0 ); /* IE6-9 */
 
-
+	li {
+		a {
+			line-height: 14px;
+			font-family: hnlt;
+			letter-spacing: 0.5px;
+		}
+	}
 	.nav {
 		margin-right: -30px;
 	}
@@ -144,6 +154,7 @@ body {
 		&.circled {
 			a {
 				color: #FDFAA7;
+				line-height: 28px;
 			}
 			a:hover, a:active {
 				i {
@@ -155,9 +166,13 @@ body {
 			}
 			i {
 				color: #FDFAA7;
+				font-size: 18px;
 				&:before {
+					width: 30px;
+					height: 30px;
 					border: 1px solid #FDFAA7;
 					border-radius: 50%;
+					padding-left: 0;
 				}
 			}
 		}
