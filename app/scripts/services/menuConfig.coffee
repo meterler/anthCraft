@@ -14,16 +14,19 @@ mod.factory 'menuFactory', ->
 						title: "Home"
 						url: "/list/home"
 						sence: "home"
+						category: "home"
 					}
 					{
 						title: "Drawer"
 						url: "/list/icons"
 						sence: "apps"
+						category: "icons"
 					}
 					{
 						title: "Mask"
 						url: "/list/mask"
 						sence: "apps"
+						category: "mask"
 					}
 					# {
 					# 	title: "MainMenu"

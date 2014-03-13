@@ -6,8 +6,8 @@ app = angular.module('anthCraftApp', [
 	'angular-carousel'
 	'LocalStorageModule'
 	'pascalprecht.translate'
-	'anthcraft.imageupload'
 	'ui.bootstrap'
+	'anthcraft.imageupload'
 	'anthCraft.imagedrop'
 ]).config [
 	'$routeProvider', '$locationProvider',

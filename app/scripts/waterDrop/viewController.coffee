@@ -1,9 +1,10 @@
 
 angular.module("anthCraftApp").controller "viewController", [
-	"$rootScope", "$scope", '$http', '$location', '$modal', 'themeService', 'themeConfig',
-	($rootScope, $scope, $http, $location, $modal, themeService, themeConfig)->
+	"$rootScope", "$scope", '$http', '$location', '$modal', '$cookies', 'themeService', 'themeConfig',
+	($rootScope, $scope, $http, $location, $modal, $cookies, themeService, themeConfig)->
 
 		$scope.pan = {}
+		$scope.progressRecord = (c) -> themeService.themeModel.progressRecord[c]
 		$scope.changeLayout = (data, from, evt)->
 			dest = angular.element(evt.currentTarget)
 			dest_clone = dest.clone()
@@ -16,7 +17,8 @@ angular.module("anthCraftApp").controller "viewController", [
 			dest_clone = null
 
 		# Check if continuable
-		if themeService.hasUnpub()
+		if themeService.hasUnpub() && not $cookies.s
+			document.cookie = 's=1'
 			# ask if continue last work
 			dlg = $modal.open {
 				templateUrl: "/views/waterDrop/modals/simpleDialog.html"
@@ -39,6 +41,8 @@ angular.module("anthCraftApp").controller "viewController", [
 				themeService.continueWork()
 			, ->
 				themeService.init()
+		else if $cookies.s && themeService.hasUnpub()
+			themeService.continueWork()
 		else
 			themeService.init()
 
@@ -84,4 +88,27 @@ angular.module("anthCraftApp").controller "viewController", [
 				}
 			).error ()->
 
+		$scope.openFeedbackBox = ->
+			console.log $cookies.s
+			$modal.open({
+				backdrop: 'static'
+				keyboard: false
+				templateUrl: "/views/waterDrop/modals/feedbackModal.html"
+				controller: "feedbackController"
+				windowClass: "feedbackModal"
+			}).result.then ->
+				$modal.open {
+					templateUrl: "/views/waterDrop/modals/simpleDialog.html"
+					controller: "simpleModalController"
+					resolve: {
+						param: -> {
+							title: "Thanks"
+							cls: { 'text-center': true }
+							content: "Thank you for your feedback!"
+							buttons: {
+								ok: "OK"
+							}
+						}
+					}
+				}
 ]

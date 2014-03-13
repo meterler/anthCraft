@@ -10,7 +10,7 @@ mod.controller 'previewController', [
 		$scope, $rootScope, themeConfig, themeService, menuFactory
 	)->
 
-		# 1440*726/1280=>
+		# 1440*SENCE_HEIGHT/1280=>
 		IMAGE_WIDTH = 568.125
 		SENCE_WIDTH = 284
 		SENCE_HEIGHT = 505
@@ -27,7 +27,8 @@ mod.controller 'previewController', [
 
 		$scope.swipeCallback = (ofx)->
 			senceDiv = document.querySelector(".sence")
-			senceDiv.style.backgroundPositionX = "#{-ofx / 3}px"
+			move =(-(ofx)/3)/189*286
+			senceDiv.style.backgroundPositionX = "#{move}px"
 
 		$scope._Wallpaper = (v)->
 			# delta = ((IMAGE_WIDTH - SENCE_WIDTH)/total)*(idx-1)
@@ -74,12 +75,14 @@ mod.controller 'previewController', [
 		$scope.isSelect = (resType, resName)->
 				$scope.selected and ($scope.selected.resType is resType) and ($scope.selected.resName is resName)
 
-		$scope.select = (type, name, category)->
+		$scope.select = (event, type, name, category)->
 			$rootScope.$broadcast "res.select", {
 				resType: type
 				resName: name
 				category: category
 			}
+			event.stopPropagation()
+			event.preventDefault()
 			return
 
 		$rootScope.$on "res.select", (event, selected)->

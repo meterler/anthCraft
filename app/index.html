@@ -14,13 +14,12 @@
 
 	<!-- build:css(.tmp) /styles/main.css -->
 	<link rel="stylesheet" href="/styles/bootstrap/bootstrap.min.css">
-
 	<link rel="stylesheet" href="/styles/waterDrop/main.css">
 	<!-- endbuild -->
 	<link rel="stylesheet" href="/styles/webicons/css/webicons.css">
 	<link rel="stylesheet" href="/styles/webicons/css/animation.css">
 </head>
-<body ng-app="anthCraftApp">
+<body ng-app="anthCraftApp" ng-controller="viewController">
 	<!--[if lt IE 9]>
 	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 	<![endif]-->
@@ -33,87 +32,26 @@
 	<div class="load-mask" ng-hide="loadSuccess">
 	</div>
 
-	<nav id="page-header"
-		class="navbar navbar-default navbar-static-top"
-		role="navigation"
-		ng-controller="navController">
-		<div class="container">
-			<div class="navbar-header">
-				<a href="http://themes.c-launcher.com/" class="navbar-brand" title="{{'TITLE' | translate }}">
-					<img src="/styles/img/logo-clauncher.png" />
-				</a>
-			</div>
+	<div ng-include="'/views/waterDrop/pageHeader.html'"></div>
+	<div class="container view-container">
 
-			<ul class="nav navbar-nav navbar-right">
-				<li class="circled">
-					<a href="#" ng-click="createNew()">
-						<i class="icon-doc-new"></i>
-						{{'HEADER.NEW' | translate }}
-					</a>
-				</li>
-				<li class="circled">
-					<a href="#" ng-click="previewTheme()">
-						<i class="icon-search"></i>
-						{{'HEADER.PREVIEW' | translate }}
-					</a>
-				</li>
-				<li class="circled">
-					<a href="#" ng-click="packageTheme()">
-						<i class="icon-folder"></i>
-						{{'HEADER.PACKAGE' | translate }}
-					</a>
-				</li>
-				<li class="circled">
-					<a href="#" ng-click="openHelpBox()">
-						<i class="icon-help"></i>
-						{{'HEADER.HELP' | translate }}
-					</a>
-				</li>
-				<li class="splitter"></li>
-				<li ng-if="!isLogined()">
-					<a href="http://themes.c-launcher.com/jump/login.do" ng-click="openLoginBox()">
-						<i class="icon-user"></i>
-						{{'ACCOUNT.LOGIN' | translate }}
-					</a>
-				</li>
-				<li ng-if="!isLogined()">
-					<a href="http://themes.c-launcher.com/jump/register.do">
-						<i class="icon-edit"></i>
-						{{'ACCOUNT.REGIST' | translate }}
-					</a>
-				</li>
-				<li ng-if="isLogined()" class="row">
-					<div class="avatar col-md-4">
-						<img ng-src="{{getUser().avatar}}" >
-					</div>
-					<div class="user-info col-md-6">
-						Welcome <br>
-						<a href="http://themes.c-launcher.com/jump/person_settings.do" target="_blank">
-							{{ getUser().name }}
-						</a>
-					</div>
-				</li>
-			</ul>
+		<div class="col-xs-2 menu-container hidden-xs hidden-sm" ng-model="pan">
+			<div ng-include="'/views/waterDrop/menuList.html'"
+				ng-controller="menuController"></div>
 		</div>
-	</nav>
-
-	<div class="container view-container" ng-controller="viewController">
-
-		<div class="col-md-2 menu-container" ng-model="pan">
-			<div ng-include="'/views/partials/menuList.html'"
-				ng-controller="menuListCtrl"></div>
-		</div>
-		<div class="col-md-6 operation-container" ng-view ng-model="pan">
+		<div class="col-xs-6 operation-container" ng-view ng-model="pan">
 			<span>Loading views...</span>
 		</div>
-		<div class="col-md-4 preview-container" ng-model="pan" >
+		<div class="col-xs-4 preview-container" ng-model="pan" >
 			<div ng-include="'/views/waterDrop/emulatorPanel.html'"
 				class="preview-wrap panel panel-default well"
 				ng-controller="previewController"></div>
 		</div>
 
 	</div>
-
+	<div class="feedback" ng-click="openFeedbackBox()">
+		<i class="icon-edit-1"></i>
+	</div>
 
 
 
@@ -123,6 +61,7 @@
 	<script src="/components/angular-translate/angular-translate.js"></script>
 	<script src="/components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
 	<script src="/components/angular-route/angular-route.min.js"></script>
+	<script src="/components/angular-animate/angular-animate.js"></script>
 	<script src="/components/angular-resource/angular-resource.js"></script>
 	<script src="/components/angular-local-storage/angular-local-storage.min.js"></script>
 	<script src="/components/angular-cookies/angular-cookies.js"></script>
@@ -136,7 +75,7 @@
 	<!-- endbuild -->
 
 	<!-- build:js({.tmp,app}) /scripts/waterDrop-scripts.js -->
-	<script src="/scripts/waterDrop-init.js"></script>
+	<script src="/scripts/waterDrop/waterDrop-init.js"></script>
 	<script src="/scripts/waterDrop/viewController.js"></script>
 	<script src="/scripts/waterDrop/systemIconListController.js"></script>
 	<script src="/scripts/waterDrop/homeListController.js"></script>
@@ -148,14 +87,15 @@
 	<script src="/scripts/waterDrop/modals/simpleModalController.js"></script>
 	<script src="/scripts/waterDrop/modals/packageFormController.js"></script>
 	<script src="/scripts/waterDrop/modals/packageResultModalController.js"></script>
+	<script src="/scripts/waterDrop/modals/feedbackController.js"></script>
 	<script src="/scripts/waterDrop/modals/loginModalController.js"></script>
+	<script src="/scripts/waterDrop/emulator/previewController.js"></script>
+	<script src="/scripts/waterDrop/menuController.js"></script>
 
 	<script src="/scripts/services/menuConfig.js"></script>
 	<script src="/scripts/services/acUtils.js"></script>
 	<script src="/scripts/services/themeConfig.js"></script>
 	<script src="/scripts/services/themeService.js"></script>
-	<script src="/scripts/waterDrop/emulator/previewController.js"></script>
-	<script src="/scripts/controllers/menuListCtrl.js"></script>
 	<!-- endbuild -->
 	<div style="display: none;">
 		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5795081'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/stat.php%3Fid%3D5795081' type='text/javascript'%3E%3C/script%3E"));</script>

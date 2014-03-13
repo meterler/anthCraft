@@ -22,7 +22,7 @@ var initTasks = {
 		cb(null, __config);
 	},
 
-	connect_mongodb: [ 'get_config', function(cb) {
+	connect_mongodb: [ 'init_logger', function(cb) {
 		utils.connectDB(cb);
 	}],
 
@@ -30,22 +30,21 @@ var initTasks = {
 		log4js.configure(__config.log4js);
 		global.__logger = log4js.getLogger('master');
 		global.__log = function() {
-			// __logger.warn("Deperecated", "better use `__logger.log()` instead of `__log()`!")
-			__logger.log.apply(__logger, ['LOG'].concat(Array.prototype.slice.call(arguments, 0)));
+			__logger.info.apply(__logger, arguments)
 		}
 		cb(null);
 	}],
 
-	connect_redis: [ 'get_config', function(cb) {
+	connect_redis: [ 'init_logger', function(cb) {
 		utils.connectRedis(cb);
 	}],
 
-	init_anthpack: [ 'get_config', function(cb) {
+	init_anthpack: [ 'init_logger', function(cb) {
 		anthPack.config(__config.anthPack);
 		cb();
 	}],
 
-	config_server: [ 'get_config', function(cb) {
+	config_server: [ 'init_logger', function(cb) {
 		// all environments
 		app.set('port', process.env.PORT || __config.port || 3000);
 
@@ -58,8 +57,6 @@ var initTasks = {
 			secret: "anthcraft"
 		}));
 
-
-		
 		app.use(express.bodyParser());
 		app.use(express.methodOverride());
 		app.use(app.router);
@@ -80,7 +77,7 @@ var initTasks = {
 
 	}],
 
-	load_routes: [ 'get_config', 'connect_mongodb', 'config_server', function(cb) {
+	load_routes: [ 'init_logger', 'connect_mongodb', 'config_server', function(cb) {
 		// load routes
 		utils.loadRoutes(path.join(__dirname, './lib/api'), app);
 

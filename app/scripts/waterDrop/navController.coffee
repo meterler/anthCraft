@@ -39,37 +39,56 @@ angular.module('anthCraftApp').controller 'navController', [
 
 		# New
 		$scope.createNew = ->
-
-			alertInst = $modal.open {
+			def = $q.defer()
+			alertInst = $modal.open({
 				backdrop: 'static'
 				keyboard: false
-				template: """
-				<div class="modal-header text-center">
-					New
-					<span class="icon-cancel pull-right" ng-click="cancel()"></span>
-				</div>
-				<div class="modal-body text-center">
-
-					Create new will clear all the content of the current theme, <br/>
-					continue?
-
-				</div>
-				<div class="modal-footer">
-					<button class="btn btn-clDarkGreen" ng-click="ok()">Yes</button>
-					<button class="btn btn-default" ng-click="cancel()">No</button>
-				</div>
-				"""
-				controller: [ '$scope', '$modalInstance', ($scope, $modalInstance)->
-					$scope.ok = -> $modalInstance.close()
-					$scope.cancel = -> $modalInstance.dismiss()
-				]
-			}
-			alertInst.result.then ->
+				templateUrl: "/views/waterDrop/modals/simpleDialog.html"
+				controller: "simpleModalController"
+				resolve: {
+					param: -> {
+						title: "Tips"
+						content: "Current theme will be replaced by the new, continue?"
+						cls: { 'text-center': true }
+						closable: true
+						buttons: {
+							ok: "Okay"
+							cancel: "Cancle"
+						}
+					}
+				}
+			}).result.then ->
 				# Create new theme
 				themeService.init (err)->
 					# if err? never happends
 					# Refresh views
 					$location.url("/")
+			return def.promise
+
+			# alertInst = $modal.open {
+			# 	backdrop: 'static'
+			# 	keyboard: false
+			# 	template: """
+			# 	<div class="modal-header text-center">
+			# 		New
+			# 		<span class="icon-cancel pull-right" ng-click="cancel()"></span>
+			# 	</div>
+			# 	<div class="modal-body text-center">
+
+			# 		Create new will clear all the content of the current theme, <br/>
+			# 		continue?
+
+			# 	</div>
+			# 	<div class="modal-footer">
+			# 		<button class="btn btn-clDarkGreen" ng-click="ok()">Yes</button>
+			# 		<button class="btn btn-default" ng-click="cancel()">No</button>
+			# 	</div>
+			# 	"""
+			# 	controller: [ '$scope', '$modalInstance', ($scope, $modalInstance)->
+			# 		$scope.ok = -> $modalInstance.close()
+			# 		$scope.cancel = -> $modalInstance.dismiss()
+			# 	]
+			# }
 
 		# Preview
 		$scope.previewTheme = ->
@@ -77,6 +96,18 @@ angular.module('anthCraftApp').controller 'navController', [
 
 			# todo: open preview dialog
 			# todo: load preview image
+			$modal.open {
+				backdrop: 'static'
+				keyboard: false
+				templateUrl: "/views/waterDrop/modals/previewModal.html"
+				windowClass : "preview-static"
+				controller: [ '$scope', '$modalInstance', 'themeService', (_scope, $modalInstance, themeService)->
+					_scope.theme = themeService.packInfo
+					_scope.submit = ->
+						$modalInstance.dismiss()
+						$scope.packageTheme()
+				]
+			}
 			return
 
 		# Package
@@ -91,8 +122,10 @@ angular.module('anthCraftApp').controller 'navController', [
 			# 	.catch( ->
 
 			# 	)
-			acUtils.ifThemeModified().then -> showPackageForm().then(showPackageResult)
-
+			acUtils.ifThemeModified().then ->
+				showPackageForm().then (data)->
+					showPackageResult(data).then ->
+						themeService.init -> $location.url('/')
 
 		# Help
 		$scope.openHelpBox = ->
