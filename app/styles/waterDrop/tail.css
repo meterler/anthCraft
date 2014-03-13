@@ -1,0 +1,131 @@
+html {
+	height: 100%;
+}
+body {
+	background-color: #F8F8F8;
+	height: 100%;
+	position: relative;
+}
+.container {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+}
+.container > div {
+	padding-bottom: 99px;
+}
+
+#cyou-tail{
+	position: absolute;
+	bottom: 0;
+	height: 99px;
+	clear:both;
+	width: 100%;
+	background-color: #f8f8f8;
+	font-family: hnlt;
+}
+#cyou-tail #cyou-tail-links-outter{
+	width: 100%;
+	text-align: center;
+}
+#cyou-tail #cyou-tail-links-outter #cyou-tail-links{
+	width:1000px;
+	margin: 0px auto;
+	height: 30px;
+	line-height: 30px;
+	background-color: #9d9d9d;
+	color:#cfcece;
+	text-align: center;
+}
+#cyou-tail #cyou-tail-links-outter #cyou-tail-links a{
+	font-family: "hnlt";
+	font-size:12px;
+	text-decoration: none;
+	color:white;
+}
+#cyou-tail #cyou-tail-links-outter #cyou-tail-links a:hover{
+	text-decoration: underline;
+}
+#cyou-tail #cyou-tail-copyright-outter{
+	width: 100%;
+	border-top: solid 4px #d8d8d8;
+}
+#cyou-tail #cyou-tail-copyright-outter #cyou-tail-copyright-inner{
+	width: 1000px;
+	margin: 0px auto;
+	overflow: hidden;
+}
+#cyou-tail #cyou-tail-copyright-outter #cyou-tail-copyright-inner #cyou-logo{
+	float: left;
+	width: 100px!important;
+	width:110px;
+	padding: 0px 5px 0px 5px;
+	font-size: 0px;
+}
+#cyou-tail #cyou-tail-copyright-outter #cyou-tail-copyright-inner #cyou-logo img{
+	border: none;
+}
+#cyou-tail #cyou-tail-copyright-outter #cyou-tail-copyright-inner #cyou-tail-copyright{
+	float: left;
+	width:870px!important;
+	width:890px;
+	padding: 0px 10px 0px 10px;
+	text-align: center;
+	color: #607890;
+}
+#cyou-tail #cyou-tail-copyright-outter #cyou-tail-copyright-inner #cyou-tail-copyright #cyou-tail-copyright-info {
+	color: #494949;
+}
+#cyou-tail #cyou-tail-copyright-outter #cyou-tail-copyright-inner #cyou-tail-copyright a:hover{
+	color: #036;
+}
+#cyou-tail #cyou-tail-copyright-outter #cyou-tail-copyright-inner #cyou-tail-copyright a, a:active, a:visited{
+	color: #607890;
+}
+#cyou-tail #cyou-tail-copyright-outter #cyou-tail-copyright-inner .main {
+	float: right;
+}
+#cyou-tail #cyou-tail-copyright-outter #cyou-tail-copyright-inner .main ul {
+	height: 40px;
+	padding: 30px 0 40px;
+	list-style: none;
+}
+#cyou-tail #cyou-tail-copyright-outter #cyou-tail-copyright-inner .main li {
+	float: left;
+	padding: 0 10px;
+}
+#cyou-tail #cyou-tail-copyright-outter #cyou-tail-copyright-inner .main li a {
+	display: block;
+}
+#cyou-tail #cyou-tail-copyright-outter #cyou-tail-copyright-inner .side {
+	float: left;
+	color: #363636;
+	line-height: 32px;
+}
+#cyou-tail #cyou-tail-copyright-outter #cyou-tail-copyright-inner .side ul {
+	list-style: none;
+	margin: 20px 0 0 0;
+	text-align: left;
+	overflow: hidden;
+	padding: 0;
+}
+#cyou-tail #cyou-tail-copyright-outter #cyou-tail-copyright-inner .side li {
+	float: left;
+	margin: 0 8px;
+}
+#cyou-tail #cyou-tail-copyright-outter #cyou-tail-copyright-inner .side li a {
+	color: #363636;
+	text-decoration: none;
+	font-size: 14px;
+	letter-spacing: 1px;
+}
+#cyou-tail #cyou-tail-copyright-outter #cyou-tail-copyright-inner .side li a:hover {
+	color: #1aabbe;
+}
+#cyou-tail #cyou-tail-copyright-outter #cyou-tail-copyright-inner .side p {
+	clear: both;
+	font-size: 14px;
+	text-align: left;
+	text-indent: 8px;
+	letter-spacing: 1px;
+}
