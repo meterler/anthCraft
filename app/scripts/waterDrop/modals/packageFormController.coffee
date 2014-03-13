@@ -52,6 +52,7 @@ angular.module("anthCraftApp").controller "packageFormController", [
 		$scope.theme.title = $scope.theme.title or 'cLauncher Theme'
 		$scope.theme.isShared = $scope.theme.isShared or '1'
 		$scope.theme.userId = $cookies.userid
+		$scope.theme.author = $cookies.username
 
 		# $scope.$watch 'theme', (newVal)->
 		# 	localStorage.set('unpublished_theme_model', newVal)
