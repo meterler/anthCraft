@@ -1,7 +1,8 @@
 
 module.exports = (app)->
 
-	app.post '/api/login', (req, res)->
+	# For TEST
+	app.get '/api/login', (req, res)->
 		userName = req.body.username
 		userPass = req.body.password
 
@@ -25,7 +26,9 @@ module.exports = (app)->
 			203 用户名错误
 			204 密码错误
 		###
-		res.jsonp 200, user
+		setTimeout ->
+			res.jsonp 200, { code: 100 }
+		, 3000
 
 ###
 从明天起，做一个幸福的人，

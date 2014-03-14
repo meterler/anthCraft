@@ -148,33 +148,36 @@ angular.module('anthCraftApp').controller 'navController', [
 			# 		showPackageResult(data).finally ->
 			# 			themeService.init -> $location.url('/')
 
-			acUtils.ifThemeModified().then ->
-				if themeService.themeModel.nextId
-					# if theme is forked from another one...
-					showOverrideOrCreateNewDialog()
-						.then( ->
-							# Override old
-							# themeService.themeModel._id = themeService.themeModel.forkFrom
-							# themeService.forkFrom = null
-							console.log("--------1");
+			acUtils.ifUserLogined()
+				.then( ->
+					acUtils.ifThemeModified().then ->
+						if not themeService.themeModel.nextId
+							# Create new directly
 							showPackageForm().then showPackageResult
-
-							# Stop chaining..
 							return
-						).catch( ->
-							console.log("--------2");
 
-							# Create new
-							themeService.themeModel.forkFrom = themeService.themeModel._id
-							themeService.themeModel._id = themeService.themeModel.nextId
-							# themeService.themeModel.nextId = null
-							showPackageForm().then showPackageResult
+						# if theme is forked from another one...
+						showOverrideOrCreateNewDialog()
+							.then( ->
+								# Override old
+								# themeService.themeModel._id = themeService.themeModel.forkFrom
+								# themeService.forkFrom = null
+								showPackageForm().then showPackageResult
 
-							return
-						)
-				else
-					# Create new directly
-					showPackageForm().then showPackageResult
+								# Stop chaining..
+								return
+							).catch( ->
+								# Create new
+								themeService.themeModel.forkFrom = themeService.themeModel._id
+								themeService.themeModel._id = themeService.themeModel.nextId
+								# themeService.themeModel.nextId = null
+								showPackageForm().then showPackageResult
+
+								return
+							)
+						return
+
+				)
 
 		# Help
 		$scope.openHelpBox = ->
@@ -183,5 +186,5 @@ angular.module('anthCraftApp').controller 'navController', [
 			}
 
 		$scope.openLoginBox = ->
-			# acUtils.ifUserLogined()
+			acUtils.ifUserLogined()
 ]
