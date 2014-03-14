@@ -6,14 +6,6 @@ angular.module("anthCraftApp").controller "packageFormController", [
 	)->
 		$scope.uploading = 0
 
-		generatePreviewImage = ->
-			deferred = $q.defer()
-			themeService.previewTheme (newTheme)->
-				# Get preview image list and thumbnail
-				deferred.resolve(newTheme)
-
-			return deferred.promise
-
 		packageTheme = ->
 			deferred = $q.defer()
 			# Package the theme
@@ -71,26 +63,27 @@ angular.module("anthCraftApp").controller "packageFormController", [
 
 			# saveToLocalStorage()
 			themeService.updateView()
-			generatePreviewImage().then ->
-				# update progress...
-				timeCount = ->
-					clearTimeout(t) if $scope.uploading >= 90
-					$scope.uploading = $scope.uploading + 5;
-					t = $timeout( ()->
-						timeCount()
-					, 1000)
 
-				$timeout ->
+			# update progress...
+			timeCount = ->
+				clearTimeout(t) if $scope.uploading >= 90
+				$scope.uploading = $scope.uploading + 5;
+				t = $timeout( ()->
 					timeCount()
-					packageTheme().then (data)->
-						$scope.uploading = 100
-						$timeout ->
-							$modalInstance.close(['success', data.theme])
-						, 1500
-					, ->
-						$scope.uploading = 100
-						$modalInstance.close(['fail'])
-				, 0
+				, 1500)
+
+			$timeout ->
+				timeCount()
+				packageTheme().then (data)->
+					$scope.uploading = 100
+					$timeout ->
+						$modalInstance.close(['success', data.theme])
+					, 1500
+				, ->
+					$scope.uploading = 100
+					$modalInstance.close(['fail'])
+			, 0
+			return
 
 		$scope.cancel = ->
 			themeService.updateView()

@@ -70,6 +70,8 @@ angular.module("anthCraftApp").service 'acUtils', [
 					def.resolve()
 					return def.promise
 
+			ifThemeForked: (theme)-> !!theme.nextId
+
 		}
 
 		return acUtils

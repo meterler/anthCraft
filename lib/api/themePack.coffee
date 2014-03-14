@@ -2,6 +2,7 @@
 path = require 'path'
 mongoose = require('node-restful').mongoose
 anthPack = require 'anthpack'
+async = require 'async'
 
 ThemeModel = require '../models/Theme.coffee'
 module.exports = (app)->
@@ -18,45 +19,68 @@ module.exports = (app)->
 			}
 	})
 
-	# Package theme, move to another collection
-	ThemeModel.route('package.put', {
+	ThemeModel.route('packageEx.post', {
 		detail: true,
 		handler: (req, res, next)->
 			themeId = req.params.id
-			packInfo = req.body
+			themeData = req.body
 
-			# Get theme object from database
-			ThemeModel.findById themeId, (err, themeRecord)->
+			# Save first
+			# theme = new ThemeModel(themeData.themeInfo)
+			theme = themeData.themeInfo
+			async.waterfall [
 
+				(callback)->
+					__log "Preview PackInfo: ", themeData.packInfo
+					themeData.packInfo.themeId = themeId
+					# Generate preview images
+					anthPack.preview themeData.packInfo, (err, result, thumbnail)->
+						__log "finish preview."
+						theme.preview = result
+						theme.thumbnail = thumbnail
+						callback(err)
+
+				# (callback)->
+				# 	# save theme
+				# 	theme.save callback
+
+				(callback)->
+					packParams = themeData.packInfo
+					packParams.meta = theme
+					__log "Package Params: ", packParams
+
+					# Package theme into 4-act and 1-apk file
+					anthPack.packTheme packParams, (err, packagePaths)->
+						callback(err) if err
+
+						theme.packageFile = packagePaths
+						theme.status = 0
+
+						delete theme._id
+
+						__log "Save theme: ", theme
+						ThemeModel.update {
+							_id: themeId
+						}, theme, {
+							upsert: true
+						}, (err, affectN, returned)->
+							return callback(err) if err
+							theme._id = themeId
+							callback(null, theme)
+
+			], (err, results)->
+
+				__log "Results: ", arguments
+				# response
 				if err
-					res.json { success: false, err: err }
+					__log err
+					res.send 500, 'Package fail!'
 					return
-
-				packInfo.meta = themeRecord.toObject()
-				delete packInfo.meta.__v
-
-				__log ">>>Package packInfo: \n", packInfo
-				# Call anthPack module
-				anthPack.packTheme packInfo, (err, packagePath)->
-
-					if err
-						__log err
-						res.send 500, "Package Error!"
-						return
-
-					themeRecord.packageFile = arguments[1]
-					# themeRecord.thumbnail = themeRecord.preview[1]
-					# themeRecord.thumbnail = thumbnail
-
-					# Set status to 0-need audiets
-					themeRecord.status = 0
-
-					themeRecord.save()
-
-					res.json {
-						success: true
-						theme: themeRecord
-					}
+				res.json {
+					success: true
+					theme: results
+					nextId: mongoose.Types.ObjectId.createPk()
+				}
 
 	})
 

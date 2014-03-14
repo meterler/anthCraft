@@ -44,7 +44,7 @@ mod.factory 'themeService', [
 		Theme = $resource('/api/themes/:themeId', { themeId: '@_id' }, {
 			create: { method: 'POST', url: '/api/themes/create' }
 			save: { method: 'POST', url: '/api/themes' }
-			packageUp: { method: 'PUT', url: '/api/themes/:themeId/package' }
+			package: { method: 'POST', url: '/api/themes/:themeId/packageEx'}
 			preview: { method: 'PUT', url: '/api/themes/preview?id=:themeId' }
 		})
 
@@ -148,25 +148,22 @@ mod.factory 'themeService', [
 					service.themeModel.thumbnail = data.thumbnail
 					callback(data)
 
-			# Package theme and get theme Url
 			packageTheme: (callback, fail)->
 				return callback(false) if not service.themeModel._dirty
-				# save themeModel
-				# delete service.themeModel.thumbnail
-				# service.themeModel.$save {}, (doc)->
-				Theme.save service.themeModel, (doc)->
-					# package up
-					Theme.packageUp({ themeId: doc._id }, service.packInfo, (data)->
-							service.themeModel.updateTime = data.theme.updateTime
-							service.themeModel.packageFile = data.theme.packageFile
-							callback.apply(null, arguments)
 
-							# Clear localStorage
-							localStorage.clearAll()
+				Theme.package { themeId: service.themeModel._id }, {
+					# request body
+					packInfo: service.packInfo
+					themeInfo: service.themeModel
+				}, (data)->
+					service.themeModel.updateTime = data.theme.updateTime
+					service.themeModel.packageFile = data.theme.packageFile
 
-							service.themeModel._dirty = false
-						, fail)
+					service.themeModel.nextId = data.nextId
+					service.themeModel._dirty = false
 
+					service.updateView()
+					callback.apply(null, arguments)
 		}
 
 		# service.init() if not service.continueWork()

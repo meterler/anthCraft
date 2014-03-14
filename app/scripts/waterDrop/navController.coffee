@@ -4,15 +4,13 @@ angular.module('anthCraftApp').controller 'navController', [
 		$rootScope, $scope, $modal, $cookies, $location, $q, themeService, acUtils
 	)->
 
-		showPackageForm = ()->
-			dlg = $modal.open {
-				backdrop: 'static'
-				keyboard: false
-				templateUrl: "/views/waterDrop/modals/packageForm.html"
-				controller: "packageFormController"
+		$scope.isLogined = -> !!$cookies.userid
+		$scope.getUser = ->
+			{
+				name: $cookies.username
+				id: $cookies.userid
+				avatar: $cookies.avatar
 			}
-
-			return dlg.result
 
 		showPackageResult = (data)->
 			[result, theme] = data
@@ -29,13 +27,36 @@ angular.module('anthCraftApp').controller 'navController', [
 			}
 			return dlg.result
 
-		$scope.isLogined = -> !!$cookies.userid
-		$scope.getUser = ->
-			{
-				name: $cookies.username
-				id: $cookies.userid
-				avatar: $cookies.avatar
+		showPackageForm = ()->
+			dlg = $modal.open {
+				backdrop: 'static'
+				keyboard: false
+				templateUrl: "/views/waterDrop/modals/packageForm.html"
+				controller: "packageFormController"
 			}
+
+			return dlg.result
+
+		showOverrideOrCreateNewDialog = ->
+			dlg = $modal.open {
+				backdrop: 'static'
+				keyboard: false
+				templateUrl: "/views/waterDrop/modals/simpleDialog.html"
+				controller: "simpleModalController"
+				resolve: {
+					param: -> {
+						title: ""
+						content: "Found same theme: "
+						cls: { 'text-center': true }
+						buttons: {
+							ok: "replace the old"
+							cancel: "or submit the new"
+						}
+					}
+				}
+			}
+
+			return dlg.result
 
 		# New
 		$scope.createNew = ->
@@ -122,10 +143,38 @@ angular.module('anthCraftApp').controller 'navController', [
 			# 	.catch( ->
 
 			# 	)
+			# acUtils.ifThemeModified().then ->
+			# 	showPackageForm().then (data)->
+			# 		showPackageResult(data).finally ->
+			# 			themeService.init -> $location.url('/')
+
 			acUtils.ifThemeModified().then ->
-				showPackageForm().then (data)->
-					showPackageResult(data).then ->
-						themeService.init -> $location.url('/')
+				if themeService.themeModel.nextId
+					# if theme is forked from another one...
+					showOverrideOrCreateNewDialog()
+						.then( ->
+							# Override old
+							# themeService.themeModel._id = themeService.themeModel.forkFrom
+							# themeService.forkFrom = null
+							console.log("--------1");
+							showPackageForm().then showPackageResult
+
+							# Stop chaining..
+							return
+						).catch( ->
+							console.log("--------2");
+
+							# Create new
+							themeService.themeModel.forkFrom = themeService.themeModel._id
+							themeService.themeModel._id = themeService.themeModel.nextId
+							# themeService.themeModel.nextId = null
+							showPackageForm().then showPackageResult
+
+							return
+						)
+				else
+					# Create new directly
+					showPackageForm().then showPackageResult
 
 		# Help
 		$scope.openHelpBox = ->
