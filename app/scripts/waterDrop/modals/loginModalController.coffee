@@ -5,15 +5,15 @@ angular.module("anthCraftApp").controller "loginModalController", [
 		$scope.loading = false
 		$scope.returnCode = {}
 		$scope.user = {
-			username: 'chenhua'
-			password: 'asdf1234'
+			username: ''
+			password: ''
 		}
 
 		$scope.ok = ->
 			$scope.returnCode = {}
 			$scope.loading = true
 			# request login
-			reqUrl = 'http://10.12.0.71:8080/shop/user/login2.do?callback=JSON_CALLBACK'
+			reqUrl = 'http://theme.c-launcher.com/user/login2.do?callback=JSON_CALLBACK'
 			# reqUrl = '/api/login?callback=JSON_CALLBACK'
 			$http.jsonp(reqUrl, {
 				params: $scope.user
