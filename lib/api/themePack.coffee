@@ -25,28 +25,44 @@ module.exports = (app)->
 			themeId = req.params.id
 			themeData = req.body
 
-			# Save first
-			# theme = new ThemeModel(themeData.themeInfo)
-			theme = themeData.themeInfo
+			# Save first with default values defined in Model
+			# theme = themeData.themeInfo
 			async.waterfall [
 
 				(callback)->
+					# save theme before package, in case of packaging error
+					# create if not exist
+
+					# theme.save callback
+					ThemeModel.findById themeId, (err, result)->
+						if result
+							# Update theme
+							delete themeData.themeInfo._id
+							ThemeModel.update { _id: themeId }, {
+								$set: themeData.themeInfo
+							}, (err)->
+								callback(err, result)
+						else
+							# Create new
+							ThemeModel.create themeData.themeInfo, callback
+
+
+				(theme, ..., callback)->
 					__log "Preview PackInfo: ", themeData.packInfo
 					themeData.packInfo.themeId = themeId
 					# Generate preview images
 					anthPack.preview themeData.packInfo, (err, result, thumbnail)->
+						return callback(err) if err
 						__log "finish preview."
 						theme.preview = result
 						theme.thumbnail = thumbnail
-						callback(err)
+						# Save with package result...
+						# theme.save callback
+						callback(null, theme)
 
-				# (callback)->
-				# 	# save theme
-				# 	theme.save callback
-
-				(callback)->
+				(theme, ..., callback)->
 					packParams = themeData.packInfo
-					packParams.meta = theme
+					packParams.meta = theme.toObject()
 					__log "Package Params: ", packParams
 
 					# Package theme into 4-act and 1-apk file
@@ -56,21 +72,10 @@ module.exports = (app)->
 						theme.packageFile = packagePaths
 						theme.status = 0
 
-						delete theme._id
-
-						__log "Save theme: ", theme
-						ThemeModel.update {
-							_id: themeId
-						}, theme, {
-							upsert: true
-						}, (err, affectN, returned)->
-							return callback(err) if err
-							theme._id = themeId
-							callback(null, theme)
+						theme.save (err)->
+							callback(err, theme)
 
 			], (err, results)->
-
-				__log "Results: ", arguments
 				# response
 				if err
 					__log err
