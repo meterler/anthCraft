@@ -19,7 +19,7 @@ module.exports = (app)->
 			}
 	})
 
-	ThemeModel.route('packageEx.post', {
+	ThemeModel.route('package.post', {
 		detail: true,
 		handler: (req, res, next)->
 			themeId = req.params.id
@@ -30,10 +30,7 @@ module.exports = (app)->
 			async.waterfall [
 
 				(callback)->
-					# save theme before package, in case of packaging error
-					# create if not exist
-
-					# theme.save callback
+					# Create or update theme before package, in case of packaging fail
 					ThemeModel.findById themeId, (err, result)->
 						if result
 							# Update theme
@@ -48,30 +45,32 @@ module.exports = (app)->
 
 
 				(theme, ..., callback)->
-					__log "Preview PackInfo: ", themeData.packInfo
+					__log "Generate previews: ", themeData.packInfo
 					themeData.packInfo.themeId = themeId
 					# Generate preview images
 					anthPack.preview themeData.packInfo, (err, result, thumbnail)->
 						return callback(err) if err
-						__log "finish preview."
+						__log "Finish preview."
 						theme.preview = result
 						theme.thumbnail = thumbnail
-						# Save with package result...
+						# Save later with package result
 						# theme.save callback
 						callback(null, theme)
 
 				(theme, ..., callback)->
 					packParams = themeData.packInfo
 					packParams.meta = theme.toObject()
-					__log "Package Params: ", packParams
+					__log "Package theme: ", packParams
 
 					# Package theme into 4-act and 1-apk file
 					anthPack.packTheme packParams, (err, packagePaths)->
 						callback(err) if err
-
+						__log "Success package."
 						theme.packageFile = packagePaths
 						theme.status = 0
 
+						# Everytime theme save, themeId inc
+						# but themeId isnt the real id of the record
 						theme.save (err)->
 							callback(err, theme)
 

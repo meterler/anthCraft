@@ -44,7 +44,7 @@ mod.factory 'themeService', [
 		Theme = $resource('/api/themes/:themeId', { themeId: '@_id' }, {
 			create: { method: 'POST', url: '/api/themes/create' }
 			save: { method: 'POST', url: '/api/themes' }
-			package: { method: 'POST', url: '/api/themes/:themeId/packageEx'}
+			package: { method: 'POST', url: '/api/themes/:themeId/package'}
 			preview: { method: 'PUT', url: '/api/themes/preview?id=:themeId' }
 		})
 
