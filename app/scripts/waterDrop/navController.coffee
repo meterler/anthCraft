@@ -20,6 +20,7 @@ angular.module('anthCraftApp').controller 'navController', [
 				controller: "packageResultModalController"
 				backdrop: 'static'
 				keyboard: false
+				windowClass: 'modal-packageResult'
 				resolve: {
 					result: ()-> result
 					themeModel: ()-> theme
