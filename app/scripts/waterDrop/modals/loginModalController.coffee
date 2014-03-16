@@ -23,6 +23,10 @@ angular.module("anthCraftApp").controller "loginModalController", [
 				if data.code is 100
 					$modalInstance.close()
 
-			).finally ->
+			)
+			.error( ->
+				$scope.returnCode = 500
+			)
+			.finally ->
 				$scope.loading = false
 ]
