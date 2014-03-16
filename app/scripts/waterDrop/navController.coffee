@@ -45,12 +45,13 @@ angular.module('anthCraftApp').controller 'navController', [
 				controller: "simpleModalController"
 				resolve: {
 					param: -> {
-						title: ""
+						title: "Tips"
 						content: "Found same theme: "
+						closable: true
 						cls: { 'text-center': true }
 						buttons: {
 							ok: "replace the old"
-							cancel: "or submit the new"
+							nope: "or submit the new"
 						}
 					}
 				}
@@ -158,21 +159,21 @@ angular.module('anthCraftApp').controller 'navController', [
 
 						# if theme is forked from another one...
 						showOverrideOrCreateNewDialog()
-							.then( ->
-								# Override old
-								# themeService.themeModel._id = themeService.themeModel.forkFrom
-								# themeService.forkFrom = null
-								showPackageForm().then showPackageResult
+							.then( (choice)->
+								if choice is 'ok'
+									# Override old
+									# themeService.themeModel._id = themeService.themeModel.forkFrom
+									# themeService.forkFrom = null
+									showPackageForm().then showPackageResult
+
+								else
+									# Create new
+									themeService.themeModel.forkFrom = themeService.themeModel._id
+									themeService.themeModel._id = themeService.themeModel.nextId
+									# themeService.themeModel.nextId = null
+									showPackageForm().then showPackageResult
 
 								# Stop chaining..
-								return
-							).catch( ->
-								# Create new
-								themeService.themeModel.forkFrom = themeService.themeModel._id
-								themeService.themeModel._id = themeService.themeModel.nextId
-								# themeService.themeModel.nextId = null
-								showPackageForm().then showPackageResult
-
 								return
 							)
 						return
