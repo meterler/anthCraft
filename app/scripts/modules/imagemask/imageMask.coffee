@@ -26,9 +26,9 @@ angular.module('anthcraft.iconMask', [
 		iconBase = (image, compos, cb)->
 			preImage image, ()->
 				imageContext.drawImage this, 0, 0, width, height
-				if compos?? and compos!='undefined'
+				if compos? and typeof compos isnt'undefined'
 					imageContext.globalCompositeOperation = compos
-				if cb?? and cb!='undefined'
+				if cb? and typeof cb isnt 'undefined'
 					cb()
 				return
 
