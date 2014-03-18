@@ -9,3 +9,4 @@ app/resources/*
 
 app/logs/*
 logs/*
+npm-debug.log

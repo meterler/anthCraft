@@ -47,25 +47,6 @@ mod.controller 'previewController', [
 				"background-repeat": "no-repeat"
 			}
 
-		$scope._IconBg = (v)->
-			vcode = cacheFlags[v]
-			{
-				'background-image': "url('#{v}')"
-				'background-size': "56px"
-				'background-repeat': "no-repeat"
-			}
-
-		$scope._Mask = (v)->
-			vcode = cacheFlags[v]
-			{
-				'width': "56px"
-				'height': "56px"
-				'-webkit-mask-image': "url('#{v}')"
-				'-webkit-mask-size': "56px"
-				'-webkit-mask-repeat': "no-repeat"
-				'padding': "4px"
-			}
-
 		$scope._ABottomIcon = (v)->
 			vcode = cacheFlags[v]
 			{
