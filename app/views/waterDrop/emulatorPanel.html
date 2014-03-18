@@ -60,7 +60,7 @@
 			<li>
 				<div class="mp-apps-app">
 
-					<div class="mp-apps-maskIcon"
+					<div class="mp-apps-maskIcon activatable"
 						ng-repeat="(appId, app) in theme.app_icon"
 						ng-click="select($event, 'app_icon', appId, 'icons')"
 						ng-class="{ active: isSelect('app_icon', appId) }">
@@ -68,8 +68,7 @@
 						<img icon-mask class="mp-apps-maskImg"
 						 	src="{{_V(app)}}"
 						 	base="{{_V(theme['customize']['customize_mat'])}}"
-						 	shape="{{_V(theme['customize']['customize_mask'])}}"
-						 	mask="" />
+						 	shape="{{_V(theme['customize']['customize_mask'])}}"/>
 						<p>{{app.capital}}</p>
 					</div>
 
@@ -82,7 +81,7 @@
 							src = "{{_V(theme['customize']['customize_icon'])}}"
 							base = "{{_V(theme['customize']['customize_mat'])}}"
 							shape="{{_V(theme['customize']['customize_mask'])}}"
-						 	mask="" />
+							/>
 						<p>{{theme['customize']['customize_icon'].capital}}</p>
 					</div>
 

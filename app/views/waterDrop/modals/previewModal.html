@@ -33,13 +33,12 @@
 
 		<div class="drawer-apps">
 			<div class="app-icon"
-				ng-repeat="(type, icon) in theme.app_icon"
-				style="background-image: url();">
+				ng-repeat="(type, icon) in theme.app_icon" >
 				<img icon-mask class="mp-apps-maskImg"
 					 	src="{{UPLOAD_PATH}}{{icon.src}}"
 					 	base="{{UPLOAD_PATH}}{{theme.customize.customize_mat.src}}"
 					 	shape="{{UPLOAD_PATH}}{{theme.customize.customize_mask.src}}"
-					 	mask="" />
+					 	/>
 				<span>{{icon.capital}}</span>
 			</div>
 		</div>
