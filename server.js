@@ -1,6 +1,6 @@
 'use strict';
 // add coffee-script feature
-require('coffee-script');
+require('coffee-script/register');
 
 var __config = global.__config = {};
 global.__log = console.log;

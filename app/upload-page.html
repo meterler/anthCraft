@@ -11,10 +11,11 @@
 	<meta name="viewport" content="width=device-width">
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-	<!-- build:css(.tmp) styles/upload_main.css -->
+	<!-- build:css(.tmp) styles/upload_page/upload_main.css -->
 	<link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
-	<link rel="stylesheet" href="styles/main.css">
+	<link rel="stylesheet" href="styles/uploadPage/main.css">
 	<link rel="stylesheet" href="styles/uploadPage/index.css">
+	<link rel="stylesheet" href="styles/uploadPage/tail.css">
 	<!-- endbuild -->
 </head>
 <body ng-app="uploadApp">
@@ -26,7 +27,6 @@
 	<script src="components/es5-shim/es5-shim.js"></script>
 	<script src="components/json3/lib/json3.min.js"></script>
 	<![endif]-->
-
 	<div class="hd">
 		<div class="head">
 			<div class="top" ng-controller="indexCtrl" ng-cloak>
@@ -36,19 +36,16 @@
 					</span>
 				</a>
 				<section class="sec-login" ng-if="!isLogined()" ng-style="{ display: 'block' }">
-					<a href="http://www.c-launcher.com/jump/register.htm">Register</a>
+					<a href="http://www.c-launcher.com/jump/register.do">Register</a>
 					<span>|</span>
-					<a href="http://www.c-launcher.com/jump/login.htm">Login</a>
+					<a href="http://www.c-launcher.com/jump/login.do">Login</a>
 				</section>
 				<section class="sec-login" ng-if="isLogined()" ng-style="{ display: 'block' }">
-					<!--
-					Welcome: {{getUser().name}} ! &nbsp;
-					<a href="http://themes.c-launcher.com"> Back</a> -->
 
 					Welcome:
 					<a href="javascript:void(0)" class="username" ng-click="user_menu_show=!!!user_menu_show" ng-blur="user_menu_show=false"> {{getUser().name}} </a>
 					<ul class="menu" ng-show="user_menu_show" ng-cloak>
-						<li><a href="http://www.c-launcher.com/jump/person_settings.htm"> Personal settings </a></li>
+						<li><a href="http://www.c-launcher.com/jump/person_settings.do"> Personal settings </a></li>
 						<li><a href="http://designer.c-launcher.com/"> Design Theme </a></li>
 						<li><a href="javascript:;" ng-click="logout()">Logout</a>
 						</li>
@@ -88,73 +85,79 @@
 			</div>
 		</div>
 
-		<!-- <div class="bd" ng-controller="indexCtrl" ng-cloak>
-			<img src="styles/img/logo.png" alt="cLauncher Logo" usemap="logoLinkMap">
-			<map name="logoLinkMap">
-				<area shape="rect" coords="0,0,90,81" href="http://themes.c-launcher.com">
-				<area shape="rect" coords="90,0,441,81" href="/">
-			</map>
-			<section class="sec-login" ng-if="!isLogined()" ng-style="{ display: 'block' }">
-				<a href="http://themes.c-launcher.com/jump/register.htm">Register</a>
-				<span>|</span>
-				<a href="http://themes.c-launcher.com/jump/login.htm">Login</a>
-			</section>
-			<section class="sec-login" ng-if="isLogined()" ng-style="{ display: 'block' }">
-				Welcome: {{getUser().name}} ! &nbsp;
-				<a href="http://themes.c-launcher.com"> Back</a>
+		<div class="container clearfix">
+			<div ng-view></div>
+		</div>
+	</div>
 
-				<div id="cyou-head-welcome">
-					Welcome:
-						<a href="javascript:void(0)" id="cyou-head-username" ng-click="user_menu_show=!!!user_menu_show" ng-blur="user_menu_show=false"> {{getUser().name}} </a>
-					<ul id="cyou-head-menu" style="width: 115px;" ng-show="user_menu_show" ng-cloak>
-						<li><a href="http://themes.c-launcher.com/jump/person_settings.htm"> Personal settings </a></li>
-						<li><a href="http://designer.c-launcher.com/"> Design Theme </a></li>
-						<li><a href="javascript:;" ng-click="logout()">Logout</a>
+	<div id="cyou-tail">
+		<div id="cyou-tail-copyright-outter">
+			<div id="cyou-tail-copyright-inner">
+				<div class="main">
+					<ul>
+						<li>
+							<a href="https://www.facebook.com/clauncher?ref=hl">
+								<img width="106px" height="40px" src="http://s.c-launcher.com/static/themes//images/designer/facebook.jpg">
+							</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">
+								<img width="106px" height="40px" src="http://s.c-launcher.com/static/themes//images/designer/twitter_gray.jpg">
+							</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">
+								<img width="106px" height="40px" src="http://s.c-launcher.com/static/themes//images/designer/go+_gray.jpg">
+							</a>
 						</li>
 					</ul>
 				</div>
-			</section>
-
-			<section class="sec-controlButton">
-				<a href="javascript:;" ng-click="createTheme()" class="icon-new">
-					<i class="fa fa-plus-circle fa-3x"></i>
-					New
-				</a>
-				<a ng-href="#/packForm" class="icon-pack" ng-show="hasUnpub()">
-					 <i class="fa fa-upload fa-3x"></i>
-					Pack
-				</a>
-			</section>
-
-		</div> -->
-	</div>
-
-	<div class="container clearfix">
-		<div ng-view></div>
-	</div>
-
-
-<!-- 	<div class="ft">
-		<ul class="link-list">
-			<div class="bd">
-				<li>
-					<a href="#">Link</a> |
-				</li>
-				<li>
-					<a href="#">Link</a> |
-				</li>
-			</div>
-		</ul>
-		<div class="site-info">
-			<div class="bd">
-				<img src="styles/img/cylogo.png" alt="CYou Inc." />
-				<p>北京畅游时代数码技术有限公司 版权所有&nbsp;</p>
-				<p>Copyright ©2011 ChangYou.com Limited. All rights reserved.</p>
-				<p>京ICP证：070525号《网络文化经营许可证》编号：京网文[2011]0260-093号京公网安备110107000007</p>
+				<div class="side">
+					<ul>
+						<li>
+							<a href="http://www.c-launcher.com/main/index.html">
+								APPS
+							</a>
+						</li>
+						<li>
+							<a href="http://www.c-launcher.com/jump/about_us.do">
+								About Us
+							</a>
+						</li>
+						<li>
+							<a href="http://www.c-launcher.com/jump/contact_us.do">
+								Contact
+							</a>
+						</li>
+						<li>
+							<a href="http://www.c-launcher.com/jump/support.do">
+								Support
+							</a>
+						</li>
+						<li>
+							<a href="http://www.c-launcher.com/jump/terms.do">
+								Terms and Policy
+							</a>
+						</li>
+						<li>
+							<a href="http://www.c-launcher.com/jump/uninstallGuide.do">
+								Uninstall Guide
+							</a>
+						</li>
+					</ul>
+					<p>©&nbsp;2014 C-Launcher. All Rights Reserved
+						<span style="display:none">
+						<script src="http://s23.cnzz.com/stat.php?id=5826178&amp;web_id=5826178&amp;t=z" language="JavaScript"></script><script src="http://c.cnzz.com/core.php?web_id=5826178&amp;t=z" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=5826178" target="_blank" title="站长统计">站长统计</a>
+						</span>
+					</p>
+				</div>
 			</div>
 		</div>
 	</div>
- -->
+	<div class="feedback" ng-click="openFeedbackBox()">
+		<i class="icon-edit-1"></i>
+	</div>
+
 	<script src="components/ng-file-upload/angular-file-upload-shim.min.js"></script>
 	<script src="components/angular/angular.min.js"></script>
 

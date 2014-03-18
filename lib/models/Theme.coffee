@@ -13,6 +13,12 @@ schemaStruct = {
 		type: 'number'
 	}
 
+	# 父主题id
+	forkFrom: {
+		type: 'string'
+		default: null
+	}
+
 	# 标题
 	title: {
 		type: 'string',

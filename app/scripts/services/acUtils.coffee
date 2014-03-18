@@ -64,11 +64,14 @@ angular.module("anthCraftApp").service 'acUtils', [
 					return $modal.open({
 						templateUrl: "/views/waterDrop/modals/loginBox.html"
 						controller: "loginModalController"
+						windowClass: "login-box"
 					}).result
 				else
 					def = $q.defer()
 					def.resolve()
 					return def.promise
+
+			ifThemeForked: (theme)-> !!theme.nextId
 
 		}
 

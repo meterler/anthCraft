@@ -4,6 +4,30 @@ angular.module('anthCraftApp').controller 'navController', [
 		$rootScope, $scope, $modal, $cookies, $location, $q, themeService, acUtils
 	)->
 
+		$scope.isLogined = -> !!$cookies.userid
+		$scope.getUser = ->
+			{
+				name: $cookies.username
+				id: $cookies.userid
+				avatar: $cookies.avatar
+			}
+
+		showPackageResult = (data)->
+			[result, theme] = data
+			# todo: success or faile
+			dlg = $modal.open {
+				templateUrl: "/views/waterDrop/modals/packageResult.html"
+				controller: "packageResultModalController"
+				backdrop: 'static'
+				keyboard: false
+				windowClass: 'modal-packageResult'
+				resolve: {
+					result: ()-> result
+					themeModel: ()-> theme
+				}
+			}
+			return dlg.result
+
 		showPackageForm = ()->
 			dlg = $modal.open {
 				backdrop: 'static'
@@ -14,28 +38,27 @@ angular.module('anthCraftApp').controller 'navController', [
 
 			return dlg.result
 
-		showPackageResult = (data)->
-			[result, theme] = data
-			# todo: success or faile
+		showOverrideOrCreateNewDialog = ->
 			dlg = $modal.open {
-				templateUrl: "/views/waterDrop/modals/packageResult.html"
-				controller: "packageResultModalController"
 				backdrop: 'static'
 				keyboard: false
+				templateUrl: "/views/waterDrop/modals/simpleDialog.html"
+				controller: "simpleModalController"
 				resolve: {
-					result: ()-> result
-					themeModel: ()-> theme
+					param: -> {
+						title: "Tips"
+						content: "Found same theme: "
+						closable: true
+						cls: { 'text-center': true }
+						buttons: {
+							ok: "replace the old"
+							nope: "or submit the new"
+						}
+					}
 				}
 			}
-			return dlg.result
 
-		$scope.isLogined = -> !!$cookies.userid
-		$scope.getUser = ->
-			{
-				name: $cookies.username
-				id: $cookies.userid
-				avatar: $cookies.avatar
-			}
+			return dlg.result
 
 		# New
 		$scope.createNew = ->
@@ -122,10 +145,41 @@ angular.module('anthCraftApp').controller 'navController', [
 			# 	.catch( ->
 
 			# 	)
-			acUtils.ifThemeModified().then ->
-				showPackageForm().then (data)->
-					showPackageResult(data).then ->
-						themeService.init -> $location.url('/')
+			# acUtils.ifThemeModified().then ->
+			# 	showPackageForm().then (data)->
+			# 		showPackageResult(data).finally ->
+			# 			themeService.init -> $location.url('/')
+
+			acUtils.ifUserLogined()
+				.then( ->
+					acUtils.ifThemeModified().then ->
+						if not themeService.themeModel.nextId
+							# Create new directly
+							showPackageForm().then showPackageResult
+							return
+
+						# if theme is forked from another one...
+						showOverrideOrCreateNewDialog()
+							.then( (choice)->
+								if choice is 'ok'
+									# Override old
+									# themeService.themeModel._id = themeService.themeModel.forkFrom
+									# themeService.forkFrom = null
+									showPackageForm().then showPackageResult
+
+								else
+									# Create new
+									themeService.themeModel.forkFrom = themeService.themeModel._id
+									themeService.themeModel._id = themeService.themeModel.nextId
+									# themeService.themeModel.nextId = null
+									showPackageForm().then showPackageResult
+
+								# Stop chaining..
+								return
+							)
+						return
+
+				)
 
 		# Help
 		$scope.openHelpBox = ->
@@ -134,5 +188,5 @@ angular.module('anthCraftApp').controller 'navController', [
 			}
 
 		$scope.openLoginBox = ->
-			# acUtils.ifUserLogined()
+			acUtils.ifUserLogined()
 ]
