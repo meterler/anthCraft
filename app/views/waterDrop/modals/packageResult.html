@@ -1,0 +1,60 @@
+
+<div ng-if="success">
+
+
+	<div class="modal-header">
+		Succeeded
+		<span class="icon-cancel" ng-click="cancel()"></span>
+	</div>
+	<div class="modal-body text-center">
+
+		<div class="row">
+				<i class="icon-ok" style="font-size: 6em; color: #0193A5;"></i>
+				<br>
+				<span style="margin-top:-20px; font-weigth: bold; display: block;">Succeeded!</span>
+		</div>
+		<!-- The newly submitted theme ranked 123456. Share your theme to facebook; twitter, etc; more users, higher ranking -->
+		<div class="modal-buttons">
+			<a href="{{THEME_PATH}}{{theme.packageFile.4.file}}" ng-if="theme.packageFile.4" class="btn btn-clDarkGreen" target="_blank">
+			Download
+			</a>
+			<a href="http://themes.c-launcher.com/jump/person_settings.do" class="btn btn-default" target="_blank">View</a>
+		</div>
+	</div>
+	<div class="modal-footer well">
+
+	</div>
+
+</div>
+
+<div ng-if="!success">
+
+	<div class="modal-header">
+		Failure
+		<span class="icon-cancel pull-right" ng-click="cancel()"></span>
+	</div>
+	<div class="modal-body text-center">
+
+		<div class="row">
+			<i class="icon-cancel" style="font-size: 6em; color: #C92201;"></i>
+			<br>
+			<span style="margin-top:-10px; font-weigth: bold; display: block;">Oops!Failed to submit!</span>
+		</div>
+		<div class="modal-buttons">
+			<button class="btn btn-clDarkGreen" ng-click="ok()">Close</button>
+		</div>
+	</div>
+	<div class="modal-footer well add-clauncherIcon">
+		<p>
+			<b>Now you can:</b>
+		</p>
+		<ol>
+			<li>Try to submit again</li>
+			<li>Feed back to us</li>
+			<li>Visit <a href="http://bbs.c-launcher.com" target="_blank">BBS</a></li>
+			<li>Wander in our site</li>
+		</ol>
+		<!-- Now you can: 1. Try to submit again 2. Feed back to us 3. Visit BBS 4.Wander in our site -->
+	</div>
+
+</div>

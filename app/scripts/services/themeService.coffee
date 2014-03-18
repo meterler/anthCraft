@@ -9,18 +9,47 @@ mod.factory 'themeService', [
 		$rootScope, $resource, localStorage, themeConfig
 	)->
 
-		actions = {
+		saveLocalData = ->
+			localStorage.set 'theme.data', {
+				meta: service.themeModel
+				packInfo: service.packInfo
+			}
+		getLocalData = -> localStorage.get 'theme.data'
+
+		findCategoryOfRes = (resType, resName)->
+			result = []
+			for catName, list of themeConfig.editGroup
+				matched = list.some (item)-> item[0] is resType and item[1] is resName
+				result.push(catName) if matched
+			return result
+
+		updateProgressRecord = (oldValue, data)->
+			isChanged = /^\/default_theme/.test oldValue
+			isRestore = /^\/default_theme/.test data.src
+
+			# Count stay unchange
+			return if not( not isChanged ^ not isRestore )
+
+			# Find its category
+			categories = findCategoryOfRes(data.resType, data.resName)
+
+			if isChanged and not isRestore
+				# modifying default value, count + 1
+				service.themeModel.progressRecord[category].finish++ for category in categories
+			else
+				# restore to default value, count - 1
+				service.themeModel.progressRecord[category].finish-- for category in categories
+
+
+		Theme = $resource('/api/themes/:themeId', { themeId: '@_id' }, {
 			create: { method: 'POST', url: '/api/themes/create' }
 			save: { method: 'POST', url: '/api/themes' }
-			packageUp: { method: 'PUT', url: '/api/themes/:themeId/package' }
+			package: { method: 'POST', url: '/api/themes/:themeId/package'}
 			preview: { method: 'PUT', url: '/api/themes/preview?id=:themeId' }
-		}
-		Theme = $resource('/api/themes/:themeId', { themeId: '@_id' }, actions)
+		})
 
 		service = {
 
-			# theme modified or not
-			dirty: false
 			cacheFlags: {}
 
 			# Theme Model
@@ -31,47 +60,50 @@ mod.factory 'themeService', [
 
 			# Get themeModel model from server side
 			init: (callback)->
-				# TODO: Warn user if need continue last theme
 				# Clear localStorage
-				localStorage.remove('unpublished_theme_model')
-				localStorage.remove('unpublished_theme_packInfo')
+				localStorage.clearAll()
 
-				service.themeModel = Theme.create {}, (doc)->
+				# Get themeId from server, but no record in database
+				Theme.create {}, (doc)->
+
+					service.themeModel = doc
+					service.themeModel._dirty = false
+
+					# init default packInfo
+					service.packInfo = angular.copy(themeConfig.defaultPackInfo)
+
+					# init progress record
+					progressRecord = {}
+					for catName, catItems of themeConfig.editGroup
+						progressRecord[catName] = {
+							total: catItems.length
+							finish: 0
+						}
+					service.themeModel.progressRecord = progressRecord
 
 					# Save to local storage
-					localStorage.set('unpublished_theme_model', doc)
-					localStorage.set('unpublished_theme_packInfo', service.packInfo)
+					saveLocalData()
+
+					# Inform theme update and need refresh status
+					service.themeUpdate()
+
 					callback?()
 				, callback
 
 
-				# init default packInfo
-				service.packInfo = angular.copy(themeConfig.defaultPackInfo)
-				service.updateView()
-				service.dirty = false
-
-				# Restore uploader image preview data
-				$rootScope.$broadcast "uploader.restore"
-				
-				
-				# TODO: FAILD?
-
-			hasUnpub: ()-> !!localStorage.get('unpublished_theme_model')
+			hasUnpub: ()-> !!getLocalData()
 			continueWork: ()->
-				return false if not service.hasUnpub()
-
 				# Check localStorage,
 				# 	recover data if exists
 
-				unpublished_theme_model = localStorage.get('unpublished_theme_model')
-				unpublished_theme_packInfo = localStorage.get('unpublished_theme_packInfo')
-				if unpublished_theme_model
-					service.packInfo = unpublished_theme_packInfo
-					service.themeModel = unpublished_theme_model
+				localData = getLocalData()
+				if localData
+					service.packInfo = localData.packInfo
+					service.themeModel = localData.meta
 					# Because there is no data persisted to database until theme upload, so..
 					# unpublished_theme_model = Theme.get { themeId: unpublished_theme_model._id }, (themeModel)->
-					# 	service.themeModel = themeModel
-
+					# service.themeModel = themeModel
+					service.themeUpdate()
 
 				return true
 
@@ -82,15 +114,21 @@ mod.factory 'themeService', [
 			# Update view
 			updateView: (updateData)->
 				if updateData
+					# Check if updated
+					oldValue = service.packInfo[updateData.resType][updateData.resName].src
+					updateProgressRecord( oldValue, updateData )
+
+					# Apply value
 					service.packInfo[updateData.resType][updateData.resName].src = updateData.src
+
 					# Add timestamp to each resource
 					service.cacheFlags["#{themeConfig.themeFolder}#{updateData.src}"] = (new Date()).getTime()
 
-				# Update localStorage if dirty
-				if service.dirty
-					localStorage.set('unpublished_theme_packInfo', service.packInfo)
+					service.themeModel._dirty = true
 
-				service.dirty = true
+				# Update localStorage if dirty
+				# if service.themeModel._dirty
+				saveLocalData()
 
 				# TBD: Not save every time?
 				# service.theme.$save()
@@ -108,31 +146,27 @@ mod.factory 'themeService', [
 				Theme.preview { themeId: service.themeModel._id }, service.packInfo, (data)->
 					service.themeModel.preview = data.preview
 					service.themeModel.thumbnail = data.thumbnail
-					callback(data);
+					callback(data)
 
-			# Package theme and get theme Url
-			packageTheme: (callback)->
-				return callback(false) if not service.dirty
-				# save themeModel
-				# delete service.themeModel.thumbnail
-				# service.themeModel.$save {}, (doc)->
-				Theme.save service.themeModel, (doc)->
-					# package up
-					Theme.packageUp { themeId: doc._id }, service.packInfo, (data)->
+			packageTheme: (callback, fail)->
+				return callback(false) if not service.themeModel._dirty
 
-						service.themeModel.updateTime = data.theme.updateTime
-						service.themeModel.packageFile = data.theme.packageFile
-						callback.apply(null, arguments)
+				Theme.package { themeId: service.themeModel._id }, {
+					# request body
+					packInfo: service.packInfo
+					themeInfo: service.themeModel
+				}, (data)->
+					service.themeModel.updateTime = data.theme.updateTime
+					service.themeModel.packageFile = data.theme.packageFile
 
-						# Clear localStorage
-						localStorage.remove('unpublished_theme_model')
-						localStorage.remove('unpublished_theme_packInfo')
+					service.themeModel.nextId = data.nextId
+					service.themeModel._dirty = false
 
-						service.dirty = false
-
+					service.updateView()
+					callback.apply(null, arguments)
 		}
 
-		service.continueWork()
+		# service.init() if not service.continueWork()
 
 		return service
 ]

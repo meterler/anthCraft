@@ -6,13 +6,11 @@ module.exports = (app)->
 
 	return if not __config.debug
 
-	__logger.debug "Load dev routes"
-	app.get /^\/(preview|themes|thumbnail)/, (req, res)->
-
-		# reqFile = "#{__config.appPath}/resources/#{req.path}"
-		reqFile = path.join(__config.appPath, '/resources/', req.path)
-
-		__logger.debug "reqFile", reqFile
-		res.sendfile reqFile
+	# Cookie test(only for test)
+	app.get "/add-cookie", (req ,res, next)->
+		res.cookie('username', 'ijse')
+		res.cookie('userid', '123')
+		res.cookie('avatar', 'http://a.disquscdn.com/uploads/users/6818/2203/avatar92.jpg?1376936026')
+		res.send 'ok'
 
 	return

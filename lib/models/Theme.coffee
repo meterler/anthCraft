@@ -13,6 +13,12 @@ schemaStruct = {
 		type: 'number'
 	}
 
+	# 父主题id
+	forkFrom: {
+		type: 'string'
+		default: null
+	}
+
 	# 标题
 	title: {
 		type: 'string',
@@ -47,6 +53,11 @@ schemaStruct = {
 		trim: true,
 		default: ''
 	}
+	userTag: {
+		type: 'string',
+		trim: true,
+		default: ''
+	}
 	# 缩略图
 	thumbnail: {
 		type: 'string',
@@ -61,6 +72,12 @@ schemaStruct = {
 	published: {
 		type: 'number',
 		default: 0
+	}
+
+	# 是否公开
+	isShared: {
+		type: 'number',
+		default: 1
 	}
 
 	# 预览图 [url]

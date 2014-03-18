@@ -1,0 +1,12 @@
+<div class="modal-header">
+	{{param.title}}
+	<span class="icon-cancel" ng-click="cancel()" ng-if="param.closable"></span>
+</div>
+<div class="modal-body" ng-class="param.cls">
+{{param.content}}
+</div>
+<div class="modal-footer">
+	<button class="btn btn-clDarkGreen" ng-click="ok()" ng-if="param.buttons.ok">{{param.buttons.ok || 'ok'}}</button>
+	<button class="btn btn-default" ng-click="cancel()" ng-if="param.buttons.cancel">{{param.buttons.cancel || 'cancel'}}</button>
+	<button class="btn btn-default" ng-click="nope()" ng-if="param.buttons.nope">{{param.buttons.nope || 'nope'}}</button>
+</div>

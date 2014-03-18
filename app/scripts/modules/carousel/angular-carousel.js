@@ -219,12 +219,12 @@ angular.module('angular-carousel')
 
                     function scroll(x) {
                         // use CSS 3D transform to move the carousel
-                        // console.log('scroll', x, 'index', scope.carouselIndex);
+                        // console.log('scroll', x, 'index', scope.carouselIndex, containerWidth);
                         if (isNaN(x)) {
                             x = scope.carouselIndex * containerWidth;
                         }
 
-                        swipeCallback && swipeCallback(x);
+                        swipeCallback && swipeCallback(x, scope.carouselIndex);
 
                         offset = x;
                         var move = -Math.round(offset);
