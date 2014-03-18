@@ -14,6 +14,7 @@ module.exports = (app)->
 	FeedbackModel.register app, '/api/feedback'
 
 	# Static routes
+	appPath = __config.appPath
 	app.get "/list/*", (req, res)->
 		app_index = path.join(appPath, "/index.html")
 		res.sendfile app_index
