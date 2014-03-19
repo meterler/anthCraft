@@ -8,6 +8,7 @@ FeedbackSchema = mongoose.Schema {
 	why: mongoose.Schema.Types.Mixed
 	saying: 'string'
 	email: 'string'
+	createAt: { type: 'date', default: Date.now }
 }
 
 
