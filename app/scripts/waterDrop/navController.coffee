@@ -51,8 +51,8 @@ angular.module('anthCraftApp').controller 'navController', [
 						closable: true
 						cls: { 'text-center': true }
 						buttons: {
-							ok: "replace the old"
-							nope: "or submit the new"
+							ok: "Replace"
+							nope: "Submit"
 						}
 					}
 				}
