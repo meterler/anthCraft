@@ -4,14 +4,14 @@ mod = angular.module('anthCraftApp')
 
 # Theme Service
 mod.factory 'themeService',
-	($rootScope, $resource, localStorage, themeConfig)->
+	($rootScope, $resource, localStorageService, themeConfig)->
 
 		saveLocalData = ->
-			localStorage.set 'theme.data', {
+			localStorageService.set 'theme.data', {
 				meta: service.themeModel
 				packInfo: service.packInfo
 			}
-		getLocalData = -> localStorage.get 'theme.data'
+		getLocalData = -> localStorageService.get 'theme.data'
 
 		findCategoryOfRes = (resType, resName)->
 			result = []
@@ -57,8 +57,8 @@ mod.factory 'themeService',
 
 			# Get themeModel model from server side
 			init: (callback)->
-				# Clear localStorage
-				localStorage.clearAll()
+				# Clear localStorageService
+				localStorageService.clearAll()
 
 				# Get themeId from server, but no record in database
 				Theme.create {}, (doc)->
@@ -90,7 +90,7 @@ mod.factory 'themeService',
 
 			hasUnpub: ()-> !!getLocalData()
 			continueWork: ()->
-				# Check localStorage,
+				# Check localStorageService,
 				# 	recover data if exists
 
 				localData = getLocalData()
@@ -123,7 +123,7 @@ mod.factory 'themeService',
 
 					service.themeModel._dirty = true
 
-				# Update localStorage if dirty
+				# Update localStorageService if dirty
 				# if service.themeModel._dirty
 				saveLocalData()
 
