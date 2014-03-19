@@ -1,8 +1,5 @@
-angular.module('anthCraftApp').controller 'navController', [
-	'$rootScope', '$scope', '$modal', '$cookies', '$location', '$q', 'themeService', 'acUtils',
-	(
-		$rootScope, $scope, $modal, $cookies, $location, $q, themeService, acUtils
-	)->
+angular.module('anthCraftApp').controller 'navController',
+	($rootScope, $scope, $modal, $cookies, $location, $q, themeService, acUtils)->
 
 		$scope.isLogined = -> !!$cookies.userid
 		$scope.getUser = ->
@@ -14,7 +11,7 @@ angular.module('anthCraftApp').controller 'navController', [
 
 		showPackageResult = (data)->
 			[result, theme] = data
-			# todo: success or faile
+			# success or faile
 			dlg = $modal.open {
 				templateUrl: "/views/waterDrop/modals/packageResult.html"
 				controller: "packageResultModalController"
@@ -150,4 +147,3 @@ angular.module('anthCraftApp').controller 'navController', [
 
 		$scope.openLoginBox = ->
 			acUtils.ifUserLogined()
-]

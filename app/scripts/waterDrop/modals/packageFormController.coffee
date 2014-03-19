@@ -1,9 +1,6 @@
 
-angular.module("anthCraftApp").controller "packageFormController", [
-	'$scope', '$http', '$q', '$timeout', '$modalInstance', '$cookies', 'themeService', 'localStorageService',
-	(
-		$scope, $http, $q, $timeout, $modalInstance, $cookies, themeService, localStorage
-	)->
+angular.module("anthCraftApp").controller "packageFormController",
+	($scope, $http, $q, $timeout, $modalInstance, $cookies, themeService, localStorage)->
 		$scope.uploading = 0
 
 		packageTheme = ->
@@ -88,5 +85,3 @@ angular.module("anthCraftApp").controller "packageFormController", [
 		$scope.cancel = ->
 			themeService.updateView()
 			$modalInstance.dismiss()
-
-]

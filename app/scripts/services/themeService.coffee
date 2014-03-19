@@ -3,11 +3,8 @@ mod = angular.module('anthCraftApp')
 
 
 # Theme Service
-mod.factory 'themeService', [
-	'$rootScope', '$resource', 'localStorageService', 'themeConfig',
-	(
-		$rootScope, $resource, localStorage, themeConfig
-	)->
+mod.factory 'themeService',
+	($rootScope, $resource, localStorage, themeConfig)->
 
 		saveLocalData = ->
 			localStorage.set 'theme.data', {
@@ -169,4 +166,3 @@ mod.factory 'themeService', [
 		# service.init() if not service.continueWork()
 
 		return service
-]

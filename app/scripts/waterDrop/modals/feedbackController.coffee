@@ -1,5 +1,4 @@
-angular.module('anthCraftApp').controller 'feedbackController', [
-	'$scope', '$modalInstance', '$http', '$cookies'
+angular.module('anthCraftApp').controller 'feedbackController',
 	($scope, $modalInstance, $http, $cookies)->
 
 		userId = $cookies.userid
@@ -17,4 +16,3 @@ angular.module('anthCraftApp').controller 'feedbackController', [
 			$http.post('/api/feedback', $scope.feedback)
 				.finally ->
 					$modalInstance.close()
-]

@@ -1,7 +1,7 @@
 
 mod = angular.module 'anthCraftApp'
 
-mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
+mod.directive 'uploadImg', ($http, ngProgress)-> {
 	restrict: 'E'
 	scope: {
 		themeId: "@"
@@ -168,4 +168,4 @@ mod.directive 'uploadImg', [ '$http', 'ngProgress', ($http, ngProgress)-> {
 
 		scope.$watch 'resType + "," + resName', refreshData
 
-}]
+}

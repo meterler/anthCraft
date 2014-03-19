@@ -1,6 +1,5 @@
 
-angular.module("anthCraftApp").controller "viewController", [
-	"$rootScope", "$scope", '$http', '$location', '$modal', '$cookies', 'themeService', 'themeConfig',
+angular.module("anthCraftApp").controller "viewController",
 	($rootScope, $scope, $http, $location, $modal, $cookies, themeService, themeConfig)->
 
 		$scope.pan = {}
@@ -111,4 +110,3 @@ angular.module("anthCraftApp").controller "viewController", [
 						}
 					}
 				}
-]
