@@ -88,42 +88,17 @@ angular.module('anthCraftApp').controller 'navController', [
 					$location.url("/")
 			return def.promise
 
-			# alertInst = $modal.open {
-			# 	backdrop: 'static'
-			# 	keyboard: false
-			# 	template: """
-			# 	<div class="modal-header text-center">
-			# 		New
-			# 		<span class="icon-cancel pull-right" ng-click="cancel()"></span>
-			# 	</div>
-			# 	<div class="modal-body text-center">
-
-			# 		Create new will clear all the content of the current theme, <br/>
-			# 		continue?
-
-			# 	</div>
-			# 	<div class="modal-footer">
-			# 		<button class="btn btn-clDarkGreen" ng-click="ok()">Yes</button>
-			# 		<button class="btn btn-default" ng-click="cancel()">No</button>
-			# 	</div>
-			# 	"""
-			# 	controller: [ '$scope', '$modalInstance', ($scope, $modalInstance)->
-			# 		$scope.ok = -> $modalInstance.close()
-			# 		$scope.cancel = -> $modalInstance.dismiss()
-			# 	]
-			# }
-
 		# Preview
 		$scope.previewTheme = ->
 			# Preview the whole theme
 
-			# todo: open preview dialog
-			# todo: load preview image
+			# open preview dialog
+			# load preview image
 			$modal.open {
 				backdrop: 'static'
 				keyboard: false
 				templateUrl: "/views/waterDrop/modals/previewModal.html"
-				windowClass : "preview-static"
+				windowClass: "preview-static"
 				controller: [ '$scope', '$modalInstance', 'themeService', (_scope, $modalInstance, themeService)->
 					_scope.theme = themeService.packInfo
 					_scope.submit = ->
@@ -135,20 +110,6 @@ angular.module('anthCraftApp').controller 'navController', [
 
 		# Package
 		$scope.packageTheme = ->
-
-			# Disable for them time being
-			# acUtils.ifUserLogined()
-			# 	.then( ->
-			# 		# user logined
-			# 		acUtils.ifThemeModified().then -> showPackageForm().then(showPackageResult)
-			# 	)
-			# 	.catch( ->
-
-			# 	)
-			# acUtils.ifThemeModified().then ->
-			# 	showPackageForm().then (data)->
-			# 		showPackageResult(data).finally ->
-			# 			themeService.init -> $location.url('/')
 
 			acUtils.ifUserLogined()
 				.then( ->
