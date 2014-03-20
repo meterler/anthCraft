@@ -147,3 +147,19 @@ angular.module('anthCraftApp').controller 'navController',
 
 		$scope.openLoginBox = ->
 			acUtils.ifUserLogined()
+
+		$scope.saveTheme = ->
+
+			$modal.open {
+				templateUrl: '/views/waterDrop/modals/saveTheme.html'
+				windowClass: 'modal-saveModal'
+				controller: 'savePackageController'
+				backdrop: 'static'
+				keyboard: false
+			}
+
+		$scope.loadTheme = ->
+			# todo
+			$modal.open {
+				templateUrl: '/views/waterDrop/modals/listSavedTheme.html'
+			}
