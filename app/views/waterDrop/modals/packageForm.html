@@ -64,7 +64,7 @@
 			<div class="form-group">
 				<label for="charge" class="col-sm-3 control-label">Charge:</label>
 				<div class="col-sm-8">
-					<select ng-model="theme.charge" class="form-control" name="charge" required ng-options="c for c in charges"></select>
+					<select ng-model="theme.charge" class="form-control" name="charge" required ng-options="c.value as c.text for c in charges"></select>
 				</div>
 			</div>
 		</fieldset>

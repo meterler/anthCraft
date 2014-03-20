@@ -79,6 +79,11 @@ schemaStruct = {
 		type: 'number',
 		default: 1
 	}
+	# 付费价格
+	charge: {
+		type: 'number',
+		default: 0
+	}
 
 	# 预览图 [url]
 	preview: [ 'string' ]
