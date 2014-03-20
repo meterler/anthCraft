@@ -37,8 +37,17 @@ angular.module("anthCraftApp").controller "packageFormController",
 			$scope.theme.category = $scope.theme.category or $scope.categories[0].value
 		).error ->
 
+		$scope.charges = [
+			{ text: 'Free', value: 0 }
+			{ text: '$0.02', value: 0.02 }
+			{ text: '$0.99', value: 0.99 }
+			{ text: '$1.99', value: 1.99 }
+			{ text: '$2.99', value: 2.99 }
+		]
+
 		$scope.theme = themeService.themeModel
 		$scope.theme.title = $scope.theme.title or 'cLauncher Theme'
+		$scope.theme.charge = $scope.theme.charge or $scope.charges[0].value
 		$scope.theme.isShared = $scope.theme.isShared or '1'
 		$scope.theme.userId = $cookies.userid
 		$scope.theme.author = $cookies.username
