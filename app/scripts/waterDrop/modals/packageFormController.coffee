@@ -1,6 +1,6 @@
 
 angular.module("anthCraftApp").controller "packageFormController",
-	($scope, $http, $q, $timeout, $modalInstance, $cookies, themeService, localStorage)->
+	($scope, $http, $q, $timeout, $modalInstance, $cookies, themeService)->
 		$scope.uploading = 0
 
 		packageTheme = ->
@@ -46,8 +46,6 @@ angular.module("anthCraftApp").controller "packageFormController",
 		# $scope.$watch 'theme', (newVal)->
 		# 	localStorage.set('unpublished_theme_model', newVal)
 
-		saveToLocalStorage = ->
-			localStorage.set('unpublished_theme_model', themeService.themeModel)
 
 		$scope.ok = ->
 

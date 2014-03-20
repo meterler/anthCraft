@@ -136,6 +136,8 @@ mod.factory 'themeService',
 				service.packInfo = data.packInfo
 				service.themeModel = data.meta
 				service.themeUpdate()
+				# Save to local storage
+				saveLocalData()
 
 			themeUpdate: ()->
 				$rootScope.$broadcast 'theme.update', service.packInfo
