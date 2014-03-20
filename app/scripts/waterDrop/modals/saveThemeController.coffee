@@ -1,28 +1,28 @@
 
 angular.module('anthCraftApp').controller 'savePackageController',
-	($scope, $http, $cookies, $timeout, $modalInstance, themeService, ThemeSaved)->
+	($scope, $http, $cookies, $timeout, $modalInstance, themeService, SavedTheme)->
 
 		userId = $cookies.userid
 
-		$scope.archiveName = 'ttt'
+		$scope.theme = { title: 'Untitled'}
 		$scope.status = ''
 
 		$scope.saveToServer = ->
 			$scope.status= ''
 
-			themeSaved = new ThemeSaved {
+			savedTheme = new SavedTheme {
 				userId: userId
-				title: $scope.archiveName
+				title: $scope.theme.title
 				data: {
 					meta: themeService.themeModel
 					packInfo: themeService.packInfo
 				}
 			}
-			themeSaved.$save ->
+			savedTheme.$save ->
 				$scope.status = 'success'
 				$timeout ->
 					$modalInstance.close()
-				, 1000
+				, 500
 			, ->
 				$scope.status = 'error'
 

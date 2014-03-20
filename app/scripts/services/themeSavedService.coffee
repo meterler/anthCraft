@@ -1,14 +1,11 @@
 
-angular.module('anthCraftApp').service 'ThemeSaved',
+angular.module('anthCraftApp').service 'SavedTheme',
 	($resource)->
-		$resource '/api/themesaved/:id', {
+		$resource '/api/savedTheme/:id', {
 			id: '@_id'
 		}, {
 			create: {
 				method: 'POST'
-			}
-			list: {
-				method: 'GET'
 			}
 			get: {
 				method: 'GET'

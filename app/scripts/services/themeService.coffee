@@ -131,6 +131,12 @@ mod.factory 'themeService',
 				# service.theme.$save()
 				$rootScope.$broadcast('theme.update', service.packInfo, updateData)
 
+			loadTheme: (data)->
+				# data struct: { meta: {themeModel}, packInfo: {} }
+				service.packInfo = data.packInfo
+				service.themeModel = data.meta
+				service.themeUpdate()
+
 			themeUpdate: ()->
 				$rootScope.$broadcast 'theme.update', service.packInfo
 

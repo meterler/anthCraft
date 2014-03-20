@@ -162,4 +162,8 @@ angular.module('anthCraftApp').controller 'navController',
 			# todo
 			$modal.open {
 				templateUrl: '/views/waterDrop/modals/listSavedTheme.html'
+				windowClass: 'modal-loadThemeBox'
+				controller: 'loadThemeController'
+				backdrop: 'static'
+				keyboard: false
 			}
