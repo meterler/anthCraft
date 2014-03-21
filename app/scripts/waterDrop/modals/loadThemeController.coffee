@@ -1,9 +1,10 @@
 
 angular.module('anthCraftApp').controller 'loadThemeController',
-	($scope, $modalInstance, themeService, SavedTheme)->
+	($scope, $modalInstance, $cookies, themeService, SavedTheme)->
 
 		$scope.themeList = SavedTheme.query({
 			sort: '-updateAt'
+			userId: $cookies.userid
 		})
 
 		$scope.remove = (theme)->
