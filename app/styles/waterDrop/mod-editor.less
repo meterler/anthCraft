@@ -66,7 +66,7 @@
 		}
 
 		&:hover .handles {
-			display: block;
+			opacity: 1;
 		}
 		.handles {
 			width: 30px;
@@ -75,11 +75,13 @@
 			right: -30px;
 			bottom: 40px;
 			padding: 3px;
-			display: none;
+			opacity: 0;
 
 			font-size: 18px;
 			background-color: white;
 			border-radius: 0 10px 10px 0;
+			transition: all 0.5s;
+			-webkit-transition: all 0.5s;
 
 			i {
 				cursor: pointer;
