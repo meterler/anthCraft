@@ -50,7 +50,9 @@
                 <div class="pull-right meterial-nav">
                     <!-- <span>Expansion</span>
                     <i class="icon-down-open-big"></i> -->
-                    {{curPage}} / {{totalPages}}
+                    <span ng-show="status == 'loaded'">
+                        {{curPage}} / {{totalPages}}
+                    </span>
                     <i class="icon-left-open-big disabled"
                         ng-class="{disabled: !hasPrev}"
                         ng-disabled="hasPrev" ng-click="hasPrev && loadMaterials(+curPage-1)"></i>
@@ -60,7 +62,7 @@
                 </div>
             </header>
 
-            <section class="text-center material-empty" ng-if="!materialList.length">
+            <section class="text-center material-empty" ng-if="status != 'loaded'">
                 <div ng-show="status == 'loading'">
                     <p><i class="icon-spin4 animate-spin"></i></p>
                     <p>Loading...</p>
@@ -70,7 +72,7 @@
                     <p>Empty</p>
                 </div>
             </section>
-            <section class="text-center material-list" ng-if="materialList.length > 0">
+            <section class="text-center material-list" ng-if="status == 'loaded'">
                 <ul>
                     <li ng-repeat="material in materialList" ng-class="{ active: (material.src == resInfo.data.src) }">
                         <img ng-src="{{material.src}}" ng-click="select(resInfo, material.src)" />

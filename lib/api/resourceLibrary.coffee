@@ -100,13 +100,13 @@ module.exports = (app)->
 					}
 				)
 
-		# loadFromDB()
-		# return
+		loadFromDB()
+		return
 
-		if __config.debug
-			setTimeout ->
-				res.json Library[resType]?[resName]
-			, 2000
-		else
-			loadFromDB()
+		# if __config.debug
+		# 	setTimeout ->
+		# 		res.json Library[resType]?[resName]
+		# 	, 2000
+		# else
+		# 	loadFromDB()
 
