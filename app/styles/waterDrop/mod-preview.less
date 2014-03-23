@@ -78,15 +78,18 @@
 			background-repeat: no-repeat;
 			vertical-align: top;
 			position: relative;
+			overflow: hidden;
 			span {
 				position: absolute;
-				left: 0; bottom: 0;
+				left: -3px; bottom: 0;
 				width: 100%;
 				text-align: center;
 				color: white;
 				font-size: 12px;
 				-webkit-transform: scale(0.75);
 				transform: scale(0.75);
+				word-wrap: break-word;
+				white-space: nowrap;
 			}
 		}
 	}
@@ -94,6 +97,7 @@
 		position: relative;
 		margin-top: 25px;
 		z-index: 200;
+		text-align: left;
 		.app-icon {
 			width: 42px;
 			height: 56px;
@@ -103,7 +107,8 @@
 			background-repeat: no-repeat;
 			position: relative;
 			text-align: center;
-			margin: 0 4px;
+			margin: 0 5px;
+			overflow: hidden;
 
 			img {
 				width: 42px;
@@ -122,6 +127,8 @@
 				font-size: 12px;
 				-webkit-transform: scale(0.75);
 				transform: scale(0.75);
+				word-wrap: break-word;
+				white-space: nowrap;
 			}
 		}
 	}
