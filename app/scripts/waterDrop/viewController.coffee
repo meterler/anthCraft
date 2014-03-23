@@ -87,6 +87,10 @@ angular.module("anthCraftApp").controller "viewController",
 				}
 			).error ()->
 
+		# Listen message comes from modals
+		$rootScope.$on 'openFeedbackBox', ->
+			$scope.openFeedbackBox()
+
 		$scope.openFeedbackBox = ->
 			console.log $cookies.s
 			$modal.open({
