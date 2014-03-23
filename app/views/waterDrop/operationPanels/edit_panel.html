@@ -13,15 +13,16 @@
     </div>
     <div class="panel-body">
         <div class="row mod-editPanel">
-            <div class="col-md-6">
-                <div class="preview-area" ng-click="openFile()">
-                    <img ng-src="{{UPLOAD_PATH}}{{resInfo.data.src}}?{{etag}}" type="{{image.file.type}}" class="preview_area">
-
-                    <div class="loading" ng-if="isLoading">
-                        <i class="icon-spin4 animate-spin"></i>
-                    </div>
+            <div class="preview-area pull-left">
+                <div class="preview-image" ng-click="openFile()">
+                    <img ng-src="{{UPLOAD_PATH}}{{resInfo.data.src}}?{{etag}}" type="{{image.file.type}}">
                 </div>
-                <label for="upImage" class="file-upload btn btn-clGreen">
+
+                <div class="loading" ng-if="isLoading">
+                    <i class="icon-spin4 animate-spin"></i>
+                </div>
+
+                <label for="upImage" class="file-upload">
                     <b>UPLOAD</b>
                     <input type="file" name="upImage"
                         accept="{{standard.type}}"
@@ -31,7 +32,7 @@
                         ng-change="uploadFile(image.file, x)" />
                 </label>
             </div>
-            <div class="col-md-6">
+            <div class="res-info pull-right">
                 <h2>{{resInfo.data.capital}}</h2>
                 <p>Size: {{standard.width}} x {{standard.height}}px </p>
                 <p>Format: {{standard.type}}</p>
