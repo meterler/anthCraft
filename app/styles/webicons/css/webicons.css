@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'webicons';
-  src: url('../font/webicons.eot?95001566');
-  src: url('../font/webicons.eot?95001566#iefix') format('embedded-opentype'),
-       url('../font/webicons.woff?95001566') format('woff'),
-       url('../font/webicons.ttf?95001566') format('truetype'),
-       url('../font/webicons.svg?95001566#webicons') format('svg');
+  src: url('../font/webicons.eot?19542387');
+  src: url('../font/webicons.eot?19542387#iefix') format('embedded-opentype'),
+       url('../font/webicons.woff?19542387') format('woff'),
+       url('../font/webicons.ttf?19542387') format('truetype'),
+       url('../font/webicons.svg?19542387#webicons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -14,7 +14,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'webicons';
-    src: url('../font/webicons.svg?95001566#webicons') format('svg');
+    src: url('../font/webicons.svg?19542387#webicons') format('svg');
   }
 }
 */
@@ -67,14 +67,15 @@
 .icon-left-circled-1:before { content: '\e800'; } /* '' */
 .icon-right-circled-1:before { content: '\e805'; } /* '' */
 .icon-floppy:before { content: '\e817'; } /* '' */
+.icon-smile:before { content: '\e813'; } /* '' */
 .icon-undo:before { content: '\e81a'; } /* '' */
-.icon-frown:before { content: '\e814'; } /* '' */
 .icon-meh:before { content: '\e815'; } /* '' */
 .icon-search:before { content: '\e80b'; } /* '' */
 .icon-user:before { content: '\e80e'; } /* '' */
 .icon-help:before { content: '\e80c'; } /* '' */
 .icon-tools:before { content: '\e806'; } /* '' */
 .icon-down-open-big:before { content: '\e801'; } /* '' */
+.icon-left-open-big:before { content: '\e823'; } /* '' */
 .icon-right-open-big:before { content: '\e807'; } /* '' */
 .icon-mobile:before { content: '\e808'; } /* '' */
 .icon-lock-filled:before { content: '\e803'; } /* '' */
@@ -84,4 +85,4 @@
 .icon-download:before { content: '\e816'; } /* '' */
 .icon-ok-circled:before { content: '\e802'; } /* '' */
 .icon-doc-new:before { content: '\e809'; } /* '' */
-.icon-smile:before { content: '\e813'; } /* '' */
+.icon-frown:before { content: '\e814'; } /* '' */

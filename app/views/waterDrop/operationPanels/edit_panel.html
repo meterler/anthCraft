@@ -44,7 +44,7 @@
             </div>
         </div>
 
-        <div class="row mod-material">
+        <div class="row mod-material" ng-controller="materialController" ng-init="loadMaterials(resInfo)">
             <header>
                 <h2>Material</h2>
                 <div class="pull-right">
@@ -53,13 +53,22 @@
                 </div>
             </header>
 
-            <section class="text-center">
-
-                <br>
-                <br>
-                Comming soon...
-                <br>
-                <br>
+            <section class="text-center material-empty" ng-if="!materialList.length">
+                <div ng-show="status == 'loading'">
+                    <p><i class="icon-spin4 animate-spin"></i></p>
+                    <p>Loading...</p>
+                </div>
+                <div ng-show="status != 'loading'">
+                    <p><i class="icon-frown"></i></p>
+                    <p>Empty</p>
+                </div>
+            </section>
+            <section class="text-center material-list" ng-if="materialList">
+                <ul>
+                    <li ng-repeat="material in materialList" ng-class="{ active: (material == resInfo.data.src) }">
+                        <img ng-src="{{material}}" ng-click="select(resInfo, material)" />
+                    </li>
+                </ul>
             </section>
         </div>
     </div>
