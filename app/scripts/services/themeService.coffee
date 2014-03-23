@@ -144,7 +144,12 @@ mod.factory 'themeService',
 
 			# Reset value to default
 			resetValue: (resType, resName)->
-				service.packInfo[resType][resName] = themeConfig.defaultPackInfo[resType][resName]
+				# service.packInfo[resType][resName] = themeConfig.defaultPackInfo[resType][resName]
+				service.updateView {
+					resType: resType
+					resName: resName
+					src: themeConfig.defaultPackInfo[resType][resName].src
+				}
 
 
 			previewTheme: (callback)->

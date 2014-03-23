@@ -76,3 +76,6 @@ angular.module("anthCraftApp").controller "resEditorController",
 				$document.find("input")[0].click()
 			, 0
 			return
+
+		$scope.reset = ->
+			themeService.resetValue resModel.resType, resModel.resName
