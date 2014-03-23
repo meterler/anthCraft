@@ -44,12 +44,19 @@
             </div>
         </div>
 
-        <div class="row mod-material" ng-controller="materialController" ng-init="loadMaterials(resInfo)">
+        <div class="row mod-material" ng-controller="materialController" ng-init="materialFor = resInfo; loadMaterials(1)">
             <header>
                 <h2>Material</h2>
-                <div class="pull-right">
-                    <span>Expansion</span>
-                    <i class="icon-down-open-big"></i>
+                <div class="pull-right meterial-nav">
+                    <!-- <span>Expansion</span>
+                    <i class="icon-down-open-big"></i> -->
+                    {{curPage}} / {{totalPages}}
+                    <i class="icon-left-open-big disabled"
+                        ng-class="{disabled: !hasPrev}"
+                        ng-disabled="hasPrev" ng-click="hasPrev && loadMaterials(+curPage-1)"></i>
+                    <i class="icon-right-open-big"
+                        ng-class="{disabled: !hasNext}"
+                        ng-disabled="hasNext" ng-click="hasNext && loadMaterials(-(-curPage-1))"></i>
                 </div>
             </header>
 
@@ -63,10 +70,10 @@
                     <p>Empty</p>
                 </div>
             </section>
-            <section class="text-center material-list" ng-if="materialList">
+            <section class="text-center material-list" ng-if="materialList.length > 0">
                 <ul>
-                    <li ng-repeat="material in materialList" ng-class="{ active: (material == resInfo.data.src) }">
-                        <img ng-src="{{material}}" ng-click="select(resInfo, material)" />
+                    <li ng-repeat="material in materialList" ng-class="{ active: (material.src == resInfo.data.src) }">
+                        <img ng-src="{{material.src}}" ng-click="select(resInfo, material.src)" />
                     </li>
                 </ul>
             </section>

@@ -43,17 +43,20 @@ module.exports = (app)->
 	app.get "/resourceLib", (req, res)->
 		resType = req.query.resType
 		resName = req.query.resName
+		page = req.query.page
+		pageSize = 10
 		resId = "#{resType}|#{resName}"
 		cacheId = "resourceLibrary_#{resId}"
 		expireSec = 24 * 60 * 60 # expires in a day
 
 		loadFromDB = ->
+			__log resId, page
 			ResourceModel.find({
 				"status": 1
 				"categoryId": resId
 			})
 			.select({
-				"_id": false
+				"_id": true
 				"files.path": true
 				"files": {
 					"$elemMatch": {
@@ -63,17 +66,42 @@ module.exports = (app)->
 				}
 			})
 			.sort({ orderNum: 1 })
+			.skip( (page-1)*pageSize )
+			.limit(pageSize)
 			.exec (err, docs)->
+				__log err, docs
 				if err
 					__logger.error err
 					res.send 404
 					return
-				list = docs.map (d)-> d.files[0].path
+				list = docs.map (d)-> {
+					_id: d._id
+					src: d.files[0].path
+				}
 
 				# Cache to redis
 				# redisClient.set cacheId, JSON.stringify(list)
 				# redisClient.expire cacheId, expireSec
-				res.json list
+
+				ResourceModel.count({
+					"status": 1
+					"categoryId": resId
+				}, (err, count)->
+					totalPages = Math.ceil(count / pageSize)
+					hasPrev = page > 1
+					hasNext = page < totalPages
+
+					res.json {
+						page: page
+						hasPrev: hasPrev
+						hasNext: hasNext
+						totalPages: totalPages
+						data: list
+					}
+				)
+
+		# loadFromDB()
+		# return
 
 		if __config.debug
 			setTimeout ->

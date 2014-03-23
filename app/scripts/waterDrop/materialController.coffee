@@ -1,7 +1,11 @@
 
 angular.module('anthCraftApp').controller 'materialController',
 	($rootScope, $scope, $http, themeService)->
+		$scope.curPage = 1
+		$scope.hasPrev = false
+		$scope.hasNext = false
 		$scope.status = 'loading'
+		$scope.materialFor = {}
 		$scope.materialList = []
 
 		$scope.select = (resInfo, image)->
@@ -11,15 +15,25 @@ angular.module('anthCraftApp').controller 'materialController',
 				src: image
 			}
 
-		$scope.loadMaterials = (resModel)->
+		$scope.loadMaterials = (n)->
+			$scope.status = 'loading'
 			$http.get("/resourceLib", {
 				params: {
-					resType: resModel.resType
-					resName: resModel.resName
+					resType: $scope.materialFor.resType
+					resName: $scope.materialFor.resName
+					page: n
 				}
-			}).success((list)->
-				$scope.materialList = list
-				$scope.status = 'empty' if list.length < 1
+			}).success((result)->
+				$scope.hasPrev = result.hasPrev
+				$scope.hasNext = result.hasNext
+				$scope.curPage = result.page
+				$scope.totalPages = result.totalPages
+				$scope.materialList = result.data
+
+				if $scope.materialList.length > 0
+					$scope.status = 'loaded'
+				else
+					$scope.status = 'empty'
 
 			).error ->
 				$scope.status = 'error'
