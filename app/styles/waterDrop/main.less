@@ -91,7 +91,7 @@ body {
 	}
 }
 .view-container {
-	width: 1000px !important;
+	width: 1024px !important;
 }
 ////////////////////////
 
@@ -277,10 +277,16 @@ body {
 			width: 304px;
 		}
 	}
-	>:nth-child(2) {
-		padding: 0 29px 0 25px;
+	.menu-container, .operation-container, .preview-container {
+		padding: 0 12px;
 		box-sizing: content-box;
+		-moz-box-sizing: content-box;
 	}
+	// >:nth-child(2) {
+	// 	padding: 0 29px 0 25px;
+	// 	box-sizing: content-box;
+	// 	-moz-box-sizing: content-box;
+	// }
 }
 .mod-editor {
 	.mod-editPanel {
@@ -301,7 +307,8 @@ body {
 }
 
 .drag-placeholder {
-	// border: 1px dotted red;
 	float: left;
-	box-sizing: border-box !important;
+	&.move {
+		border: 1px dotted #bbb;
+	}
 }
