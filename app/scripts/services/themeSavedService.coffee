@@ -10,4 +10,10 @@ angular.module('anthCraftApp').service 'SavedTheme',
 			get: {
 				method: 'GET'
 			}
+			archive: {
+				method: 'POST'
+			}
+			unarchive: {
+				method: 'POST'
+			}
 		}
