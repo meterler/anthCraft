@@ -92,7 +92,7 @@
     },
     {
       "uid": "1923d082b48ffc0fc7b2a9a5c912a834",
-      "css": "copy2",
+      "css": "open",
       "code": 59423,
       "src": "custom_icons",
       "selected": true,
@@ -106,7 +106,7 @@
     },
     {
       "uid": "ec6da7146e8abc156af4ec098c31fc0a",
-      "css": "disk",
+      "css": "save",
       "code": 59424,
       "src": "custom_icons",
       "selected": true,
@@ -179,6 +179,12 @@
       "src": "fontawesome"
     },
     {
+      "uid": "720f98e7580b7987c8dc542513d1d440",
+      "css": "up",
+      "code": 59430,
+      "src": "fontawesome"
+    },
+    {
       "uid": "6855131631509e8795730ce062045ea1",
       "css": "left-circled-1",
       "code": 59392,
@@ -216,7 +222,7 @@
     },
     {
       "uid": "7222571caa5c15f83dcfd447c58d68d9",
-      "css": "search",
+      "css": "preview",
       "code": 59403,
       "src": "entypo"
     },
@@ -276,8 +282,20 @@
     },
     {
       "uid": "83e7b366e9b39bc4006b821f7c5efa4d",
-      "css": "folder",
+      "css": "package",
       "code": 59402,
+      "src": "typicons"
+    },
+    {
+      "uid": "qqsxko9kqxh5g53lz33yonkpc2rpkvkn",
+      "css": "left",
+      "code": 59429,
+      "src": "typicons"
+    },
+    {
+      "uid": "4oaz56fmzfvx7vry2o540n9l4z79fz8t",
+      "css": "right",
+      "code": 59431,
       "src": "typicons"
     },
     {
@@ -300,14 +318,26 @@
     },
     {
       "uid": "9e0404ba55575a540164db9a5ad511df",
-      "css": "doc-new",
+      "css": "new",
       "code": 59401,
+      "src": "elusive"
+    },
+    {
+      "uid": "cbb11c546600a92fde108476faf5d337",
+      "css": "up-1",
+      "code": 59432,
       "src": "elusive"
     },
     {
       "uid": "8da3ac534210aae9c0f0e13804c1df97",
       "css": "cancel",
       "code": 59405,
+      "src": "websymbols"
+    },
+    {
+      "uid": "21f6a88daf13c62e5a70f5ef6ad9e23f",
+      "css": "chat",
+      "code": 59428,
       "src": "websymbols"
     }
   ]
