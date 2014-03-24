@@ -264,7 +264,9 @@ body {
 		width: 172px;
 	}
 	.operation-container {
-		width: 524px;
+		//width: 524px;
+		width: 470px;
+		padding: 0;
 		.ac-opIcons, .mod-editor {
 			width: 470px;
 		}
@@ -277,6 +279,7 @@ body {
 	}
 	>:nth-child(2) {
 		padding: 0 29px 0 25px;
+		box-sizing: content-box;
 	}
 }
 .mod-editor {
@@ -295,4 +298,10 @@ body {
 		height: 40px;
 		font-size: 20px;
 	}
+}
+
+.drag-placeholder {
+	// border: 1px dotted red;
+	float: left;
+	box-sizing: border-box !important;
 }
