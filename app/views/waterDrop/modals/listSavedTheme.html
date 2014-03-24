@@ -4,14 +4,37 @@
 </div>
 <div class="modal-body clearfix">
 
-	<table class="table table-striped table-hover table-condensed col-sm-12">
-		<tr ng-repeat="theme in themeList">
-			<td>{{theme.title}}</td>
-			<td>{{theme.updateAt | date:'yyyy-MM-dd HH:mm'}}</td>
-			<td width="20%">
-				<button class="btn btn-clDarkGreen" ng-click="load(theme)">Load</button>
-			</td>
-			<td width="20%"><button class="btn btn-default" ng-click="remove(theme)">Delete</button></td>
-		</tr>
-	</table>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<span class="text-primary">Select local archive file</span>
+		</div>
+		<div class="panel-body">
+			<label for="upfile" class="file-upload btn btn-clDarkGreen col-sm-3">
+				<strong>Upload</strong>
+				<input type="file" ng-model="archiveFile" onchange="angular.element(this).scope().unarchive(this.files, this)">
+			</label>
+			<div class="col-sm-7 col-sm-offset-1">
+				<span class="text-danger" ng-if="status=='error'">Restore Fail!</span>
+				<span class="text-success" ng-if="status=='uploading'">Restoring...</span>
+				<span class="text-success" ng-if="status=='success'">Success!</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<span class="text-primary">Archive on server</span>
+		</div>
+		<table class="table table-striped table-hover table-condensed ">
+			<tr ng-repeat="theme in themeList">
+				<td width="30%">{{theme.title}}</td>
+				<td width="40%">{{theme.updateAt | date:'yyyy-MM-dd HH:mm'}}</td>
+				<td width="20%">
+					<button class="btn btn-clDarkGreen" ng-click="load(theme)">Load</button>
+				</td>
+				<td width="20%"><button class="btn btn-default" ng-click="remove(theme)">Delete</button></td>
+			</tr>
+		</table>
+	</div>
+
 </div>
