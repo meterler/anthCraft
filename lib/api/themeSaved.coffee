@@ -5,7 +5,7 @@ anthpack = require 'anthpack'
 module.exports = (app)->
 
 	ThemeSaved.route('archive.post', {
-		detail: true,
+		detail: false,
 		handler: (req, res, next)->
 			data = req.body
 
@@ -21,7 +21,7 @@ module.exports = (app)->
 	})
 
 	ThemeSaved.route('unarchive.post', {
-		detail: true,
+		detail: false,
 		handler: (req, res, next)->
 			archiveFile = req.files.archive.path
 

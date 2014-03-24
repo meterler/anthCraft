@@ -12,8 +12,10 @@ angular.module('anthCraftApp').service 'SavedTheme',
 			}
 			archive: {
 				method: 'POST'
+				url: "/api/savedTheme/archive"
 			}
 			unarchive: {
 				method: 'POST'
+				url: "/api/savedTheme/unarchive"
 			}
 		}
