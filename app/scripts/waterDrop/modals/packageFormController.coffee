@@ -85,7 +85,8 @@ angular.module("anthCraftApp").controller "packageFormController",
 					, 1500
 				, ->
 					$scope.uploading = 100
-					$modalInstance.close(['fail'])
+					$modalInstance.close(['success', data.theme])
+					# $modalInstance.close(['fail'])
 			, 0
 			return
 

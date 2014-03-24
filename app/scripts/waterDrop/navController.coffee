@@ -108,6 +108,11 @@ angular.module('anthCraftApp').controller 'navController',
 		# Package
 		$scope.packageTheme = ->
 
+			showPackageResult ['success', {
+				themeId: 54543
+			}]
+			return
+
 			acUtils.ifUserLogined()
 				.then( ->
 					acUtils.ifThemeModified().then ->
