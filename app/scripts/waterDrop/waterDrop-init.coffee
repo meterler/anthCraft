@@ -10,6 +10,7 @@ app = angular.module('anthCraftApp', [
 	'anthcraft.imageupload'
 	'anthCraft.imagedrop'
 	'anthcraft.iconMask'
+	'anthcraft.wrapDragDrop'
 ]).config [
 	'$routeProvider', '$locationProvider',
 	'$compileProvider', '$translateProvider',

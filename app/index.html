@@ -35,14 +35,14 @@
 	<div ng-include="'/views/waterDrop/pageHeader.html'"></div>
 	<div class="container view-container">
 
-		<div class="col-xs-2 menu-container hidden-xs hidden-sm" ng-model="pan">
+		<div class="col-xs-2 menu-container hidden-xs hidden-sm" ng-model="pan" drag-change>
 			<div ng-include="'/views/waterDrop/menuList.html'"
 				ng-controller="menuController"></div>
 		</div>
-		<div class="col-xs-6 operation-container" ng-view ng-model="pan">
+		<div class="col-xs-6 operation-container" ng-view ng-model="pan" drag-change>
 			<span>Loading views...</span>
 		</div>
-		<div class="col-xs-4 preview-container" ng-model="pan" >
+		<div class="col-xs-4 preview-container" ng-model="pan" drag-change>
 			<div ng-include="'/views/waterDrop/emulatorPanel.html'"
 				class="preview-wrap panel panel-default well"
 				ng-controller="previewController"></div>
@@ -72,8 +72,8 @@
 	<script src="/scripts/modules/carousel/angular-carousel.js"></script>
 	<script src="/scripts/modules/imageupload/imageupload.js"></script>
 	<script src="/scripts/modules/imageupload/imageDrop.js"></script>
-
 	<script src="/scripts/modules/imagemask/imageMask.js"></script>
+	<script src="/scripts/modules/dragndrag/wrapDragDrop.js"></script>
 	<!-- endbuild -->
 
 	<!-- build:js({.tmp,app}) /scripts/waterDrop-scripts.js -->
