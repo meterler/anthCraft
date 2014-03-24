@@ -2,27 +2,30 @@
 <div class="mod-editor panel panel-default">
     <div class="panel-heading clearfix">
     	<div class="pull-left">
-    		<a ng-href="{{backUrl}}">
-    			<i class="icon-reply"></i> Back
-    		</a>
-    	</div>
-        <div class="pull-right">
-        	<a ng-href="{{lastItemUrl}}" ng-if="lastItemUrl"><i class="icon-left-circled-1"></i> Last</a>
-        	<a ng-href="{{nextItemUrl}}" ng-if="nextItemUrl">Next <i class="icon-right-circled-1"></i></a>
+    		<a ng-href="{{backUrl}}"><i class="icon-reply"></i></a>
+        	<a ng-href="{{lastItemUrl}}" ng-if="lastItemUrl"><i class="icon-arrow-left"></i></a>
+        	<a ng-href="{{nextItemUrl}}" ng-if="nextItemUrl"><i class="icon-arrow-right"></i></a>
         </div>
     </div>
     <div class="panel-body">
         <div class="row mod-editPanel">
-            <div class="col-md-6">
-                <div class="preview-area" ng-click="openFile()">
-                    <img ng-src="{{UPLOAD_PATH}}{{resInfo.data.src}}?{{etag}}" type="{{image.file.type}}" class="preview_area">
-
-                    <div class="loading" ng-if="isLoading">
-                        <i class="icon-spin4 animate-spin"></i>
-                    </div>
+            <div class="preview-area pull-left">
+                <div class="preview-image" ng-click="openFile()">
+                    <img ng-src="{{UPLOAD_PATH}}{{resInfo.data.src}}?{{etag}}" type="{{image.file.type}}">
                 </div>
-                <label for="upImage" class="file-upload btn btn-clGreen">
-                    <b>UPLOAD</b>
+
+                <div class="loading" ng-if="isLoading">
+                    <i class="icon-spin4 animate-spin"></i>
+                </div>
+
+                <div class="handles">
+                    <i class="icon-crop"></i>
+                    <i class="icon-remove" ng-click="reset()"></i>
+                </div>
+
+                <label for="upImage" class="file-upload">
+                    <i class="icon-up-1"></i>
+                    <b>Upload</b>
                     <input type="file" name="upImage"
                         accept="{{standard.type}}"
                         image="image"
@@ -31,29 +34,47 @@
                         ng-change="uploadFile(image.file, x)" />
                 </label>
             </div>
-            <div class="col-md-6">
+            <div class="res-info pull-right">
                 <h2>{{resInfo.data.capital}}</h2>
                 <p>Size: {{standard.width}} x {{standard.height}}px </p>
                 <p>Format: {{standard.type}}</p>
             </div>
         </div>
 
-        <div class="row mod-material">
+        <div class="row mod-material" ng-controller="materialController" ng-init="materialFor = resInfo; loadMaterials(1)">
             <header>
                 <h2>Material</h2>
-                <div class="pull-right">
-                    <span>Expansion</span>
-                    <i class="icon-down-open-big"></i>
+                <div class="pull-right meterial-nav">
+                    <!-- <span>Expansion</span>
+                    <i class="icon-down-open-big"></i> -->
+                    <span ng-show="status == 'loaded'">
+                        {{curPage}} / {{totalPages}}
+                    </span>
+                    <i class="icon-left-open-big disabled"
+                        ng-class="{disabled: !hasPrev}"
+                        ng-disabled="hasPrev" ng-click="hasPrev && loadMaterials(+curPage-1)"></i>
+                    <i class="icon-right-open-big"
+                        ng-class="{disabled: !hasNext}"
+                        ng-disabled="hasNext" ng-click="hasNext && loadMaterials(-(-curPage-1))"></i>
                 </div>
             </header>
 
-            <section class="text-center">
-
-                <br>
-                <br>
-                Comming soon...
-                <br>
-                <br>
+            <section class="text-center material-empty" ng-if="status != 'loaded'">
+                <div ng-show="status == 'loading'">
+                    <p><i class="icon-spin4 animate-spin"></i></p>
+                    <p>Loading...</p>
+                </div>
+                <div ng-show="status != 'loading'">
+                    <p><i class="icon-frown"></i></p>
+                    <p>Empty</p>
+                </div>
+            </section>
+            <section class="text-center material-list" ng-if="status == 'loaded'">
+                <ul>
+                    <li ng-repeat="material in materialList" ng-class="{ active: (material.src == resInfo.data.src) }">
+                        <img ng-src="{{material.src}}" ng-click="select(resInfo, material.src)" />
+                    </li>
+                </ul>
             </section>
         </div>
     </div>

@@ -1,6 +1,5 @@
 
-angular.module("anthCraftApp").service 'acUtils', [
-	'$modal', '$cookies', '$q', 'themeConfig', 'themeService',
+angular.module("anthCraftApp").service 'acUtils',
 	($modal, $cookies, $q, themeConfig, themeService)->
 
 		acUtils = {
@@ -76,5 +75,3 @@ angular.module("anthCraftApp").service 'acUtils', [
 		}
 
 		return acUtils
-
-]

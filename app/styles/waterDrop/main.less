@@ -13,16 +13,28 @@
 @import "mod-animate.less";
 @import "mod-loginbox.less";
 @import "mod-packageResult.less";
+@import "mod-material.less";
 @font-face {
 	font-family: "hnlt";
 	src: url("../fonts/HelveticaNeueLTStd-Lt.otf");
 }
+@font-face {
+	font-family: 'hnlt';
+	src: url('../fonts/HelveticaNeueLTStd-Lt.eot');
+	src: url('../fonts/HelveticaNeueLTStd-Lt.eot') format('embedded-opentype'),
+		url('../fonts/HelveticaNeueLTStd-Lt.woff') format('woff'),
+		url('../fonts/HelveticaNeueLTStd-Lt.ttf') format('truetype'),
+		url('../fonts/HelveticaNeueLTStd-Lt.svg') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
 
 html {
 	// Always show vertical scrollbar to prevent for the shaking of content when modal shows
 	overflow-y: scroll;
 }
 body {
+	font-family: 'hnlt',"Helvetica Neue",Helvetica,Arial,sans-serif;
 	background-color: #F8F8F8;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -171,7 +183,7 @@ body {
 			}
 			i {
 				color: #FDFAA7;
-				font-size: 18px;
+				font-size: 16px;
 				&:before {
 					width: 30px;
 					height: 30px;
@@ -277,14 +289,6 @@ body {
 	}
 	>:nth-child(2) {
 		padding: 0 29px 0 25px;
-	}
-}
-.mod-editor {
-	.mod-editPanel {
-		padding: 0;
-		.preview-area {
-		}
-
 	}
 }
 .preview-footer {

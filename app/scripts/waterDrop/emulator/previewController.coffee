@@ -2,13 +2,8 @@
 ###
 Control the theme previewer
 ###
-mod = angular.module('anthCraftApp')
-
-mod.controller 'previewController', [
-	'$scope', '$rootScope', 'themeConfig', 'themeService', 'menuFactory'
-	(
-		$scope, $rootScope, themeConfig, themeService, menuFactory
-	)->
+angular.module('anthCraftApp').controller 'previewController',
+	($scope, $rootScope, themeConfig, themeService, menuFactory)->
 
 		# 1440*SENCE_HEIGHT/1280=>
 		IMAGE_WIDTH = 568.125
@@ -80,5 +75,4 @@ mod.controller 'previewController', [
 			$scope.curSence = sence
 
 		$scope.appIconList = themeConfig.appIcons
-]
 

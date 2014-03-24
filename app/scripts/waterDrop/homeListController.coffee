@@ -1,5 +1,4 @@
-angular.module("anthCraftApp").controller "homeListController", [
-	"$rootScope", "$scope", "$location", "themeService", "themeConfig", 'acUtils',
+angular.module("anthCraftApp").controller "homeListController",
 	($rootScope, $scope, $location, themeService, themeConfig, acUtils)->
 
 		# $scope.list = themeService.packInfo.wallpaper
@@ -8,4 +7,3 @@ angular.module("anthCraftApp").controller "homeListController", [
 		$scope.list = acUtils.getOperationItemList('home')
 		$scope.$on 'theme.update', ()->
 			$scope.list = acUtils.getOperationItemList('home')
-]

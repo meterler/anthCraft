@@ -34,12 +34,16 @@
 		<div class="drawer-apps">
 			<div class="app-icon"
 				ng-repeat="(type, icon) in theme.app_icon" >
-				<img icon-mask class="mp-apps-maskImg"
-					 	src="{{UPLOAD_PATH}}{{icon.src}}"
-					 	base="{{UPLOAD_PATH}}{{theme.customize.customize_mat.src}}"
-					 	shape="{{UPLOAD_PATH}}{{theme.customize.customize_mask.src}}"
-					 	/>
+				<img class="mp-apps-maskImg" src="{{UPLOAD_PATH}}{{icon.src}}" />
 				<span>{{icon.capital}}</span>
+			</div>
+			<div class="app-icon">
+				<img icon-mask class="mp-apps-maskImg"
+						src="{{UPLOAD_PATH}}{{theme.customize.customize_icon.src}}"
+						base="{{UPLOAD_PATH}}{{theme.customize.customize_mat.src}}"
+						shape="{{UPLOAD_PATH}}{{theme.customize.customize_mask.src}}"
+						/>
+				<span>{{theme.customize.customize_icon.capital}}</span>
 			</div>
 		</div>
 		<div class="drawer-buttons">

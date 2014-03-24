@@ -61,6 +61,12 @@
 					</div>
 				</div>
 			</div>
+			<div class="form-group">
+				<label for="charge" class="col-sm-3 control-label">Charge:</label>
+				<div class="col-sm-8">
+					<select ng-model="theme.charge" class="form-control" name="charge" required ng-options="c.value as c.text for c in charges"></select>
+				</div>
+			</div>
 		</fieldset>
 		<progressbar class="progress-striped active" value="uploading" type="info" ng-if="uploading > 0">
 			<i ng-show="showWarning">Packaging...</i>

@@ -1,12 +1,6 @@
 
-mod = angular.module('anthCraftApp')
-
-mod.controller "menuController", [
-	'$rootScope', '$scope', '$location', 'menuFactory'
-
-	(
-		$rootScope, $scope, $location, menuFactory
-	)->
+angular.module('anthCraftApp').controller "menuController",
+	($rootScope, $scope, $location, menuFactory)->
 		$scope.menuList = menuFactory.list
 
 		$scope.$on "$routeChangeSuccess", ()->
@@ -32,8 +26,3 @@ mod.controller "menuController", [
 			$rootScope.$broadcast 'theme.switchSence', item.sence
 
 			return
-
-
-
-		return
-]
