@@ -2,13 +2,9 @@
 <div class="mod-editor panel panel-default">
     <div class="panel-heading clearfix">
     	<div class="pull-left">
-    		<a ng-href="{{backUrl}}">
-    			<i class="icon-reply"></i> Back
-    		</a>
-    	</div>
-        <div class="pull-right">
-        	<a ng-href="{{lastItemUrl}}" ng-if="lastItemUrl"><i class="icon-left-circled-1"></i> Last</a>
-        	<a ng-href="{{nextItemUrl}}" ng-if="nextItemUrl">Next <i class="icon-right-circled-1"></i></a>
+    		<a ng-href="{{backUrl}}"><i class="icon-reply"></i></a>
+        	<a ng-href="{{lastItemUrl}}" ng-if="lastItemUrl"><i class="icon-arrow-left"></i></a>
+        	<a ng-href="{{nextItemUrl}}" ng-if="nextItemUrl"><i class="icon-arrow-right"></i></a>
         </div>
     </div>
     <div class="panel-body">
@@ -28,7 +24,8 @@
                 </div>
 
                 <label for="upImage" class="file-upload">
-                    <b>UPLOAD</b>
+                    <i class="icon-up-1"></i>
+                    <b>Upload</b>
                     <input type="file" name="upImage"
                         accept="{{standard.type}}"
                         image="image"

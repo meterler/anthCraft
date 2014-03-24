@@ -2,7 +2,7 @@
 	"TITLE": "cLauncher",
 	"HEADER": {
 		"NEW": "New",
-		"LOAD": "Load",
+		"OPEN": "Open",
 		"SAVE": "Save",
 		"PREVIEW": "Preview",
 		"PACKAGE": "Package",

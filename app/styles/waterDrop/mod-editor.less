@@ -3,12 +3,17 @@
 	height: 527px;
 	border: 1px solid #BBBBBB;
 	.panel-heading {
+		padding: 5px 10px;
 		.fn_panelHeaderBackground;
 		a {
 			color: #474747;
 			&:hover, &:active {
 				text-decoration: none;
 				color: #000;
+			}
+			i {
+				color: #009c7d;
+				font-size: 20px;
 			}
 		}
 	}
@@ -18,7 +23,9 @@
 		color: #787878;
 
 		h2 {
-			color: #2BA28D;
+			font-size: 18px;
+			font-weight: 900;
+			color: #686868;
 		}
 	}
 
@@ -114,9 +121,13 @@
 		&:hover, &:active, &:focus {
 			background-color: darken(#00997B, 10%);
 		}
+		i {
+			font-size: 18px;
+		}
 		b {
-			font-size: 16px;
+			font-size: 20px;
 			line-height: 38px;
+			letter-spacing: 1px;
 		}
 		input {
 			text-indent: -999px;
@@ -126,12 +137,12 @@
 	}
 
 	.res-info {
-		width: 220px;
-		padding: 20px;
+		width: 180px;
 	}
 
 	.mod-editPanel {
-		padding: 0 15px;
+		margin: 0;
+		padding: 0;
 	}
 }
 
