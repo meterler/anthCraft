@@ -3,6 +3,7 @@
 angular.module('anthcraft.wrapDragDrop', [])
 
 .directive 'dragChange', ($document)->
+
 	return (scope, element, attrs)->
 
 		element.attr "draggable", false
@@ -18,7 +19,7 @@ angular.module('anthcraft.wrapDragDrop', [])
 
 			width = element.prop 'offsetWidth'
 			height = element.prop 'offsetHeight'
-			dragWrap = "<div class='drag-placeholder col' style='width:#{width}px; height:#{height}px'></div>"
+			dragWrap = "<div class='drag-placeholder' style='width:#{width}px; height:#{height}px'></div>"
 			element.after(dragWrap)
 
 			topy  = element.prop 'offsetTop'

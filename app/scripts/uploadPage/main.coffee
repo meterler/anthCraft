@@ -28,7 +28,7 @@ mod = angular.module("uploadApp", [
 ]
 
 mod.controller 'indexCtrl', [
-    '$rootScope', '$scope', '$location', '$cookies', '$http', 'localStorageService', 'anthcraft.wrapDragDrop'
+    '$rootScope', '$scope', '$location', '$cookies', '$http', 'localStorageService'
     (
         $rootScope, $scope, $location, $cookies, $http, localStorage
     )->
