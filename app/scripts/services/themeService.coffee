@@ -3,18 +3,15 @@ mod = angular.module('anthCraftApp')
 
 
 # Theme Service
-mod.factory 'themeService', [
-	'$rootScope', '$resource', 'localStorageService', 'themeConfig',
-	(
-		$rootScope, $resource, localStorage, themeConfig
-	)->
+mod.factory 'themeService',
+	($rootScope, $resource, localStorageService, themeConfig)->
 
 		saveLocalData = ->
-			localStorage.set 'theme.data', {
+			localStorageService.set 'theme.data', {
 				meta: service.themeModel
 				packInfo: service.packInfo
 			}
-		getLocalData = -> localStorage.get 'theme.data'
+		getLocalData = -> localStorageService.get 'theme.data'
 
 		findCategoryOfRes = (resType, resName)->
 			result = []
@@ -60,8 +57,8 @@ mod.factory 'themeService', [
 
 			# Get themeModel model from server side
 			init: (callback)->
-				# Clear localStorage
-				localStorage.clearAll()
+				# Clear localStorageService
+				localStorageService.clearAll()
 
 				# Get themeId from server, but no record in database
 				Theme.create {}, (doc)->
@@ -93,7 +90,7 @@ mod.factory 'themeService', [
 
 			hasUnpub: ()-> !!getLocalData()
 			continueWork: ()->
-				# Check localStorage,
+				# Check localStorageService,
 				# 	recover data if exists
 
 				localData = getLocalData()
@@ -126,7 +123,7 @@ mod.factory 'themeService', [
 
 					service.themeModel._dirty = true
 
-				# Update localStorage if dirty
+				# Update localStorageService if dirty
 				# if service.themeModel._dirty
 				saveLocalData()
 
@@ -134,12 +131,25 @@ mod.factory 'themeService', [
 				# service.theme.$save()
 				$rootScope.$broadcast('theme.update', service.packInfo, updateData)
 
+			loadTheme: (data)->
+				# data struct: { meta: {themeModel}, packInfo: {} }
+				service.packInfo = data.packInfo
+				service.themeModel = data.meta
+				service.themeUpdate()
+				# Save to local storage
+				saveLocalData()
+
 			themeUpdate: ()->
 				$rootScope.$broadcast 'theme.update', service.packInfo
 
 			# Reset value to default
 			resetValue: (resType, resName)->
-				service.packInfo[resType][resName] = themeConfig.defaultPackInfo[resType][resName]
+				# service.packInfo[resType][resName] = themeConfig.defaultPackInfo[resType][resName]
+				service.updateView {
+					resType: resType
+					resName: resName
+					src: themeConfig.defaultPackInfo[resType][resName].src
+				}
 
 
 			previewTheme: (callback)->
@@ -169,4 +179,3 @@ mod.factory 'themeService', [
 		# service.init() if not service.continueWork()
 
 		return service
-]

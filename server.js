@@ -35,9 +35,10 @@ var initTasks = {
 		cb(null);
 	}],
 
-	connect_redis: [ 'init_logger', function(cb) {
-		utils.connectRedis(cb);
-	}],
+	// Disable Redis service
+	// connect_redis: [ 'init_logger', function(cb) {
+	// 	utils.connectRedis(cb);
+	// }],
 
 	init_anthpack: [ 'init_logger', function(cb) {
 		anthPack.config(__config.anthPack);

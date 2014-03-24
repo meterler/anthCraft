@@ -1,8 +1,5 @@
-angular.module('anthCraftApp').controller 'navController', [
-	'$rootScope', '$scope', '$modal', '$cookies', '$location', '$q', 'themeService', 'acUtils',
-	(
-		$rootScope, $scope, $modal, $cookies, $location, $q, themeService, acUtils
-	)->
+angular.module('anthCraftApp').controller 'navController',
+	($rootScope, $scope, $modal, $cookies, $location, $q, themeService, acUtils)->
 
 		$scope.isLogined = -> !!$cookies.userid
 		$scope.getUser = ->
@@ -14,7 +11,7 @@ angular.module('anthCraftApp').controller 'navController', [
 
 		showPackageResult = (data)->
 			[result, theme] = data
-			# todo: success or faile
+			# success or faile
 			dlg = $modal.open {
 				templateUrl: "/views/waterDrop/modals/packageResult.html"
 				controller: "packageResultModalController"
@@ -51,8 +48,8 @@ angular.module('anthCraftApp').controller 'navController', [
 						closable: true
 						cls: { 'text-center': true }
 						buttons: {
-							ok: "replace the old"
-							nope: "or submit the new"
+							ok: "Replace"
+							nope: "Submit"
 						}
 					}
 				}
@@ -88,42 +85,17 @@ angular.module('anthCraftApp').controller 'navController', [
 					$location.url("/")
 			return def.promise
 
-			# alertInst = $modal.open {
-			# 	backdrop: 'static'
-			# 	keyboard: false
-			# 	template: """
-			# 	<div class="modal-header text-center">
-			# 		New
-			# 		<span class="icon-cancel pull-right" ng-click="cancel()"></span>
-			# 	</div>
-			# 	<div class="modal-body text-center">
-
-			# 		Create new will clear all the content of the current theme, <br/>
-			# 		continue?
-
-			# 	</div>
-			# 	<div class="modal-footer">
-			# 		<button class="btn btn-clDarkGreen" ng-click="ok()">Yes</button>
-			# 		<button class="btn btn-default" ng-click="cancel()">No</button>
-			# 	</div>
-			# 	"""
-			# 	controller: [ '$scope', '$modalInstance', ($scope, $modalInstance)->
-			# 		$scope.ok = -> $modalInstance.close()
-			# 		$scope.cancel = -> $modalInstance.dismiss()
-			# 	]
-			# }
-
 		# Preview
 		$scope.previewTheme = ->
 			# Preview the whole theme
 
-			# todo: open preview dialog
-			# todo: load preview image
+			# open preview dialog
+			# load preview image
 			$modal.open {
 				backdrop: 'static'
 				keyboard: false
 				templateUrl: "/views/waterDrop/modals/previewModal.html"
-				windowClass : "preview-static"
+				windowClass: "preview-static"
 				controller: [ '$scope', '$modalInstance', 'themeService', (_scope, $modalInstance, themeService)->
 					_scope.theme = themeService.packInfo
 					_scope.submit = ->
@@ -135,20 +107,6 @@ angular.module('anthCraftApp').controller 'navController', [
 
 		# Package
 		$scope.packageTheme = ->
-
-			# Disable for them time being
-			# acUtils.ifUserLogined()
-			# 	.then( ->
-			# 		# user logined
-			# 		acUtils.ifThemeModified().then -> showPackageForm().then(showPackageResult)
-			# 	)
-			# 	.catch( ->
-
-			# 	)
-			# acUtils.ifThemeModified().then ->
-			# 	showPackageForm().then (data)->
-			# 		showPackageResult(data).finally ->
-			# 			themeService.init -> $location.url('/')
 
 			acUtils.ifUserLogined()
 				.then( ->
@@ -189,4 +147,23 @@ angular.module('anthCraftApp').controller 'navController', [
 
 		$scope.openLoginBox = ->
 			acUtils.ifUserLogined()
-]
+
+		$scope.saveTheme = ->
+
+			$modal.open {
+				templateUrl: '/views/waterDrop/modals/saveTheme.html'
+				windowClass: 'modal-saveModal'
+				controller: 'savePackageController'
+				backdrop: 'static'
+				keyboard: false
+			}
+
+		$scope.loadTheme = ->
+			# todo
+			$modal.open {
+				templateUrl: '/views/waterDrop/modals/listSavedTheme.html'
+				windowClass: 'modal-loadThemeBox'
+				controller: 'loadThemeController'
+				backdrop: 'static'
+				keyboard: false
+			}

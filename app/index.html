@@ -51,13 +51,13 @@
 	</div>
 
 	<div class="feedback" ng-click="openFeedbackBox()">
-		<i class="icon-edit-1"></i>
+		<i class="icon-chat"></i>
 	</div>
 
 
 	<script src="/components/angular/angular.min.js"></script>
 
-	<!-- build:js /scripts/waterDrop-components.js -->
+	<!-- build:js({.tmp,app}) /scripts/waterDrop-components.js -->
 	<script src="/components/angular-translate/angular-translate.js"></script>
 	<script src="/components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
 	<script src="/components/angular-route/angular-route.min.js"></script>
@@ -82,22 +82,26 @@
 	<script src="/scripts/waterDrop/systemIconListController.js"></script>
 	<script src="/scripts/waterDrop/homeListController.js"></script>
 	<script src="/scripts/waterDrop/resEditorController.js"></script>
-	<script src="/scripts/waterDrop/maskListController.js"></script>
-
 	<script src="/scripts/waterDrop/navController.js"></script>
+	<script src="/scripts/waterDrop/emulator/previewController.js"></script>
+	<script src="/scripts/waterDrop/menuController.js"></script>
+	<script src="/scripts/waterDrop/maskListController.js"></script>
+	<script src="/scripts/waterDrop/materialController.js"></script>
+
 	<script src="/scripts/waterDrop/modals/helpModalController.js"></script>
 	<script src="/scripts/waterDrop/modals/simpleModalController.js"></script>
 	<script src="/scripts/waterDrop/modals/packageFormController.js"></script>
 	<script src="/scripts/waterDrop/modals/packageResultModalController.js"></script>
 	<script src="/scripts/waterDrop/modals/feedbackController.js"></script>
 	<script src="/scripts/waterDrop/modals/loginModalController.js"></script>
-	<script src="/scripts/waterDrop/emulator/previewController.js"></script>
-	<script src="/scripts/waterDrop/menuController.js"></script>
+	<script src="/scripts/waterDrop/modals/saveThemeController.js"></script>
+	<script src="/scripts/waterDrop/modals/loadThemeController.js"></script>
 
 	<script src="/scripts/services/menuConfig.js"></script>
 	<script src="/scripts/services/acUtils.js"></script>
 	<script src="/scripts/services/themeConfig.js"></script>
 	<script src="/scripts/services/themeService.js"></script>
+	<script src="/scripts/services/themeSavedService.js"></script>
 	<!-- endbuild -->
 	<div style="display: none;">
 		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5795081'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/stat.php%3Fid%3D5795081' type='text/javascript'%3E%3C/script%3E"));</script>

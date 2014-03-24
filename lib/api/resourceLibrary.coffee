@@ -1,13 +1,12 @@
 
 ResourceModel = require "../models/Resource.coffee"
-redisClient = require('redis').client
 
 module.exports = (app)->
 
+	# Test data
 	Library = {
 		'wallpaper': {
 			'wallpaper': [
-				"/default_theme/wallpaper/wallpaper960x800.jpg"
 				"/default_theme/app_icon/com_android_browser_com_android_browser_browseractivity.png"
 				"/default_theme/app_icon/com_android_deskclock_com_android_deskclock_deskclock.png"
 				"/default_theme/app_icon/com_android_email_com_android_email_activity_welcome.png"
@@ -18,8 +17,6 @@ module.exports = (app)->
 				"/default_theme/app_icon/com_android_providers_downloads_ui_com_android_providers_downloads_ui_downloadlist.png"
 			],
 			'wallpaper-hd': [
-				"/default_theme/wallpaper/wallpaper960x800.jpg"
-				"/default_theme/app_icon/com_android_providers_downloads_ui_com_android_providers_downloads_ui_downloadlist.png"
 				"/default_theme/app_icon/com_android_browser_com_android_browser_browseractivity.png"
 				"/default_theme/app_icon/com_android_deskclock_com_android_deskclock_deskclock.png"
 				"/default_theme/app_icon/com_android_email_com_android_email_activity_welcome.png"
@@ -46,17 +43,20 @@ module.exports = (app)->
 	app.get "/resourceLib", (req, res)->
 		resType = req.query.resType
 		resName = req.query.resName
+		page = req.query.page
+		pageSize = 10
 		resId = "#{resType}|#{resName}"
 		cacheId = "resourceLibrary_#{resId}"
 		expireSec = 24 * 60 * 60 # expires in a day
 
 		loadFromDB = ->
+			__log resId, page
 			ResourceModel.find({
 				"status": 1
 				"categoryId": resId
 			})
 			.select({
-				"_id": false
+				"_id": true
 				"files.path": true
 				"files": {
 					"$elemMatch": {
@@ -66,36 +66,47 @@ module.exports = (app)->
 				}
 			})
 			.sort({ orderNum: 1 })
+			.skip( (page-1)*pageSize )
+			.limit(pageSize)
 			.exec (err, docs)->
+				__log err, docs
 				if err
 					__logger.error err
 					res.send 404
 					return
-				list = docs.map (d)-> d.files[0].path
+				list = docs.map (d)-> {
+					_id: d._id
+					src: d.files[0].path
+				}
 
 				# Cache to redis
-				redisClient.set cacheId, JSON.stringify(list)
-				redisClient.expire cacheId, expireSec
-				res.json list
+				# redisClient.set cacheId, JSON.stringify(list)
+				# redisClient.expire cacheId, expireSec
 
-		# Check cache
-		redisClient.get cacheId, (err, data)->
-			if err or not data
-				# Miss
-				__log "Miss Cache!"
-				loadFromDB()
-			else
-				# Hit!
-				__log "Hit Cache!"
-				list = JSON.parse(data)
-				res.json list
-	app.get "/resourceLib/flushCache", (req, res)->
-		resType = req.query.resType
-		resName = req.query.resName
-		resId = "#{resType}|#{resName}"
-		cacheId = "resourceLibrary_#{resId}"
+				ResourceModel.count({
+					"status": 1
+					"categoryId": resId
+				}, (err, count)->
+					totalPages = Math.ceil(count / pageSize)
+					hasPrev = page > 1
+					hasNext = page < totalPages
 
-		redisClient.del cacheId, (err)->
-			res.end(if err then "Flush cache with error: #{err}" else "Flush cache success!")
+					res.json {
+						page: page
+						hasPrev: hasPrev
+						hasNext: hasNext
+						totalPages: totalPages
+						data: list
+					}
+				)
 
-	return
+		loadFromDB()
+		return
+
+		# if __config.debug
+		# 	setTimeout ->
+		# 		res.json Library[resType]?[resName]
+		# 	, 2000
+		# else
+		# 	loadFromDB()
+

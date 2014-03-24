@@ -1,5 +1,4 @@
-angular.module("anthCraftApp").controller "resEditorController", [
-	"$rootScope", "$document", "$scope", "$location", "$http", "$timeout", "resModel", "themeConfig", "themeService",
+angular.module("anthCraftApp").controller "resEditorController",
 	($rootScope, $document, $scope, $location, $http, $timeout, resModel, themeConfig, themeService)->
 		urlPath = $location.path()
 		$scope.x = ''
@@ -77,4 +76,6 @@ angular.module("anthCraftApp").controller "resEditorController", [
 				$document.find("input")[0].click()
 			, 0
 			return
-]
+
+		$scope.reset = ->
+			themeService.resetValue resModel.resType, resModel.resName

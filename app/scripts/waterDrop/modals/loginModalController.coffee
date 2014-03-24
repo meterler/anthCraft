@@ -1,6 +1,5 @@
 
-angular.module("anthCraftApp").controller "loginModalController", [
-	'$scope', '$modalInstance', '$http',
+angular.module("anthCraftApp").controller "loginModalController",
 	($scope, $modalInstance, $http)->
 		$scope.loading = false
 		$scope.returnCode = {}
@@ -29,4 +28,3 @@ angular.module("anthCraftApp").controller "loginModalController", [
 			)
 			.finally ->
 				$scope.loading = false
-]

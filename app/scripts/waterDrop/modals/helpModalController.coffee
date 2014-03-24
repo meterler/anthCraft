@@ -1,9 +1,5 @@
 
-angular.module("anthCraftApp").controller "helpModalController", [
-	'$scope', '$modalInstance',
-	(
-		$scope, $modalInstance
-	)->
+angular.module("anthCraftApp").controller "helpModalController",
+	($scope, $modalInstance)->
 		$scope.ok = -> $modalInstance.close()
 
-]
