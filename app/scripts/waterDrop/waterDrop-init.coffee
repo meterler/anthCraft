@@ -10,7 +10,9 @@ app = angular.module('anthCraftApp', [
 	'anthcraft.imageupload'
 	'anthCraft.imagedrop'
 	'anthcraft.iconMask'
+	'anthcraft.wrapDragDrop'
 ]).config ($routeProvider, $locationProvider, $compileProvider, $translateProvider)->
+
 
 	$locationProvider.html5Mode(true).hashPrefix('!');
 	# Compile white list for image preview since angular-v1.2.1
