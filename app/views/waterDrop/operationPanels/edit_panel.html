@@ -72,7 +72,7 @@
             <section class="text-center material-list" ng-if="status == 'loaded'">
                 <ul>
                     <li ng-repeat="material in materialList" ng-class="{ active: (material.src == resInfo.data.src) }">
-                        <img ng-src="{{material.src}}" ng-click="select(resInfo, material.src)" />
+                        <img ng-src="{{UPLOAD_PATH}}{{material.src}}" ng-click="select(resInfo, material.src)" />
                     </li>
                 </ul>
             </section>
