@@ -25,15 +25,15 @@ module.exports = (app)->
 		handler: (req, res, next)->
 			archiveFile = req.files.archive.path
 
-			anthpack.unarchive archiveFile, (err, data)->
+			anthpack.unarchive archiveFile, (err, result)->
 				if err
 					res.send 500, err
 					return
 
 				# set userId as current user
-				data.meta.userId = req.cookies.userid
+				result.data.meta.userId = req.cookies.userid
 
-				res.json data
+				res.json result
 	})
 
 
