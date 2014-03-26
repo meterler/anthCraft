@@ -103,7 +103,7 @@ body {
 	}
 }
 .view-container {
-	width: 1000px !important;
+	width: 1024px !important;
 }
 ////////////////////////
 
@@ -276,7 +276,8 @@ body {
 		width: 172px;
 	}
 	.operation-container {
-		width: 524px;
+		width: 470px;
+		padding: 0;
 		.ac-opIcons, .mod-editor {
 			width: 470px;
 		}
@@ -287,8 +288,10 @@ body {
 			width: 304px;
 		}
 	}
-	>:nth-child(2) {
-		padding: 0 29px 0 25px;
+	.menu-container, .operation-container, .preview-container {
+		padding: 0 12px;
+		box-sizing: content-box;
+		-moz-box-sizing: content-box;
 	}
 }
 .preview-footer {
@@ -301,6 +304,7 @@ body {
 	}
 }
 
+<<<<<<< HEAD
 .icon {
 	color: #fafafa;
 	overflow: hidden;
@@ -364,3 +368,11 @@ a.g+:hover {
 }
 
 
+=======
+.drag-placeholder {
+	float: left;
+	&.move {
+		border: 1px dotted #bbb;
+	}
+}
+>>>>>>> 82e5e6c7cda9a08eea98395000e7b419e22400c6

@@ -25,6 +25,7 @@ module.exports = {
 		develop_path: "/resources/upload"
 		preview_path: "/resources/preview"
 		thumb_path: "/resources/thumbnail"
+		archive_path: "/resources/themeArchives"
 	}
 
 	log4js: {

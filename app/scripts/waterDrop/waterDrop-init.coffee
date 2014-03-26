@@ -10,7 +10,9 @@ app = angular.module('anthCraftApp', [
 	'anthcraft.imageupload'
 	'anthCraft.imagedrop'
 	'anthcraft.iconMask'
+	'anthcraft.wrapDragDrop'
 ]).config ($routeProvider, $locationProvider, $compileProvider, $translateProvider)->
+
 
 	$locationProvider.html5Mode(true).hashPrefix('!');
 	# Compile white list for image preview since angular-v1.2.1
@@ -93,6 +95,7 @@ app = angular.module('anthCraftApp', [
 
 app.run ($rootScope, $translate)->
 	$rootScope.UPLOAD_PATH = "/resources/upload"
+	$rootScope.ARCHIVES_PATH = "/resources/themeArchives"
 	$rootScope.THEME_PATH = "/resources/themes"
 
 	$translate.use "en_US"
