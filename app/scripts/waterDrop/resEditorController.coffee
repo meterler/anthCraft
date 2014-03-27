@@ -79,3 +79,6 @@ angular.module("anthCraftApp").controller "resEditorController",
 
 		$scope.reset = ->
 			themeService.resetValue resModel.resType, resModel.resName
+
+		$scope.crop = ->
+      $scope.editting = true
