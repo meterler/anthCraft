@@ -50,7 +50,6 @@ module.exports = (app)->
 		expireSec = 24 * 60 * 60 # expires in a day
 
 		loadFromDB = ->
-			__log resId, page
 			ResourceModel.find({
 				"status": 1
 				"categoryId": resId
@@ -69,7 +68,6 @@ module.exports = (app)->
 			.skip( (page-1)*pageSize )
 			.limit(pageSize)
 			.exec (err, docs)->
-				__log err, docs
 				if err
 					__logger.error err
 					res.send 404

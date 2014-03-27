@@ -35,11 +35,7 @@ module.exports = {
 		develop_path: "/resources/upload"
 		preview_path: "/resources/preview"
 		thumb_path: "/resources/thumbnail"
-
-		widget_src: p('/resources/phone/default/widget.png')
-		pageswitch_src: p('/resources/phone/default/pageswitch.png')
-
-		icon_size: 56
+		archive_path: "/resources/themeArchives"
 	}
 
 	log4js: {

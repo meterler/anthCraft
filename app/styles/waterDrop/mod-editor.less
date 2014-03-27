@@ -3,17 +3,22 @@
 	height: 527px;
 	border: 1px solid #BBBBBB;
 	.panel-heading {
-		padding: 5px 10px;
+		height: 35px;
+		line-height: 35px;
+		padding: 0 10px;
 		.fn_panelHeaderBackground;
+		overflow: hidden;
 		a {
-			color: #474747;
+			display: inline-block;
+			color: #009c7d;
+			font-size: 20px;
 			&:hover, &:active {
 				text-decoration: none;
 				color: #000;
 			}
-			i {
-				color: #009c7d;
-				font-size: 20px;
+			&:hover, &:focus, &:active {
+				color: #9C9C9C;
+				background-color: #D2D2D2;
 			}
 		}
 	}

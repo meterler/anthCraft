@@ -39,11 +39,29 @@ angular.module("anthCraftApp").controller "packageFormController",
 
 		$scope.charges = [
 			{ text: 'Free', value: 0 }
-			{ text: '$0.02', value: 0.02 }
-			{ text: '$0.99', value: 0.99 }
-			{ text: '$1.99', value: 1.99 }
-			{ text: '$2.99', value: 2.99 }
+			# { text: '$0.02', value: 0.02 }
+			# { text: '$0.99', value: 0.99 }
+			# { text: '$1.99', value: 1.99 }
+			# { text: '$2.99', value: 2.99 }
 		]
+
+		# PriceUrl = '/test/price?callback=JSON_CALLBACK'
+		PriceUrl = 'http://api.c-launcher.com/client/designer/pricing.do?callback=JSON_CALLBACK'
+		$http.jsonp(PriceUrl, {
+			userId: 71
+			type: 0
+		}).success( (result)->
+			# 204 stand for professional designer who can charge
+			return if result.code isnt 204
+
+			# shift zero
+			result.points.shift(1)
+
+			$scope.charges.push {
+				text: "$#{t/100}"
+				value: t
+			} for t in result.points
+		)
 
 		$scope.theme = themeService.themeModel
 		$scope.theme.title = $scope.theme.title or 'cLauncher Theme'
