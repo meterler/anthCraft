@@ -26,10 +26,11 @@
 			The newly submitted theme ranked <b style="color: red">{{theme.themeId}}</b>. Share your theme to facebook; twitter, etc; more users, higher ranking
 
 		</p>
-		<div class="share">
-			<a title="Share on Facebook" href="http://www.facebook.com/share.php?u=http://www.c-launcher.com/theme/detail.do?themeId=1608&t=dadasdsadsa" target="_blank" class="icon fb"></a>
-			<a title="Share on Twitter" href="http://twitter.com/share?original_referer=designer.c-launcher.com&url=http://www.c-launcher.com/theme/detail.do?themeId=1608&text=Recommend%20this%20theme%20change%20your%20phone%20more%20beautiful%20http%3A//www.c-launcher.com/theme/detail.do%3FthemeId%3D1268%20@CLauncher" target="_blank" class="icon tw"></a>
-			<div id="___plusone_1" style=" display: inline-block;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="width: 50px; height: 60px;" tabindex="0" vspace="0" width="100%" id="" name="" src="https://apis.google.com/u/0/_/+1/fastbutton?usegapi=1&amp;size=tall&amp;hl=zh-TW&amp;origin=http%3A%2F%2Fhappy-yblog.blogspot.com&amp;url=http%3A%2F%2Fhappy-yblog.blogspot.com%2F2010%2F08%2Ftwittertweet-share-button.html&amp;gsrc=3p&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.zh_CN.uuxxUe8oFok.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Fz%3Dzcms%2Frs%3DAItRSTMRWtn43QD-o6vnVE7VjvipZsEocw#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh&amp;id=I1_1395652180505&amp;parent=http%3A%2F%2Fhappy-yblog.blogspot.com&amp;pfname=&amp;rpctoken=28493313" data-gapiattached="true" title="+1"></iframe></div>
+		<div id="share">
+			<a title="Share on Facebook" ng-href="http://www.facebook.com/share.php?u=http%3A%2F%2Fwww.c-launcher.com%2Ftheme%2Fdetail.do%3FthemeId%3D{{theme.themeId}}" id="facebook-share" class="icon fb" target="_blank"></a>&nbsp;
+			<a title="Share on Twitter" ng-href="http://twitter.com/share?original_referer=http%3A%2F%2Fdesigner.c-launcher.com&url=http%3A%2F%2Fwww.c-launcher.com%2Ftheme%2Fdetail.do%3FthemeId%3D{{theme.themeId}}&text=Recommend%20this%20theme%20change%20your%20phone%20more%20beautiful%20http%3A//www.c-launcher.com/theme/detail.do%3FthemeId%3D1268%20@CLauncher" id="twitter-intent" class="icon tw" target="_blank"></a>&nbsp;
+			<a title="Share on google+" href="https://plus.google.com/share?url=http%3A%2F%2Fwww.c-launcher.com%2Ftheme%2Fdetail.do%3FthemeId%3D{{theme.themeId}}" id="google-share" class="icon gg" target="_blank"></a>&nbsp;
+
 		</div>
 	</div>
 </div>
