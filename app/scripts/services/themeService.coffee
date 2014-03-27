@@ -4,7 +4,7 @@ mod = angular.module('anthCraftApp')
 
 # Theme Service
 mod.factory 'themeService',
-	($rootScope, $resource, localStorageService, themeConfig)->
+	($rootScope, $resource, $sanitize, localStorageService, themeConfig)->
 
 		saveLocalData = ->
 			localStorageService.set 'theme.data', {
@@ -162,6 +162,12 @@ mod.factory 'themeService',
 
 			packageTheme: (callback, fail)->
 				return callback(false) if not service.themeModel._dirty
+
+				# Sanitize form fields
+				themeInfo = angular.copy service.themeModel, {}
+				themeInfo.title = $sanitize(themeInfo.title)
+				themeInfo.userTag = $sanitize(themeInfo.userTag)
+				themeInfo.description = $sanitize(themeInfo.description)
 
 				Theme.package { themeId: service.themeModel._id }, {
 					# request body

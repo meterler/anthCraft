@@ -1,5 +1,6 @@
 app = angular.module('anthCraftApp', [
 	'ngRoute'
+	'ngSanitize'
 	'ngCookies'
 	'ngResource'
 	'dragAndDrop'
