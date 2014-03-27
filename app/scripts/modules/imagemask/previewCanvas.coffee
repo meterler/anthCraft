@@ -15,6 +15,7 @@ angular.module('anthcraft.previewCanvas', [])
 		}
 		link: (scope, element, attrs)->
 			multiple = 1
+			UPLOAD_PATH = "/resources/upload"
 
 			# 加载一张图片
 			preImage = (src, callback)->
@@ -54,16 +55,16 @@ angular.module('anthcraft.previewCanvas', [])
 
 			drawHome = (theme, btn)->
 				if btn is "app-btn"
-					drawIcon theme.dock_icon.ap_search.src, 40*multiple , 335*multiple , 30*multiple, 30*multiple, ""
-					drawIcon theme.dock_icon.ap_home.src, 90*multiple, 335*multiple, 30*multiple, 30*multiple, ""
-					drawIcon theme.dock_icon.ap_menu.src, 140*multiple, 335*multiple, 30*multiple, 30*multiple, ""
+					drawIcon UPLOAD_PATH + theme.dock_icon.ap_search.src, 40*multiple , 335*multiple , 30*multiple, 30*multiple, ""
+					drawIcon UPLOAD_PATH + theme.dock_icon.ap_home.src, 90*multiple, 335*multiple, 30*multiple, 30*multiple, ""
+					drawIcon UPLOAD_PATH + theme.dock_icon.ap_menu.src, 140*multiple, 335*multiple, 30*multiple, 30*multiple, ""
 
 				else if btn is "home-btn"
-					drawIcon theme.app_icon.Phone.src, 10*multiple, 330*multiple, 30*multiple, 30*multiple, theme.app_icon.Phone.capital
-					drawIcon theme.app_icon.Contacts.src, 50*multiple, 330*multiple, 30*multiple, 30*multiple, theme.app_icon.Contacts.capital
-					drawIcon theme.dock_icon.ic_allapps.src, 90*multiple, 330*multiple, 30*multiple, 30*multiple, theme.dock_icon.ic_allapps.capital
-					drawIcon theme.app_icon.Messages.src, 130*multiple, 330*multiple, 30*multiple, 30*multiple, theme.app_icon.Messages.capital
-					drawIcon theme.app_icon.Browser.src, 170*multiple, 330*multiple, 30*multiple, 30*multiple, theme.app_icon.Browser.capital
+					drawIcon UPLOAD_PATH + theme.app_icon.Phone.src, 10*multiple, 330*multiple, 30*multiple, 30*multiple, theme.app_icon.Phone.capital
+					drawIcon UPLOAD_PATH + theme.app_icon.Contacts.src, 50*multiple, 330*multiple, 30*multiple, 30*multiple, theme.app_icon.Contacts.capital
+					drawIcon UPLOAD_PATH + theme.dock_icon.ic_allapps.src, 90*multiple, 330*multiple, 30*multiple, 30*multiple, theme.dock_icon.ic_allapps.capital
+					drawIcon UPLOAD_PATH + theme.app_icon.Messages.src, 130*multiple, 330*multiple, 30*multiple, 30*multiple, theme.app_icon.Messages.capital
+					drawIcon UPLOAD_PATH + theme.app_icon.Browser.src, 170*multiple, 330*multiple, 30*multiple, 30*multiple, theme.app_icon.Browser.capital
 
 			drawApps = (apps)->
 				num = 0
@@ -74,7 +75,7 @@ angular.module('anthcraft.previewCanvas', [])
 				for item of apps
 					sx = posX + num * (sw+margin)
 					sy = posY
-					drawIcon(apps[item].src, sx, sy, sw, sh, apps[item].capital)
+					drawIcon(UPLOAD_PATH + apps[item].src, sx, sy, sw, sh, apps[item].capital)
 					if num % 4 is 3
 						posY += 60*multiple
 						posX = 10*multiple
@@ -84,18 +85,18 @@ angular.module('anthcraft.previewCanvas', [])
 
 			initConfig = (theme)->
 
-				wallpaper = theme.wallpaper.wallpaper_hd
-				preImage wallpaper.src, (wallpaper)->
+				wallpaper = theme.wallpaper['wallpaper-hd']
+				preImage UPLOAD_PATH + wallpaper.src, (wallpaper)->
 					switch scope.sence
 						when 'home'
 							posX = (cWidth - (wallpaper.width*multiple))/2
-							widget = "../image/tmp/pw04time.png"
+							widget = "/styles/img/pw04time.png"
 							sy = 30*multiple
 						when 'apps'
 							posX = 0
 						when 'widget'
 							posX = cWidth - (wallpaper.width*multiple)
-							widget = "../image/tmp/bettery_widget.png"
+							widget = "/styles/img/bettery_widget.png"
 							sy = 35*multiple
 					imageContext.drawImage this, posX, 0, wallpaper.width*multiple, cHeight
 					if scope.sence is "apps"
@@ -106,7 +107,7 @@ angular.module('anthcraft.previewCanvas', [])
 					else
 						drawCenter(widget, 10*multiple, sy)
 						drawHome(theme, "home-btn")
-					drawCenter("../image/tmp/pw05bar.png", 0, 0)
+					drawCenter("/styles/img/pw05bar.png", 0, 0)
 				return
 
 			scope.$watch('theme', (theme)->

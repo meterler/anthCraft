@@ -5,7 +5,7 @@
 <div class="modal-body clearfix">
 
 	<!-- Use ng-style and style to be compatible with ie and chrome -->
-	<div class="sence home" ng-style="{ 'background-image': 'url({{UPLOAD_PATH}}' + theme.wallpaper['wallpaper-hd'].src + ')' } ">
+	<!-- <div class="sence home" ng-style="{ 'background-image': 'url({{UPLOAD_PATH}}' + theme.wallpaper['wallpaper-hd'].src + ')' } ">
 		<div class="status-bar"></div>
 		<div class="widget-clock"></div>
 		<div class="home-buttons">
@@ -74,8 +74,15 @@
 			</div>
 		</div>
 	</div>
-
-
+ -->
+	<div class="drag-wrap">
+		<div class="sence" preview-canvas theme="theme" sence="home">
+		</div>
+		<div class="sence" preview-canvas theme="theme" sence="apps">
+		</div>
+		<div class="sence" preview-canvas theme="theme" sence="widget">
+		</div>
+	</div>
 </div>
 <div class="modal-footer preview-footer">
 	<button class="btn btn-clDarkGreen btn-l" ng-click="submit()">Submit Theme</button>
