@@ -133,8 +133,10 @@ mod.factory 'themeService',
 
 			loadTheme: (data)->
 				# data struct: { meta: {themeModel}, packInfo: {} }
-				service.packInfo = data.packInfo
-				service.themeModel = data.meta
+				# service.packInfo = data.packInfo
+				# service.themeModel = data.meta
+				angular.copy data.packInfo, service.packInfo
+				angular.copy data.meta, service.themeModel
 				service.themeUpdate()
 				# Save to local storage
 				saveLocalData()
