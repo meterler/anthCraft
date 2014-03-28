@@ -2,7 +2,7 @@
 
 angular.module('anthcraft.previewCanvas', [])
 
-.directive 'previewCanvas', ($document)->
+.directive 'previewCanvas', ($document, $rootScope)->
 	{
 		template: '<div><canvas></canvas></div>'
 		replace: true
@@ -10,12 +10,12 @@ angular.module('anthcraft.previewCanvas', [])
 		scope: {
 			theme: "="
 			sence: "@"
-			width:  "@"
-			height: "@"
+			multiple: "@"
 		}
 		link: (scope, element, attrs)->
-			multiple = 1
-			UPLOAD_PATH = "/resources/upload"
+
+			multiple = scope.multiple
+			UPLOAD_PATH = $rootScope.UPLOAD_PATH
 
 			# 加载一张图片
 			preImage = (src, callback)->
@@ -45,8 +45,8 @@ angular.module('anthcraft.previewCanvas', [])
 					imageContext.drawImage this, sx, sy, sw, sh
 				return
 
-			cWidth  = scope.width  || 215 * multiple
-			cHeight = scope.height || 380 * multiple
+			cWidth  = 215 * multiple
+			cHeight = 380 * multiple
 
 			imageCanvas  = element.children()[0]
 			imageContext = imageCanvas.getContext '2d'
