@@ -8,7 +8,7 @@ handleImageCrop = (req, res)->
   newFileName = req.param('address');
   
   res.json {
-    src: "/#{newFileName}"
+    src: "#{newFileName}"
   }
 
 module.exports = (app)->
