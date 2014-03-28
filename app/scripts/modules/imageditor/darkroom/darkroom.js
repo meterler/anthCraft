@@ -208,7 +208,7 @@
 
       var plugins = plugins || Darkroom.plugins;
 
-      var image = new Image();
+      var image = element;//new Image();
 
       image.onload = function() {
         _this
@@ -222,7 +222,7 @@
       }
 
       /*image.crossOrigin = 'anonymous';*/
-      image.src = element.src;
+      //image.src = element.src;
     },
 
     initDOM: function(element) {

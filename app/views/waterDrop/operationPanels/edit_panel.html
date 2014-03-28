@@ -14,7 +14,6 @@
                     <img ng-src="{{UPLOAD_PATH}}{{resInfo.data.src}}?{{etag}}" type="{{image.file.type}}">
                 </div>
                 <div class="editor-image" ng-show="editting" image-editor>
-                    <img width="160" height="160" ng-src="{{UPLOAD_PATH}}{{resInfo.data.src}}?{{etag}}" type="{{image.file.type}}">
                 </div>
                 <div class="loading" ng-if="isLoading">
                     <i class="icon-spin4 animate-spin"></i>
@@ -22,7 +21,7 @@
 
                 <div class="handles">
                     <i class="icon-crop" ng-click="crop()"></i>
-                    <i class="icon-remove" ng-click="reset()"></i>
+                    <i class="icon-remove" ng-click="reset()" ng-show="!editting"></i>
                 </div>
 
                 <label for="upImage" class="file-upload">

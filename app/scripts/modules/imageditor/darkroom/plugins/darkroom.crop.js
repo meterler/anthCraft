@@ -129,9 +129,11 @@
     initialize: function InitDarkroomCropPlugin() {
       var buttonGroup = this.darkroom.toolbar.createButtonGroup();
 
+      /*
       this.cropButton = buttonGroup.createButton({
         image: 'crop'
       });
+      */
       this.okButton = buttonGroup.createButton({
         image: 'accept',
         type: 'success',
@@ -144,7 +146,7 @@
       });
 
       // Buttons click
-      this.cropButton.addEventListener('click', this.toggleCrop.bind(this));
+      //this.cropButton.addEventListener('click', this.toggleCrop.bind(this));
       this.okButton.addEventListener('click', this.cropCurrentZone.bind(this));
       this.cancelButton.addEventListener('click', this.releaseFocus.bind(this));
 
@@ -404,7 +406,7 @@
       this.darkroom.canvas.add(this.cropZone);
       this.darkroom.canvas.defaultCursor = 'crosshair';
 
-      this.cropButton.active(true);
+      //this.cropButton.active(true);
       this.okButton.hide(false);
       this.cancelButton.hide(false);
     },
@@ -417,7 +419,7 @@
       this.cropZone.remove();
       this.cropZone = undefined;
 
-      this.cropButton.active(false);
+      //this.cropButton.active(false);
       this.okButton.hide(true);
       this.cancelButton.hide(true);
 
