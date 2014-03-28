@@ -18,6 +18,8 @@ angular.module('anthcraft.wrapDragDrop', [])
 				prevNode = prevNode.previousSibling
 				break if prevNode is null
 
+			if prevNode isnt null then prevNode = angular.element(prevNode)
+
 			elnext.addClass 'move'
 			leftx = event.screenX - startX
 			topy = event.screenY - startY
@@ -31,11 +33,12 @@ angular.module('anthcraft.wrapDragDrop', [])
 			if event.screenX isnt 0
 				directFlag = event.screenX - directFlag
 
-				if nextNode isnt null and directFlag > 0
-					if (leftx + element.prop('offsetWidth')) > (nextNode.prop("offsetLeft") )
+				if nextNode isnt null  and directFlag > 0
+					if (leftx + element.prop('offsetWidth')) > (nextNode.prop("offsetLeft") + (nextNode.prop("offsetWidth")/2) )
 						elnext.next().after(elnext).after(element)
+
 				if prevNode isnt null and directFlag < 0
-					if (prevNode.offsetWidth + prevNode.offsetLeft ) > leftx
+					if ((prevNode.prop('offsetWidth')/2) + prevNode.prop("offsetLeft") ) > leftx
 						elnext.after(prevNode)
 
 				directFlag = event.screenX
