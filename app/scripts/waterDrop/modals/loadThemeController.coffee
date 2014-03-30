@@ -5,6 +5,7 @@ angular.module('anthCraftApp').controller 'loadThemeController',
 		$scope.status = ''
 		$scope.themeList = SavedTheme.query({
 			sort: '-updateAt'
+			limit: 10
 			userId: $cookies.userid
 		})
 
