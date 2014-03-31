@@ -3,8 +3,8 @@
     <div class="panel-heading clearfix">
     	<div class="pull-left">
     		<a ng-href="{{backUrl}}"><i class="icon-reply"></i></a>
-        	<a ng-href="{{lastItemUrl}}" ng-if="lastItemUrl"><i class="icon-arrow-left"></i></a>
-        	<a ng-href="{{nextItemUrl}}" ng-if="nextItemUrl"><i class="icon-arrow-right"></i></a>
+        	<a ng-href="{{lastItemUrl}}" ng-if="lastItemUrl"><i class="icon-arrow-left" style="pointer-events: none"></i></a>
+        	<a ng-href="{{nextItemUrl}}" ng-if="nextItemUrl"><i class="icon-arrow-right" style="pointer-events: none"></i></a>
         </div>
     </div>
     <div class="panel-body">
@@ -52,10 +52,10 @@
                     </span>
                     <i class="icon-left-open-big disabled"
                         ng-class="{disabled: !hasPrev}"
-                        ng-click="loadMaterials(+curPage-1)"></i>
+                        ng-mousedown="loadMaterials(+curPage-1)"></i>
                     <i class="icon-right-open-big"
                         ng-class="{disabled: !hasNext}"
-                        ng-click="loadMaterials(-(-curPage-1))"></i>
+                        ng-mousedown="loadMaterials(-(-curPage-1))"></i>
                 </div>
             </header>
 
