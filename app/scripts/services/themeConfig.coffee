@@ -32,8 +32,8 @@ mod.factory 'themeConfig', ->
 			switch resType
 				when 'app_icon', 'dock_icon', 'customize'
 					{
-						width: 56
-						height: 56
+						width: 192
+						height: 192
 						force: true
 					}
 				when 'thumbnail'
