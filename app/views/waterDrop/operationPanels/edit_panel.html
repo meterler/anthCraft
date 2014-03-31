@@ -52,10 +52,10 @@
                     </span>
                     <i class="icon-left-open-big disabled"
                         ng-class="{disabled: !hasPrev}"
-                        ng-disabled="hasPrev" ng-click="hasPrev && loadMaterials(+curPage-1)"></i>
+                        ng-click="loadMaterials(+curPage-1)"></i>
                     <i class="icon-right-open-big"
                         ng-class="{disabled: !hasNext}"
-                        ng-disabled="hasNext" ng-click="hasNext && loadMaterials(-(-curPage-1))"></i>
+                        ng-click="loadMaterials(-(-curPage-1))"></i>
                 </div>
             </header>
 
