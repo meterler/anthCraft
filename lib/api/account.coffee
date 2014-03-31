@@ -8,8 +8,8 @@ module.exports = (app)->
 
 		# todo: check authorization
 		user = {
-			id: '9527'
-			name: 'Helx'
+			id: '106'
+			name: 'chenhuagh'
 			skey: '1kef1u94g8q90hef80y4rt90'
 		}
 

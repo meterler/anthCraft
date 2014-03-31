@@ -1,6 +1,6 @@
 
 angular.module("anthCraftApp").controller "packageFormController",
-	($scope, $http, $q, $timeout, $modalInstance, $cookies, themeService)->
+	($scope, $http, $q, $timeout, $modalInstance, $cookies, themeService, userService)->
 		$scope.uploading = 0
 
 		packageTheme = ->
@@ -46,11 +46,22 @@ angular.module("anthCraftApp").controller "packageFormController",
 		]
 
 		# PriceUrl = '/test/price?callback=JSON_CALLBACK'
+		# PriceUrl = 'http://test.api.c-launcher.com/client/designer/pricing.do?callback=JSON_CALLBACK'
 		PriceUrl = 'http://api.c-launcher.com/client/designer/pricing.do?callback=JSON_CALLBACK'
 		$http.jsonp(PriceUrl, {
-			userId: 71
-			type: 0
+			params: {
+				userId: userService.current().uid
+				# 0-theme, 1-wallpaper
+				type: 0
+			}
 		}).success( (result)->
+			# code返回值：
+			# 102 参数错误
+			# 201 用户不存在
+			# 202 不是设计师
+			# 203 设计师不存在
+			# 204 是设计师
+
 			# 204 stand for professional designer who can charge
 			return if result.code isnt 204
 
