@@ -1,5 +1,6 @@
 app = angular.module('anthCraftApp', [
 	'ngRoute'
+	'ngSanitize'
 	'ngCookies'
 	'ngResource'
 	'dragAndDrop'
@@ -11,6 +12,7 @@ app = angular.module('anthCraftApp', [
 	'anthCraft.imagedrop'
 	'anthcraft.imageditor'
 	'anthcraft.iconMask'
+	'anthcraft.previewCanvas'
 	'anthcraft.wrapDragDrop'
 ]).config ($routeProvider, $locationProvider, $compileProvider, $translateProvider)->
 

@@ -6,17 +6,17 @@ body {
 	height: 100%;
 	position: relative;
 }
-.container {
+/*.container {
 	min-height: 100%;
 	height: auto !important;
 	height: 100%;
-}
-.container > div {
+}*/
+/*.container > div {
 	padding-bottom: 99px;
 }
-
+*/
 #cyou-tail{
-	position: absolute;
+	/*position: absolute;*/
 	bottom: 0;
 	height: 99px;
 	clear:both;

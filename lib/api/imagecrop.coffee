@@ -15,12 +15,12 @@ module.exports = (app)->
   # Theme upload api
   app.post "/api/crop", (req, res)->
     # when testing
-    return handleImageCrop(req, res)
+    # return handleImageCrop(req, res)
 
     filepath = req.param('address')
     info = JSON.parse(req.param('info'))
 
-    anthpack.crop {
+    anthPack.crop {
       src: filepath,
       size: {
         w: info.size.w,
@@ -35,30 +35,31 @@ module.exports = (app)->
         y: info.bottomRight.y
       }
     }, (err, result)-> 
-      # result is new relative.path.to.image
-      __log "crop Error: ", err
-      res.send 500, err
-      # res.json {
-      # success: false
-      # # TODO: Return the FAIL 404 imgage
-      # src: ''
-      # }
-      return
+      if err
+        # result is new relative.path.to.image
+        __log "crop Error: ", err
+        res.send 500, err
+        # res.json {
+        # success: false
+        # # TODO: Return the FAIL 404 imgage
+        # src: ''
+        # }
+        return
 
 
-    # __log "result: ", result
-    # __log "config.appPath: ", __config.appPath
+      # __log "result: ", result
+      # __log "config.appPath: ", __config.appPath
 
-    url = result
-    # url = path.join(__config.packagePath, result)
-    # url = result.replace __config.appPath, ''
+      url = result
+      # url = path.join(__config.packagePath, result)
+      # url = result.replace __config.appPath, ''
 
-    # Because of win, convert path seperator to url path style
-    url = url.split(path.sep).join("/")
+      # Because of win, convert path seperator to url path style
+      url = url.split(path.sep).join("/")
 
-    res.json {
-      success: true
-      src: url
-    }
+      res.json {
+        success: true
+        src: url
+      }
 
     return

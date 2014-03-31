@@ -13,4 +13,9 @@ module.exports = (app)->
 		res.cookie('avatar', 'http://a.disquscdn.com/uploads/users/6818/2203/avatar92.jpg?1376936026')
 		res.send 'ok'
 
-	return
+	app.get "/test/price", (req, res, next)->
+		console.log req.query.userId, req.query.type
+		res.jsonp 200, {
+			code: 204
+			points: [ 0 ]
+		}
