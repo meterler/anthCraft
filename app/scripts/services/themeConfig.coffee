@@ -21,13 +21,13 @@ mod.factory 'themeConfig', ->
 				return {
 					width: 513
 					height: 428
-					force: true
+					force: false
 				}
 			if resType is 'wallpaper' and resName is 'wallpaper-hd'
 				return {
 					width: 481
 					height: 428
-					force: true
+					force: false
 				}
 			switch resType
 				when 'app_icon', 'dock_icon', 'customize'
