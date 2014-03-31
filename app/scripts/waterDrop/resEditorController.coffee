@@ -79,3 +79,40 @@ angular.module("anthCraftApp").controller "resEditorController",
 
 		$scope.reset = ->
 			themeService.resetValue resModel.resType, resModel.resName
+
+
+		$scope.crop = ->
+			$scope.editting = true
+
+		$scope.saveCrop = (info)->
+			$scope.isLoading = true
+
+			themeId = themeService.themeModel._id
+			previewScale = themeConfig.getPreviewScale(resModel.resType, resModel.resName)
+			formData = new FormData()
+			formData.append('address',$scope.resInfo.data.src)
+			formData.append('info',JSON.stringify(info))
+
+			$http.post('/api/crop', formData, {
+				transformRequest: angular.identity
+				headers: {
+					'content-type': undefined
+				}
+			}).success((result)->
+				themeService.updateView {
+					resType: resModel.resType
+					resName: resModel.resName
+					src: result.src
+				}
+				refreshImage()
+				$scope.isLoading = false
+			).error ()->
+				#to-do pop
+				$scope.isLoading = false
+				$scope.hasError = true
+				$timeout ->
+					 $scope.hasError = false;
+				,600
+
+
+			return

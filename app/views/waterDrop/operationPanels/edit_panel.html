@@ -10,20 +10,21 @@
     <div class="panel-body">
         <div class="row mod-editPanel">
             <div class="preview-area pull-left">
-                <div class="preview-image" ng-click="openFile()">
+                <div class="preview-image" ng-click="openFile()" ng-show="!editting">
                     <img ng-src="{{UPLOAD_PATH}}{{resInfo.data.src}}?{{etag}}" type="{{image.file.type}}">
                 </div>
-
+                <div class="editor-image" ng-show="editting" image-editor>
+                </div>
                 <div class="loading" ng-if="isLoading">
                     <i class="icon-spin4 animate-spin"></i>
                 </div>
 
                 <div class="handles">
-                    <i class="icon-crop"></i>
-                    <i class="icon-remove" ng-click="reset()"></i>
+                    <i class="icon-crop" ng-click="crop()"></i>
+                    <i class="icon-remove" ng-click="reset()" ng-show="!editting"></i>
                 </div>
 
-                <label for="upImage" class="file-upload">
+                <label for="upImage" class="file-upload" ng-show="!hasError">
                     <i class="icon-up-1"></i>
                     <b>Upload</b>
                     <input type="file" name="upImage"
@@ -32,6 +33,10 @@
                         ng-model="x"
                         ng-disabled="isLoading"
                         ng-change="uploadFile(image.file, x)" />
+                </label>
+                <label class="file-upload alert alert-danger" ng-show="hasError">
+                    <i class="icon-frown"></i>
+                    <b>Failed</b>
                 </label>
             </div>
             <div class="res-info pull-right">
