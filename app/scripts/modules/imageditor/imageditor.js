@@ -54,6 +54,12 @@ angular.module('anthcraft.imageditor', [])
 
       function save(editor){
         var zone = editor.plugins.crop.cropZone;
+
+				zone.left= zone.getLeft();
+				zone.top = zone.getTop();
+				zone.width = zone.getWidth();
+				zone.height = zone.getHeight();
+
         var info = {
           size : {
             w:W,
