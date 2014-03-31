@@ -48,3 +48,5 @@ angular.module('anthCraftApp').controller 'savePackageController',
 				downloadUrl = $rootScope.ARCHIVES_PATH + result.archive
 				downloadFile downloadUrl
 				# $location.url($rootScope.ARCHIVES_PATH + result.archive)
+			, ->
+				$scope.status = 'error'

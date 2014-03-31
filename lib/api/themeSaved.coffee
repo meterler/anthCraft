@@ -9,6 +9,10 @@ module.exports = (app)->
 		handler: (req, res, next)->
 			data = req.body
 
+			# return res.json {
+			# 	success: true
+			# 	archive: '/test.zip'
+			# }
 			anthpack.archive data, (err, archivePath)->
 				if err
 					res.send 500, err
