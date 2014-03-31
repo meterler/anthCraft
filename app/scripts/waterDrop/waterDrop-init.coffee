@@ -10,6 +10,7 @@ app = angular.module('anthCraftApp', [
 	'ui.bootstrap'
 	'anthcraft.imageupload'
 	'anthCraft.imagedrop'
+	'anthcraft.imageditor'
 	'anthcraft.iconMask'
 	'anthcraft.previewCanvas'
 	'anthcraft.wrapDragDrop'
