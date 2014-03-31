@@ -107,6 +107,12 @@ angular.module("anthCraftApp").controller "resEditorController",
 				refreshImage()
 				$scope.isLoading = false
 			).error ()->
+				#to-do pop
+				$scope.isLoading = false
+				$scope.hasError = true
+				$timeout ->
+					 $scope.hasError = false;
+				,600
 
 
 			return

@@ -24,7 +24,7 @@
                     <i class="icon-remove" ng-click="reset()" ng-show="!editting"></i>
                 </div>
 
-                <label for="upImage" class="file-upload">
+                <label for="upImage" class="file-upload" ng-show="!hasError">
                     <i class="icon-up-1"></i>
                     <b>Upload</b>
                     <input type="file" name="upImage"
@@ -33,6 +33,10 @@
                         ng-model="x"
                         ng-disabled="isLoading"
                         ng-change="uploadFile(image.file, x)" />
+                </label>
+                <label class="file-upload alert alert-danger" ng-show="hasError">
+                    <i class="icon-frown"></i>
+                    <b>Failed</b>
                 </label>
             </div>
             <div class="res-info pull-right">
