@@ -1,5 +1,5 @@
 angular.module('anthCraftApp').controller 'feedbackController',
-	($scope, $modalInstance, $http, $cookies)->
+	($scope, $modalInstance, $sanitize, $http, $cookies)->
 
 		userId = $cookies.userid
 
@@ -8,11 +8,12 @@ angular.module('anthCraftApp').controller 'feedbackController',
 			userId: $cookies.userId
 			username: $cookies.username
 
-			feeling: 'great'
-			why: { n1: true }
+			feeling: false
+			why: false
 		}
 
 		$scope.submit = ->
+			$scope.feedback.saying = $sanitize($scope.feedback.saying)
 			$http.post('/api/feedback', $scope.feedback)
 				.finally ->
 					$modalInstance.close()
