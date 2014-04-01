@@ -135,12 +135,12 @@
       });
       */
       this.okButton = buttonGroup.createButton({
-        image: 'accept',
+        image: 'yes',
         type: 'success',
         hide: true
       });
       this.cancelButton = buttonGroup.createButton({
-        image: 'cancel',
+        image: 'no',
         type: 'danger',
         hide: true
       });

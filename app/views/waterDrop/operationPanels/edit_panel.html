@@ -19,9 +19,9 @@
                     <i class="icon-spin4 animate-spin"></i>
                 </div>
 
-                <div class="handles">
+                <div class="handles" ng-show="!editting">
                     <i class="icon-crop" ng-click="crop()"></i>
-                    <i class="icon-remove" ng-click="reset()" ng-show="!editting"></i>
+                    <i class="icon-remove" ng-click="reset()"></i>
                 </div>
 
                 <label for="upImage" class="file-upload" ng-show="!hasError">
