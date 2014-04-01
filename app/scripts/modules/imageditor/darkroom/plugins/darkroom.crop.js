@@ -60,12 +60,12 @@
       // y3 +------------------------+
       //
 
-      var x0 = Math.ceil(-this.getWidth() / 2 - this.getLeft());
+      var x0 = Math.floor(-this.getWidth() / 2 - this.getLeft());
       var x1 = Math.ceil(-this.getWidth() / 2);
       var x2 = Math.ceil(this.getWidth() / 2);
       var x3 = Math.ceil(this.getWidth() / 2 + (canvas.width - this.getWidth() - this.getLeft()));
 
-      var y0 = Math.ceil(-this.getHeight() / 2 - this.getTop());
+      var y0 = Math.floor(-this.getHeight() / 2 - this.getTop());
       var y1 = Math.ceil(-this.getHeight() / 2);
       var y2 = Math.ceil(this.getHeight() / 2);
       var y3 = Math.ceil(this.getHeight() / 2 + (canvas.height - this.getHeight() - this.getTop()));
