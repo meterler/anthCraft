@@ -1,7 +1,31 @@
 .darkroom-toolbar{
-  top:inherit;
-  bottom: -55px;
-  left: -26px;
+	position:absolute;
+	left: 212px;
+	/* width:24px; */
+  
+	bottom: 43px;
   overflow: hidden;
-  width: 213px;
+	font-family
+}
+.darkroom-toolbar ul{
+	padding:0;
+	margin:0;
+	list-style:none;
+	background:#fff;
+	border-radius: 0 10px 10px 0;
+	padding: 3px;
+	text-align: left;
+}
+.darkroom-toolbar button{
+	padding: 1px;
+	margin:0;
+	outline:none;
+	border:none;
+	background: transparent;
+	color: #767676;
+	/* width: 1em; */
+}
+.darkroom-toolbar .darkroom-button-success{
+	color: #56AC9B;
+	margin-bottom: 3px;
 }
