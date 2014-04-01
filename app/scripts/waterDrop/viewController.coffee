@@ -4,16 +4,6 @@ angular.module("anthCraftApp").controller "viewController",
 
 		$scope.pan = {}
 		$scope.progressRecord = (c) -> themeService.themeModel.progressRecord[c]
-		$scope.changeLayout = (data, from, evt)->
-			dest = angular.element(evt.currentTarget)
-			dest_clone = dest.clone()
-			from_clone = from.clone()
-
-			dest.replaceWith(from_clone)
-			from.replaceWith(dest_clone)
-
-			from_clone = null
-			dest_clone = null
 
 		# Check if continuable
 		if themeService.hasUnpub() && not $cookies.s
@@ -58,10 +48,6 @@ angular.module("anthCraftApp").controller "viewController",
 			$location.url("/list/#{data.category}/edit/#{data.resType}.#{data.resName}")
 			return
 
-		$scope.onDragging = (event, element)->
-
-			element.toggleClass 'active'
-
 		$scope.uploadImage = (event, files, resModel)->
 			# Upload files
 			image = files[0]
@@ -92,7 +78,6 @@ angular.module("anthCraftApp").controller "viewController",
 			$scope.openFeedbackBox()
 
 		$scope.openFeedbackBox = ->
-			console.log $cookies.s
 			$modal.open({
 				backdrop: 'static'
 				keyboard: false
