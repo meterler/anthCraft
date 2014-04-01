@@ -151,13 +151,13 @@
       this.cancelButton.addEventListener('click', this.releaseFocus.bind(this));
 
       // Canvas events
-      this.darkroom.canvas.on('mouse:down', this.onMouseDown.bind(this));
-      this.darkroom.canvas.on('mouse:move', this.onMouseMove.bind(this));
-      this.darkroom.canvas.on('mouse:up', this.onMouseUp.bind(this));
+      //this.darkroom.canvas.on('mouse:down', this.onMouseDown.bind(this));
+      //this.darkroom.canvas.on('mouse:move', this.onMouseMove.bind(this));
+      //this.darkroom.canvas.on('mouse:up', this.onMouseUp.bind(this));
       this.darkroom.canvas.on('object:moving', this.onObjectMoving.bind(this));
       this.darkroom.canvas.on('object:scaling', this.onObjectScaling.bind(this));
 
-      this.darkroom.addEventListener('image:change', this.releaseFocus.bind(this));
+      //this.darkroom.addEventListener('image:change', this.releaseFocus.bind(this));
     },
 
     // Avoid crop zone to go beyond the canvas edges
@@ -208,14 +208,17 @@
       if (minX < 0 || maxX > canvas.getWidth()) {
         var lastScaleX = this.lastScaleX || 1;
         currentObject.setScaleX(lastScaleX);
+        currentObject.setScaleY(lastScaleX);//keep x:y = 1:1
       }
       if (minX < 0) {
         currentObject.setLeft(0);
       }
 
+
       if (minY < 0 || maxY > canvas.getHeight()) {
         var lastScaleY = this.lastScaleY || 1;
         currentObject.setScaleY(lastScaleY);
+        currentObject.setScaleX(lastScaleY);//keep x:y = 1:1
       }
       if (minY < 0) {
         currentObject.setTop(0);
