@@ -30,13 +30,13 @@ angular.module('anthcraft.imageditor', [])
       function initEditor(img){
         var editor = new Darkroom(img, {
           // Canvas initialization size
-          width:160,
-          height:160,
+          width:W,
+          height:H,
           // Plugins options
           plugins: {
             crop: {
-              minHeight: 50,
-              minWidth: 50,
+              //minHeight: 50,
+              //minWidth: 50,
               ratio: 1
             },
             save: false // disable plugin
@@ -86,7 +86,7 @@ angular.module('anthcraft.imageditor', [])
       function editView(editor){
         if(!editor) return;
         editor.plugins.crop.toggleCrop();
-        editor.plugins.crop._renderCropZone(30,30,130,130);
+        editor.plugins.crop._renderCropZone(5,5,155,155);
         var zone = editor.plugins.crop.cropZone;
         zone.setCoords();
         editor.canvas.setActiveObject(zone);

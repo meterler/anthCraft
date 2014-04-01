@@ -61,6 +61,11 @@ angular.module('anthcraft.wrapDragDrop', [])
 		element.bind 'mousedown', (event)->
 			# Remove this for making upload button work well in firefox
 			# event.preventDefault()
+			tagName = event.srcElement.tagName
+			stopList = ['A','IMG','INPUT','SPAN']
+			for stop in stopList when tagName is stop
+				event.preventDefault()
+				return
 
 			width = element.prop('offsetWidth')
 			height = parseInt(element.prop('offsetHeight')) + 20
