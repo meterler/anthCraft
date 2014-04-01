@@ -8,7 +8,7 @@
 		<div class="form-group">
 			<label for="title" class="control-label col-md-3">Archive name: </label>
 			<div class="col-md-8">
-				<input type="text" class="form-control" name="title" ng-model="theme.title" />
+				<input type="text" class="form-control" name="title" ng-model="theme.title" maxlength="20" />
 			</div>
 		</div>
 		<p class="bg-danger text-center text-primary" ng-show="status=='error'">Connection Fail!</p>
