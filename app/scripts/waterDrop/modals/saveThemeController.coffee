@@ -20,8 +20,25 @@ angular.module('anthCraftApp').controller 'savePackageController',
 		downloadFile = (url)->
 			iframe = document.createElement("iframe")
 			iframe.setAttribute("src", url)
-			iframe.onload = ->
+			iframe.setAttribute("border", '0')
+			iframe.setAttribute('width', '0')
+			iframe.setAttribute('height', '0')
+			iframe.setAttribute('style', 'opacity: 0')
+
+			# !! Still don't work on ie11
+			if window.addEventListener
+				iframe.addEventListener 'load', ->
+					document.body.removeChild(iframe)
+				, false
+			else
+				iframe.onload = ->
+					document.body.removeChild(iframe)
+
+			# Plan-B
+			$timeout ->
 				document.body.removeChild(iframe)
+			, 1000
+
 			document.body.appendChild(iframe)
 			return
 
