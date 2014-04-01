@@ -21,6 +21,9 @@ module.exports = (app)->
     info = JSON.parse(req.param('info'))
 
     anthPack.crop {
+      themeId: info.themeId,
+      resType: info.resType,
+      resName: info.resName,
       src: filepath,
       size: {
         w: info.size.w,

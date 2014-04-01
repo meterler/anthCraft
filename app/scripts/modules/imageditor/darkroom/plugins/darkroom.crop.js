@@ -29,13 +29,13 @@
       // First lines rendering with black
       ctx.strokeStyle = 'rgba(0, 0, 0, 0.2)';
       this._renderBorders(ctx);
-      this._renderGrid(ctx);
+      //this._renderGrid(ctx);
 
       // Re render lines in white
       ctx.lineDashOffset = dashWidth;
       ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
       this._renderBorders(ctx);
-      this._renderGrid(ctx);
+      //this._renderGrid(ctx);
 
       // Reset scale
       ctx.scale(1/scaleX, 1/scaleY);
@@ -60,12 +60,12 @@
       // y3 +------------------------+
       //
 
-      var x0 = Math.ceil(-this.getWidth() / 2 - this.getLeft());
+      var x0 = Math.floor(-this.getWidth() / 2 - this.getLeft());
       var x1 = Math.ceil(-this.getWidth() / 2);
       var x2 = Math.ceil(this.getWidth() / 2);
       var x3 = Math.ceil(this.getWidth() / 2 + (canvas.width - this.getWidth() - this.getLeft()));
 
-      var y0 = Math.ceil(-this.getHeight() / 2 - this.getTop());
+      var y0 = Math.floor(-this.getHeight() / 2 - this.getTop());
       var y1 = Math.ceil(-this.getHeight() / 2);
       var y2 = Math.ceil(this.getHeight() / 2);
       var y3 = Math.ceil(this.getHeight() / 2 + (canvas.height - this.getHeight() - this.getTop()));
@@ -151,13 +151,13 @@
       this.cancelButton.addEventListener('click', this.releaseFocus.bind(this));
 
       // Canvas events
-      this.darkroom.canvas.on('mouse:down', this.onMouseDown.bind(this));
-      this.darkroom.canvas.on('mouse:move', this.onMouseMove.bind(this));
-      this.darkroom.canvas.on('mouse:up', this.onMouseUp.bind(this));
+      //this.darkroom.canvas.on('mouse:down', this.onMouseDown.bind(this));
+      //this.darkroom.canvas.on('mouse:move', this.onMouseMove.bind(this));
+      //this.darkroom.canvas.on('mouse:up', this.onMouseUp.bind(this));
       this.darkroom.canvas.on('object:moving', this.onObjectMoving.bind(this));
       this.darkroom.canvas.on('object:scaling', this.onObjectScaling.bind(this));
 
-      this.darkroom.addEventListener('image:change', this.releaseFocus.bind(this));
+      //this.darkroom.addEventListener('image:change', this.releaseFocus.bind(this));
     },
 
     // Avoid crop zone to go beyond the canvas edges
@@ -208,14 +208,17 @@
       if (minX < 0 || maxX > canvas.getWidth()) {
         var lastScaleX = this.lastScaleX || 1;
         currentObject.setScaleX(lastScaleX);
+        currentObject.setScaleY(lastScaleX);//keep x:y = 1:1
       }
       if (minX < 0) {
         currentObject.setLeft(0);
       }
 
+
       if (minY < 0 || maxY > canvas.getHeight()) {
         var lastScaleY = this.lastScaleY || 1;
         currentObject.setScaleY(lastScaleY);
+        currentObject.setScaleX(lastScaleY);//keep x:y = 1:1
       }
       if (minY < 0) {
         currentObject.setTop(0);
