@@ -35,8 +35,8 @@ angular.module('anthcraft.imageditor', [])
           // Plugins options
           plugins: {
             crop: {
-              minHeight: 50,
-              minWidth: 50,
+              //minHeight: 50,
+              //minWidth: 50,
               ratio: 1
             },
             save: false // disable plugin
