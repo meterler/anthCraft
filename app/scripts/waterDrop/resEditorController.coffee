@@ -88,11 +88,10 @@ angular.module("anthCraftApp").controller "resEditorController",
 			$scope.isLoading = true
 			previewScale = themeConfig.getPreviewScale(resModel.resType, resModel.resName)
 			info = info || { size:{} }
-			info.size.w  = previewScale.width
-			info.size.h  = previewScale.height
 			info.themeId = themeService.themeModel._id
 			info.resName = resModel.resName
 			info.resType = resModel.resType
+			info.previewScale = previewScale
 			formData = new FormData()
 			formData.append('address',$scope.resInfo.data.src)
 			formData.append('info',JSON.stringify(info))

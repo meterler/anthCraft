@@ -62,8 +62,8 @@ angular.module('anthcraft.imageditor', [])
 
         var info = {
           size : {
-            w:W,
-            h:H
+            width:W,
+            height:H
           },
           topLeft : {
             x: zone.left,
