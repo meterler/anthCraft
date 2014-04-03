@@ -20,14 +20,16 @@ module.exports = (app)->
     filepath = req.param('address')
     info = JSON.parse(req.param('info'))
 
+
     anthPack.crop {
       themeId: info.themeId,
       resType: info.resType,
       resName: info.resName,
       src: filepath,
+      previewScale: info.previewScale, 
       size: {
-        w: info.size.w,
-        h: info.size.h
+        width: info.size.width,
+        height: info.size.height
       },
       topLeft: {
         x: info.topLeft.x,
