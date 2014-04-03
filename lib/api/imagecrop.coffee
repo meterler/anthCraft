@@ -20,7 +20,6 @@ module.exports = (app)->
     filepath = req.param('address')
     info = JSON.parse(req.param('info'))
 
-    console.log info
 
     anthPack.crop {
       themeId: info.themeId,
