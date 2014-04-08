@@ -35,6 +35,8 @@ module.exports = (app)->
 						if result
 							# Update theme
 							delete themeData.themeInfo._id
+							themeData.themeInfo.packageTime = new Date()
+							themeData.themeInfo.packageDownloads = themeData.themeInfo.downloads
 							ThemeModel.update { _id: themeId }, {
 								$set: themeData.themeInfo
 							}, (err)->
@@ -66,6 +68,7 @@ module.exports = (app)->
 					anthPack.packTheme packParams, (err, packagePaths)->
 						callback(err) if err
 						__log "Success package."
+						theme.packageTime = new Date()
 						theme.packageFile = packagePaths
 						theme.status = 0
 

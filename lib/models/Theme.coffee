@@ -128,6 +128,18 @@ schemaStruct = {
 
 	updateTime: { type: 'date', default: Date.now }
 	createTime: { type: 'date', default: Date.now }
+
+	producer: {
+		type: 'string'
+		default: 'anthCraft-web'
+	}
+
+	# 主题更新包的上传时间
+	packageTime: { type: 'date', default: Date.now }
+	# 主题更新包之前的下载次数，默认为0
+	# 后台更新主题包，或者制作站替换主题包（只有主题包有变化时）
+	# 更新packageTime，并将downloads的值赋值给packageDownloads
+	packageDownloads: { type: 'number', default: 0 }
 }
 
 
