@@ -3,10 +3,6 @@ restful = require 'node-restful'
 mongoose = restful.mongoose
 autoinc = require 'mongoose-id-autoinc2'
 
-redisClient = require('redis').client
-
-# mongoose = require 'mongoose'
-
 # Theme schema definition
 schemaStruct = {
 	themeId: {
@@ -165,20 +161,20 @@ setUpdateTime = (req, res, next)->
 	next()
 
 # Handle logined user info
-readUserInfo = (req, res, next)->
-	# Read sessionId from cookies
-	sessionId = req.cookies.sid
-	return next() if not sessionId
+# readUserInfo = (req, res, next)->
+# 	# Read sessionId from cookies
+# 	sessionId = req.cookies.sid
+# 	return next() if not sessionId
 
-	# Get user info from Redis by sessionId
-	redisClient.get sessionId, (err, reply)->
-		# userId = reply.userId
-		authorName = reply.username
-		return next() if err or not authorName
+# 	# Get user info from Redis by sessionId
+# 	redisClient.get sessionId, (err, reply)->
+# 		# userId = reply.userId
+# 		authorName = reply.username
+# 		return next() if err or not authorName
 
-		# Update themeInfo
-		req.body.author = authorName
-		next()
+# 		# Update themeInfo
+# 		req.body.author = authorName
+# 		next()
 
 
 ThemeModel

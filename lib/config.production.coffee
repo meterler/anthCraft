@@ -10,10 +10,10 @@ module.exports = {
 
 	debug: false
 	mongo: "mongodb://10.60.145.18:27017/anthcraft"
-	redis: {
-		port: 6379
-		host: "10.60.145.18"
-		auth_pass: null
+
+	memcached: {
+		hosts: [ "10.127.129.88:11211" ]
+		prefix: 'anthCraft-mobile'
 	}
 
 	# Resources Path

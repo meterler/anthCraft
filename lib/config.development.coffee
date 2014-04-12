@@ -20,10 +20,9 @@ module.exports = {
 	# 	auth_pass: "anthCraft"
 	# }
 
-	redis: {
-		port: 6379
-		host: "10.127.129.88"
-		auth_pass: null
+	memcached: {
+		hosts: [ "10.127.129.88:11211" ]
+		prefix: 'anthCraft-mobile'
 	}
 
 	# Resources Path

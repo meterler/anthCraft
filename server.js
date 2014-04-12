@@ -13,6 +13,7 @@ var async = require('async');
 var log4js = require('log4js');
 var utils = require('./lib/utils');
 var anthPack = require('anthpack');
+var MemcachedStore = require('connect-memcached')(express)
 
 var app = express();
 
@@ -55,7 +56,10 @@ var initTasks = {
 
 		app.use(express.cookieParser());
 		app.use(express.cookieSession({
-			secret: "anthcraft"
+			secret: "anthcraft",
+			// Session keep 1h alive
+			cookie: { maxAge: 60 * 60 * 1000 },
+			store: new MemcachedStore(__config.memcached)
 		}));
 
 		app.use(express.bodyParser());

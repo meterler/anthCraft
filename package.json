@@ -5,11 +5,11 @@
     "express": "~3.4.5",
     "coffee-script": "~1.7.1",
     "node-restful": "~0.1.14",
-    "redis": "~0.9.1",
     "async": "~0.2.9",
     "mongoose-id-autoinc2": "~1.0.1",
     "anthpack": "*",
-    "log4js": "~0.6.9"
+    "log4js": "~0.6.9",
+    "connect-memcached": "0.0.6"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
