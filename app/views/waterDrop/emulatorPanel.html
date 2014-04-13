@@ -60,12 +60,12 @@
 				<div class="mp-apps-app">
 
 					<div class="mp-apps-maskIcon activatable"
-						ng-repeat="(appId, app) in theme.app_icon"
-						ng-click="select($event, 'app_icon', appId, 'icons')"
-						ng-class="{ active: isSelect('app_icon', appId) }">
+						ng-repeat="icon in appIconList"
+						ng-click="select($event, 'app_icon', icon.key, 'icons')"
+						ng-class="{ active: isSelect('app_icon', icon.key) }">
 
-						<img class="mp-apps-maskImg" src="{{_V(app)}}"/>
-						<p>{{app.capital}}</p>
+						<img class="mp-apps-maskImg" src="{{_V(icon.value)}}"/>
+						<p>{{icon.value.capital}}</p>
 					</div>
 
 
