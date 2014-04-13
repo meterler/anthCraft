@@ -149,6 +149,21 @@
 			background-color: rgba(0,0,0,0.5);
 			z-index: 40;
 		}
+
+		.mp-apps-maskIcon {
+			display: block;
+			width:56px;
+			.mp-apps-icon;
+			.active-bg {
+				width: 56px;
+				height: 56px;
+				position: absolute;
+				top: 0;
+				border: 1px solid transparent;
+				z-index: -1;
+				transition: all .5s;
+			}
+		}
 		.mp-apps-app {
 			position: absolute;
 			top: 0;
@@ -184,40 +199,40 @@
 					transition: all .5s;
 				}
 			}
-			.mp-apps-icon {
-				position: relative;
+
+		}
+		.mp-apps-icon {
+			position: relative;
+			width: 56px;
+			height: 72px;
+			margin: 0 5px 10px;
+
+			display: inline-block;
+			text-align: center;
+			img {
 				width: 56px;
-				height: 72px;
-				margin: 0 5px 10px;
-
-				display: inline-block;
-				text-align: center;
-				img {
-					width: 56px;
-					height: 56px;
-					// padding: 3px;
-					vertical-align: top;
-					border: 1px solid transparent;
-					cursor: pointer;
-					transition: all .5s;
-				}
-				p {
-					position: absolute;
-					display: block;
-					height: 10px;
-					margin: 0;
-					bottom: 3px;
-					left: 0;
-					width: 100%;
-					text-align: center;
-
-					color: white;
-					font-family: Arial;
-					line-height: 1em;
-					font-size: 11px;
-				}
+				height: 56px;
+				// padding: 3px;
+				vertical-align: top;
+				border: 1px solid transparent;
+				cursor: pointer;
+				transition: all .5s;
 			}
+			p {
+				position: absolute;
+				display: block;
+				height: 10px;
+				margin: 0;
+				bottom: 3px;
+				left: 0;
+				width: 100%;
+				text-align: center;
 
+				color: white;
+				font-family: Arial;
+				line-height: 1em;
+				font-size: 11px;
+			}
 		}
 
 		.mp-apps-menus {
@@ -244,6 +259,16 @@
 		}
 	}
 
+	.mp_home_icons {
+		text-align: right;
+		padding: 0 10px;
+		position: absolute;
+		bottom: 100px;
+		.mp-apps-maskIcon:first-child {
+			margin-left: 100%;
+			float: right;
+		}
+	}
 	.mp_widget_bettery {
 		width: 261px;
 		height: 77px;

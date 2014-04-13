@@ -7,6 +7,18 @@
 		<ul rn-carousel rn-carousel-index="1" rn-carousel-indicator rn-swipe-callback="swipeCallback">
 			<li>
 				<div class="mp_widget_memery"></div>
+
+				<div class="mp_home_icons">
+					<div class="mp-apps-maskIcon activatable"
+						ng-repeat="icon in homeApps"
+						ng-click="select($event, 'app_icon', icon.key, 'home')"
+						ng-class="{ active: isSelect('app_icon', icon.key) }">
+
+						<img class="mp-apps-maskImg" src="{{_V(icon.value)}}"/>
+						<p>{{icon.value.capital}}</p>
+					</div>
+				</div>
+
 			</li>
 			<li>
 				<div class="mp-decoration"></div>

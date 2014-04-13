@@ -195,33 +195,34 @@ mod.factory 'themeConfig', ->
 				}
 
 				# Not show in apps drawer below
-				"Feedback": {
-					capital: "Feedback"
-					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_clauncher_userfeedback.png"
-				}
+
 				"Beautify": {
 					capital: "Beautify Center"
 					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_beauty_center_beautycenterentrance.png"
 				}
-				"Boutique": {
-					capital: "Boutique Center"
-					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_boutique_centerentrance.png"
-				}
-				"LatestInstalled": {
-					capital: "Recent install"
-					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_clauncher_latestinstalled_latestinstalledactivity.png"
-				}
-				"LatestUsed": {
-					capital: "Recent use"
-					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_clauncher_latestused_latestusedactivity.png"
+				"Optimize": {
+					capital: "Optimization Center"
+					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_opti_center_opticenteractivity.png"
 				}
 				"Launcher": {
 					capital: "CLauncher"
 					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_clauncher_launcher.png"
 				}
-				"Optimize": {
-					capital: "Optimization Center"
-					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_opti_center_opticenteractivity.png"
+				"Feedback": {
+					capital: "Feedback"
+					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_clauncher_userfeedback.png"
+				}
+				"Boutique": {
+					capital: "Boutique Center"
+					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_boutique_centerentrance.png"
+				}
+				"LatestUsed": {
+					capital: "Recent use"
+					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_clauncher_latestused_latestusedactivity.png"
+				}
+				"LatestInstalled": {
+					capital: "Recent install"
+					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_clauncher_latestinstalled_latestinstalledactivity.png"
 				}
 				"LockScreen": {
 					capital: "LockScreen"
