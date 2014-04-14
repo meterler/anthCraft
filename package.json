@@ -7,7 +7,7 @@
     "node-restful": "~0.1.14",
     "async": "~0.2.9",
     "mongoose-id-autoinc2": "~1.0.1",
-    "anthpack": "*",
+    "anthpack": "~2.0.12",
     "log4js": "~0.6.9",
     "connect-memcached": "0.0.6"
   },

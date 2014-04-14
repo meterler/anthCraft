@@ -42,7 +42,7 @@ var initTasks = {
 	// }],
 
 	init_anthpack: [ 'init_logger', function(cb) {
-		anthPack.config(__config.anthPack);
+		anthPack.config(__config.anthPack, log4js.getLogger('anthpack'));
 		cb();
 	}],
 
