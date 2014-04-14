@@ -193,9 +193,48 @@ mod.factory 'themeConfig', ->
 					capital: "Maps"
 					src: "/default_theme/app_icon/com_google_android_apps_maps_com_google_android_maps_mapsactivity.png"
 				}
+
+				# Not show in apps drawer below
+
+				"Beautify": {
+					capital: "Beautify Center"
+					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_beauty_center_beautycenterentrance.png"
+				}
+				"Optimize": {
+					capital: "Optimization Center"
+					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_opti_center_opticenteractivity.png"
+				}
+				"Launcher": {
+					capital: "CLauncher"
+					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_clauncher_launcher.png"
+				}
+				"Boutique": {
+					capital: "Boutique Center"
+					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_boutique_centerentrance.png"
+				}
+				"Feedback": {
+					capital: "Feedback"
+					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_clauncher_userfeedback.png"
+				}
+				"LatestUsed": {
+					capital: "Recent use"
+					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_clauncher_latestused_latestusedactivity.png"
+				}
+				"LatestInstalled": {
+					capital: "Recent install"
+					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_clauncher_latestinstalled_latestinstalledactivity.png"
+				}
+				"LockScreen": {
+					capital: "LockScreen"
+					src: "/default_theme/app_icon/com_cyou_cma_clockscreen_com_cyou_cma_clockscreen_activity_splashactivity.png"
+				}
 			}
 
 			customize: {
+				"customize_cover": {
+					capital: "Icon Cover"
+					src: "/default_theme/customize_mat/default_customize_cover.png"
+				}
 				"customize_mat": {
 					capital: "Icon Base"
 					src: "/default_theme/customize_mat/default_customize_mat.png"
@@ -252,6 +291,24 @@ mod.factory 'themeConfig', ->
 				"ap_search_pressed": {
 					capital: "Search(Pressed)"
 					src: "/default_theme/dock_icon/ap_search.png"
+				}
+			}
+			cma_widget : {
+				"ic_flashlight_on": {
+					capital: "FlashOn"
+					src: "/default_theme/cma_widget/ic_flashlight_on.png"
+				}
+				"ic_flashlight_off": {
+					capital: "FlashOff"
+					src: "/default_theme/cma_widget/ic_flashlight_off.png"
+				}
+				"ic_widget_all_apps": {
+					capital: "All Apps"
+					src: "/default_theme/cma_widget/ic_widget_all_apps.png"
+				}
+				"ic_widget_diy_theme": {
+					capital: "DIY Themes"
+					src: "/default_theme/cma_widget/ic_widget_diy_theme.png"
 				}
 			}
 

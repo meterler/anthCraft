@@ -74,5 +74,10 @@ angular.module('anthCraftApp').controller 'previewController',
 		$scope.$on 'theme.switchSence', (event, sence)->
 			$scope.curSence = sence
 
-		$scope.appIconList = themeConfig.appIcons
+		appIconList = []
 
+		for key, value of themeService.packInfo.app_icon
+			appIconList.push { key: key, value: value }
+		# Only first 16 icons
+		$scope.appIconList = appIconList[..15]
+		$scope.homeApps = appIconList[16..22]

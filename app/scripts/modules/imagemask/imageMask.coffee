@@ -43,12 +43,12 @@ angular.module('anthcraft.iconMask', [
 				iconBase shape, 'destination-over', ()->
 					iconBase base, 'source-over', ()->
 						# iconBase mask, {x:0, y:0, width: 50, height: 50}, 'destination-over', ()->
-						attrs.$observe "base", (x) -> changeIcon x, attrs.src, attrs.shape
-					attrs.$observe "shape", (x) -> changeIcon attrs.base, attrs.src, x
-				attrs.$observe "src", (x) -> changeIcon attrs.base, x, attrs.shape
+						attrs.$observe "base", (x) -> changeIcon x, attrs.ngSrc, attrs.shape
+					attrs.$observe "shape", (x) -> changeIcon attrs.base, attrs.ngSrc, x
+				attrs.$observe "ngSrc", (x) -> changeIcon attrs.base, x, attrs.shape
 			return
 
-		changeIconInit attrs.base, attrs.src, attrs.shape
+		changeIconInit attrs.base, attrs.ngSrc, attrs.shape
 
 
 		return

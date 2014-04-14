@@ -6,13 +6,57 @@
 		<div class="mp-statusbar"></div>
 		<ul rn-carousel rn-carousel-index="1" rn-carousel-indicator rn-swipe-callback="swipeCallback">
 			<li>
-				<div class="mp_widget_accelerate"></div>
+				<div class="mp_widget_memery"></div>
+
+				<div class="mp_home_icons">
+
+					<div class="mp-apps-maskIcon activatable"
+						ng-click="select($event, 'customize', 'customize_icon', 'home')"
+						ng-class="{ active: isSelect('customize', 'customize_icon') }">
+
+						<img icon-mask class="mp-apps-maskImg"
+							ng-src = "{{_V(theme['customize']['customize_icon'])}}"
+							base = "{{_V(theme['customize']['customize_mat'])}}"
+							shape="{{_V(theme['customize']['customize_mask'])}}"
+							/>
+						<p>{{theme['customize']['customize_icon'].capital}}</p>
+					</div>
+
+					<div class="mp-apps-maskIcon activatable"
+						ng-repeat="icon in homeApps"
+						ng-click="select($event, 'app_icon', icon.key, 'home')"
+						ng-class="{ active: isSelect('app_icon', icon.key) }">
+
+						<img icon-mask class="mp-apps-maskImg"
+							ng-src = "{{_V(icon.value)}}"
+							base = "{{_V(theme['customize']['customize_mat'])}}"
+							shape="{{_V(theme['customize']['customize_mask'])}}"
+							/>
+						<!-- <img class="mp-apps-maskImg" ng-src="{{_V(icon.value)}}"/> -->
+						<p>{{icon.value.capital}}</p>
+					</div>
+
+					<div class="mp-apps-maskIcon activatable"
+						ng-click="select($event, 'dock_icon', 'ic_allapps', 'home')"
+						ng-class="{ active: isSelect('dock_icon', 'ic_allapps') }">
+
+						<img icon-mask class="mp-apps-maskImg"
+							ng-src = "{{_V(theme['dock_icon']['ic_allapps'])}}"
+							base = "{{_V(theme['customize']['customize_mat'])}}"
+							shape="{{_V(theme['customize']['customize_mask'])}}"
+							/>
+						<p>{{theme['dock_icon']['ic_allapps'].capital}}</p>
+					</div>
+
+				</div>
+
 			</li>
 			<li>
 				<div class="mp-decoration"></div>
 			</li>
 			<li>
 				<div class="mp_widget_bettery"></div>
+				<div class="mp_widget_accelerate"></div>
 			</li>
 		</ul>
 		<div class="mp-dock">
@@ -20,35 +64,31 @@
 				ng-click="select($event, 'app_icon', 'Phone', 'home')"
 				ng-class="{ active: isSelect('app_icon', 'Phone') }">
 				<img ng-src="{{_V(theme['app_icon']['Phone'])}}">
-				<p>{{theme['app_icon']['Phone'].capital}}</p>
-			</div>
-
-			<div class="mp-dock-icon activatable"
-				ng-click="select($event, 'app_icon', 'Contacts', 'home')"
-				ng-class="{ active: isSelect('app_icon', 'Contacts') }">
-				<img ng-src="{{_V(theme['app_icon']['Contacts'])}}">
-				<p>{{theme['app_icon']['Contacts'].capital}}</p>
-			</div>
-
-			<div class="mp-dock-icon activatable"
-				ng-click="select($event, 'dock_icon', 'ic_allapps', 'home')"
-				ng-class="{ active: isSelect('dock_icon', 'ic_allapps') }">
-				<img ng-src="{{_V(theme['dock_icon']['ic_allapps'])}}">
-				<p>{{theme['dock_icon']['ic_allapps'].capital}}</p>
 			</div>
 
 			<div class="mp-dock-icon activatable"
 				ng-click="select($event, 'app_icon', 'Messages', 'home')"
 				ng-class="{ active: isSelect('app_icon', 'Messages') }">
 				<img ng-src="{{_V(theme['app_icon']['Messages'])}}">
-				<p>{{theme['app_icon']['Messages'].capital}}</p>
+			</div>
+
+			<div class="mp-dock-icon activatable"
+				ng-click="select($event, 'dock_icon', 'ic_allapps', 'home')"
+				ng-class="{ active: isSelect('dock_icon', 'ic_allapps') }">
+				<img ng-src="{{_V(theme['dock_icon']['ic_allapps'])}}">
+			</div>
+
+
+			<div class="mp-dock-icon activatable"
+				ng-click="select($event, 'app_icon', 'Camera', 'home')"
+				ng-class="{ active: isSelect('app_icon', 'Camera') }">
+				<img ng-src="{{_V(theme['app_icon']['Camera'])}}">
 			</div>
 
 			<div class="mp-dock-icon activatable"
 				ng-click="select($event, 'app_icon', 'Browser', 'home')"
 				ng-class="{ active: isSelect('app_icon', 'Browser') }">
 				<img ng-src="{{_V(theme['app_icon']['Browser'])}}">
-				<p>{{theme['app_icon']['Browser'].capital}}</p>
 			</div>
 		</div>
 	</div>
@@ -60,12 +100,12 @@
 				<div class="mp-apps-app">
 
 					<div class="mp-apps-maskIcon activatable"
-						ng-repeat="(appId, app) in theme.app_icon"
-						ng-click="select($event, 'app_icon', appId, 'icons')"
-						ng-class="{ active: isSelect('app_icon', appId) }">
+						ng-repeat="icon in appIconList"
+						ng-click="select($event, 'app_icon', icon.key, 'icons')"
+						ng-class="{ active: isSelect('app_icon', icon.key) }">
 
-						<img class="mp-apps-maskImg" src="{{_V(app)}}"/>
-						<p>{{app.capital}}</p>
+						<img class="mp-apps-maskImg" ng-src="{{_V(icon.value)}}"/>
+						<p>{{icon.value.capital}}</p>
 					</div>
 
 
@@ -74,7 +114,7 @@
 						ng-class="{ active: isSelect('customize', 'customize_icon') }">
 
 						<img icon-mask class="mp-apps-maskImg"
-							src = "{{_V(theme['customize']['customize_icon'])}}"
+							ng-src = "{{_V(theme['customize']['customize_icon'])}}"
 							base = "{{_V(theme['customize']['customize_mat'])}}"
 							shape="{{_V(theme['customize']['customize_mask'])}}"
 							/>
