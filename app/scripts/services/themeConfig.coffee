@@ -208,13 +208,13 @@ mod.factory 'themeConfig', ->
 					capital: "CLauncher"
 					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_clauncher_launcher.png"
 				}
-				"Feedback": {
-					capital: "Feedback"
-					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_clauncher_userfeedback.png"
-				}
 				"Boutique": {
 					capital: "Boutique Center"
 					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_boutique_centerentrance.png"
+				}
+				"Feedback": {
+					capital: "Feedback"
+					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_clauncher_userfeedback.png"
 				}
 				"LatestUsed": {
 					capital: "Recent use"
