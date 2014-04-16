@@ -182,6 +182,8 @@ mod.factory 'themeService',
 
 					service.updateView()
 					callback.apply(null, arguments)
+				, (err)->
+					fail.apply(null, arguments)
 		}
 
 		# service.init() if not service.continueWork()
