@@ -60,9 +60,9 @@ angular.module('anthcraft.previewCanvas', [])
 
 			else if btn is "home-btn"
 				drawIcon UPLOAD_PATH + theme.app_icon.Phone.src, 10*multiple, 330*multiple, 30*multiple, 30*multiple, theme.app_icon.Phone.capital
-				drawIcon UPLOAD_PATH + theme.app_icon.Contacts.src, 50*multiple, 330*multiple, 30*multiple, 30*multiple, theme.app_icon.Contacts.capital
+				drawIcon UPLOAD_PATH + theme.app_icon.Messages.src, 50*multiple, 330*multiple, 30*multiple, 30*multiple, theme.app_icon.Messages.capital
 				drawIcon UPLOAD_PATH + theme.dock_icon.ic_allapps.src, 90*multiple, 330*multiple, 30*multiple, 30*multiple, theme.dock_icon.ic_allapps.capital
-				drawIcon UPLOAD_PATH + theme.app_icon.Messages.src, 130*multiple, 330*multiple, 30*multiple, 30*multiple, theme.app_icon.Messages.capital
+				drawIcon UPLOAD_PATH + theme.app_icon.Camera.src, 130*multiple, 330*multiple, 30*multiple, 30*multiple, theme.app_icon.Camera.capital
 				drawIcon UPLOAD_PATH + theme.app_icon.Browser.src, 170*multiple, 330*multiple, 30*multiple, 30*multiple, theme.app_icon.Browser.capital
 
 		drawApps = (apps)->
