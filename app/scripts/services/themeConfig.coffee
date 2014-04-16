@@ -110,8 +110,8 @@ mod.factory 'themeConfig', ->
 			]
 			mask: [
 				[ 'customize', 'customize_mat', 'icons', 'customize', 'customize_icon']
-				[ 'customize', 'customize_cover']
-				[ 'customize', 'customize_mask', 'home', 'wallpaper', 'wallpaper' ]
+				[ 'customize', 'customize_mask']
+				[ 'customize', 'customize_cover', 'home', 'wallpaper', 'wallpaper' ]
 			]
 		}
 
