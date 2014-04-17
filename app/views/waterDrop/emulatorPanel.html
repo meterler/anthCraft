@@ -2,7 +2,7 @@
 
 <div class="mod-previewer" ng-switch on="curSence">
 	<div class="sence sence-home" ng-switch-when="home"
-		ng-style="_Wallpaper(_V(theme['wallpaper']['wallpaper-hd']))" ng-click="select($event, 'wallpaper', 'wallpaper-hd', 'home')">
+		ng-style="_Wallpaper(_V(theme['wallpaper']['wallpaper']))" ng-click="select($event, 'wallpaper', 'wallpaper', 'home')">
 		<div class="mp-statusbar"></div>
 		<ul rn-carousel rn-carousel-index="1" rn-carousel-indicator rn-swipe-callback="swipeCallback">
 			<li>
@@ -86,7 +86,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="sence sence-apps" ng-switch-when="apps" ng-style="_Wallpaper(_V(theme['wallpaper']['wallpaper-hd']))">
+	<div class="sence sence-apps" ng-switch-when="apps" ng-style="_Wallpaper(_V(theme['wallpaper']['wallpaper']))">
 		<div class="mp-statusbar"></div>
 		<div class="mp-apps-bg"></div>
 		<ul rn-carousel rn-carousel-index="0" rn-swipe-callback="swipeCallback">

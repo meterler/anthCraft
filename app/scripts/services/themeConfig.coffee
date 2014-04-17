@@ -17,19 +17,13 @@ mod.factory 'themeConfig', ->
 					force: true
 				}
 
-			if resType is 'wallpaper' and resName is 'wallpaper'
-				return {
-					width: 513
-					height: 428
-					force: false
-				}
-			if resType is 'wallpaper' and resName is 'wallpaper-hd'
-				return {
-					width: 481
-					height: 428
-					force: false
-				}
 			switch resType
+				when 'wallpaper'
+					{
+						width: 481
+						height: 428
+						force: false
+					}
 				when 'app_icon', 'dock_icon', 'customize', 'cma_widget'
 					{
 						width: 192
@@ -58,15 +52,9 @@ mod.factory 'themeConfig', ->
 				}
 			switch resType
 				when 'wallpaper'
-					if resName is 'wallpaper-hd' then {
-						width: 1440
-						height: 1280
-						type: '.jpg,.jpeg'
-					} else {
-						width: 960
-						height: 800
-						type: '.jpg,.jpeg'
-					}
+					width: 1440
+					height: 1280
+					type: '.jpg,.jpeg'
 				when 'app_icon', 'dock_icon', 'customize', 'cma_widget'
 					{
 						width: 192
@@ -82,7 +70,6 @@ mod.factory 'themeConfig', ->
 		editGroup: {
 			home: [
 				['wallpaper', 'wallpaper', 'mask', 'customize', 'customize_mask']
-				['wallpaper', 'wallpaper-hd']
 				['app_icon', 'Phone']
 				['app_icon', 'Contacts']
 				['dock_icon', 'ic_allapps']
@@ -128,10 +115,6 @@ mod.factory 'themeConfig', ->
 		# Default packInfo for reset style
 		defaultPackInfo: {
 			wallpaper: {
-				"wallpaper-hd": {
-					capital: "Wallpaper"
-					src: "/default_theme/wallpaper/wallpaper.jpg"
-				}
 				"wallpaper": {
 					capital: "Wallpaper"
 					src: "/default_theme/wallpaper/wallpaper.jpg"
