@@ -3,7 +3,7 @@
 Control the theme previewer
 ###
 angular.module('anthCraftApp').controller 'previewController',
-	($scope, $rootScope, themeConfig, themeService, menuFactory)->
+	($scope, $rootScope, $timeout, themeConfig, themeService, menuFactory)->
 
 		# 1440*SENCE_HEIGHT/1280=>
 		IMAGE_WIDTH = 568.125
@@ -71,8 +71,13 @@ angular.module('anthCraftApp').controller 'previewController',
 		$scope.$on 'theme.reset', (event, newModel)->
 			#TODO: reset all
 			#
-		$scope.$on 'theme.switchSence', (event, sence)->
+		$scope.$on 'theme.switchSence', (event, sence, stage)->
+			console.log arguments
 			$scope.curSence = sence
+			return if stage is false
+			$timeout ->
+				$scope.$broadcast 'rn-change-stage', stage
+			, 0
 
 		appIconList = []
 

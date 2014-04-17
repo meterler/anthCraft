@@ -26,6 +26,12 @@ angular.module("anthCraftApp").controller "resEditorController",
 					else
 						"/list/#{item[2]}/edit/#{item[3]}.#{item[4]}"
 
+				# Magics here
+				stage = item[5] or item[2]
+				$timeout ->
+					$rootScope.$broadcast 'rn-scroll-stage', stage
+				, 10
+
 		# Fight with cache!
 		$scope.etag = 0
 		refreshImage = -> $scope.etag = (new Date).getTime()

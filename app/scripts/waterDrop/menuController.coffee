@@ -23,6 +23,6 @@ angular.module('anthCraftApp').controller "menuController",
 			menuFactory.sence = item.sence
 
 			# for instant
-			$rootScope.$broadcast 'theme.switchSence', item.sence
+			$rootScope.$broadcast 'theme.switchSence', item.sence, false
 
 			return

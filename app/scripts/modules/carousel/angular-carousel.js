@@ -419,6 +419,16 @@ angular.module('angular-carousel')
                         winEl.unbind('resize', onOrientationChange);
                     });
 
+                    scope.$on('rn-change-stage', function(event, toIdx) {
+                        console.log("Goto Slide: ", toIdx);
+                        goToSlide(scope.carouselIndex = toIdx);
+                    });
+
+                    scope.$on('rn-scroll-stage', function(event, toIdx) {
+                        console.log("Scroll to slide: ", toIdx);
+                        scroll(scope.carouselIndex = toIdx)
+                    })
+
                 };
             }
         };
