@@ -30,7 +30,7 @@ mod.factory 'themeConfig', ->
 					force: false
 				}
 			switch resType
-				when 'app_icon', 'dock_icon', 'customize'
+				when 'app_icon', 'dock_icon', 'customize', 'cma_widget'
 					{
 						width: 192
 						height: 192
@@ -67,7 +67,7 @@ mod.factory 'themeConfig', ->
 						height: 800
 						type: '.jpg,.jpeg'
 					}
-				when 'app_icon', 'dock_icon', 'customize'
+				when 'app_icon', 'dock_icon', 'customize', 'cma_widget'
 					{
 						width: 192
 						height: 192
