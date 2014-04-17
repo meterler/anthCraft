@@ -2,7 +2,7 @@
 
 <div class="mod-previewer" ng-switch on="curSence">
 	<div class="sence sence-home" ng-switch-when="home"
-		ng-style="_Wallpaper(_V(theme['wallpaper']['wallpaper-hd']))" ng-click="select($event, 'wallpaper', 'wallpaper-hd', 'home')">
+		ng-style="_Wallpaper(_V(theme['wallpaper']['wallpaper']))" ng-click="select($event, 'wallpaper', 'wallpaper', 'home')">
 		<div class="mp-statusbar"></div>
 		<ul rn-carousel rn-carousel-index="1" rn-carousel-indicator rn-swipe-callback="swipeCallback">
 			<li>
@@ -11,15 +11,13 @@
 				<div class="mp_home_icons">
 
 					<div class="mp-apps-maskIcon activatable"
-						ng-click="select($event, 'customize', 'customize_icon', 'home')"
-						ng-class="{ active: isSelect('customize', 'customize_icon') }">
+						ng-click="select($event, 'cma_widget', 'ic_widget_diy_theme', 'home')"
+						ng-class="{ active: isSelect('cma_widget', 'ic_widget_diy_theme') }">
 
-						<img icon-mask class="mp-apps-maskImg"
-							ng-src = "{{_V(theme['customize']['customize_icon'])}}"
-							base = "{{_V(theme['customize']['customize_mat'])}}"
-							shape="{{_V(theme['customize']['customize_mask'])}}"
+						<img class="mp-apps-maskImg"
+							ng-src = "{{_V(theme['cma_widget']['ic_widget_diy_theme'])}}"
 							/>
-						<p>{{theme['customize']['customize_icon'].capital}}</p>
+						<p>{{theme['cma_widget']['ic_widget_diy_theme'].capital}}</p>
 					</div>
 
 					<div class="mp-apps-maskIcon activatable"
@@ -27,25 +25,21 @@
 						ng-click="select($event, 'app_icon', icon.key, 'home')"
 						ng-class="{ active: isSelect('app_icon', icon.key) }">
 
-						<img icon-mask class="mp-apps-maskImg"
+						<img class="mp-apps-maskImg"
 							ng-src = "{{_V(icon.value)}}"
-							base = "{{_V(theme['customize']['customize_mat'])}}"
-							shape="{{_V(theme['customize']['customize_mask'])}}"
 							/>
 						<!-- <img class="mp-apps-maskImg" ng-src="{{_V(icon.value)}}"/> -->
 						<p>{{icon.value.capital}}</p>
 					</div>
 
 					<div class="mp-apps-maskIcon activatable"
-						ng-click="select($event, 'dock_icon', 'ic_allapps', 'home')"
-						ng-class="{ active: isSelect('dock_icon', 'ic_allapps') }">
+						ng-click="select($event, 'cma_widget', 'ic_widget_all_apps', 'home')"
+						ng-class="{ active: isSelect('cma_widget', 'ic_widget_all_apps') }">
 
-						<img icon-mask class="mp-apps-maskImg"
-							ng-src = "{{_V(theme['dock_icon']['ic_allapps'])}}"
-							base = "{{_V(theme['customize']['customize_mat'])}}"
-							shape="{{_V(theme['customize']['customize_mask'])}}"
+						<img class="mp-apps-maskImg"
+							ng-src = "{{_V(theme['cma_widget']['ic_widget_all_apps'])}}"
 							/>
-						<p>{{theme['dock_icon']['ic_allapps'].capital}}</p>
+						<p>{{theme['cma_widget']['ic_widget_all_apps'].capital}}</p>
 					</div>
 
 				</div>
@@ -92,7 +86,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="sence sence-apps" ng-switch-when="apps" ng-style="_Wallpaper(_V(theme['wallpaper']['wallpaper-hd']))">
+	<div class="sence sence-apps" ng-switch-when="apps" ng-style="_Wallpaper(_V(theme['wallpaper']['wallpaper']))">
 		<div class="mp-statusbar"></div>
 		<div class="mp-apps-bg"></div>
 		<ul rn-carousel rn-carousel-index="0" rn-swipe-callback="swipeCallback">
@@ -117,6 +111,7 @@
 							ng-src = "{{_V(theme['customize']['customize_icon'])}}"
 							base = "{{_V(theme['customize']['customize_mat'])}}"
 							shape="{{_V(theme['customize']['customize_mask'])}}"
+							mask="{{_V(theme['customize']['customize_cover'])}}"
 							/>
 						<p>{{theme['customize']['customize_icon'].capital}}</p>
 					</div>

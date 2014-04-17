@@ -81,7 +81,6 @@ angular.module('anthcraft.previewCanvas', [])
 				drawIcon UPLOAD_PATH + theme.dock_icon.ap_menu.src, 140*multiple, 335*multiple, 30*multiple, 30*multiple, ""
 
 			else if btn is "home-btn"
-				window.ICON = theme.app_icon
 				drawShadowIcon UPLOAD_PATH + theme.app_icon.Phone.src, 10*multiple, 330*multiple, 30*multiple, 30*multiple, theme.app_icon.Phone.capital
 				drawShadowIcon UPLOAD_PATH + theme.app_icon.Messages.src, 50*multiple, 330*multiple, 30*multiple, 30*multiple, theme.app_icon.Messages.capital
 				drawShadowIcon UPLOAD_PATH + theme.dock_icon.ic_allapps.src, 90*multiple, 330*multiple, 30*multiple, 30*multiple,theme.dock_icon.ic_allapps.capital
