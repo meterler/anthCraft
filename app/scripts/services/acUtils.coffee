@@ -35,16 +35,19 @@ angular.module("anthCraftApp").service 'acUtils',
 				list = themeConfig.editGroup[category]
 				result = []
 				list.forEach ([resKey, resName], idx)->
-					result.push {
-						index: idx
-						resKey: resKey
-						resName: resName
-						data: themeService.packInfo[resKey][resName]
-						meta: themeConfig.getStandard(resKey, resName)
-					}
-				return result
+					result.push acUtils.wrapResListFormat(resKey, resName, idx)
 
+				return result
 			#######
+
+			wrapResListFormat: (resKey, resName, idx)->
+				{
+					index: idx
+					resKey: resKey
+					resName: resName
+					data: themeService.packInfo[resKey][resName]
+					meta: themeConfig.getStandard(resKey, resName)
+				}
 
 			getCurrentUser: ()->
 				if $cookies.userid
