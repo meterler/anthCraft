@@ -37,8 +37,7 @@
     "angular-translate": "~2.0.0",
     "angular-translate-loader-static-files": "~0.1.7",
     "angular-translate-storage-local": "~0.1.7",
-    "angular-animate": "~1.2.14",
-    "fabric": "~1.4.4"
+    "angular-animate": "~1.2.14"
   },
   "resolutions": {
     "angular": "1.2.6",

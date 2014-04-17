@@ -6,6 +6,10 @@ angular.module('anthcraft.iconMask', [
 	restrict: 'A'
 	link: (scope, element, attrs)->
 
+		# 这个函数需要重构，主要是为了解决回调金字塔和不必要的预加载图片,
+		# 比如当mask改变的时候，另外3张图base,src,shape并不需要重新预加载
+		# 整理后的代码在 imageMask_w.js 中，由于上线紧张，暂时保留此代码
+
 		imageCanvas  = document.createElement 'canvas'
 		imageContext = imageCanvas.getContext '2d'
 
@@ -13,6 +17,9 @@ angular.module('anthcraft.iconMask', [
 		height = attrs.iheight || 192
 		imageCanvas.width  = width
 		imageCanvas.height = height
+
+		layer=(m)->
+			return
 
 
 		preImage = (url, cb)->
@@ -32,23 +39,25 @@ angular.module('anthcraft.iconMask', [
 					cb()
 				return
 
-		changeIcon = (base, src, shape)->
+		changeIcon = (base, src, shape,mask)->
 			iconBase src, 'destination-in', ()->
 				iconBase shape, 'destination-over', ()->
 					iconBase base, 'source-over', ()->
+						iconBase mask
 			return
 
-		changeIconInit = (base, src, shape)->
+		changeIconInit = (base, src, shape,mask)->
 			iconBase src, 'destination-in', ()->
 				iconBase shape, 'destination-over', ()->
 					iconBase base, 'source-over', ()->
-						# iconBase mask, {x:0, y:0, width: 50, height: 50}, 'destination-over', ()->
-						attrs.$observe "base", (x) -> changeIcon x, attrs.ngSrc, attrs.shape
-					attrs.$observe "shape", (x) -> changeIcon attrs.base, attrs.ngSrc, x
-				attrs.$observe "ngSrc", (x) -> changeIcon attrs.base, x, attrs.shape
+						iconBase mask, 'destination-over', ()->
+							attrs.$observe "mask", (x) -> changeIcon attrs.base, attrs.ngSrc, attrs.shape,x
+						attrs.$observe "base", (x) -> changeIcon x, attrs.ngSrc, attrs.shape,attrs.mask
+					attrs.$observe "shape", (x) -> changeIcon attrs.base, attrs.ngSrc, x,attrs.mask
+				attrs.$observe "ngSrc", (x) -> changeIcon attrs.base, x, attrs.shape,attrs.mask
 			return
 
-		changeIconInit attrs.base, attrs.ngSrc, attrs.shape
+		changeIconInit attrs.base, attrs.ngSrc, attrs.shape , attrs.mask
 
 
 		return

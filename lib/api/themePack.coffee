@@ -36,7 +36,7 @@ module.exports = (app)->
 							# Update theme
 							delete themeData.themeInfo._id
 							themeData.themeInfo.packageTime = new Date()
-							themeData.themeInfo.packageDownloads = themeData.themeInfo.downloads
+							themeData.themeInfo.packageDownloads = result.downloads or 0
 							ThemeModel.update { _id: themeId }, {
 								$set: themeData.themeInfo
 							}, (err)->

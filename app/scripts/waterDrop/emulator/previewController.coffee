@@ -49,7 +49,7 @@ angular.module('anthCraftApp').controller 'previewController',
 			}
 
 		$scope.isSelect = (resType, resName)->
-				$scope.selected and ($scope.selected.resType is resType) and ($scope.selected.resName is resName)
+			$scope.selected and ($scope.selected.resType is resType) and ($scope.selected.resName is resName)
 
 		$scope.select = (event, type, name, category)->
 			$rootScope.$broadcast "res.select", {
