@@ -83,7 +83,7 @@ mod.factory 'themeConfig', ->
 				['app_icon', 'Beautify', 0]
 				['app_icon', 'Optimize', 0]
 				['app_icon', 'Launcher', 0]
-				['app_icon', 'Boutique', 0]
+				# ['app_icon', 'Boutique', 0]
 				['app_icon', 'Feedback', 0]
 				['app_icon', 'LatestUsed', 0]
 				['app_icon', 'LatestInstalled', 0]
@@ -205,10 +205,10 @@ mod.factory 'themeConfig', ->
 					capital: "CLauncher"
 					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_clauncher_launcher.png"
 				}
-				"Boutique": {
-					capital: "Boutique Center"
-					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_boutique_centerentrance.png"
-				}
+				# "Boutique": {
+				# 	capital: "Boutique Center"
+				# 	src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_boutique_centerentrance.png"
+				# }
 				"Feedback": {
 					capital: "Feedback"
 					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_clauncher_userfeedback.png"

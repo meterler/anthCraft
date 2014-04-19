@@ -85,4 +85,4 @@ angular.module('anthCraftApp').controller 'previewController',
 			appIconList.push { key: key, value: value }
 		# Only first 16 icons
 		$scope.appIconList = appIconList[..15]
-		$scope.homeApps = appIconList[16..22]
+		$scope.homeApps = appIconList[16..21]
