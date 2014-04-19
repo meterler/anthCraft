@@ -18,7 +18,8 @@ angular.module('anthCraftApp').controller 'previewController',
 		# Utils
 		$scope._V = (v)->
 			f = "#{themeConfig.themeFolder}#{v.src}"
-			return "#{f}?#{cacheFlags[f]}"
+			c = cacheFlags[f]
+			return "#{f}?#{c}"
 
 		$scope.swipeCallback = (ofx)->
 			senceDiv = document.querySelector(".sence")
@@ -72,7 +73,6 @@ angular.module('anthCraftApp').controller 'previewController',
 			#TODO: reset all
 			#
 		$scope.$on 'theme.switchSence', (event, sence, stage)->
-			console.log arguments
 			$scope.curSence = sence
 			return if stage is false
 			$timeout ->

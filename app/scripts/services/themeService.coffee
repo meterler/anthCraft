@@ -84,6 +84,9 @@ mod.factory 'themeService',
 					# Inform theme update and need refresh status
 					service.themeUpdate()
 
+					# # Refresh src cache
+					# service.cacheFlags = {}
+
 					callback?()
 				, callback
 
