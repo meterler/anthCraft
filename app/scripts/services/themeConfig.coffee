@@ -95,18 +95,18 @@ mod.factory 'themeConfig', ->
 				['app_icon', 'Calculator']
 				['app_icon', 'Calendar']
 				['app_icon', 'Camera']
-				['app_icon', 'Clock']
+				['app_icon', 'Phone']
 				['app_icon', 'Contacts']
-				['app_icon', 'Download']
+				['app_icon', 'Clock']
 				['app_icon', 'Email']
 				['app_icon', 'Gallery']
-				['app_icon', 'Maps']
 				['app_icon', 'Messages']
 				['app_icon', 'Music']
-				['app_icon', 'Phone']
+				['app_icon', 'Video']
+				['app_icon', 'Download']
 				['app_icon', 'Search']
 				['app_icon', 'Settings']
-				['app_icon', 'Video']
+				['app_icon', 'Maps']
 				[ 'customize', 'customize_icon', 'mask', 'customize', 'customize_mat']
 			]
 			mask: [
@@ -142,17 +142,17 @@ mod.factory 'themeConfig', ->
 					capital: "Camera"
 					src: "/default_theme/app_icon/com_android_camera_com_android_camera_camera.png"
 				}
-				"Phone": {
-					capital: "Phone"
-					src: "/default_theme/app_icon/com_android_contacts_com_android_contacts_activities_dialtactsactivity.png"
+				"Clock": {
+					capital: "Clock"
+					src: "/default_theme/app_icon/com_android_deskclock_com_android_deskclock_deskclock.png"
 				}
 				"Contacts": {
 					capital: "Contacts"
 					src: "/default_theme/app_icon/com_android_contacts_com_android_contacts_activities_peopleactivity.png"
 				}
-				"Clock": {
-					capital: "Clock"
-					src: "/default_theme/app_icon/com_android_deskclock_com_android_deskclock_deskclock.png"
+				"Download": {
+					capital: "Downloads"
+					src: "/default_theme/app_icon/com_android_providers_downloads_ui_com_android_providers_downloads_ui_downloadlist.png"
 				}
 				"Email": {
 					capital: "Email"
@@ -162,6 +162,10 @@ mod.factory 'themeConfig', ->
 					capital: "Gallery"
 					src: "/default_theme/app_icon/com_android_gallery3d_com_android_gallery3d_app_gallery.png"
 				}
+				"Maps": {
+					capital: "Maps"
+					src: "/default_theme/app_icon/com_google_android_apps_maps_com_google_android_maps_mapsactivity.png"
+				}
 				"Messages": {
 					capital: "Messages"
 					src: "/default_theme/app_icon/com_android_mms_com_android_mms_ui_conversationlist.png"
@@ -170,13 +174,9 @@ mod.factory 'themeConfig', ->
 					capital: "Music"
 					src: "/default_theme/app_icon/com_android_music_com_android_music_musicbrowseractivity.png"
 				}
-				"Video": {
-					capital: "Video"
-					src: "/default_theme/app_icon/com_android_music_com_android_music_videobrowseractivity.png"
-				}
-				"Download": {
-					capital: "Downloads"
-					src: "/default_theme/app_icon/com_android_providers_downloads_ui_com_android_providers_downloads_ui_downloadlist.png"
+				"Phone": {
+					capital: "Phone"
+					src: "/default_theme/app_icon/com_android_contacts_com_android_contacts_activities_dialtactsactivity.png"
 				}
 				"Search": {
 					capital: "Search"
@@ -186,9 +186,9 @@ mod.factory 'themeConfig', ->
 					capital: "Settings"
 					src: "/default_theme/app_icon/com_android_settings_com_android_settings_settings.png"
 				}
-				"Maps": {
-					capital: "Maps"
-					src: "/default_theme/app_icon/com_google_android_apps_maps_com_google_android_maps_mapsactivity.png"
+				"Video": {
+					capital: "Video"
+					src: "/default_theme/app_icon/com_android_music_com_android_music_videobrowseractivity.png"
 				}
 
 				# Not show in apps drawer below
