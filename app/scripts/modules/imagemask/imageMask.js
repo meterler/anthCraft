@@ -1,5 +1,5 @@
 angular
-  .module('anthcraft.iconMask')
+  .module('anthcraft.iconMask',[])
   .directive('iconMask', function($document){
     'use strict';
       return {
