@@ -115,14 +115,16 @@ angular.module('anthcraft.previewCanvas', [])
 
 			# 新版widget页面需求
 			widgetApps = {};
-			widgetApps.ic_widget_diy_theme = theme.cma_widget.ic_widget_diy_theme
-			for key in Object.keys(theme.app_icon).slice(16,23)
+			appcont = 0
+			for key in Object.keys(theme.app_icon).slice(16,22)
+				if appcont is 3
+					widgetApps.ic_widget_diy_theme = theme.cma_widget.ic_widget_diy_theme
 				widgetApps[key] = theme.app_icon[key]
+				appcont++
 			widgetApps.ic_widget_all_apps = theme.cma_widget.ic_widget_all_apps
 			# 结束
 
 			preImage UPLOAD_PATH + wallpaper.src, (wallpaper)->
-				console.log theme
 				switch scope.sence
 					when 'home'
 						posX = (cWidth - (wallpaper.width*multiple))/2
@@ -144,8 +146,7 @@ angular.module('anthcraft.previewCanvas', [])
 					drawCenter(widget, 10*multiple, sy)
 					drawHome(theme, "home-btn")
 				if scope.sence is "widget"
-					drawApps(widgetApps,2,true)
-					return
+					drawApps(widgetApps,3)
 				drawCenter("/styles/img/pw05bar.png", 0, 0)
 			return
 
