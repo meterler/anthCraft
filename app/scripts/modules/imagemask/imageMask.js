@@ -57,7 +57,7 @@ angular
            * g means : globalCompositeOperation
            */
           function mergeGraphic(base,source,shape,mask){
-            var canvas = $document.createElement('canvas');
+            var canvas = $document[0].createElement('canvas');
             var ctx = canvas.getContext('2d');
             ctx.drawImage(source,0,0,width,height);
             ctx.globalCompositeOperation = 'destination-in';
