@@ -195,11 +195,11 @@ mod.factory 'themeConfig', ->
 				# Not show in apps drawer below
 
 				"Beautify": {
-					capital: "Beautify Center"
+					capital: "Beauty Center"
 					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_beauty_center_beautycenterentrance.png"
 				}
 				"Optimize": {
-					capital: "Optimization Center"
+					capital: "Boost Center"
 					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_opti_center_opticenteractivity.png"
 				}
 				"Launcher": {
@@ -215,15 +215,15 @@ mod.factory 'themeConfig', ->
 					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_clauncher_userfeedback.png"
 				}
 				"LatestUsed": {
-					capital: "Recent use"
+					capital: "App History"
 					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_clauncher_latestused_latestusedactivity.png"
 				}
 				"LatestInstalled": {
-					capital: "Recent install"
+					capital: "Install History"
 					src: "/default_theme/app_icon/com_cyou_cma_clauncher_com_cyou_cma_clauncher_latestinstalled_latestinstalledactivity.png"
 				}
 				"LockScreen": {
-					capital: "LockScreen"
+					capital: "CLocker"
 					src: "/default_theme/app_icon/com_cyou_cma_clockscreen_com_cyou_cma_clockscreen_activity_splashactivity.png"
 				}
 			}
@@ -288,11 +288,11 @@ mod.factory 'themeConfig', ->
 			}
 			cma_widget : {
 				"ic_flashlight_on": {
-					capital: "FlashOn"
+					capital: "Flashlight"
 					src: "/default_theme/cma_widget/ic_flashlight_on.png"
 				}
 				"ic_flashlight_off": {
-					capital: "FlashOff"
+					capital: "Flashlight"
 					src: "/default_theme/cma_widget/ic_flashlight_off.png"
 				}
 				"ic_widget_all_apps": {
