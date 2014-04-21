@@ -39,13 +39,13 @@ angular
 			});
 			attrs.$observe('shape', function(val){
 				load(val).done(function(img){
-					source = img;
+					shape = img;
 					allDone();
 				});
 			});
 			attrs.$observe('mask', function(val){
 				load(val).done(function(img){
-					source = img;
+					mask = img;
 					allDone();
 				});
 			});
