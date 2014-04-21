@@ -300,7 +300,7 @@ mod.factory 'themeConfig', ->
 					src: "/default_theme/cma_widget/ic_widget_all_apps.png"
 				}
 				"ic_widget_diy_theme": {
-					capital: "DIY Themes"
+					capital: "Theme Creator"
 					src: "/default_theme/cma_widget/ic_widget_diy_theme.png"
 				}
 			}
