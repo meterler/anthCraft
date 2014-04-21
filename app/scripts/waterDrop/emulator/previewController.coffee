@@ -3,7 +3,7 @@
 Control the theme previewer
 ###
 angular.module('anthCraftApp').controller 'previewController',
-	($scope, $rootScope, themeConfig, themeService, menuFactory)->
+	($scope, $rootScope, $timeout, themeConfig, themeService, menuFactory)->
 
 		# 1440*SENCE_HEIGHT/1280=>
 		IMAGE_WIDTH = 568.125
@@ -18,7 +18,8 @@ angular.module('anthCraftApp').controller 'previewController',
 		# Utils
 		$scope._V = (v)->
 			f = "#{themeConfig.themeFolder}#{v.src}"
-			return "#{f}?#{cacheFlags[f]}"
+			c = cacheFlags[f]
+			return "#{f}?#{c}"
 
 		$scope.swipeCallback = (ofx)->
 			senceDiv = document.querySelector(".sence")
@@ -71,13 +72,18 @@ angular.module('anthCraftApp').controller 'previewController',
 		$scope.$on 'theme.reset', (event, newModel)->
 			#TODO: reset all
 			#
-		$scope.$on 'theme.switchSence', (event, sence)->
+		$scope.$on 'theme.switchSence', (event, sence, stage)->
 			$scope.curSence = sence
+			return if stage is false
+			$timeout ->
+				$scope.$broadcast 'rn-change-stage', stage
+			, 0
 
 		appIconList = []
 
 		for key, value of themeService.packInfo.app_icon
-			appIconList.push { key: key, value: value }
+			# appIconList.push { key: key, value: value }
+			appIconList.push key
 		# Only first 16 icons
 		$scope.appIconList = appIconList[..15]
-		$scope.homeApps = appIconList[16..22]
+		$scope.homeApps = appIconList[16..21]

@@ -2,12 +2,7 @@ angular.module('anthCraftApp').controller 'navController',
 	($rootScope, $scope, $modal, $cookies, $location, $q, themeService, acUtils)->
 
 		$scope.isLogined = -> !!$cookies.userid
-		$scope.getUser = ->
-			{
-				name: $cookies.username
-				id: $cookies.userid
-				avatar: $cookies.avatar
-			}
+		$scope.getUser = acUtils.getCurrentUser
 
 		showPackageResult = (data)->
 			[result, theme] = data
