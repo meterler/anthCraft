@@ -19,12 +19,12 @@
 					</div>
 
 					<div class="mp-apps-maskIcon activatable"
-						ng-repeat="icon in homeApps"
-						ng-click="select($event, 'app_icon', icon.key, 'home')"
-						ng-class="{ active: isSelect('app_icon', icon.key) }">
+						ng-repeat="iconKey in homeApps"
+						ng-click="select($event, 'app_icon', iconKey, 'home')"
+						ng-class="{ active: isSelect('app_icon', iconKey) }">
 
-						<img class="mp-apps-maskImg" src="{{_V(icon.value)}}"/>
-						<p>{{icon.value.capital}}</p>
+						<img class="mp-apps-maskImg" src="{{_V(theme['app_icon'][iconKey])}}"/>
+						<p>{{theme['app_icon'][iconKey].capital}}</p>
 					</div>
 
 					<div class="mp-apps-maskIcon activatable"
@@ -89,12 +89,12 @@
 				<div class="mp-apps-app">
 
 					<div class="mp-apps-maskIcon activatable"
-						ng-repeat="icon in appIconList"
-						ng-click="select($event, 'app_icon', icon.key, 'icons')"
-						ng-class="{ active: isSelect('app_icon', icon.key) }">
+						ng-repeat="iconKey in appIconList"
+						ng-click="select($event, 'app_icon', iconKey, 'icons')"
+						ng-class="{ active: isSelect('app_icon', iconKey) }">
 
-						<img class="mp-apps-maskImg" ng-src="{{_V(icon.value)}}"/>
-						<p>{{icon.value.capital}}</p>
+						<img class="mp-apps-maskImg" src="{{_V(theme['app_icon'][iconKey])}}"/>
+						<p>{{theme['app_icon'][iconKey].capital}}</p>
 					</div>
 
 

@@ -82,7 +82,8 @@ angular.module('anthCraftApp').controller 'previewController',
 		appIconList = []
 
 		for key, value of themeService.packInfo.app_icon
-			appIconList.push { key: key, value: value }
+			# appIconList.push { key: key, value: value }
+			appIconList.push key
 		# Only first 16 icons
 		$scope.appIconList = appIconList[..15]
 		$scope.homeApps = appIconList[16..21]
