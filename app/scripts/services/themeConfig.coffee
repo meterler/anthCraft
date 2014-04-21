@@ -72,41 +72,42 @@ mod.factory 'themeConfig', ->
 			home: [
 				['wallpaper', 'wallpaper', 'mask', 'customize', 'customize_cover', 1]
 
-				# Icons on docker
-				['app_icon', 'Phone', 1]
-				['app_icon', 'Messages', 1]
-				['dock_icon', 'ic_allapps', 1]
-				['app_icon', 'Camera', 1]
-				['app_icon', 'Browser', 1]
-
 				# Icons on left stage
 				['app_icon', 'Beautify', 0]
 				['app_icon', 'Optimize', 0]
 				['app_icon', 'Launcher', 0]
+				['cma_widget', 'ic_widget_diy_theme', 0]
 				# ['app_icon', 'Boutique', 0]
 				['app_icon', 'Feedback', 0]
 				['app_icon', 'LatestUsed', 0]
 				['app_icon', 'LatestInstalled', 0]
 				['cma_widget', 'ic_widget_all_apps', 0]
-				['cma_widget', 'ic_widget_diy_theme', 'icons', 'app_icon', 'Browser', 0]
+
+				# Icons on docker
+				['app_icon', 'Phone', 1]
+				['app_icon', 'Messages', 1]
+				['dock_icon', 'ic_allapps', 1]
+				['app_icon', 'Camera', 1]
+				['app_icon', 'Browser', 'icons', 'app_icon', 'Browser', 1]
+
 			]
 			icons: [
 				['app_icon', 'Browser', 'home', 'cma_widget', 'ic_widget_diy_theme']
 				['app_icon', 'Calculator']
 				['app_icon', 'Calendar']
 				['app_icon', 'Camera']
-				['app_icon', 'Phone']
-				['app_icon', 'Contacts']
 				['app_icon', 'Clock']
+				['app_icon', 'Contacts']
+				['app_icon', 'Download']
 				['app_icon', 'Email']
 				['app_icon', 'Gallery']
+				['app_icon', 'Maps']
 				['app_icon', 'Messages']
 				['app_icon', 'Music']
-				['app_icon', 'Video']
-				['app_icon', 'Download']
+				['app_icon', 'Phone']
 				['app_icon', 'Search']
 				['app_icon', 'Settings']
-				['app_icon', 'Maps']
+				['app_icon', 'Video']
 				[ 'customize', 'customize_icon', 'mask', 'customize', 'customize_mat']
 			]
 			mask: [
