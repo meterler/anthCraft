@@ -24,7 +24,7 @@ mod.factory 'themeService',
 			isChanged = /^\/default_theme/.test oldValue
 			isRestore = /^\/default_theme/.test data.src
 
-			# Count stay unchange
+			# Count status unchange
 			return if not( not isChanged ^ not isRestore )
 
 			# Find its category
