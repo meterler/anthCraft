@@ -127,8 +127,20 @@ mod.factory 'themeService',
 
 			loadTheme: (data)->
 				# data struct: { meta: {themeModel}, packInfo: {} }
-				# service.packInfo = data.packInfo
-				# service.themeModel = data.meta
+
+				# Convert packInfo to current version
+				for resType, resItems of themeConfig.defaultPackInfo
+
+					# Copy category from default
+					if not data.packInfo[resType]
+						data.packInfo[resType] = resItems
+						continue
+
+					for resName, item of resItems
+
+						if not data.packInfo[resType][resName]
+							data.packInfo[resType][resName] = item
+
 				angular.copy data.packInfo, service.packInfo
 				angular.copy data.meta, service.themeModel
 				service.themeUpdate()
