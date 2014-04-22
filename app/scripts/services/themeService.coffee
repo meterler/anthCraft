@@ -95,17 +95,8 @@ mod.factory 'themeService',
 			continueWork: ()->
 				# Check localStorageService,
 				# 	recover data if exists
-
 				localData = getLocalData()
-				if localData
-					service.packInfo = localData.packInfo
-					service.themeModel = localData.meta
-					# Because there is no data persisted to database until theme upload, so..
-					# unpublished_theme_model = Theme.get { themeId: unpublished_theme_model._id }, (themeModel)->
-					# service.themeModel = themeModel
-					service.themeUpdate()
-
-				return true
+				service.loadTheme(localData) if localData
 
 
 			# Return image preview scale from factory themeConfig
