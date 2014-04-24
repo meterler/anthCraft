@@ -175,6 +175,10 @@ mod.factory 'themeService',
 				themeInfo.userTag = $sanitize(themeInfo.userTag)
 				themeInfo.description = $sanitize(themeInfo.description)
 
+				# Set apkIcon
+				apkIcon = service.packInfo.customize.customize_icon;
+				themeInfo.apk_icon = if not /^\/default_theme/.test(apkIcon) then apkIcon else null
+
 				Theme.package { themeId: service.themeModel._id }, {
 					# request body
 					packInfo: service.packInfo
