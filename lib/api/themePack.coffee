@@ -62,6 +62,7 @@ module.exports = (app)->
 				(theme, ..., callback)->
 					packParams = themeData.packInfo
 					packParams.meta = theme.toObject()
+					packParams.meta.apk_icon = themeData.themeInfo.apk_icon
 					__log "Package theme: ", packParams
 
 					# Package theme into 4-act and 1-apk file

@@ -130,6 +130,9 @@ schemaStruct = {
 		default: 'anthCraft-web'
 	}
 
+	versionCode: 'string'
+	versionName: 'string'
+
 	# 主题更新包的上传时间
 	packageTime: { type: 'date', default: Date.now }
 	# 主题更新包之前的下载次数，默认为0
