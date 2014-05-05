@@ -4,7 +4,7 @@ angular.module("anthCraftApp").service 'userService', ($cookies)->
 		current: ()->
 			if $cookies.userid
 				{
-					name: $cookies.username
+					name: decodeURI($cookies.username)
 					uid: $cookies.userid
 					avatar: $cookies.avatar
 				}

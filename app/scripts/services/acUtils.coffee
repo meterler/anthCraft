@@ -52,7 +52,7 @@ angular.module("anthCraftApp").service 'acUtils',
 			getCurrentUser: ()->
 				if $cookies.userid
 					{
-						name: decodeURI($cookies.username)
+						name: decodeURIComponent(escape($cookies.username)).replace(/\+/g,' ')
 						uid: $cookies.userid
 						avatar: $cookies.avatar
 					}
