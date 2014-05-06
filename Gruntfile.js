@@ -189,6 +189,7 @@ module.exports = function (grunt) {
     useminPrepare: {
       html: [
         '<%= yeoman.app %>/index.html',
+        '<%= yeoman.app %>/upload-widget.html',
         '<%= yeoman.app %>/upload-page.html'
       ],
       options: {
