@@ -73,6 +73,10 @@ module.exports = (app)->
 						theme.packageFile = packagePaths
 						theme.status = 0
 
+						# Set theme logo
+						if packagePaths?[4]?.logo
+							theme.logo = packagePaths[4].logo
+
 						# Everytime theme save, themeId inc
 						# but themeId isnt the real id of the record
 						theme.save (err)->

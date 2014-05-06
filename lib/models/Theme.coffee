@@ -84,6 +84,9 @@ schemaStruct = {
 	# 预览图 [url]
 	preview: [ 'string' ]
 
+	# 主题 logo , for mobo
+	logo: 'string'
+
 	# 主题包下载地址
 	# [{
 	# 	density: 160 #密度(160,240,320,480)
