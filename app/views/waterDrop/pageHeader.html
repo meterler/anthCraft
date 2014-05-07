@@ -5,9 +5,25 @@
 	<div class="container">
 		<div class="navbar-header">
 			<a href="http://www.c-launcher.com/" class="navbar-brand" title="{{'TITLE' | translate }}">
-				<img src="/styles/img/logo-clauncher.png" />
+				<img src="/styles/img/logo-ss.png" />
 			</a>
 		</div>
+
+		<ul class="nav navbar-nav">
+			<li class="platicon">
+				<a ng-href="/quickmode" ng-class="{ active: (buildMode=='quickmode') }">
+					<i class="icon-quickmode"></i>
+					quick mode
+				</a>
+			</li>
+			<li class="platicon">
+				<a ng-href="/" ng-class="{ active: (buildMode!='quickmode') }">
+					<i class="icon-mastermode"></i>
+					master mode
+				</a>
+			</li>
+
+		</ul>
 
 		<ul class="nav navbar-nav navbar-right">
 			<li class="circled">

@@ -4,6 +4,13 @@ angular.module('anthCraftApp').controller 'navController',
 		$scope.isLogined = -> !!$cookies.userid
 		$scope.getUser = acUtils.getCurrentUser
 
+		$scope.$on "$routeChangeSuccess", ()->
+			if /^\/quickmode/.test $location.path()
+				$scope.buildMode = 'quickmode'
+			else
+				$scope.buildMode = 'mastermode'
+
+
 		showPackageResult = (data)->
 			[result, theme] = data
 			# success or faile
