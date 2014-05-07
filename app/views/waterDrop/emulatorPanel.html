@@ -1,6 +1,80 @@
 <!-- Theme Previewer Here -->
 
 <div class="mod-previewer" ng-switch on="curSence">
+
+	<div class="sence sence-home" ng-switch-when="quick"
+		ng-style="_Wallpaper(_V(theme['wallpaper']['wallpaper']))" >
+		<div class="mp-statusbar"></div>
+		<ul rn-carousel rn-carousel-index="0" rn-carousel-indicator rn-swipe-callback="swipeCallback">
+			<li>
+				<div class="mp-decoration"></div>
+
+				<div class="mp_home_icons">
+
+					<div class="mp-apps-maskIcon activatable"
+						ng-click="select($event, 'cma_widget', 'ic_widget_diy_theme', 'home')"
+						ng-class="{ active: isSelect('cma_widget', 'ic_widget_diy_theme') }">
+
+						<img class="mp-apps-maskImg" ng-src="{{_V(theme['cma_widget']['ic_widget_diy_theme'])}}"/>
+						<p>{{theme['cma_widget']['ic_widget_diy_theme'].capital}}</p>
+					</div>
+
+					<div class="mp-apps-maskIcon activatable"
+						ng-repeat="iconKey in homeApps"
+						ng-click="select($event, 'app_icon', iconKey, 'home')"
+						ng-class="{ active: isSelect('app_icon', iconKey) }">
+
+						<img class="mp-apps-maskImg" src="{{_V(theme['app_icon'][iconKey])}}"/>
+						<p>{{theme['app_icon'][iconKey].capital}}</p>
+					</div>
+
+					<div class="mp-apps-maskIcon activatable"
+						ng-click="select($event, 'cma_widget', 'ic_widget_all_apps', 'home')"
+						ng-class="{ active: isSelect('cma_widget', 'ic_widget_all_apps') }">
+
+						<img class="mp-apps-maskImg"
+							ng-src = "{{_V(theme['cma_widget']['ic_widget_all_apps'])}}"
+							/>
+						<p>{{theme['cma_widget']['ic_widget_all_apps'].capital}}</p>
+					</div>
+
+				</div>
+
+			</li>
+		</ul>
+		<div class="mp-dock">
+			<div class="mp-dock-icon activatable"
+				ng-click="select($event, 'app_icon', 'Phone', 'home')"
+				ng-class="{ active: isSelect('app_icon', 'Phone') }">
+				<img ng-src="{{_V(theme['app_icon']['Phone'])}}">
+			</div>
+
+			<div class="mp-dock-icon activatable"
+				ng-click="select($event, 'app_icon', 'Messages', 'home')"
+				ng-class="{ active: isSelect('app_icon', 'Messages') }">
+				<img ng-src="{{_V(theme['app_icon']['Messages'])}}">
+			</div>
+
+			<div class="mp-dock-icon activatable"
+				ng-click="select($event, 'dock_icon', 'ic_allapps', 'home')"
+				ng-class="{ active: isSelect('dock_icon', 'ic_allapps') }">
+				<img ng-src="{{_V(theme['dock_icon']['ic_allapps'])}}">
+			</div>
+
+
+			<div class="mp-dock-icon activatable"
+				ng-click="select($event, 'app_icon', 'Camera', 'home')"
+				ng-class="{ active: isSelect('app_icon', 'Camera') }">
+				<img ng-src="{{_V(theme['app_icon']['Camera'])}}">
+			</div>
+
+			<div class="mp-dock-icon activatable"
+				ng-click="select($event, 'app_icon', 'Browser', 'home')"
+				ng-class="{ active: isSelect('app_icon', 'Browser') }">
+				<img ng-src="{{_V(theme['app_icon']['Browser'])}}">
+			</div>
+		</div>
+	</div>
 	<div class="sence sence-home" ng-switch-when="home"
 		ng-style="_Wallpaper(_V(theme['wallpaper']['wallpaper']))" ng-click="select($event, 'wallpaper', 'wallpaper', 'home')">
 		<div class="mp-statusbar"></div>
