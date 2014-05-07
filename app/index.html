@@ -34,7 +34,7 @@
 	</div>
 
 	<div ng-include="'/views/waterDrop/pageHeader.html'"></div>
-	<div class="container view-container">
+	<div class="container view-container" ng-class="'buildMode-' + buildMode">
 
 		<div class="col-xs-2 menu-container" ng-model="pan" drag-change>
 			<div ng-include="'/views/waterDrop/menuList.html'"

@@ -6,9 +6,9 @@ angular.module('anthCraftApp').controller 'navController',
 
 		$scope.$on "$routeChangeSuccess", ()->
 			if /^\/quickmode/.test $location.path()
-				$scope.buildMode = 'quickmode'
+				$rootScope.buildMode = 'quickmode'
 			else
-				$scope.buildMode = 'mastermode'
+				$rootScope.buildMode = 'mastermode'
 
 
 		showPackageResult = (data)->
