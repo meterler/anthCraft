@@ -15,7 +15,7 @@ module.exports = (app)->
 
 	# Static routes
 	appPath = __config.appPath
-	app.get "/list/*", (req, res)->
+	app.get /^\/(list|quickmode)/, (req, res)->
 		app_index = path.join(appPath, "/index.html")
 		res.sendfile app_index
 

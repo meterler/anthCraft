@@ -79,6 +79,10 @@ app = angular.module('anthCraftApp', [
 				})
 			}
 		})
+		.when("/quickmode", {
+			templateUrl: "/views/waterDrop/quickmode/viewPanel.html"
+			controller: "quickmodeController"
+		})
 		.otherwise {
 			redirectTo: "/"
 		}
