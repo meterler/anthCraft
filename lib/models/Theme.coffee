@@ -158,7 +158,8 @@ ThemeSchema.plugin autoinc.plugin, {
 	model: 'theme',
 	field: 'themeId',
 	start: 100,
-	step: 1
+	step: 1,
+	once: 1
 }
 
 # Add updateTime field, update time at every updates
