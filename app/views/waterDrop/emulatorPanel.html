@@ -24,7 +24,7 @@
 						ng-click="select($event, 'app_icon', iconKey, 'home')"
 						ng-class="{ active: isSelect('app_icon', iconKey) }">
 
-						<img class="mp-apps-maskImg" src="{{_V(theme['app_icon'][iconKey])}}"/>
+						<img class="mp-apps-maskImg" ng-src="{{_V(theme['app_icon'][iconKey])}}"/>
 						<p>{{theme['app_icon'][iconKey].capital}}</p>
 					</div>
 
@@ -33,7 +33,7 @@
 						ng-class="{ active: isSelect('cma_widget', 'ic_widget_all_apps') }">
 
 						<img class="mp-apps-maskImg"
-							ng-src = "{{_V(theme['cma_widget']['ic_widget_all_apps'])}}"
+							ng-src="{{_V(theme['cma_widget']['ic_widget_all_apps'])}}"
 							/>
 						<p>{{theme['cma_widget']['ic_widget_all_apps'].capital}}</p>
 					</div>
@@ -97,7 +97,7 @@
 						ng-click="select($event, 'app_icon', iconKey, 'home')"
 						ng-class="{ active: isSelect('app_icon', iconKey) }">
 
-						<img class="mp-apps-maskImg" src="{{_V(theme['app_icon'][iconKey])}}"/>
+						<img class="mp-apps-maskImg" ng-src="{{_V(theme['app_icon'][iconKey])}}"/>
 						<p>{{theme['app_icon'][iconKey].capital}}</p>
 					</div>
 
@@ -106,7 +106,7 @@
 						ng-class="{ active: isSelect('cma_widget', 'ic_widget_all_apps') }">
 
 						<img class="mp-apps-maskImg"
-							ng-src = "{{_V(theme['cma_widget']['ic_widget_all_apps'])}}"
+							ng-src="{{_V(theme['cma_widget']['ic_widget_all_apps'])}}"
 							/>
 						<p>{{theme['cma_widget']['ic_widget_all_apps'].capital}}</p>
 					</div>
@@ -167,7 +167,7 @@
 						ng-click="select($event, 'app_icon', iconKey, 'icons')"
 						ng-class="{ active: isSelect('app_icon', iconKey) }">
 
-						<img class="mp-apps-maskImg" src="{{_V(theme['app_icon'][iconKey])}}"/>
+						<img class="mp-apps-maskImg" ng-src="{{_V(theme['app_icon'][iconKey])}}"/>
 						<p>{{theme['app_icon'][iconKey].capital}}</p>
 					</div>
 
