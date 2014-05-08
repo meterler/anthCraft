@@ -38,20 +38,23 @@ module.exports = {
 	}
 
 	log4js: {
+		levels: {
+			"console": "log"
+			"master": "warn"
+			"anthpack": "warn"
+		}
 		appenders: [
 			{ type: "console" }
 			{
-				type: 'file'
-				filename: p('logs/anthpack.log')
-				maxLogSize: 204800
-				backups: 3
+				type: 'dateFile'
+				filename: "#{basePath}/logs/anthpack.log"
+				pattern: "-yyyy-MM-dd"
 				category: "anthpack"
 			}
 			{
-				type: 'file'
-				filename: p('logs/master.log')
-				maxLogSize: 204800
-				backups: 3
+				type: 'dateFile'
+				filename: "#{basePath}/logs/master.log"
+				pattern: "-yyyy-MM-dd"
 				category: "master"
 			}
 		],
