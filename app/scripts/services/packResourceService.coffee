@@ -30,7 +30,7 @@ angular.module('anthCraftApp')
 			method: 'GET',
 			isArray: true,
 			params: {
-				status: 1
+				status: 2
 				sort: "-wallpaperId"
 			}
 		}
@@ -39,7 +39,7 @@ angular.module('anthCraftApp')
 			method: 'GET',
 			isArray: false
 			params: {
-				status: 1
+				status: 2
 			}
 			transformResponse: (data, headersGetter)-> { result: data }
 		}

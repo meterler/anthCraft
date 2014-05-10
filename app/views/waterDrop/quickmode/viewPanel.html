@@ -38,8 +38,10 @@
 					</div>
 				</li>
 				<li ng-repeat="wallpaper in wallpaperList"
+					ng-click="setWallpaper(wallpaper)"
 					ng-class="{ 'small-size': [4, 5].indexOf($index) === -1 }">
-					{{wallpaper.name}} {{$index}}
+
+					<img ng-src="{{wallpaper.smallPath}}" alt="{{wallpaper.title}}" />
 				</li>
 			</ul>
 			<div class="qk-paging">

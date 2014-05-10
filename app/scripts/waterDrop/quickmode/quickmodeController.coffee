@@ -64,3 +64,12 @@ angular
 			$document.find("input")[0].click()
 		, 0
 		return
+
+	$scope.setWallpaper = (wallpaper)->
+		themeService.updateView {
+			resType: 'wallpaper'
+			resName: 'wallpaper'
+			src: wallpaper.originalPath
+		}
+
+	$scope.setIconSet = (iconSet)->

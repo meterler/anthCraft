@@ -119,14 +119,14 @@ module.exports = (app)->
 				count = 0 if err
 				res.end('' + count)
 	})
-	IconSetModel.route("_count.get", {
+	WallpaperModel.route("_count.get", {
 		detail: false
 		handler: (req, res, next)->
 
-			IconSetModel.count req.query, (err, count)->
+			WallpaperModel.count req.query, (err, count)->
 				count = 0 if err
 				res.end('' + count)
 	})
 
 	IconSetModel.register app, '/api/iconset'
-	IconSetModel.register app, '/api/wallpaper'
+	WallpaperModel.register app, '/api/wallpaper'
