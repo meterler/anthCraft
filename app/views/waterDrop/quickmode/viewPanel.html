@@ -5,9 +5,20 @@
 
 	<div class="qk-main">
 		<div class="qk-wallpaper">
+			<ul>
+				<li></li>
+				<li ng-repeat="wallpaper in wallpaperList"
+					ng-class="{ 'small-size': [4, 5].indexOf($index) === -1 }">
+					{{wallpaper.name}} {{$index}}
+				</li>
+			</ul>
 			<div class="qk-paging">
-				<i class="icon-left-open-big left"></i>
-				<i class="icon-right-open-big right"></i>
+				<i class="icon-left-open-big left"
+					ng-class="{ active: wallpaper_hasPrev() }"
+					ng-click="wallpaper_prevPage()"></i>
+				<i class="icon-right-open-big right"
+					ng-class="{ active: wallpaper_hasNext() }"
+					ng-click="wallpaper_nextPage()"></i>
 			</div>
 		</div>
 		<div class="qk-icons">

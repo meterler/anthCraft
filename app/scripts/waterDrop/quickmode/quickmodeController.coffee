@@ -21,7 +21,7 @@ angular
 	loadWallpaperList = (page)->
 		packs_wallpaper.listByPage({
 			skip: (page - 1) * wallpaper_page_count
-			limit: wallpaper_page_total
+			limit: wallpaper_page_count
 		})
 
 	# Page navigation
