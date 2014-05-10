@@ -5,9 +5,26 @@
 
 	<div class="qk-main">
 		<div class="qk-wallpaper">
-			
+			<div class="qk-paging">
+				<i class="icon-left-open-big left"></i>
+				<i class="icon-right-open-big right"></i>
+			</div>
 		</div>
-		<div class="qk-icons"></div>
+		<div class="qk-icons">
+			<ul>
+				<li ng-repeat="iconSet in iconSetList" ng-click="setIconSet(iconSet)">
+					<img src="/styles/img/iconset-bg.jpg" ng-src="{{iconSet.preview}}" alt="{{iconSet.name}}" />
+				</li>
+			</ul>
+			<div class="qk-paging">
+				<i class="icon-left-open-big left"
+					ng-class="{ active: iconSet_hasPrev() }"
+					ng-click="iconSet_prevPage()"></i>
+				<i class="icon-right-open-big right"
+					ng-class="{ active: iconSet_hasNext() }"
+					ng-click="iconSet_nextPage()"></i>
+			</div>
+		</div>
 		<div class="qk-actions text-center">
 			<a href="#" class="btn btn-clGreen" ng-click="packageTheme()">Package</a>
 		</div>

@@ -4,7 +4,6 @@ ThemeModel = require '../models/Theme.coffee'
 RingModel = require '../models/Ring.coffee'
 DWallpaperModel = require '../models/DWallpaper.coffee'
 FeedbackModel = require '../models/Feedback.coffee'
-IconSetModel = require '../models/IconSet.coffee'
 
 CategoryModel = require '../models/Category.coffee'
 module.exports = (app)->
@@ -13,7 +12,6 @@ module.exports = (app)->
 	DWallpaperModel.register app, '/api/dwallpaper'
 	CategoryModel.register app, '/api/category'
 	FeedbackModel.register app, '/api/feedback'
-	IconSetModel.register app, '/api/iconset'
 
 	# Static routes
 	appPath = __config.appPath
@@ -24,4 +22,6 @@ module.exports = (app)->
 	app.get "/resources/upload/default_theme/*", (req, res)->
 		resFile = path.join(appPath, "/#{req.path.replace('/resources/upload/', '')}")
 		res.sendfile resFile
+
+
 	return
