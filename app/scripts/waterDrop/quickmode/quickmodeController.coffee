@@ -1,7 +1,10 @@
 angular
 .module('anthCraftApp')
 .controller 'quickmodeController',
-($scope, $rootScope, packs_iconSet, packs_wallpaper)->
+($scope, $rootScope, $timeout, packs_iconSet, packs_wallpaper, themeService)->
+
+	$scope.packData = themeService.packInfo
+	$scope.image = {}
 
 	# Page settings
 	wallpaper_page = 1
@@ -44,3 +47,15 @@ angular
 	# Package active
 	navScope = angular.element(document.getElementById("page-header")).scope()
 	$scope.packageTheme = navScope.packageTheme
+
+	# Upload method
+	$scope.uploadFile = (event, data, x)->
+		bodyViewScope = angular.element(document.body).scope()
+		$timeout ->
+			bodyViewScope.uploadImage(event, [$scope.image.file], {
+				resType: 'wallpaper'
+				resName: 'wallpaper'
+			}).success ->
+				$scope.etag = (new Date).getTime()
+		, 0
+

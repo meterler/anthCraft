@@ -5,8 +5,38 @@
 
 	<div class="qk-main">
 		<div class="qk-wallpaper">
+
+			<div class="handles" ng-show="!editting && showUploadPanel">
+				<label for="upImage" class="file-upload" ng-show="!hasError">
+					<i class="icon-up-1"></i>
+					<b></b>
+					<input type="file" name="upImage"
+						accept=".jpg,.jpeg"
+						image="image"
+						ng-model="x"
+						ng-disabled="isLoading"
+						ng-change="uploadFile($event, image.file, x)" />
+				</label>
+				<i class="icon-crop" ng-click="crop()"></i>
+				<i class="icon-remove" ng-click="reset()"></i>
+			</div>
+
 			<ul>
-				<li></li>
+				<li>
+					<div class="qk-uploadIcon"
+						ng-hide="showUploadPanel"
+						ng-click="showUploadPanel=true">
+						<i class="icon-plus">Upload</i>
+					</div>
+					<div class="qk-uploadPanel" ng-show="showUploadPanel">
+						<div class="loading" ng-if="isLoading">
+							<i class="icon-spin4 animate-spin"></i>
+						</div>
+						<div class="preview-image" ng-click="openFile()" ng-show="!editting">
+							<img ng-src="{{UPLOAD_PATH}}{{packData['wallpaper']['wallpaper'].src}}?{{etag}}" type="{{image.file.type}}">
+						</div>
+					</div>
+				</li>
 				<li ng-repeat="wallpaper in wallpaperList"
 					ng-class="{ 'small-size': [4, 5].indexOf($index) === -1 }">
 					{{wallpaper.name}} {{$index}}
