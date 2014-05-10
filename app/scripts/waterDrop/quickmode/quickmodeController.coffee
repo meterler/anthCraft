@@ -1,7 +1,7 @@
 angular
 .module('anthCraftApp')
 .controller 'quickmodeController',
-($scope, $rootScope, $timeout, packs_iconSet, packs_wallpaper, themeService)->
+($scope, $rootScope, $timeout, $document, packs_iconSet, packs_wallpaper, themeService)->
 
 	$scope.packData = themeService.packInfo
 	$scope.image = {}
@@ -59,3 +59,8 @@ angular
 				$scope.etag = (new Date).getTime()
 		, 0
 
+	$scope.openFile = ()->
+		$timeout ->
+			$document.find("input")[0].click()
+		, 0
+		return
