@@ -72,6 +72,10 @@ angular
 
 	$scope.checkStep2 = ()->
 
+
+	$scope.reset = ->
+		themeService.resetValue 'wallpaper', 'wallpaper'
+
 	$scope.setWallpaper = (wallpaper)->
 		themeService.updateView {
 			resType: 'wallpaper'
