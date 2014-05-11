@@ -41,7 +41,7 @@
 					ng-click="setWallpaper(wallpaper)"
 					ng-class="{ 'small-size': [4, 5].indexOf($index) === -1 }">
 
-					<img ng-src="{{wallpaper.smallPath}}" alt="{{wallpaper.title}}" />
+					<img ng-src="{{UPLOAD_PATH}}{{wallpaper.smallPath}}" alt="{{wallpaper.title}}" />
 				</li>
 			</ul>
 			<div class="qk-paging">
@@ -56,7 +56,7 @@
 		<div class="qk-icons">
 			<ul>
 				<li ng-repeat="iconSet in iconSetList" ng-click="setIconSet(iconSet)">
-					<img src="/styles/img/iconset-bg.jpg" ng-src="{{iconSet.preview}}" alt="{{iconSet.name}}" />
+					<img src="/styles/img/iconset-bg.jpg" ng-src="{{UPLOAD_PATH}}{{iconSet.preview}}" alt="{{iconSet.name}}" />
 				</li>
 			</ul>
 			<div class="qk-paging">
