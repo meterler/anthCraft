@@ -7,6 +7,10 @@ angular
 	$scope.image = {}
 	$scope.checkedIconSet = themeService.themeModel.selectedIconSetId
 
+	$scope.editing = false
+	$scope.uploading = false
+	$scope.uploadFail = false
+
 	# Page settings
 	wallpaper_page = 1
 	wallpaper_page_count = 8
@@ -51,13 +55,23 @@ angular
 
 	# Upload method
 	$scope.uploadFile = (event, data, x)->
+		$scope.uploading = true
 		bodyViewScope = angular.element(document.body).scope()
 		$timeout ->
 			bodyViewScope.uploadImage(event, [$scope.image.file], {
 				resType: 'wallpaper'
 				resName: 'wallpaper'
-			}).success ->
+			})
+			.success ->
 				$scope.etag = (new Date).getTime()
+				$scope.uploading = false
+			.error ->
+				$scope.uploading = false
+				$scope.uploadFail = true
+				$timeout ->
+					$scope.uploadFail = false
+				, 1000
+
 		, 0
 
 	$scope.openFile = ()->
