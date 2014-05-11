@@ -8,18 +8,20 @@ angular.module('anthcraft.imageditor', [])
 
       var W = 160,H = 160;
 
+      W = attrs.imageWidth || W;
+      H = attrs.imageHeight || H;
+
       element.bind('mousedown',function(e){
         e.stopPropagation();
       });
 
-      
+      var saveCrop = scope.$eval(attrs.imageSave);
       scope.$watch('editting',function(crop){
         if(crop){
           var img = new Image();
           img.width = W;
           img.height = H;
-          
-          img.src = scope.UPLOAD_PATH + scope.resInfo.data.src + '?' + scope.etag;
+          img.src = attrs.imageSrc;
           element.append(img);
           initEditor(img);
         }else{
@@ -47,6 +49,11 @@ angular.module('anthcraft.imageditor', [])
               save(editor);
             });
             editView(editor);
+
+            //////
+            scope.$on('imageEditor-saveCrop', function() {
+              save(editor);
+            });
           }
         });
       }
@@ -75,8 +82,7 @@ angular.module('anthcraft.imageditor', [])
           }
         }
         readView();
-        scope.saveCrop(info);
-        scope.$apply();
+        saveCrop(info);
       }
 
       function cancle(){
@@ -86,7 +92,7 @@ angular.module('anthcraft.imageditor', [])
       function editView(editor){
         if(!editor) return;
         editor.plugins.crop.toggleCrop();
-        editor.plugins.crop._renderCropZone(5,5,155,155);
+        editor.plugins.crop._renderCropZone(5,5,W+5,H+5);
         var zone = editor.plugins.crop.cropZone;
         zone.setCoords();
         editor.canvas.setActiveObject(zone);
@@ -95,7 +101,6 @@ angular.module('anthcraft.imageditor', [])
 
       function readView(){
         scope.editting = false;
-        scope.$apply();
       }
     }
   };

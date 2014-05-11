@@ -20,8 +20,14 @@
 						ng-disabled="uploading"
 						ng-change="uploadFile($event, image.file, x)" />
 				</label>
-				<i class="icon-crop" ng-click="crop()"></i>
+				<i class="icon-crop" ng-click="editting=true"></i>
 				<i class="icon-remove" ng-click="reset()"></i>
+			</div>
+
+			<!-- Handles for image-editor -->
+			<div class="handles" ng-show="editting && showUploadPanel">
+				<i class="icon-ok" ng-click="saveCropOk()"></i>
+				<i class="icon-cancel" ng-click="editting=false"></i>
 			</div>
 
 			<ul>
@@ -38,7 +44,13 @@
 						<div class="preview-image" ng-click="openFile()" ng-show="!editting">
 							<img ng-src="{{UPLOAD_PATH}}{{packData['wallpaper']['wallpaper'].src}}?{{etag}}" type="{{image.file.type}}">
 						</div>
-						<div class="editor-image" ng-show="editting" image-editor>
+						<div class="editor-image"
+							ng-show="editting"
+							image-editor
+							image-width="157"
+							image-height="138"
+							image-save="saveCrop"
+							image-src="{{UPLOAD_PATH}}{{packData['wallpaper']['wallpaper'].src}}?{{etag}}">
 						</div>
 					</div>
 				</li>

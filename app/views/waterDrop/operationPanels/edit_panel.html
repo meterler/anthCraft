@@ -13,7 +13,11 @@
                 <div class="preview-image" ng-click="openFile()" ng-show="!editting">
                     <img ng-src="{{UPLOAD_PATH}}{{resInfo.data.src}}?{{etag}}" type="{{image.file.type}}">
                 </div>
-                <div class="editor-image" ng-show="editting" image-editor>
+                <div class="editor-image"
+                    ng-show="editting"
+                    image-editor
+                    image-save="saveCrop"
+                    image-src="{{UPLOAD_PATH}}{{resInfo.data.src}}?{{etag}}">
                 </div>
                 <div class="loading" ng-if="isLoading">
                     <i class="icon-spin4 animate-spin"></i>

@@ -1,8 +1,9 @@
 angular
 .module('anthCraftApp')
 .controller 'quickmodeController',
-($scope, $rootScope, $timeout, $document, packs_iconSet, packs_wallpaper, themeService)->
+($scope, $rootScope, $timeout, $document, $http, packs_iconSet, packs_wallpaper, themeService, themeConfig)->
 
+	$scope.etag = ''
 	$scope.packData = themeService.packInfo
 	$scope.image = {}
 	$scope.checkedIconSet = themeService.themeModel.selectedIconSetId
@@ -93,6 +94,49 @@ angular
 	$scope.reset = ->
 		themeService.resetValue 'wallpaper', 'wallpaper'
 
+	# Image Crop
+	$scope.saveCropOk = ->
+		$scope.$emit "imageEditor-saveCrop"
+
+	$scope.saveCrop = (info)->
+		resModel = {
+			resType: 'wallpaper'
+			resName: 'wallpaper'
+			src: $scope.packData.wallpaper.wallpaper.src
+		}
+		$scope.isLoading = true
+		previewScale = themeConfig.getPreviewScale(resModel.resType, resModel.resName)
+		info = info || { size:{} }
+		info.themeId = themeService.themeModel._id
+		info.resName = resModel.resName
+		info.resType = resModel.resType
+		info.previewScale = previewScale
+		formData = new FormData()
+		formData.append('address',resModel.src)
+		formData.append('info',JSON.stringify(info))
+
+		$http.post('/api/crop', formData, {
+			transformRequest: angular.identity
+			headers: {
+				'content-type': undefined
+			}
+		}).success((result)->
+			themeService.updateView {
+				resType: resModel.resType
+				resName: resModel.resName
+				src: result.src
+			}
+			$scope.etag = (new Date).getTime()
+			$scope.isLoading = false
+		).error ()->
+			#to-do pop
+			$scope.isLoading = false
+			$scope.hasError = true
+			$timeout ->
+				 $scope.hasError = false;
+			,600
+
+	# PackData Settles
 	$scope.setWallpaper = (wallpaper)->
 		themeService.updateView {
 			resType: 'wallpaper'
