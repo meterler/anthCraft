@@ -5,6 +5,7 @@ angular
 
 	$scope.packData = themeService.packInfo
 	$scope.image = {}
+	$scope.checkedIconSet = themeService.themeModel.selectedIconSetId
 
 	# Page settings
 	wallpaper_page = 1
@@ -86,4 +87,5 @@ angular
 		}
 
 	$scope.setIconSet = (iconSet)->
+		$scope.checkedIconSet = themeService.themeModel.selectedIconSetId = iconSet._id
 		angular.extend($scope.packData, iconSet.icons)

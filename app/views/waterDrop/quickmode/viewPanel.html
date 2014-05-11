@@ -58,7 +58,7 @@
 		</div>
 		<div class="qk-icons">
 			<ul>
-				<li ng-repeat="iconSet in iconSetList" ng-click="setIconSet(iconSet)">
+				<li ng-repeat="iconSet in iconSetList" ng-click="setIconSet(iconSet)" ng-class="{ checked: checkedIconSet == iconSet._id }">
 					<img src="/styles/img/iconset-bg.jpg" ng-src="{{UPLOAD_PATH}}{{iconSet.preview}}" alt="{{iconSet.name}}" />
 				</li>
 			</ul>
