@@ -72,6 +72,8 @@ angular
 
 	$scope.checkStep2 = ()->
 
+	$scope.checkStep3 = ()->
+		not themeService.themeModel._dirty and themeService.themeModel.nextId
 
 	$scope.reset = ->
 		themeService.resetValue 'wallpaper', 'wallpaper'

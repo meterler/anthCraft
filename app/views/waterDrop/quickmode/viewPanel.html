@@ -1,9 +1,9 @@
 <div class="mod-quickmode panel panel-default well">
 
 	<div class="qk-steps">
-		<div class="step s1" ng-class="{ active: checkStep1() }">Wallpaper</div>
-		<div class="step s2">Icons</div>
-		<div class="step s3">Complete</div>
+		<div class="step s1" ng-class="{ active: checkStep1() || checkStep3() }">Wallpaper</div>
+		<div class="step s2" ng-class="{ active: checkStep2() || checkStep3() }">Icons</div>
+		<div class="step s3" ng-class="{ active: checkStep3() }">Complete</div>
 	</div>
 
 	<div class="qk-main">
