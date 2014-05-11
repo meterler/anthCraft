@@ -65,6 +65,13 @@ angular
 		, 0
 		return
 
+	# Step Control
+	$scope.checkStep1 = ()->
+		url = $scope.packData.wallpaper.wallpaper.src
+		not /^\/default_theme/.test(url)
+
+	$scope.checkStep2 = ()->
+
 	$scope.setWallpaper = (wallpaper)->
 		themeService.updateView {
 			resType: 'wallpaper'
