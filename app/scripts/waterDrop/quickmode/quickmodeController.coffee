@@ -73,3 +73,4 @@ angular
 		}
 
 	$scope.setIconSet = (iconSet)->
+		angular.extend($scope.packData, iconSet.icons)
