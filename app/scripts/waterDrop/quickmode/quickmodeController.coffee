@@ -87,7 +87,7 @@ angular
 		not /^\/default_theme/.test(url)
 
 	$scope.checkStep2 = ()->
-
+		!!$scope.checkedIconSet
 	$scope.checkStep3 = ()->
 		not themeService.themeModel._dirty and themeService.themeModel.nextId
 
