@@ -127,21 +127,17 @@ mod.factory 'themeService',
 
 			loadTheme: (data)->
 				# data struct: { meta: {themeModel}, packInfo: {} }
+				pdata = data.packInfo;
+				result = angular.copy(themeConfig.defaultPackInfo)
+				for pkey, pvalue of pdata
+					# Drop if category not exist in defaultPackInfo
+					continue if not result[pkey] or typeof result[pkey] isnt 'object'
 
-				# Convert packInfo to current version
-				for resType, resItems of themeConfig.defaultPackInfo
+					# Copy src value only
+					for qkey, qvalue of pdata[pkey]
+						result[pkey][qkey].src = qvalue.src
 
-					# Copy category from default
-					if not data.packInfo[resType]
-						data.packInfo[resType] = resItems
-						continue
-
-					for resName, item of resItems
-
-						if not data.packInfo[resType][resName]
-							data.packInfo[resType][resName] = item
-
-				angular.copy data.packInfo, service.packInfo
+				angular.copy result, service.packInfo
 				angular.copy data.meta, service.themeModel
 				service.themeUpdate()
 				# Save to local storage
