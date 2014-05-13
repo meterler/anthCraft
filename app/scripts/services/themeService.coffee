@@ -125,6 +125,44 @@ mod.factory 'themeService',
 				# service.theme.$save()
 				$rootScope.$broadcast('theme.update', service.packInfo, updateData)
 
+			# Update view batch
+			updateViewBatch: (updateData)->
+				temporaryData = angular.extend {},service.packInfo
+				for i, items of temporaryData
+					for j,item of items
+						oldSrc= item.src
+						newItem = updateData[i] and updateData[i][j]
+						newSrc = (newItem && newItem.src)||themeConfig.defaultPackInfo[i][j].src
+
+						otherLib = /^\/resourceslib/.test oldSrc
+						defaultTheme = /^\/default_theme/.test oldSrc
+						userUpload = not otherLib and not defaultTheme
+
+						# if userUpload return
+						if userUpload
+							continue
+						item.src = newSrc
+
+						# Check if updated
+						updateProgressRecord( oldSrc, {"resType":i,"resName":j,"src":newSrc} )
+
+						# Add timestamp to each resource
+						service.cacheFlags["#{themeConfig.themeFolder}#{newSrc}"] = (new Date()).getTime()
+
+				# Apply value
+				angular.extend service.packInfo, temporaryData
+
+				service.themeModel._dirty = true if updateData.length
+
+				# Update localStorageService if dirty
+				if service.themeModel._dirty
+					saveLocalData()
+
+				# TBD: Not save every time?
+				# service.theme.$save()
+				$rootScope.$broadcast('theme.update', service.packInfo, updateData[0])
+				return
+
 			loadTheme: (data)->
 				# data struct: { meta: {themeModel}, packInfo: {} }
 

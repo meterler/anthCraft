@@ -146,12 +146,5 @@ angular
 
 	$scope.setIconSet = (iconSet)->
 		$scope.checkedIconSet = themeService.themeModel.selectedIconSetId = iconSet._id
-		# angular.extend($scope.packData, iconSet.icons)
-		for type, icons of iconSet.icons
-			for name, icon of icons
-				themeService.updateView {
-					resType: type
-					resName: name
-					src: icon.src
-				} if themeService.packInfo[type][name]
+		themeService.updateViewBatch(iconSet.icons)
 		return
