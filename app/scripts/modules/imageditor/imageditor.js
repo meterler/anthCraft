@@ -39,7 +39,7 @@ angular.module('anthcraft.imageditor', [])
             crop: {
               //minHeight: 50,
               //minWidth: 50,
-              ratio: 1
+              ratio: W/H
             },
             save: false // disable plugin
           },
@@ -92,7 +92,7 @@ angular.module('anthcraft.imageditor', [])
       function editView(editor){
         if(!editor) return;
         editor.plugins.crop.toggleCrop();
-        editor.plugins.crop._renderCropZone(5,5,W+5,H+5);
+        editor.plugins.crop._renderCropZone(5,5,W-5,H-5);
         var zone = editor.plugins.crop.cropZone;
         zone.setCoords();
         editor.canvas.setActiveObject(zone);
