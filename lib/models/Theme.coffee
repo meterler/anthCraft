@@ -125,6 +125,15 @@ schemaStruct = {
 		default: 100
 	}
 
+	# 结构特点：
+	# 0 - 默认
+	# 1 - 用户自定义壁纸
+	# 2 - ...
+	peculiarity: {
+		type: "number"
+		default: 0
+	}
+
 	updateTime: { type: 'date', default: Date.now }
 	createTime: { type: 'date', default: Date.now }
 
