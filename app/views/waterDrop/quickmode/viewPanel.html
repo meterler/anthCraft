@@ -30,7 +30,7 @@
 				<i class="icon-cancel" ng-click="editting=false"></i>
 			</div>
 
-			<ul>
+			<ul ng-show="!wallpaperListloading">
 				<li>
 					<div class="qk-uploadIcon"
 						ng-hide="showUploadPanel"
@@ -61,6 +61,10 @@
 					<img ng-src="{{UPLOAD_PATH}}{{wallpaper.smallPath}}" alt="{{wallpaper.title}}" />
 				</li>
 			</ul>
+			<div class="qk-loading" ng-show="wallpaperListloading">
+                <p><i class="icon-spin4 animate-spin"></i></p>
+                <p>Loading...</p>
+            </div>
 			<div class="qk-paging">
 				<i class="icon-left-open-big left"
 					ng-class="{ active: wallpaper_hasPrev() }"
@@ -71,11 +75,15 @@
 			</div>
 		</div>
 		<div class="qk-icons">
-			<ul>
+			<ul ng-show="!iconsetloading">
 				<li ng-repeat="iconSet in iconSetList" ng-click="setIconSet(iconSet)" ng-class="{ checked: checkedIconSet == iconSet._id }">
 					<img src="/styles/img/iconset-bg.jpg" ng-src="{{UPLOAD_PATH}}{{iconSet.preview}}" alt="{{iconSet.name}}" />
 				</li>
 			</ul>
+			<div class="qk-loading" ng-show="iconsetloading">
+                <p><i class="icon-spin4 animate-spin"></i></p>
+                <p>Loading...</p>
+            </div>
 			<div class="qk-paging">
 				<i class="icon-left-open-big left"
 					ng-class="{ active: iconSet_hasPrev() }"

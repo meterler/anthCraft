@@ -12,6 +12,10 @@ angular
 	$scope.uploading = false
 	$scope.uploadFail = false
 
+	# Loading picture
+	$scope.iconsetloading = true
+	$scope.wallpaperListloading = true
+
 	# Page settings
 	wallpaper_page_count = 8
 	wallpaper_page_total = packs_wallpaper.count (data)-> wallpaper_page_total = data.result
@@ -21,15 +25,23 @@ angular
 
 	# Page switch handler
 	loadIconSetList = (page)->
+		$scope.iconsetloading = true
 		packs_iconSet.listByPage({
 			skip: (page - 1) * iconSet_page_count,
 			limit: iconSet_page_count
-		})
+		}, (result)->
+			$scope.iconsetloading = false
+		, (err)->
+		)
 	loadWallpaperList = (page)->
+		$scope.wallpaperListloading = true
 		packs_wallpaper.listByPage({
 			skip: (page - 1) * wallpaper_page_count
 			limit: wallpaper_page_count
-		})
+		}, (result)->
+			$scope.wallpaperListloading = false
+		, (err)->
+		)
 
 	# Page navigation
 	$scope.iconSet_hasPrev = -> +$rootScope.iconSet_page > 1
