@@ -86,7 +86,8 @@ angular.module('anthcraft.imageditor', [])
       }
 
       function cancle(){
-        readView();
+        scope.editting = false;
+        scope.$apply();
       }
 
       function editView(editor){

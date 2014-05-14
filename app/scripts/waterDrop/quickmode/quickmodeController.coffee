@@ -13,11 +13,9 @@ angular
 	$scope.uploadFail = false
 
 	# Page settings
-	wallpaper_page = 1
 	wallpaper_page_count = 8
 	wallpaper_page_total = packs_wallpaper.count (data)-> wallpaper_page_total = data.result
 
-	iconSet_page = 1
 	iconSet_page_count = 12
 	iconSet_page_total = packs_iconSet.count (data)-> iconSet_page_total = data.result
 
@@ -34,18 +32,18 @@ angular
 		})
 
 	# Page navigation
-	$scope.iconSet_hasPrev = -> +iconSet_page > 1
-	$scope.iconSet_hasNext = -> +iconSet_page < Math.ceil(iconSet_page_total / iconSet_page_count)
-	$scope.iconSet_nextPage = -> $scope.iconSetList = loadIconSetList(++iconSet_page)
-	$scope.iconSet_prevPage = -> $scope.iconSetList = loadIconSetList(--iconSet_page)
-	$scope.wallpaper_hasPrev = -> +wallpaper_page > 1
-	$scope.wallpaper_hasNext = -> +wallpaper_page < Math.ceil(wallpaper_page_total / wallpaper_page_count)
-	$scope.wallpaper_nextPage = -> $scope.wallpaperList = loadWallpaperList(++wallpaper_page)
-	$scope.wallpaper_prevPage = -> $scope.wallpaperList = loadWallpaperList(--wallpaper_page)
+	$scope.iconSet_hasPrev = -> +$rootScope.iconSet_page > 1
+	$scope.iconSet_hasNext = -> +$rootScope.iconSet_page < Math.ceil(iconSet_page_total / iconSet_page_count)
+	$scope.iconSet_nextPage = -> $scope.iconSetList = loadIconSetList(++ $rootScope.iconSet_page)
+	$scope.iconSet_prevPage = -> $scope.iconSetList = loadIconSetList(-- $rootScope.iconSet_page)
+	$scope.wallpaper_hasPrev = -> +$rootScope.wallpaper_page > 1
+	$scope.wallpaper_hasNext = -> +$rootScope.wallpaper_page < Math.ceil(wallpaper_page_total / wallpaper_page_count)
+	$scope.wallpaper_nextPage = -> $scope.wallpaperList = loadWallpaperList(++ $rootScope.wallpaper_page)
+	$scope.wallpaper_prevPage = -> $scope.wallpaperList = loadWallpaperList(-- $rootScope.wallpaper_page)
 
 	# Load Page 1
-	$scope.iconSetList = loadIconSetList(iconSet_page)
-	$scope.wallpaperList = loadWallpaperList(wallpaper_page)
+	$scope.iconSetList = loadIconSetList($rootScope.iconSet_page)
+	$scope.wallpaperList = loadWallpaperList($rootScope.wallpaper_page)
 
 	# Switch to quick sence
 	$rootScope.$broadcast 'theme.switchSence', 'quick', false
