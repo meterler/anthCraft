@@ -5,6 +5,10 @@ angular.module("anthCraftApp").controller "viewController",
 		$scope.pan = {}
 		$scope.progressRecord = (c) -> themeService.themeModel.progressRecord[c]
 
+		#quickmode setting
+		$rootScope.wallpaper_page = 1
+		$rootScope.iconSet_page = 1
+
 		# Check if continuable
 		if themeService.hasUnpub() && not $cookies.s
 			document.cookie = 's=1'

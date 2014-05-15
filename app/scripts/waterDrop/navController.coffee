@@ -84,7 +84,12 @@ angular.module('anthCraftApp').controller 'navController',
 				themeService.init (err)->
 					# if err? never happends
 					# Refresh views
-					$location.url("/")
+					if $rootScope.buildMode is 'quickmode'
+						$rootScope.wallpaper_page = 1
+						$rootScope.iconSet_page = 1
+						$location.url("/quickmode/")
+					else
+						$location.url("/")
 			return def.promise
 
 		# Preview
