@@ -148,11 +148,23 @@ angular
 
 	# PackData Settles
 	$scope.setWallpaper = (wallpaper)->
-		themeService.updateView {
-			resType: 'wallpaper'
-			resName: 'wallpaper'
-			src: wallpaper.originalPath
-		}
+
+		previewScale = themeConfig.getPreviewScale('wallpaper', 'wallpaper')
+		$http.get('/api/wallpaper/transfer', {
+			params: {
+				src: wallpaper.originalPath
+				themeId: themeService.themeModel._id
+				previewScale: previewScale
+			}
+		})
+		.success (data)->
+			# Set file
+			themeService.updateView {
+				resType: 'wallpaper'
+				resName: 'wallpaper'
+				src: data.src
+			}
+			$scope.etag = (new Date).getTime()
 
 	$scope.setIconSet = (iconSet)->
 		$scope.checkedIconSet = themeService.themeModel.selectedIconSetId = iconSet._id

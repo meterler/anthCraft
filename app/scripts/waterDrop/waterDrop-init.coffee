@@ -104,6 +104,7 @@ app.run ($rootScope, $translate)->
 	$rootScope.UPLOAD_PATH = "/resources/upload"
 	$rootScope.ARCHIVES_PATH = "/resources/themeArchives"
 	$rootScope.THEME_PATH = "/resources/themes"
+	$rootScope.WALLPAPER_PATH = "/resources/wallpaper/img"
 
 	$translate.use "en_US"
 	$rootScope.$on '$translateChangeSuccess', ()->
